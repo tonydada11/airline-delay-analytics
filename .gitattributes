@@ -1,0 +1,11 @@
+# Preserve executable Bash scripts when checking out on Windows.
+*.sh text eol=lf
+
+# Keep the pinned manifest fingerprint stable across platforms.
+conf/raw_data_manifest.csv text eol=lf
+
+# The timezone reference and archived evidence are bound to their original bytes.
+conf/airport_timezones.csv -text -whitespace
+evidence/archive/** -text -whitespace
+evidence/consolidation/*.log -text -whitespace
+evidence/acceptance/**/*.log -text -whitespace

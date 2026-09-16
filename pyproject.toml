@@ -1,0 +1,9 @@
+[project]
+name = "airline-spark"
+version = "0.2.0"
+description = "Pinned BTS Spark analytics and chronological delay models"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

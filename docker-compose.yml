@@ -1,0 +1,155 @@
+name: airline-spark
+
+x-spark-common: &spark-common
+  build:
+    context: .
+    dockerfile: docker/Dockerfile
+  image: airline-spark:3.5.9
+  restart: unless-stopped
+
+services:
+  spark-master:
+    <<: *spark-common
+    hostname: spark-master
+    command:
+      - /opt/spark/bin/spark-class
+      - org.apache.spark.deploy.master.Master
+      - --host
+      - spark-master
+      - --port
+      - "7077"
+      - --webui-port
+      - "8080"
+    environment:
+      SPARK_DAEMON_MEMORY: 256m
+    ports:
+      - "127.0.0.1:8080:8080"
+    expose:
+      - "7077"
+    healthcheck:
+      test:
+        - CMD
+        - python3
+        - -c
+        - "import socket; socket.create_connection(('spark-master', 7077), 2).close()"
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+
+  spark-worker-1:
+    <<: *spark-common
+    hostname: spark-worker-1
+    command:
+      - /opt/spark/bin/spark-class
+      - org.apache.spark.deploy.worker.Worker
+      - --cores
+      - "1"
+      - --memory
+      - 768m
+      - --webui-port
+      - "8081"
+      - spark://spark-master:7077
+    environment:
+      SPARK_DAEMON_MEMORY: 256m
+    volumes:
+      - ./data:/workspace/data
+      - ./artifacts:/workspace/artifacts
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python3
+        - -c
+        - "import socket; socket.create_connection(('spark-worker-1', 8081), 2).close()"
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+
+  spark-worker-2:
+    <<: *spark-common
+    hostname: spark-worker-2
+    command:
+      - /opt/spark/bin/spark-class
+      - org.apache.spark.deploy.worker.Worker
+      - --cores
+      - "1"
+      - --memory
+      - 768m
+      - --webui-port
+      - "8081"
+      - spark://spark-master:7077
+    environment:
+      SPARK_DAEMON_MEMORY: 256m
+    volumes:
+      - ./data:/workspace/data
+      - ./artifacts:/workspace/artifacts
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python3
+        - -c
+        - "import socket; socket.create_connection(('spark-worker-2', 8081), 2).close()"
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+
+  spark-notebook:
+    <<: *spark-common
+    hostname: spark-notebook
+    user: "0:0"
+    command:
+      - python3
+      - -m
+      - jupyter
+      - lab
+      - --ip=0.0.0.0
+      - --port=8888
+      - --no-browser
+      - --allow-root
+      - --ServerApp.root_dir=/workspace
+    working_dir: /workspace
+    environment:
+      AIRLINE_TEST_TMP_ROOT: /workspace/data/.test-tmp
+      PYTHONPATH: /workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip
+      PYSPARK_PYTHON: python3
+      PYSPARK_DRIVER_PYTHON: python3
+      PYSPARK_SUBMIT_ARGS: >-
+        --master spark://spark-master:7077
+        --driver-memory 768m
+        --conf spark.driver.host=spark-notebook
+        --conf spark.driver.bindAddress=0.0.0.0
+        --conf spark.ui.port=4040
+        --conf spark.cores.max=2
+        --conf spark.executor.cores=1
+        --conf spark.executor.memory=640m
+        --conf spark.sql.files.maxPartitionBytes=67108864
+        --conf spark.sql.shuffle.partitions=4
+        pyspark-shell
+    ports:
+      - "127.0.0.1:8888:8888"
+      - "127.0.0.1:4040:4040"
+    volumes:
+      - ./requirements.lock:/workspace/requirements.lock:ro
+      - ./pyproject.toml:/workspace/pyproject.toml:ro
+      - ./conf:/workspace/conf:ro
+      - ./src:/workspace/src:ro
+      - ./tests:/workspace/tests:ro
+      - ./scripts:/workspace/scripts:ro
+      - ./notebooks:/workspace/notebooks
+      - ./data:/workspace/data
+      - ./artifacts:/workspace/artifacts
+    depends_on:
+      spark-master:
+        condition: service_healthy
+      spark-worker-1:
+        condition: service_healthy
+      spark-worker-2:
+        condition: service_healthy

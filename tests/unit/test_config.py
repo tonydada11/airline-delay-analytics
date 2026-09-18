@@ -1,0 +1,73 @@
+# AI-generated test code: generated with OpenAI Codex.
+from pathlib import Path
+
+import pytest
+
+from airline.common.config import load_config
+
+
+def _write_config(tmp_path: Path, body: str) -> Path:
+    config_dir = tmp_path / "conf"
+    config_dir.mkdir()
+    config_path = config_dir / "project.yaml"
+    config_path.write_text(body, encoding="utf-8")
+    return config_path
+
+
+def test_load_default_config() -> None:
+    config = load_config()
+
+    assert config.raw_csv == Path("data/raw/csv")
+    assert config.ods_flights == Path("data/warehouse/ods/flights")
+    assert (config.project_root / "conf/project.yaml").is_file()
+
+
+def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
+    config_path = _write_config(
+        tmp_path,
+        "paths:\n  raw_csv: inputs/flights\n  ods_flights: warehouse/flights\n",
+    )
+
+    config = load_config(config_path)
+
+    assert config.project_root == tmp_path
+    assert config.raw_csv == Path("inputs/flights")
+
+
+@pytest.mark.parametrize(
+    "body, message",
+    [
+        ("[]\n", "YAML mapping"),
+        ("paths: []\n", "'paths' mapping"),
+        ("paths:\n  raw_csv: data/raw/csv\n", "missing required path keys"),
+        (
+            "paths:\n  raw_csv: /var/data/flights\n  ods_flights: warehouse/flights\n",
+            "project-relative",
+        ),
+        (
+            "paths:\n  raw_csv: 'C:\\data\\flights'\n  ods_flights: warehouse/flights\n",
+            "project-relative",
+        ),
+        (
+            "paths:\n  raw_csv: ../flights\n  ods_flights: warehouse/flights\n",
+            "must not traverse",
+        ),
+        (
+            "paths:\n  raw_csv: ''\n  ods_flights: warehouse/flights\n",
+            "non-empty string",
+        ),
+    ],
+)
+def test_rejects_invalid_config(tmp_path: Path, body: str, message: str) -> None:
+    with pytest.raises(ValueError, match=message):
+        load_config(_write_config(tmp_path, body))
+
+
+def test_rejects_invalid_yaml(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="Invalid YAML"):
+        load_config(_write_config(tmp_path, "paths: [\n"))
+
+
+def test_missing_config_file_raises_file_not_found(tmp_path: Path) -> None:
+    with pytest.raises(FileNotFoundError):
+        load_config(tmp_path / "missing.yaml")

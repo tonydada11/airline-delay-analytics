@@ -19,19 +19,22 @@ def test_load_default_config() -> None:
 
     assert config.raw_csv == Path("data/raw/csv")
     assert config.ods_flights == Path("data/warehouse/ods/flights")
+    assert config.dwd_flights == Path("data/warehouse/dwd/flights")
     assert (config.project_root / "conf/project.yaml").is_file()
 
 
 def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
     config_path = _write_config(
         tmp_path,
-        "paths:\n  raw_csv: inputs/flights\n  ods_flights: warehouse/flights\n",
+        "paths:\n  raw_csv: inputs/flights\n  ods_flights: warehouse/ods\n"
+        "  dwd_flights: warehouse/dwd\n",
     )
 
     config = load_config(config_path)
 
     assert config.project_root == tmp_path
     assert config.raw_csv == Path("inputs/flights")
+    assert config.dwd_flights == Path("warehouse/dwd")
 
 
 @pytest.mark.parametrize(
@@ -41,19 +44,23 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
         ("paths: []\n", "'paths' mapping"),
         ("paths:\n  raw_csv: data/raw/csv\n", "missing required path keys"),
         (
-            "paths:\n  raw_csv: /var/data/flights\n  ods_flights: warehouse/flights\n",
+            "paths:\n  raw_csv: /var/data/flights\n  ods_flights: warehouse/ods\n"
+            "  dwd_flights: warehouse/dwd\n",
             "project-relative",
         ),
         (
-            "paths:\n  raw_csv: 'C:\\data\\flights'\n  ods_flights: warehouse/flights\n",
+            "paths:\n  raw_csv: 'C:\\data\\flights'\n  ods_flights: warehouse/ods\n"
+            "  dwd_flights: warehouse/dwd\n",
             "project-relative",
         ),
         (
-            "paths:\n  raw_csv: ../flights\n  ods_flights: warehouse/flights\n",
+            "paths:\n  raw_csv: ../flights\n  ods_flights: warehouse/ods\n"
+            "  dwd_flights: warehouse/dwd\n",
             "must not traverse",
         ),
         (
-            "paths:\n  raw_csv: ''\n  ods_flights: warehouse/flights\n",
+            "paths:\n  raw_csv: ''\n  ods_flights: warehouse/ods\n"
+            "  dwd_flights: warehouse/dwd\n",
             "non-empty string",
         ),
     ],

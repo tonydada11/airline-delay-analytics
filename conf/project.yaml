@@ -1,3 +1,4 @@
 paths:
   raw_csv: data/raw/csv
   ods_flights: data/warehouse/ods/flights
+  dwd_flights: data/warehouse/dwd/flights

@@ -19,6 +19,7 @@ class ProjectConfig:
     project_root: Path
     raw_csv: Path
     ods_flights: Path
+    dwd_flights: Path
 
 
 def _relative_path(value: object, key: str) -> Path:
@@ -53,7 +54,7 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
     if not isinstance(paths, dict):
         raise ValueError("Project configuration must contain a 'paths' mapping.")
 
-    missing = sorted({"raw_csv", "ods_flights"} - paths.keys())
+    missing = sorted({"raw_csv", "ods_flights", "dwd_flights"} - paths.keys())
     if missing:
         raise ValueError(f"Project configuration is missing required path keys: {missing}")
 
@@ -62,4 +63,5 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
         project_root=project_root,
         raw_csv=_relative_path(paths["raw_csv"], "raw_csv"),
         ods_flights=_relative_path(paths["ods_flights"], "ods_flights"),
+        dwd_flights=_relative_path(paths["dwd_flights"], "dwd_flights"),
     )

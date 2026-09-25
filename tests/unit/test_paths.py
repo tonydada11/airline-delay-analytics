@@ -13,9 +13,17 @@ def test_project_paths_remain_portable() -> None:
     assert paths.raw_csv == Path("data/raw/csv")
     assert paths.ods_flights == Path("data/warehouse/ods/flights")
     assert paths.dwd_flights == Path("data/warehouse/dwd/flights")
+    assert paths.dim_date == Path("data/warehouse/dim/date")
+    assert paths.dim_carrier == Path("data/warehouse/dim/carrier")
+    assert paths.dim_airport == Path("data/warehouse/dim/airport")
+    assert paths.dim_route == Path("data/warehouse/dim/route")
     assert not paths.raw_csv.is_absolute()
     assert not paths.ods_flights.is_absolute()
     assert not paths.dwd_flights.is_absolute()
+    assert not paths.dim_date.is_absolute()
+    assert not paths.dim_carrier.is_absolute()
+    assert not paths.dim_airport.is_absolute()
+    assert not paths.dim_route.is_absolute()
 
 
 def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
@@ -24,12 +32,20 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
         raw_csv=Path("input/flights"),
         ods_flights=Path("warehouse/ods/flights"),
         dwd_flights=Path("warehouse/dwd/flights"),
+        dim_date=Path("warehouse/dim/date"),
+        dim_carrier=Path("warehouse/dim/carrier"),
+        dim_airport=Path("warehouse/dim/airport"),
+        dim_route=Path("warehouse/dim/route"),
     )
     paths = get_project_paths(config)
 
     assert paths.resolve(paths.raw_csv) == tmp_path / "input/flights"
     assert paths.resolve(paths.ods_flights) == tmp_path / "warehouse/ods/flights"
     assert paths.resolve(paths.dwd_flights) == tmp_path / "warehouse/dwd/flights"
+    assert paths.resolve(paths.dim_date) == tmp_path / "warehouse/dim/date"
+    assert paths.resolve(paths.dim_carrier) == tmp_path / "warehouse/dim/carrier"
+    assert paths.resolve(paths.dim_airport) == tmp_path / "warehouse/dim/airport"
+    assert paths.resolve(paths.dim_route) == tmp_path / "warehouse/dim/route"
 
 
 @pytest.mark.parametrize(

@@ -2,3 +2,7 @@ paths:
   raw_csv: data/raw/csv
   ods_flights: data/warehouse/ods/flights
   dwd_flights: data/warehouse/dwd/flights
+  dim_date: data/warehouse/dim/date
+  dim_carrier: data/warehouse/dim/carrier
+  dim_airport: data/warehouse/dim/airport
+  dim_route: data/warehouse/dim/route

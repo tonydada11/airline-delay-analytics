@@ -18,6 +18,10 @@ class ProjectPaths:
     raw_csv: Path
     ods_flights: Path
     dwd_flights: Path
+    dim_date: Path
+    dim_carrier: Path
+    dim_airport: Path
+    dim_route: Path
 
     def resolve(self, path: PathLike) -> Path:
         """Resolve a configured relative path at a filesystem boundary."""
@@ -40,4 +44,8 @@ def get_project_paths(config: ProjectConfig) -> ProjectPaths:
         raw_csv=config.raw_csv,
         ods_flights=config.ods_flights,
         dwd_flights=config.dwd_flights,
+        dim_date=config.dim_date,
+        dim_carrier=config.dim_carrier,
+        dim_airport=config.dim_airport,
+        dim_route=config.dim_route,
     )

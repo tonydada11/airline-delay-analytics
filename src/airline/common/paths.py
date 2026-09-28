@@ -22,6 +22,9 @@ class ProjectPaths:
     dim_carrier: Path
     dim_airport: Path
     dim_route: Path
+    dws_carrier_daily: Path
+    dws_origin_airport_daily: Path
+    dws_route_daily: Path
 
     def resolve(self, path: PathLike) -> Path:
         """Resolve a configured relative path at a filesystem boundary."""
@@ -48,4 +51,7 @@ def get_project_paths(config: ProjectConfig) -> ProjectPaths:
         dim_carrier=config.dim_carrier,
         dim_airport=config.dim_airport,
         dim_route=config.dim_route,
+        dws_carrier_daily=config.dws_carrier_daily,
+        dws_origin_airport_daily=config.dws_origin_airport_daily,
+        dws_route_daily=config.dws_route_daily,
     )

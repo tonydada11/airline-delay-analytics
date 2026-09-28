@@ -17,6 +17,11 @@ def test_project_paths_remain_portable() -> None:
     assert paths.dim_carrier == Path("data/warehouse/dim/carrier")
     assert paths.dim_airport == Path("data/warehouse/dim/airport")
     assert paths.dim_route == Path("data/warehouse/dim/route")
+    assert paths.dws_carrier_daily == Path("data/warehouse/dws/carrier_daily")
+    assert paths.dws_origin_airport_daily == Path(
+        "data/warehouse/dws/origin_airport_daily"
+    )
+    assert paths.dws_route_daily == Path("data/warehouse/dws/route_daily")
     assert not paths.raw_csv.is_absolute()
     assert not paths.ods_flights.is_absolute()
     assert not paths.dwd_flights.is_absolute()
@@ -24,6 +29,9 @@ def test_project_paths_remain_portable() -> None:
     assert not paths.dim_carrier.is_absolute()
     assert not paths.dim_airport.is_absolute()
     assert not paths.dim_route.is_absolute()
+    assert not paths.dws_carrier_daily.is_absolute()
+    assert not paths.dws_origin_airport_daily.is_absolute()
+    assert not paths.dws_route_daily.is_absolute()
 
 
 def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
@@ -36,6 +44,9 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
         dim_carrier=Path("warehouse/dim/carrier"),
         dim_airport=Path("warehouse/dim/airport"),
         dim_route=Path("warehouse/dim/route"),
+        dws_carrier_daily=Path("warehouse/dws/carrier_daily"),
+        dws_origin_airport_daily=Path("warehouse/dws/origin_airport_daily"),
+        dws_route_daily=Path("warehouse/dws/route_daily"),
     )
     paths = get_project_paths(config)
 
@@ -46,6 +57,15 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
     assert paths.resolve(paths.dim_carrier) == tmp_path / "warehouse/dim/carrier"
     assert paths.resolve(paths.dim_airport) == tmp_path / "warehouse/dim/airport"
     assert paths.resolve(paths.dim_route) == tmp_path / "warehouse/dim/route"
+    assert paths.resolve(paths.dws_carrier_daily) == (
+        tmp_path / "warehouse/dws/carrier_daily"
+    )
+    assert paths.resolve(paths.dws_origin_airport_daily) == (
+        tmp_path / "warehouse/dws/origin_airport_daily"
+    )
+    assert paths.resolve(paths.dws_route_daily) == (
+        tmp_path / "warehouse/dws/route_daily"
+    )
 
 
 @pytest.mark.parametrize(

@@ -6,3 +6,6 @@ paths:
   dim_carrier: data/warehouse/dim/carrier
   dim_airport: data/warehouse/dim/airport
   dim_route: data/warehouse/dim/route
+  dws_carrier_daily: data/warehouse/dws/carrier_daily
+  dws_origin_airport_daily: data/warehouse/dws/origin_airport_daily
+  dws_route_daily: data/warehouse/dws/route_daily

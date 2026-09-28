@@ -24,6 +24,9 @@ class ProjectConfig:
     dim_carrier: Path
     dim_airport: Path
     dim_route: Path
+    dws_carrier_daily: Path
+    dws_origin_airport_daily: Path
+    dws_route_daily: Path
 
 
 def _relative_path(value: object, key: str) -> Path:
@@ -66,6 +69,9 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
         "dim_carrier",
         "dim_airport",
         "dim_route",
+        "dws_carrier_daily",
+        "dws_origin_airport_daily",
+        "dws_route_daily",
     }
     missing = sorted(required_paths - paths.keys())
     if missing:
@@ -81,4 +87,11 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
         dim_carrier=_relative_path(paths["dim_carrier"], "dim_carrier"),
         dim_airport=_relative_path(paths["dim_airport"], "dim_airport"),
         dim_route=_relative_path(paths["dim_route"], "dim_route"),
+        dws_carrier_daily=_relative_path(
+            paths["dws_carrier_daily"], "dws_carrier_daily"
+        ),
+        dws_origin_airport_daily=_relative_path(
+            paths["dws_origin_airport_daily"], "dws_origin_airport_daily"
+        ),
+        dws_route_daily=_relative_path(paths["dws_route_daily"], "dws_route_daily"),
     )

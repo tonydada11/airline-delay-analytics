@@ -12,6 +12,11 @@ DIMENSION_PATHS = (
     "  dim_airport: warehouse/dim/airport\n"
     "  dim_route: warehouse/dim/route\n"
 )
+DWS_PATHS = (
+    "  dws_carrier_daily: warehouse/dws/carrier_daily\n"
+    "  dws_origin_airport_daily: warehouse/dws/origin_airport_daily\n"
+    "  dws_route_daily: warehouse/dws/route_daily\n"
+)
 
 
 def _write_config(tmp_path: Path, body: str) -> Path:
@@ -32,6 +37,11 @@ def test_load_default_config() -> None:
     assert config.dim_carrier == Path("data/warehouse/dim/carrier")
     assert config.dim_airport == Path("data/warehouse/dim/airport")
     assert config.dim_route == Path("data/warehouse/dim/route")
+    assert config.dws_carrier_daily == Path("data/warehouse/dws/carrier_daily")
+    assert config.dws_origin_airport_daily == Path(
+        "data/warehouse/dws/origin_airport_daily"
+    )
+    assert config.dws_route_daily == Path("data/warehouse/dws/route_daily")
     assert (config.project_root / "conf/project.yaml").is_file()
 
 
@@ -40,7 +50,8 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
         tmp_path,
         "paths:\n  raw_csv: inputs/flights\n  ods_flights: warehouse/ods\n"
         "  dwd_flights: warehouse/dwd\n"
-        + DIMENSION_PATHS,
+        + DIMENSION_PATHS
+        + DWS_PATHS,
     )
 
     config = load_config(config_path)
@@ -49,6 +60,7 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
     assert config.raw_csv == Path("inputs/flights")
     assert config.dwd_flights == Path("warehouse/dwd")
     assert config.dim_route == Path("warehouse/dim/route")
+    assert config.dws_route_daily == Path("warehouse/dws/route_daily")
 
 
 @pytest.mark.parametrize(
@@ -59,23 +71,32 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
         ("paths:\n  raw_csv: data/raw/csv\n", "missing required path keys"),
         (
             "paths:\n  raw_csv: /var/data/flights\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS,
+            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
             "project-relative",
         ),
         (
             "paths:\n  raw_csv: 'C:\\data\\flights'\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS,
+            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
             "project-relative",
         ),
         (
             "paths:\n  raw_csv: ../flights\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS,
+            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
             "must not traverse",
         ),
         (
             "paths:\n  raw_csv: ''\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS,
+            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
             "non-empty string",
+        ),
+        (
+            "paths:\n  raw_csv: data/raw/csv\n  ods_flights: warehouse/ods\n"
+            "  dwd_flights: warehouse/dwd\n"
+            + DIMENSION_PATHS
+            + "  dws_carrier_daily: warehouse/dws/carrier_daily\n"
+            "  dws_origin_airport_daily: warehouse/dws/origin_airport_daily\n"
+            "  dws_route_daily: /var/data/route_daily\n",
+            "project-relative",
         ),
     ],
 )

@@ -22,6 +22,9 @@ def test_project_paths_remain_portable() -> None:
         "data/warehouse/dws/origin_airport_daily"
     )
     assert paths.dws_route_daily == Path("data/warehouse/dws/route_daily")
+    assert paths.dws_ml_flight_features == Path(
+        "data/warehouse/dws/ml_flight_features"
+    )
     assert not paths.raw_csv.is_absolute()
     assert not paths.ods_flights.is_absolute()
     assert not paths.dwd_flights.is_absolute()
@@ -32,6 +35,7 @@ def test_project_paths_remain_portable() -> None:
     assert not paths.dws_carrier_daily.is_absolute()
     assert not paths.dws_origin_airport_daily.is_absolute()
     assert not paths.dws_route_daily.is_absolute()
+    assert not paths.dws_ml_flight_features.is_absolute()
 
 
 def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
@@ -47,6 +51,7 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
         dws_carrier_daily=Path("warehouse/dws/carrier_daily"),
         dws_origin_airport_daily=Path("warehouse/dws/origin_airport_daily"),
         dws_route_daily=Path("warehouse/dws/route_daily"),
+        dws_ml_flight_features=Path("warehouse/dws/ml_flight_features"),
     )
     paths = get_project_paths(config)
 
@@ -65,6 +70,9 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
     )
     assert paths.resolve(paths.dws_route_daily) == (
         tmp_path / "warehouse/dws/route_daily"
+    )
+    assert paths.resolve(paths.dws_ml_flight_features) == (
+        tmp_path / "warehouse/dws/ml_flight_features"
     )
 
 

@@ -16,6 +16,7 @@ DWS_PATHS = (
     "  dws_carrier_daily: warehouse/dws/carrier_daily\n"
     "  dws_origin_airport_daily: warehouse/dws/origin_airport_daily\n"
     "  dws_route_daily: warehouse/dws/route_daily\n"
+    "  dws_ml_flight_features: warehouse/dws/ml_flight_features\n"
 )
 
 
@@ -42,6 +43,9 @@ def test_load_default_config() -> None:
         "data/warehouse/dws/origin_airport_daily"
     )
     assert config.dws_route_daily == Path("data/warehouse/dws/route_daily")
+    assert config.dws_ml_flight_features == Path(
+        "data/warehouse/dws/ml_flight_features"
+    )
     assert (config.project_root / "conf/project.yaml").is_file()
 
 
@@ -61,6 +65,9 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
     assert config.dwd_flights == Path("warehouse/dwd")
     assert config.dim_route == Path("warehouse/dim/route")
     assert config.dws_route_daily == Path("warehouse/dws/route_daily")
+    assert config.dws_ml_flight_features == Path(
+        "warehouse/dws/ml_flight_features"
+    )
 
 
 @pytest.mark.parametrize(
@@ -95,7 +102,8 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
             + DIMENSION_PATHS
             + "  dws_carrier_daily: warehouse/dws/carrier_daily\n"
             "  dws_origin_airport_daily: warehouse/dws/origin_airport_daily\n"
-            "  dws_route_daily: /var/data/route_daily\n",
+            "  dws_route_daily: warehouse/dws/route_daily\n"
+            "  dws_ml_flight_features: /var/data/ml_flight_features\n",
             "project-relative",
         ),
     ],

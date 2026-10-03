@@ -9,3 +9,4 @@ paths:
   dws_carrier_daily: data/warehouse/dws/carrier_daily
   dws_origin_airport_daily: data/warehouse/dws/origin_airport_daily
   dws_route_daily: data/warehouse/dws/route_daily
+  dws_ml_flight_features: data/warehouse/dws/ml_flight_features

@@ -25,6 +25,16 @@ def test_project_paths_remain_portable() -> None:
     assert paths.dws_ml_flight_features == Path(
         "data/warehouse/dws/ml_flight_features"
     )
+    assert paths.ads_monthly_operations == Path(
+        "data/warehouse/ads/monthly_operations"
+    )
+    assert paths.ads_carrier_scorecard == Path(
+        "data/warehouse/ads/carrier_scorecard"
+    )
+    assert paths.ads_airport_scorecard == Path(
+        "data/warehouse/ads/airport_scorecard"
+    )
+    assert paths.ads_route_ranking == Path("data/warehouse/ads/route_ranking")
     assert not paths.raw_csv.is_absolute()
     assert not paths.ods_flights.is_absolute()
     assert not paths.dwd_flights.is_absolute()
@@ -36,6 +46,10 @@ def test_project_paths_remain_portable() -> None:
     assert not paths.dws_origin_airport_daily.is_absolute()
     assert not paths.dws_route_daily.is_absolute()
     assert not paths.dws_ml_flight_features.is_absolute()
+    assert not paths.ads_monthly_operations.is_absolute()
+    assert not paths.ads_carrier_scorecard.is_absolute()
+    assert not paths.ads_airport_scorecard.is_absolute()
+    assert not paths.ads_route_ranking.is_absolute()
 
 
 def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
@@ -52,6 +66,10 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
         dws_origin_airport_daily=Path("warehouse/dws/origin_airport_daily"),
         dws_route_daily=Path("warehouse/dws/route_daily"),
         dws_ml_flight_features=Path("warehouse/dws/ml_flight_features"),
+        ads_monthly_operations=Path("warehouse/ads/monthly_operations"),
+        ads_carrier_scorecard=Path("warehouse/ads/carrier_scorecard"),
+        ads_airport_scorecard=Path("warehouse/ads/airport_scorecard"),
+        ads_route_ranking=Path("warehouse/ads/route_ranking"),
     )
     paths = get_project_paths(config)
 
@@ -73,6 +91,18 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
     )
     assert paths.resolve(paths.dws_ml_flight_features) == (
         tmp_path / "warehouse/dws/ml_flight_features"
+    )
+    assert paths.resolve(paths.ads_monthly_operations) == (
+        tmp_path / "warehouse/ads/monthly_operations"
+    )
+    assert paths.resolve(paths.ads_carrier_scorecard) == (
+        tmp_path / "warehouse/ads/carrier_scorecard"
+    )
+    assert paths.resolve(paths.ads_airport_scorecard) == (
+        tmp_path / "warehouse/ads/airport_scorecard"
+    )
+    assert paths.resolve(paths.ads_route_ranking) == (
+        tmp_path / "warehouse/ads/route_ranking"
     )
 
 

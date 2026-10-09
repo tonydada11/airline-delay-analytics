@@ -10,3 +10,7 @@ paths:
   dws_origin_airport_daily: data/warehouse/dws/origin_airport_daily
   dws_route_daily: data/warehouse/dws/route_daily
   dws_ml_flight_features: data/warehouse/dws/ml_flight_features
+  ads_monthly_operations: data/warehouse/ads/monthly_operations
+  ads_carrier_scorecard: data/warehouse/ads/carrier_scorecard
+  ads_airport_scorecard: data/warehouse/ads/airport_scorecard
+  ads_route_ranking: data/warehouse/ads/route_ranking

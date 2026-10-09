@@ -775,30 +775,30 @@ def run_training(
     input_directory: PathLike,
     artifact_root: PathLike,
 ) -> Dict[str, Any]:
-    """Run the complete leakage-safe M7 lifecycle."""
+    """Verify the frozen M7 bundle; never refit or automatically score test.
 
-    features = read_ml_features(spark, input_directory)
-    validate_training_source(features)
-    train, validation, test = split_feature_dataset(features)
-    selection = train_and_select_models(train, validation)
-    artifacts = ArtifactPaths.from_root(artifact_root)
-    save_selection(selection, artifacts)
-    final_test = evaluate_final_test(selection, test, artifacts)
-    return {
-        "validation": validation_metrics_document(selection),
-        "selection": selection_manifest(selection),
-        "final_test": final_test,
-    }
+    ``evaluate_final_test`` remains an explicit legacy helper for reproducing
+    the already-inspected M5 result in isolated tests.  It is intentionally not
+    reachable from the production entry point.
+    """
+
+    from airline.ml.finalize_m7 import finalize
+
+    project_root = Path(artifact_root).resolve().parent
+    expected_input = project_root / "data/warehouse/dws/ml_flight_features"
+    if Path(input_directory).resolve() != expected_input.resolve():
+        raise ValueError("Frozen M7 must use data/warehouse/dws/ml_flight_features.")
+    return finalize(spark, project_root)
 
 
 def main() -> None:
-    """Run configured full-data M7 training and final evaluation."""
+    """Run configured frozen-model validation and reproducibility checks."""
 
     paths = get_project_paths(load_config())
     artifact_root = paths.project_root / "artifacts"
-    spark = create_spark_session("airline-m7-train-models")
-    print(f"M5 feature input: {paths.dws_ml_flight_features.as_posix()}/")
-    print("ML artifact output: artifacts/")
+    spark = create_spark_session("airline-m7-frozen-model-workflow")
+    print(f"M7 feature input: {paths.dws_ml_flight_features.as_posix()}/")
+    print("Frozen M7 artifact root: artifacts/experiments/staged-v2/")
     try:
         result = run_training(
             spark,
@@ -806,7 +806,7 @@ def main() -> None:
             artifact_root,
         )
         print(json.dumps(result, indent=2, sort_keys=True, default=_json_ready))
-        print("M7 training and evaluation completed successfully.")
+        print("M7 frozen-model verification completed; protected test not evaluated.")
     finally:
         spark.stop()
 

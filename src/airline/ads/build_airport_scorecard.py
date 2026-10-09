@@ -1,0 +1,75 @@
+"""Build full-period origin-airport scorecards from DWS and DWD."""
+
+from pathlib import Path
+from typing import Union
+
+from pyspark.sql import DataFrame, SparkSession
+
+from airline.ads import (
+    aggregate_ads_metrics,
+    read_parquet,
+    validate_daily_ads_source,
+    validate_dwd_ads_source,
+    write_ads_table,
+)
+from airline.common.config import load_config
+from airline.common.paths import get_project_paths
+from airline.common.spark_session import create_spark_session
+
+
+PathLike = Union[str, Path]
+DWS_SOURCE_GRAIN = ("flight_date", "origin")
+OUTPUT_GRAIN = ("origin",)
+
+
+def transform_airport_scorecard(
+    origin_airport_daily: DataFrame, dwd_flights: DataFrame
+) -> DataFrame:
+    """Return full-period origin-airport metrics lazily."""
+
+    return aggregate_ads_metrics(origin_airport_daily, dwd_flights, OUTPUT_GRAIN)
+
+
+def build_airport_scorecard(
+    spark: SparkSession,
+    dwd_directory: PathLike,
+    origin_airport_daily_directory: PathLike,
+    output_directory: PathLike,
+) -> None:
+    """Validate sources and replace airport scorecard analytics."""
+
+    origin_airport_daily = read_parquet(spark, origin_airport_daily_directory)
+    dwd_flights = read_parquet(spark, dwd_directory)
+    validate_daily_ads_source(origin_airport_daily, DWS_SOURCE_GRAIN)
+    validate_dwd_ads_source(dwd_flights, OUTPUT_GRAIN)
+    write_ads_table(
+        transform_airport_scorecard(origin_airport_daily, dwd_flights),
+        output_directory,
+    )
+
+
+def main() -> None:
+    """Run the configured M6 airport scorecard build."""
+
+    paths = get_project_paths(load_config())
+    spark = create_spark_session("airline-m6-build-airport-scorecard")
+    print(f"DWD input: {paths.dwd_flights.as_posix()}/")
+    print(
+        "Origin-airport-daily input: "
+        f"{paths.dws_origin_airport_daily.as_posix()}/"
+    )
+    print(f"Airport scorecard output: {paths.ads_airport_scorecard.as_posix()}/")
+    try:
+        build_airport_scorecard(
+            spark,
+            paths.resolve(paths.dwd_flights),
+            paths.resolve(paths.dws_origin_airport_daily),
+            paths.resolve(paths.ads_airport_scorecard),
+        )
+        print("Airport scorecard analytics written successfully.")
+    finally:
+        spark.stop()
+
+
+if __name__ == "__main__":
+    main()

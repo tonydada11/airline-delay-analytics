@@ -28,6 +28,10 @@ class ProjectConfig:
     dws_origin_airport_daily: Path
     dws_route_daily: Path
     dws_ml_flight_features: Path
+    ads_monthly_operations: Path
+    ads_carrier_scorecard: Path
+    ads_airport_scorecard: Path
+    ads_route_ranking: Path
 
 
 def _relative_path(value: object, key: str) -> Path:
@@ -74,6 +78,10 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
         "dws_origin_airport_daily",
         "dws_route_daily",
         "dws_ml_flight_features",
+        "ads_monthly_operations",
+        "ads_carrier_scorecard",
+        "ads_airport_scorecard",
+        "ads_route_ranking",
     }
     missing = sorted(required_paths - paths.keys())
     if missing:
@@ -98,5 +106,17 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
         dws_route_daily=_relative_path(paths["dws_route_daily"], "dws_route_daily"),
         dws_ml_flight_features=_relative_path(
             paths["dws_ml_flight_features"], "dws_ml_flight_features"
+        ),
+        ads_monthly_operations=_relative_path(
+            paths["ads_monthly_operations"], "ads_monthly_operations"
+        ),
+        ads_carrier_scorecard=_relative_path(
+            paths["ads_carrier_scorecard"], "ads_carrier_scorecard"
+        ),
+        ads_airport_scorecard=_relative_path(
+            paths["ads_airport_scorecard"], "ads_airport_scorecard"
+        ),
+        ads_route_ranking=_relative_path(
+            paths["ads_route_ranking"], "ads_route_ranking"
         ),
     )

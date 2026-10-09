@@ -18,6 +18,12 @@ DWS_PATHS = (
     "  dws_route_daily: warehouse/dws/route_daily\n"
     "  dws_ml_flight_features: warehouse/dws/ml_flight_features\n"
 )
+ADS_PATHS = (
+    "  ads_monthly_operations: warehouse/ads/monthly_operations\n"
+    "  ads_carrier_scorecard: warehouse/ads/carrier_scorecard\n"
+    "  ads_airport_scorecard: warehouse/ads/airport_scorecard\n"
+    "  ads_route_ranking: warehouse/ads/route_ranking\n"
+)
 
 
 def _write_config(tmp_path: Path, body: str) -> Path:
@@ -46,6 +52,16 @@ def test_load_default_config() -> None:
     assert config.dws_ml_flight_features == Path(
         "data/warehouse/dws/ml_flight_features"
     )
+    assert config.ads_monthly_operations == Path(
+        "data/warehouse/ads/monthly_operations"
+    )
+    assert config.ads_carrier_scorecard == Path(
+        "data/warehouse/ads/carrier_scorecard"
+    )
+    assert config.ads_airport_scorecard == Path(
+        "data/warehouse/ads/airport_scorecard"
+    )
+    assert config.ads_route_ranking == Path("data/warehouse/ads/route_ranking")
     assert (config.project_root / "conf/project.yaml").is_file()
 
 
@@ -55,7 +71,8 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
         "paths:\n  raw_csv: inputs/flights\n  ods_flights: warehouse/ods\n"
         "  dwd_flights: warehouse/dwd\n"
         + DIMENSION_PATHS
-        + DWS_PATHS,
+        + DWS_PATHS
+        + ADS_PATHS,
     )
 
     config = load_config(config_path)
@@ -68,6 +85,10 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
     assert config.dws_ml_flight_features == Path(
         "warehouse/dws/ml_flight_features"
     )
+    assert config.ads_monthly_operations == Path(
+        "warehouse/ads/monthly_operations"
+    )
+    assert config.ads_route_ranking == Path("warehouse/ads/route_ranking")
 
 
 @pytest.mark.parametrize(
@@ -78,22 +99,34 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
         ("paths:\n  raw_csv: data/raw/csv\n", "missing required path keys"),
         (
             "paths:\n  raw_csv: /var/data/flights\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
+            "  dwd_flights: warehouse/dwd\n"
+            + DIMENSION_PATHS
+            + DWS_PATHS
+            + ADS_PATHS,
             "project-relative",
         ),
         (
             "paths:\n  raw_csv: 'C:\\data\\flights'\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
+            "  dwd_flights: warehouse/dwd\n"
+            + DIMENSION_PATHS
+            + DWS_PATHS
+            + ADS_PATHS,
             "project-relative",
         ),
         (
             "paths:\n  raw_csv: ../flights\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
+            "  dwd_flights: warehouse/dwd\n"
+            + DIMENSION_PATHS
+            + DWS_PATHS
+            + ADS_PATHS,
             "must not traverse",
         ),
         (
             "paths:\n  raw_csv: ''\n  ods_flights: warehouse/ods\n"
-            "  dwd_flights: warehouse/dwd\n" + DIMENSION_PATHS + DWS_PATHS,
+            "  dwd_flights: warehouse/dwd\n"
+            + DIMENSION_PATHS
+            + DWS_PATHS
+            + ADS_PATHS,
             "non-empty string",
         ),
         (
@@ -103,7 +136,11 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
             + "  dws_carrier_daily: warehouse/dws/carrier_daily\n"
             "  dws_origin_airport_daily: warehouse/dws/origin_airport_daily\n"
             "  dws_route_daily: warehouse/dws/route_daily\n"
-            "  dws_ml_flight_features: /var/data/ml_flight_features\n",
+            "  dws_ml_flight_features: warehouse/dws/ml_flight_features\n"
+            "  ads_monthly_operations: warehouse/ads/monthly_operations\n"
+            "  ads_carrier_scorecard: warehouse/ads/carrier_scorecard\n"
+            "  ads_airport_scorecard: warehouse/ads/airport_scorecard\n"
+            "  ads_route_ranking: /var/data/route_ranking\n",
             "project-relative",
         ),
     ],

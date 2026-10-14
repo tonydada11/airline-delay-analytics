@@ -1,374 +1,170 @@
 # AI-generated test code: generated with OpenAI Codex.
-import os
-import shutil
-import tempfile
 from datetime import date, timedelta
+import os
 from pathlib import Path
-from typing import Dict, Iterator, List, Optional, Sequence
-
+import tempfile
 import pytest
-from pyspark.sql import DataFrame, SparkSession, functions as F
-from pyspark.sql.types import (
-    DateType,
-    DoubleType,
-    IntegerType,
-    StringType,
-    StructField,
-    StructType,
-)
-
+from pyspark.sql import functions as F
 from airline.common.spark_session import create_spark_session
+from airline.dws.ml_feature_contract import *
 from airline.dws.build_ml_flight_features import (
-    HISTORICAL_FEATURE_COLUMNS,
-    LEAKAGE_BLACKLIST,
-    OUTPUT_COLUMNS,
-    PREDICTOR_COLUMNS,
-    build_historical_rate,
-    build_ml_flight_features,
-    select_eligible_flights,
-    transform_ml_flight_features,
-    validate_ml_source,
+    add_schedule_features, entity_history, transform_ml_flight_features,
+    validate_ml_source, validate_feature_frame, build_ml_flight_features,
 )
 
-
-DWD_ML_SCHEMA = StructType(
-    [
-        StructField("flight_date", DateType(), True),
-        StructField("reporting_airline", StringType(), True),
-        StructField("origin", StringType(), True),
-        StructField("dest", StringType(), True),
-        StructField("distance", DoubleType(), True),
-        StructField("month", IntegerType(), True),
-        StructField("day_of_week", IntegerType(), True),
-        StructField("scheduled_departure_hour", IntegerType(), True),
-        StructField("is_cancelled", IntegerType(), True),
-        StructField("is_diverted", IntegerType(), True),
-        StructField("is_arrival_delayed_15m", IntegerType(), True),
-        StructField("dep_time", IntegerType(), True),
-        StructField("dep_delay", DoubleType(), True),
-        StructField("arr_delay", DoubleType(), True),
-    ]
-)
-
-
-def _row(
-    flight_date: date,
-    target: Optional[int],
-    *,
-    carrier: str = "AA",
-    origin: str = "JFK",
-    destination: str = "LAX",
-    distance: float = 2_475.0,
-    departure_hour: int = 8,
-    cancelled: int = 0,
-    diverted: int = 0,
-) -> Dict[str, object]:
-    return {
-        "flight_date": flight_date,
-        "reporting_airline": carrier,
-        "origin": origin,
-        "dest": destination,
-        "distance": distance,
-        "month": flight_date.month,
-        "day_of_week": flight_date.isoweekday(),
-        "scheduled_departure_hour": departure_hour,
-        "is_cancelled": cancelled,
-        "is_diverted": diverted,
-        "is_arrival_delayed_15m": target,
-        "dep_time": 900,
-        "dep_delay": 30.0,
-        "arr_delay": 25.0,
-    }
-
-
 @pytest.fixture(scope="module")
-def dwd_rows() -> List[Dict[str, object]]:
-    return [
-        # For 2023-02-01, these are D-31, D-30, and D-1 respectively.
-        _row(date(2023, 1, 1), 1),
-        _row(date(2023, 1, 2), 1),
-        _row(date(2023, 1, 31), 0),
-        _row(date(2023, 1, 31), 0, origin="LAX", destination="JFK"),
-        # Same-day outcomes must not affect any 2023-02-01 history.
-        _row(date(2023, 2, 1), 1, departure_hour=8),
-        _row(date(2023, 2, 1), 0, departure_hour=9),
-        _row(date(2023, 2, 1), 1, origin="LAX", destination="JFK"),
-        _row(
-            date(2023, 2, 1),
-            0,
-            carrier="DL",
-            origin="SEA",
-            destination="BOS",
-        ),
-        # All three rows below are ineligible, including non-null outcomes.
-        _row(date(2023, 2, 1), 1, cancelled=1, departure_hour=10),
-        _row(date(2023, 2, 1), 0, diverted=1, departure_hour=11),
-        _row(date(2023, 2, 1), None, departure_hour=12),
-        # Exact chronological split boundaries.
-        _row(date(2024, 4, 30), 0, carrier="UA"),
-        _row(date(2024, 5, 1), 0, carrier="UA"),
-        _row(date(2024, 8, 31), 0, carrier="UA"),
-        _row(date(2024, 9, 1), 0, carrier="UA"),
-        _row(date(2024, 12, 31), 0, carrier="UA"),
-    ]
-
-
-@pytest.fixture(scope="module")
-def spark() -> Iterator[SparkSession]:
-    session = create_spark_session("airline-m5-integration-tests")
+def spark():
+    session = create_spark_session("airline-feature-tests")
     yield session
     session.stop()
 
 
 @pytest.fixture(scope="module")
-def shared_tmp_path() -> Iterator[Path]:
-    shared_root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
-    shared_root.mkdir(parents=True, exist_ok=True)
-    directory = Path(tempfile.mkdtemp(prefix="airline-m5-", dir=shared_root))
-    try:
-        yield directory
-    finally:
-        shutil.rmtree(directory)
-
-
-def _dataframe(spark: SparkSession, rows: List[Dict[str, object]]) -> DataFrame:
-    return spark.createDataFrame(
-        [[row.get(field.name) for field in DWD_ML_SCHEMA.fields] for row in rows],
-        DWD_ML_SCHEMA,
-    )
+def shared_path():
+    root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
+    root.mkdir(parents=True, exist_ok=True)
+    # Keep failed-run artifacts inspectable; use a unique, narrow fixture directory.
+    return Path(tempfile.mkdtemp(prefix="airline-features-", dir=root))
 
 
 @pytest.fixture(scope="module")
-def built_features(
-    spark: SparkSession,
-    shared_tmp_path: Path,
-    dwd_rows: List[Dict[str, object]],
-) -> Dict[str, Path]:
-    paths = {
-        "dwd": shared_tmp_path / "dwd" / "flights",
-        "features": shared_tmp_path / "dws" / "ml_flight_features",
-    }
-    _dataframe(spark, dwd_rows).write.mode("overwrite").parquet(str(paths["dwd"]))
-    build_ml_flight_features(spark, paths["dwd"], paths["features"])
-    return paths
+def dwd(spark):
+    rows = []
+    for i in range(48):
+        day = date(2023, 1, 1) + timedelta(days=i * 3)
+        rows.append((day, "AA" if i % 2 else "DL", "ORD", "LAX", 1000.0 + i,
+                     day.year, day.month, day.isoweekday(), i % 24, i % 60,
+                     (i + 4) % 24, i % 60, 240.0, 0, 0, int(i % 3 == 0)))
+    return spark.createDataFrame(rows, "flight_date date, reporting_airline string, origin string, dest string, "
+        "distance double, year int, month int, day_of_week int, scheduled_departure_hour int, "
+        "scheduled_departure_minute int, scheduled_arrival_hour int, scheduled_arrival_minute int, "
+        "crs_elapsed_time double, is_cancelled int, is_diverted int, is_arrival_delayed_15m int")
 
 
-def _eligible(row: Dict[str, object]) -> bool:
-    return (
-        row["is_cancelled"] == 0
-        and row["is_diverted"] == 0
-        and row["is_arrival_delayed_15m"] is not None
+def test_calendar_window_boundaries_duplicates_gaps_and_future_invariance(spark):
+    target = date(2024, 3, 10)
+    offsets = [-91, -90, -31, -30, -8, -7, -1, -1, 0, 1]
+    rows = [(target + timedelta(days=offset), "ORD", int(i % 2 == 0)) for i, offset in enumerate(offsets)]
+    rows += [(target, "NEW", 1)]
+    frame = spark.createDataFrame(rows, "flight_date date, origin string, is_arrival_delayed_15m int")
+    history = entity_history(frame, "origin", ("origin",))
+    actual = history.filter((F.col("flight_date") == target) & (F.col("origin") == "ORD")).first()
+    for days in (7, 30, 90):
+        expected = [r for r in rows if target - timedelta(days=days) <= r[0] < target and r[1] == "ORD"]
+        assert actual[f"origin_flight_count_{days}d"] == len(expected)
+        assert actual[f"origin_delay_rate_{days}d"] == pytest.approx(sum(r[2] for r in expected) / len(expected))
+    changed = frame.withColumn(TARGET_COLUMN, F.when(F.col("flight_date") >= target, 1 - F.col(TARGET_COLUMN))
+                               .otherwise(F.col(TARGET_COLUMN)))
+    after = entity_history(changed, "origin", ("origin",)).filter(
+        (F.col("flight_date") == target) & (F.col("origin") == "ORD")).first()
+    assert actual.asDict() == after.asDict()
+    sparse = history.filter(F.col("origin") == "NEW").first()
+    for days in (7, 30, 90):
+        assert sparse[f"origin_flight_count_{days}d"] == 0
+        assert sparse[f"origin_delay_rate_{days}d"] is None
+        assert sparse[f"origin_history_missing_{days}d"] == 1
+
+
+@pytest.mark.parametrize("entity_name,entity_columns", ENTITIES)
+def test_future_mutation_invariance_for_every_history_entity_and_window(
+    spark, entity_name, entity_columns
+):
+    target = date(2024, 3, 10)
+    rows = []
+    for offset in (-100, -90, -30, -7, -1, 0, 1, 30):
+        rows.append((target + timedelta(days=offset), "AA", "ORD", "LAX", int(offset % 2 == 0)))
+    frame = spark.createDataFrame(
+        rows,
+        "flight_date date, reporting_airline string, origin string, destination string, is_arrival_delayed_15m int",
     )
-
-
-def _independent_rate(
-    rows: Sequence[Dict[str, object]],
-    target_date: date,
-    entity_pairs: Sequence[tuple[str, object]],
-) -> Optional[float]:
-    start_date = target_date - timedelta(days=30)
-    history = [
-        row
-        for row in rows
-        if _eligible(row)
-        and start_date <= row["flight_date"] < target_date
-        and all(row[column] == value for column, value in entity_pairs)
-    ]
-    if not history:
-        return None
-    return sum(int(row["is_arrival_delayed_15m"]) for row in history) / len(
-        history
+    before = entity_history(frame, entity_name, entity_columns).filter(F.col("flight_date") == target).first()
+    mutated = frame.withColumn(
+        TARGET_COLUMN,
+        F.when(F.col("flight_date") >= F.lit(target), 1 - F.col(TARGET_COLUMN)).otherwise(F.col(TARGET_COLUMN)),
     )
+    after = entity_history(mutated, entity_name, entity_columns).filter(F.col("flight_date") == target).first()
+    assert before.asDict() == after.asDict()
+    for days in (7, 30, 90):
+        assert before[f"{entity_name}_flight_count_{days}d"] > 0
 
 
-def test_transform_has_exact_allowlists_and_is_lazy(
-    spark: SparkSession, dwd_rows: List[Dict[str, object]]
-) -> None:
-    features = transform_ml_flight_features(_dataframe(spark, dwd_rows))
-
-    assert isinstance(features, DataFrame)
-    assert tuple(features.columns) == OUTPUT_COLUMNS
-    assert PREDICTOR_COLUMNS == (
-        "reporting_airline",
-        "origin",
-        "destination",
-        "distance",
-        "month",
-        "day_of_week",
-        "scheduled_departure_hour",
-        "carrier_delay_rate_30d",
-        "origin_delay_rate_30d",
-        "destination_delay_rate_30d",
-        "route_delay_rate_30d",
-    )
-    assert LEAKAGE_BLACKLIST.isdisjoint(PREDICTOR_COLUMNS)
-    assert LEAKAGE_BLACKLIST.isdisjoint(features.columns)
-    assert "flight_date" not in PREDICTOR_COLUMNS
-    assert "is_arrival_delayed_15m" not in PREDICTOR_COLUMNS
-    assert "split" not in PREDICTOR_COLUMNS
-    assert "flight_key" not in features.columns
-    assert "destination" in features.columns
-    assert "dest" not in features.columns
-    for column_name in HISTORICAL_FEATURE_COLUMNS:
-        assert features.schema[column_name].dataType.typeName() == "double"
+def test_schedule_midnight_missing_and_no_actual_time_dependency(dwd):
+    row = dwd.orderBy("flight_date").limit(1).withColumn("scheduled_departure_hour", F.lit(0)).withColumn("scheduled_departure_minute", F.lit(0))
+    row = row.withColumn("scheduled_arrival_minute", F.lit(None).cast("int"))
+    row = row.withColumn("dep_delay", F.lit(999)).withColumn("arr_delay", F.lit(999))
+    value = add_schedule_features(row).first()
+    assert value["departure_sin"] == pytest.approx(0)
+    assert value["departure_cos"] == pytest.approx(1)
+    assert value["arrival_missing"] == 1
+    assert value["arrival_sin"] is None
 
 
-def test_eligibility_target_domain_and_flight_count_reconcile(
-    spark: SparkSession,
-    built_features: Dict[str, Path],
-) -> None:
-    dwd = spark.read.parquet(str(built_features["dwd"]))
-    features = spark.read.parquet(str(built_features["features"]))
-    eligible_count = dwd.filter(
-        (F.col("is_cancelled") == 0)
-        & (F.col("is_diverted") == 0)
-        & F.col("is_arrival_delayed_15m").isNotNull()
-    ).count()
 
-    assert features.count() == eligible_count
-    assert features.filter(
-        F.col("is_arrival_delayed_15m").isNull()
-        | ~F.col("is_arrival_delayed_15m").isin(0, 1)
-    ).count() == 0
-
-
-def test_historical_lookup_grains_are_unique_and_joins_do_not_multiply(
-    spark: SparkSession, dwd_rows: List[Dict[str, object]]
-) -> None:
-    eligible = select_eligible_flights(_dataframe(spark, dwd_rows))
-    specs = (
-        (("reporting_airline",), "carrier_delay_rate_30d"),
-        (("origin",), "origin_delay_rate_30d"),
-        (("destination",), "destination_delay_rate_30d"),
-        (("origin", "destination"), "route_delay_rate_30d"),
-    )
-    for entity_columns, output_column in specs:
-        history = build_historical_rate(eligible, entity_columns, output_column)
-        duplicate_keys = (
-            history.groupBy("flight_date", *entity_columns)
-            .count()
-            .filter(F.col("count") != 1)
-            .count()
-        )
-        assert duplicate_keys == 0
-
-    assert transform_ml_flight_features(_dataframe(spark, dwd_rows)).count() == (
-        eligible.count()
-    )
+def test_eligibility_multiplicity_and_split_boundaries(spark, dwd, shared_path):
+    source = dwd.unionByName(dwd.orderBy("flight_date").limit(1))
+    source = source.unionByName(dwd.orderBy("flight_date").limit(1).withColumn("is_cancelled", F.lit(1)))
+    source = source.unionByName(dwd.orderBy("flight_date").limit(1).withColumn("is_diverted", F.lit(1)))
+    source = source.unionByName(dwd.orderBy("flight_date").limit(1).withColumn(TARGET_COLUMN, F.lit(None).cast("int")))
+    dates = [TRAIN_START, TRAIN_END, VALIDATION_START, VALIDATION_END, TEST_START, TEST_END]
+    expected = ["train", "train", "validation", "validation", "test", "test"]
+    endpoints = dwd.orderBy("flight_date").limit(1).withColumn("flight_date", F.lit(dates[0]))
+    for day in dates[1:]:
+        endpoints = endpoints.unionByName(dwd.orderBy("flight_date").limit(1).withColumn("flight_date", F.lit(day)))
+    source = source.unionByName(endpoints)
+    source.write.parquet(str(shared_path / "dwd"))
+    build_ml_flight_features(spark, shared_path / "dwd", shared_path / "features")
+    features = spark.read.parquet(str(shared_path / "features")).select(*OUTPUT_COLUMNS).cache()
+    try:
+        assert validate_feature_frame(features, 55) == 55
+        assert set(p.name for p in (shared_path / "features").glob("split=*")) == {"split=train", "split=validation", "split=test"}
+        for day, split in zip(dates, expected):
+            assert features.filter(F.col("flight_date") == day).first().split == split
+        assert set(FEATURE_COLUMNS).isdisjoint(LEAKAGE_BLACKLIST)
+        duplicate = features.filter(F.col("flight_date") == TRAIN_START)
+        assert duplicate.count() == 3
+    finally:
+        features.unpersist()
 
 
-def test_history_is_exactly_d_minus_30_through_d_minus_1_and_same_for_day(
-    spark: SparkSession,
-    built_features: Dict[str, Path],
-    dwd_rows: List[Dict[str, object]],
-) -> None:
-    target_date = date(2023, 2, 1)
-    features = spark.read.parquet(str(built_features["features"]))
-    same_entity_date = features.filter(
-        (F.col("flight_date") == target_date)
-        & (F.col("reporting_airline") == "AA")
-        & (F.col("origin") == "JFK")
-        & (F.col("destination") == "LAX")
-    ).collect()
-    expected = {
-        "carrier_delay_rate_30d": _independent_rate(
-            dwd_rows, target_date, (("reporting_airline", "AA"),)
-        ),
-        "origin_delay_rate_30d": _independent_rate(
-            dwd_rows, target_date, (("origin", "JFK"),)
-        ),
-        "destination_delay_rate_30d": _independent_rate(
-            dwd_rows, target_date, (("dest", "LAX"),)
-        ),
-        "route_delay_rate_30d": _independent_rate(
-            dwd_rows,
-            target_date,
-            (("origin", "JFK"), ("dest", "LAX")),
-        ),
-    }
-
-    assert len(same_entity_date) == 2
-    assert expected == {
-        "carrier_delay_rate_30d": pytest.approx(1 / 3),
-        "origin_delay_rate_30d": pytest.approx(1 / 2),
-        "destination_delay_rate_30d": pytest.approx(1 / 2),
-        "route_delay_rate_30d": pytest.approx(1 / 2),
-    }
-    for row in same_entity_date:
-        for column_name, expected_rate in expected.items():
-            assert row[column_name] == pytest.approx(expected_rate)
+@pytest.mark.parametrize("boundary", [VALIDATION_START, TEST_START])
+@pytest.mark.parametrize("entity,keys", ENTITIES)
+def test_history_crosses_both_split_boundaries(spark, boundary, entity, keys):
+    source = spark.createDataFrame([(boundary-timedelta(days=1), "AA", "ORD", "LAX", 1),
+                                    (boundary, "AA", "ORD", "LAX", 0)],
+                                   "flight_date date, reporting_airline string, origin string, destination string, is_arrival_delayed_15m int")
+    row = entity_history(source, entity, keys).filter(F.col("flight_date") == boundary).first()
+    for days in WINDOW_DAYS:
+        assert row[f"{entity}_flight_count_{days}d"] == 1
+        assert row[f"{entity}_delay_rate_{days}d"] == 1.0
+        assert row[f"{entity}_history_missing_{days}d"] == 0
 
 
-def test_no_history_is_null_partial_history_is_valid_and_routes_are_directional(
-    spark: SparkSession, built_features: Dict[str, Path]
-) -> None:
-    features = spark.read.parquet(str(built_features["features"]))
-    target_date = date(2023, 2, 1)
-    no_history = features.filter(
-        (F.col("flight_date") == target_date)
-        & (F.col("reporting_airline") == "DL")
-    ).first()
-    reverse = features.filter(
-        (F.col("flight_date") == target_date)
-        & (F.col("origin") == "LAX")
-        & (F.col("destination") == "JFK")
-    ).first()
-
-    assert all(no_history[column] is None for column in HISTORICAL_FEATURE_COLUMNS)
-    assert reverse["route_delay_rate_30d"] == pytest.approx(0.0)
-    assert reverse["route_delay_rate_30d"] != pytest.approx(0.5)
+@pytest.mark.parametrize("column,value", [("is_cancelled", 2), (TARGET_COLUMN, 2), ("flight_date", date(2025,1,1))])
+def test_invalid_source_fails(dwd, column, value):
+    with pytest.raises(AssertionError):
+        validate_ml_source(dwd.withColumn(column, F.lit(value)))
 
 
-def test_split_boundaries_are_exact_exhaustive_and_non_overlapping(
-    spark: SparkSession, built_features: Dict[str, Path]
-) -> None:
-    features = spark.read.parquet(str(built_features["features"]))
-    expected = {
-        date(2023, 1, 1): "train",
-        date(2024, 4, 30): "train",
-        date(2024, 5, 1): "validation",
-        date(2024, 8, 31): "validation",
-        date(2024, 9, 1): "test",
-        date(2024, 12, 31): "test",
-    }
-    actual = {
-        row["flight_date"]: row["split"]
-        for row in features.filter(F.col("flight_date").isin(*expected))
-        .select("flight_date", "split")
-        .distinct()
-        .collect()
-    }
-
-    assert actual == expected
-    assert features.filter(F.col("split").isNull()).count() == 0
-    assert {
-        row["split"] for row in features.select("split").distinct().collect()
-    } == {"train", "validation", "test"}
+def test_null_entities_preserve_multiplicity_and_history(dwd):
+    source = dwd.orderBy("flight_date").limit(3).withColumn("origin", F.lit(None).cast("string"))
+    featured = transform_ml_flight_features(source).orderBy("flight_date").collect()
+    assert len(featured) == 3
+    assert featured[0].origin_flight_count_7d == 0
+    assert featured[1].origin_flight_count_7d == 1
+    assert featured[2].origin_flight_count_7d == 2
 
 
-def test_validation_rejects_invalid_domains_and_unassigned_dates(
-    spark: SparkSession,
-) -> None:
-    with pytest.raises(AssertionError, match="invalid is_cancelled"):
-        validate_ml_source(_dataframe(spark, [_row(date(2023, 1, 1), 0, cancelled=2)]))
-    with pytest.raises(AssertionError, match="invalid target"):
-        validate_ml_source(_dataframe(spark, [_row(date(2023, 1, 1), 2)]))
-    with pytest.raises(AssertionError, match="outside split range"):
-        validate_ml_source(_dataframe(spark, [_row(date(2025, 1, 1), 0)]))
-
-
-def test_parquet_round_trip_is_unpartitioned_and_build_is_rerunnable(
-    spark: SparkSession, built_features: Dict[str, Path]
-) -> None:
-    first = spark.read.parquet(str(built_features["features"]))
-    first_count = first.count()
-    assert tuple(first.columns) == OUTPUT_COLUMNS
-    assert not any(path.is_dir() for path in built_features["features"].iterdir())
-
-    build_ml_flight_features(
-        spark, built_features["dwd"], built_features["features"]
-    )
-    second = spark.read.parquet(str(built_features["features"]))
-
-    assert tuple(second.columns) == OUTPUT_COLUMNS
-    assert second.count() == first_count
+def test_history_domain_and_schema_fail_closed(dwd):
+    features = transform_ml_flight_features(dwd)
+    with pytest.raises(AssertionError, match="schema"):
+        validate_feature_frame(features.drop("distance"))
+    with pytest.raises(AssertionError, match="schema"):
+        validate_feature_frame(features.withColumn("arr_delay", F.lit(20.0)))
+    with pytest.raises(AssertionError, match="invalid"):
+        validate_feature_frame(features.withColumn("carrier_flight_count_7d", F.lit(-1)))
+    with pytest.raises(AssertionError, match="invalid"):
+        validate_feature_frame(features.withColumn("split", F.lit("test")))
+    with pytest.raises(AssertionError, match="invalid"):
+        validate_feature_frame(features.withColumn("carrier_flight_count_7d", F.lit(float("nan")))
+                               .withColumn("carrier_delay_rate_7d", F.lit(0.3))
+                               .withColumn("carrier_history_missing_7d", F.lit(0.0)))

@@ -15,6 +15,8 @@ class ProjectPaths:
     """Portable dataset paths and their project root."""
 
     project_root: Path
+    raw_manifest: Path
+    artifact_root: Path
     raw_csv: Path
     ods_flights: Path
     dwd_flights: Path
@@ -50,6 +52,8 @@ def get_project_paths(config: ProjectConfig) -> ProjectPaths:
     return ProjectPaths(
         project_root=config.project_root,
         raw_csv=config.raw_csv,
+        raw_manifest=config.raw_manifest,
+        artifact_root=config.artifact_root,
         ods_flights=config.ods_flights,
         dwd_flights=config.dwd_flights,
         dim_date=config.dim_date,

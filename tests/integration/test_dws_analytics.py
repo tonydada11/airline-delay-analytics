@@ -18,7 +18,7 @@ from pyspark.sql.types import (
 )
 
 from airline.common.spark_session import create_spark_session
-from airline.dws import METRIC_COLUMNS, validate_daily_source
+from airline.dws.daily_metrics import METRIC_COLUMNS, validate_daily_source
 from airline.dws.build_carrier_daily import (
     build_carrier_daily,
     transform_carrier_daily,

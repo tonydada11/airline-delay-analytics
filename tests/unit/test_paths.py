@@ -55,6 +55,8 @@ def test_project_paths_remain_portable() -> None:
 def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
     config = ProjectConfig(
         project_root=tmp_path,
+        raw_manifest=Path("conf/raw_data_manifest.csv"),
+        artifact_root=Path("artifacts"),
         raw_csv=Path("input/flights"),
         ods_flights=Path("warehouse/ods/flights"),
         dwd_flights=Path("warehouse/dwd/flights"),

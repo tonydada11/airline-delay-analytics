@@ -1,110 +1,62 @@
 # AI-generated test code: generated with OpenAI Codex.
-"""Full-data M7 acceptance checks. Protected test data is never loaded."""
-
+"""Production bundle and natural-prevalence prediction reconciliation."""
 import json
 import os
-from pathlib import Path
-
 import pytest
-from pyspark.ml import PipelineModel
-from pyspark.ml.classification import LogisticRegressionModel
 from pyspark.sql import functions as F
-
 from airline.common.config import load_config
 from airline.common.paths import get_project_paths
+from airline.common.raw_snapshot import sha256_file
 from airline.common.spark_session import create_spark_session
-from airline.dws.build_m7_ml_flight_features import validate_m7_feature_frame
-from airline.ml.finalize_m7 import protected_hashes
-from airline.ml.m7_contract import (
-    CLASSIFICATION_THRESHOLD,
-    FEATURE_CONTRACT_VERSION,
-    MAX_ITER,
-    MODEL_FAMILY,
-    OUTPUT_COLUMNS,
-    POSITIVE_CLASS_WEIGHT,
-    REG_PARAM,
-)
+from airline.dws.ml_feature_contract import OUTPUT_COLUMNS, TARGET_COLUMN, HISTORICAL_TEST_STATUS
+from airline.ml.model_contract import load_bundle, PREDICTION_COLUMNS, CLASSIFICATION_THRESHOLD
+from airline.ml.metrics import calculate_metrics
+from airline.ml.evaluate import score
 
-
-pytestmark = pytest.mark.skipif(
-    os.environ.get("AIRLINE_RUN_FULL_ML_QUALITY") != "1",
-    reason="set AIRLINE_RUN_FULL_ML_QUALITY=1 for mandatory M7 acceptance checks",
-)
+pytestmark = pytest.mark.skipif(os.environ.get("AIRLINE_RUN_FULL_ML_QUALITY") != "1", reason="full ML quality is opt-in")
 
 
 @pytest.fixture(scope="module")
-def spark():
-    session = create_spark_session("airline-m7-full-data-quality")
-    yield session
-    session.stop()
-
-
-def _json(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def test_frozen_dws_contract_and_chronology(spark):
+def context():
     paths = get_project_paths(load_config())
-    features = spark.read.parquet(str(paths.resolve(paths.dws_ml_flight_features))).select(*OUTPUT_COLUMNS)
-    validate_m7_feature_frame(features)
-    assert tuple(features.columns) == OUTPUT_COLUMNS
-    profiles = {row["split"]: row.asDict() for row in features.groupBy("split").agg(
-        F.count("*").alias("rows"), F.min("flight_date").alias("minimum"), F.max("flight_date").alias("maximum")
-    ).collect()}
-    assert set(profiles) == {"train", "validation"}
-    assert str(profiles["train"]["minimum"]) == "2023-01-01"
-    assert str(profiles["train"]["maximum"]) == "2024-04-30"
-    assert str(profiles["validation"]["minimum"]) == "2024-05-01"
-    assert str(profiles["validation"]["maximum"]) == "2024-08-31"
-    assert profiles["train"]["rows"] == 8_946_370
-    assert profiles["validation"]["rows"] == 2_418_739
+    spark = create_spark_session("airline-artifact-quality")
+    root = paths.resolve(paths.artifact_root)
+    bundle = load_bundle(root / "models", sha256_file(paths.resolve(paths.raw_manifest)))
+    yield spark, paths, root, bundle
+    spark.stop()
 
 
-def test_frozen_manifest_models_and_reload_evidence(spark):
-    root = Path("artifacts/experiments/staged-v2")
-    manifest = _json(root / "final_model/manifest.json")
-    assert manifest["feature_contract_version"] == FEATURE_CONTRACT_VERSION
-    assert manifest["model"] == {
-        "family": MODEL_FAMILY,
-        "maxIter": MAX_ITER,
-        "regParam": REG_PARAM,
-        "elasticNetParam": 0.0,
-        "positive_class_weight": POSITIVE_CLASS_WEIGHT,
-        "threshold": CLASSIFICATION_THRESHOLD,
-        "seed": 42,
-    }
-    PipelineModel.load(str(root / "final_model/preprocessing"))
-    LogisticRegressionModel.load(str(root / "final_model/classifier"))
-    reload = _json(root / "m7/reload_verification.json")
-    assert reload["status"] == "pass"
-    assert reload["refit_performed"] is False
-    assert reload["rounded_12dp_multiset_differences"] == {
-        "reloaded_minus_saved": 0,
-        "saved_minus_reloaded": 0,
-    }
-    assert reload["confusion_matrix_exact_match"] is True
-    assert reload["confusion_metrics_reconcile"] is True
-    assert max(reload["auc_absolute_differences"].values()) < 1e-6
-    assert reload["auc_input"] == "continuous probability/model score"
+def test_training_bundle(context):
+    spark, paths, _, (_, _, manifest) = context
+    features = spark.read.parquet(str(paths.resolve(paths.dws_ml_flight_features))).filter("split = 'train'")
+    stats = features.agg(F.count("*"), F.min("flight_date"), F.max("flight_date")).first()
+    assert manifest["training"] == {"rows": stats[0], "min_date": str(stats[1]), "max_date": str(stats[2])}
 
 
-def test_execution_artifacts_idempotency_and_test_protection():
-    project = Path.cwd()
-    root = project / "artifacts/experiments/staged-v2/m7"
-    complete = _json(root / "complete.json")
-    assert complete["status"] == "PASS"
-    assert complete["test_evaluation_executed"] is False
-    before = _json(root / "test_hashes_before.json")["sha256"]
-    after = _json(root / "test_hashes_after.json")["sha256"]
-    assert before == after == protected_hashes(project)
-    for relative in (
-        "ablation.json",
-        "monthly_validation.json",
-        "spark/physical_plan_summary.json",
-        "spark/partition_summary.json",
-        "spark/persistence_summary.json",
-        "spark/shuffle_summary.json",
-        "spark/runtime_summary.json",
-    ):
-        assert (root / relative).is_file()
-    assert _json(root / "spark/partition_summary.json")["accidental_single_partition_bottleneck"] is False
+@pytest.mark.parametrize("split", ["validation", "test"])
+def test_predictions_metrics_and_reload(context, split):
+    spark, paths, root, (preprocessing, classifier, manifest) = context
+    predictions = spark.read.parquet(str(root / "predictions" / split))
+    assert tuple(predictions.columns) == PREDICTION_COLUMNS
+    features = spark.read.parquet(str(paths.resolve(paths.dws_ml_flight_features))).filter(F.col("split") == split).select(*OUTPUT_COLUMNS)
+    assert predictions.count() == features.count()
+    invalid = (F.col("probability").isNull() | F.isnan("probability") | ~F.col("probability").between(0,1)
+               | F.col("prediction").isNull() | (F.col("prediction") != (F.col("probability") >= CLASSIFICATION_THRESHOLD).cast("int")))
+    assert predictions.filter(invalid).limit(1).count() == 0
+    keys = ["flight_date", "split", TARGET_COLUMN]
+    a, b = features.groupBy(*keys).count(), predictions.groupBy(*keys).count()
+    assert a.exceptAll(b).limit(1).count() == 0
+    assert b.exceptAll(a).limit(1).count() == 0
+    report = json.loads((root / "metrics" / f"{split}.json").read_text())
+    assert report["bundle_id"] == manifest["bundle_id"]
+    assert report["model_manifest_sha256"] == sha256_file(root / "models/manifest.json")
+    assert report["historical_test_status"] == HISTORICAL_TEST_STATUS
+    for key, value in calculate_metrics(predictions).items():
+        assert report[key] == pytest.approx(value, abs=1e-10) if isinstance(value, float) else report[key] == value
+    # Rescore a complete day so duplicate flights remain reconcilable as a multiset.
+    day = features.agg(F.min("flight_date")).first()[0]
+    saved = predictions.filter(F.col("flight_date") == day)
+    reloaded = score(preprocessing, classifier, features.filter(F.col("flight_date") == day))
+    columns = ["flight_date", "split", TARGET_COLUMN, F.round("probability", 10).alias("probability"), "prediction"]
+    assert saved.select(*columns).exceptAll(reloaded.select(*columns)).limit(1).count() == 0
+    assert reloaded.select(*columns).exceptAll(saved.select(*columns)).limit(1).count() == 0

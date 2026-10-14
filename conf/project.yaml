@@ -1,4 +1,6 @@
 paths:
+  raw_manifest: conf/raw_data_manifest.csv
+  artifact_root: artifacts
   raw_csv: data/raw/csv
   ods_flights: data/warehouse/ods/flights
   dwd_flights: data/warehouse/dwd/flights

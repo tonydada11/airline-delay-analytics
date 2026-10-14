@@ -6,7 +6,7 @@ from typing import Sequence, Union
 from pyspark.sql import DataFrame, SparkSession, functions as F
 
 from airline.common.quality import assert_not_empty, assert_required_columns
-from airline.dws import METRIC_COLUMNS
+from airline.dws.daily_metrics import METRIC_COLUMNS
 
 
 PathLike = Union[str, Path]

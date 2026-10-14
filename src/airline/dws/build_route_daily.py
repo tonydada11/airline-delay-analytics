@@ -8,7 +8,7 @@ from pyspark.sql import DataFrame, SparkSession, functions as F
 from airline.common.config import load_config
 from airline.common.paths import get_project_paths
 from airline.common.spark_session import create_spark_session
-from airline.dws import aggregate_daily_flights, validate_daily_source
+from airline.dws.daily_metrics import aggregate_daily_flights, validate_daily_source
 
 
 PathLike = Union[str, Path]

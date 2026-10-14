@@ -1,1 +1,1 @@
-"""Spark ML training and evaluation for the locked M5 feature dataset."""
+"""Production preprocessing, frozen training, and explicit split evaluation."""

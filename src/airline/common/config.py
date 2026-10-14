@@ -17,6 +17,8 @@ class ProjectConfig:
     """Validated values loaded from ``conf/project.yaml``."""
 
     project_root: Path
+    raw_manifest: Path
+    artifact_root: Path
     raw_csv: Path
     ods_flights: Path
     dwd_flights: Path
@@ -67,6 +69,8 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
         raise ValueError("Project configuration must contain a 'paths' mapping.")
 
     required_paths = {
+        "raw_manifest",
+        "artifact_root",
         "raw_csv",
         "ods_flights",
         "dwd_flights",
@@ -90,6 +94,8 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
     project_root = path.parent.parent
     return ProjectConfig(
         project_root=project_root,
+        raw_manifest=_relative_path(paths["raw_manifest"], "raw_manifest"),
+        artifact_root=_relative_path(paths["artifact_root"], "artifact_root"),
         raw_csv=_relative_path(paths["raw_csv"], "raw_csv"),
         ods_flights=_relative_path(paths["ods_flights"], "ods_flights"),
         dwd_flights=_relative_path(paths["dwd_flights"], "dwd_flights"),

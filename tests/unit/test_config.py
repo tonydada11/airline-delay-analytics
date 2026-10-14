@@ -68,7 +68,7 @@ def test_load_default_config() -> None:
 def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
     config_path = _write_config(
         tmp_path,
-        "paths:\n  raw_csv: inputs/flights\n  ods_flights: warehouse/ods\n"
+        "paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: inputs/flights\n  ods_flights: warehouse/ods\n"
         "  dwd_flights: warehouse/dwd\n"
         + DIMENSION_PATHS
         + DWS_PATHS
@@ -96,9 +96,9 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
     [
         ("[]\n", "YAML mapping"),
         ("paths: []\n", "'paths' mapping"),
-        ("paths:\n  raw_csv: data/raw/csv\n", "missing required path keys"),
+        ("paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: data/raw/csv\n", "missing required path keys"),
         (
-            "paths:\n  raw_csv: /var/data/flights\n  ods_flights: warehouse/ods\n"
+            "paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: /var/data/flights\n  ods_flights: warehouse/ods\n"
             "  dwd_flights: warehouse/dwd\n"
             + DIMENSION_PATHS
             + DWS_PATHS
@@ -106,7 +106,7 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
             "project-relative",
         ),
         (
-            "paths:\n  raw_csv: 'C:\\data\\flights'\n  ods_flights: warehouse/ods\n"
+            "paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: 'C:\\data\\flights'\n  ods_flights: warehouse/ods\n"
             "  dwd_flights: warehouse/dwd\n"
             + DIMENSION_PATHS
             + DWS_PATHS
@@ -114,7 +114,7 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
             "project-relative",
         ),
         (
-            "paths:\n  raw_csv: ../flights\n  ods_flights: warehouse/ods\n"
+            "paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: ../flights\n  ods_flights: warehouse/ods\n"
             "  dwd_flights: warehouse/dwd\n"
             + DIMENSION_PATHS
             + DWS_PATHS
@@ -122,7 +122,7 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
             "must not traverse",
         ),
         (
-            "paths:\n  raw_csv: ''\n  ods_flights: warehouse/ods\n"
+            "paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: ''\n  ods_flights: warehouse/ods\n"
             "  dwd_flights: warehouse/dwd\n"
             + DIMENSION_PATHS
             + DWS_PATHS
@@ -130,7 +130,7 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
             "non-empty string",
         ),
         (
-            "paths:\n  raw_csv: data/raw/csv\n  ods_flights: warehouse/ods\n"
+            "paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: data/raw/csv\n  ods_flights: warehouse/ods\n"
             "  dwd_flights: warehouse/dwd\n"
             + DIMENSION_PATHS
             + "  dws_carrier_daily: warehouse/dws/carrier_daily\n"

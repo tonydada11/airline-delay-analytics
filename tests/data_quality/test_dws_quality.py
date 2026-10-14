@@ -12,7 +12,7 @@ from airline.common.config import load_config
 from airline.common.paths import ProjectPaths, get_project_paths
 from airline.common.quality import assert_required_columns
 from airline.common.spark_session import create_spark_session
-from airline.dws import METRIC_COLUMNS
+from airline.dws.daily_metrics import METRIC_COLUMNS
 from airline.dws.build_carrier_daily import build_carrier_daily
 from airline.dws.build_origin_airport_daily import build_origin_airport_daily
 from airline.dws.build_route_daily import build_route_daily

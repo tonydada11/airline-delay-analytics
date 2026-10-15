@@ -34,7 +34,7 @@ spark_python() {
 spark_quality() {
   local environment_name="$1"
   shift
-  docker compose exec -T -w "${AIRLINE_RUNTIME_ROOT:-/workspace}" -e "AIRLINE_TEST_TMP_ROOT=${AIRLINE_RUNTIME_ROOT:-/workspace}/data/.test-tmp" -e "PYTHONPATH=${AIRLINE_RUNTIME_ROOT:-/workspace}/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip" -e "${environment_name}=1" \
+  docker compose exec -T -w "${AIRLINE_RUNTIME_ROOT:-/workspace}" -e "AIRLINE_TEST_TMP_ROOT=${AIRLINE_RUNTIME_ROOT:-/workspace}/data/.test-tmp" -e "PYTHONPATH=${AIRLINE_RUNTIME_ROOT:-/workspace}/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip" -e "AIRLINE_ML_FEATURE_PHASE=${AIRLINE_ML_FEATURE_PHASE:-all}" -e "${environment_name}=1" \
     spark-notebook python3 -m pytest -q -s "$@"
 }
 
@@ -92,8 +92,8 @@ run_step "DWS quality gate" \
   tests/data_quality/test_dws_quality.py
 
 run_step "ML features: build canonical rolling histories" \
-  spark_python -m airline.dws.build_ml_flight_features
-run_step "ML feature quality and chronology gate" \
+  spark_python -m airline.dws.build_ml_flight_features --phase selection
+AIRLINE_ML_FEATURE_PHASE=selection run_step "ML feature quality and chronology gate" \
   spark_quality AIRLINE_RUN_FULL_ML_QUALITY \
   tests/data_quality/test_ml_feature_quality.py
 
@@ -109,13 +109,18 @@ run_step "ADS quality gate" \
   spark_quality AIRLINE_RUN_FULL_DATA_QUALITY \
   tests/data_quality/test_ads_quality.py
 
-run_step "Training: fit and publish frozen Logistic Regression" \
+run_step "Training: select LR or GBT on validation and publish winner" \
   spark_python -m airline.ml.train
 run_step "Training quality gate" \
   spark_quality AIRLINE_RUN_FULL_ML_QUALITY \
   tests/data_quality/test_ml_quality.py::test_training_bundle
 run_step "Validation evaluation" \
   spark_python -m airline.ml.evaluate --split validation
+run_step "ML features: materialize historical test after frozen selection" \
+  spark_python -m airline.dws.build_ml_flight_features --phase test
+run_step "Final feature quality and chronology gate" \
+  spark_quality AIRLINE_RUN_FULL_ML_QUALITY \
+  tests/data_quality/test_ml_feature_quality.py
 run_step "Historical test evaluation" \
   spark_python -m airline.ml.evaluate --split test
 run_step "Final artifact quality gate" \

@@ -107,4 +107,4 @@ def aggregate_ads_metrics(
 def write_ads_table(dataframe: DataFrame, output_directory: PathLike) -> None:
     """Replace a full unpartitioned ADS Parquet path."""
 
-    dataframe.write.mode("overwrite").parquet(str(output_directory))
+    dataframe.coalesce(1).write.mode("overwrite").parquet(str(output_directory))

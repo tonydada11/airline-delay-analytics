@@ -58,7 +58,7 @@ expected_order=(
   "airline.dws.build_origin_airport_daily"
   "airline.dws.build_route_daily"
   "test_dws_quality.py"
-  "airline.dws.build_ml_flight_features"
+  "airline.dws.build_ml_flight_features --phase selection"
   "test_ml_feature_quality.py"
   "airline.ads.build_monthly_operations"
   "airline.ads.build_carrier_scorecard"
@@ -68,6 +68,7 @@ expected_order=(
   "airline.ml.train"
   "test_training_bundle"
   "airline.ml.evaluate --split validation"
+  "airline.dws.build_ml_flight_features --phase test"
   "airline.ml.evaluate --split test"
   "test_ml_quality.py$"
 )
@@ -121,3 +122,15 @@ fi
 if grep -q 'airline.ods' "${TRACE_FILE}"; then
   echo "ODS ran after snapshot failure" >&2; exit 1
 fi
+
+for failing in airline.ml.train test_training_bundle; do
+  : >"${TRACE_FILE}"
+  export TEST_FAILURE_PATTERN="${failing}"
+  if PATH="${FAKE_BIN}:${PATH}" scripts/run_pipeline.sh >/dev/null 2>&1; then
+    echo "Selection failure unexpectedly passed" >&2; exit 1
+  fi
+  if grep -Eq -- '--phase test|--split test' "${TRACE_FILE}"; then
+    echo "Test stage ran before completed selection" >&2; exit 1
+  fi
+done
+unset TEST_FAILURE_PATTERN

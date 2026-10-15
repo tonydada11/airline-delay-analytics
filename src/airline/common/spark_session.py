@@ -8,4 +8,8 @@ def create_spark_session(app_name: str) -> SparkSession:
 
     if not isinstance(app_name, str) or not app_name.strip():
         raise ValueError("Spark application name must be a non-empty string.")
-    return SparkSession.builder.appName(app_name.strip()).getOrCreate()
+    # DISK_ONLY DataFrame caches still deserialize columnar batches on the heap.
+    # Keep wide history rows bounded on the supported 640 MiB executors.
+    return (SparkSession.builder.appName(app_name.strip())
+            .config("spark.sql.inMemoryColumnarStorage.batchSize", 1000)
+            .getOrCreate())

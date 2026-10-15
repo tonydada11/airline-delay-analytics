@@ -23,7 +23,7 @@ def test_project_paths_remain_portable() -> None:
     )
     assert paths.dws_route_daily == Path("data/warehouse/dws/route_daily")
     assert paths.dws_ml_flight_features == Path(
-        "data/warehouse/dws/ml_flight_features"
+        "data/warehouse/dws/ml_flighttime_v3_selection"
     )
     assert paths.ads_monthly_operations == Path(
         "data/warehouse/ads/monthly_operations"
@@ -67,6 +67,7 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
         dws_carrier_daily=Path("warehouse/dws/carrier_daily"),
         dws_origin_airport_daily=Path("warehouse/dws/origin_airport_daily"),
         dws_route_daily=Path("warehouse/dws/route_daily"),
+        dws_ml_test_features=Path("warehouse/dws/ml_test_features"),
         dws_ml_flight_features=Path("warehouse/dws/ml_flight_features"),
         ads_monthly_operations=Path("warehouse/ads/monthly_operations"),
         ads_carrier_scorecard=Path("warehouse/ads/carrier_scorecard"),

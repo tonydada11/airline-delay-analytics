@@ -1,14 +1,16 @@
-"""Frozen model settings and validated, sequential local-filesystem publication."""
+"""Validation-selected model contract and atomic local publication."""
 import hashlib
 import json
 import math
+import platform
 from pathlib import Path
 import shutil
 import subprocess
 import uuid
 
 from pyspark.ml import PipelineModel
-from pyspark.ml.classification import LogisticRegression, LogisticRegressionModel
+from pyspark.ml.classification import LogisticRegression, LogisticRegressionModel, GBTClassificationModel
+from airline.common.lineage import BUSINESS_KEY
 from airline.common.raw_snapshot import SNAPSHOT_ID, sha256_file
 from airline.dws.ml_feature_contract import (
     FEATURE_CONTRACT_VERSION, FEATURE_COLUMNS, SPLIT_BOUNDARIES, TARGET_COLUMN,
@@ -16,13 +18,18 @@ from airline.dws.ml_feature_contract import (
 )
 from airline.ml.preprocessing import build_preprocessing_pipeline
 
-CLASSIFICATION_THRESHOLD = 0.34
 POSITIVE_CLASS_WEIGHT = 2.0
 REPRODUCIBILITY_SEED = 42
 MODEL_SETTINGS = dict(maxIter=100, regParam=0.1, elasticNetParam=0.0, tol=1e-6,
                       family="binomial", featuresCol="features", labelCol=TARGET_COLUMN,
-                      weightCol="class_weight", threshold=CLASSIFICATION_THRESHOLD)
-PREDICTION_COLUMNS = ("flight_date", "split", TARGET_COLUMN, "probability", "prediction")
+                      weightCol="class_weight")
+GBT_SETTINGS = dict(maxIter=10, maxDepth=4, maxBins=32, stepSize=0.1, subsamplingRate=0.5,
+                    featureSubsetStrategy='sqrt', maxMemoryInMB=128, seed=42,
+                    featuresCol='features', labelCol=TARGET_COLUMN, weightCol='class_weight')
+CLASSIFIERS = {'lr': LogisticRegressionModel, 'gbt': GBTClassificationModel}
+ESTIMATOR_SETTINGS = {'lr': MODEL_SETTINGS, 'gbt': GBT_SETTINGS}
+
+PREDICTION_COLUMNS = ("flight_id", *BUSINESS_KEY, "split", TARGET_COLUMN, "probability", "prediction")
 
 
 def build_logistic_regression():
@@ -51,12 +58,21 @@ def code_provenance(project_root):
     return provenance
 
 
-def make_manifest(spark, profile, snapshot, project_root):
+def runtime_provenance(project_root):
+    lock = Path(project_root) / "requirements.lock"
+    return {"python_version": platform.python_version(), "architecture": platform.machine(),
+            "requirements_lock_sha256": sha256_file(lock) if lock.is_file() else None}
+
+
+def make_manifest(spark, profile, snapshot, project_root, selection):
     return {
-        "schema_version": 1, "bundle_id": uuid.uuid4().hex,
+        "schema_version": 3, "bundle_id": uuid.uuid4().hex,
+        "runtime_provenance": runtime_provenance(project_root),
         "feature_version": FEATURE_CONTRACT_VERSION, "feature_order": list(FEATURE_COLUMNS),
-        "split_boundaries": SPLIT_BOUNDARIES, "model_settings": MODEL_SETTINGS,
-        "positive_class_weight": POSITIVE_CLASS_WEIGHT, "threshold": CLASSIFICATION_THRESHOLD,
+        "split_boundaries": SPLIT_BOUNDARIES, "model_settings": ESTIMATOR_SETTINGS[selection['selected_classifier']],
+        "selected_classifier": selection['selected_classifier'], "threshold_step": selection['threshold_step'],
+        "selection": selection,
+        "positive_class_weight": POSITIVE_CLASS_WEIGHT, "threshold": selection["threshold_step"] / 100,
         "reproducibility_seed": REPRODUCIBILITY_SEED, "training": profile,
         **snapshot, "spark_version": spark.version, "code_provenance": code_provenance(project_root),
         "historical_test_status": HISTORICAL_TEST_STATUS,
@@ -66,14 +82,26 @@ def make_manifest(spark, profile, snapshot, project_root):
 def validate_manifest(manifest, expected_fingerprint=None):
     if not isinstance(manifest, dict):
         raise ValueError("Model manifest must be an object")
-    expected = {"schema_version": 1, "feature_version": FEATURE_CONTRACT_VERSION,
+    if manifest.get("schema_version") in (1, 2):
+        raise ValueError(f"Model bundle schema version {manifest['schema_version']} is incompatible with ML dataset schema version 3. Rebuild ML features and retrain through train/validation selection.")
+    expected = {"schema_version": 3, "feature_version": FEATURE_CONTRACT_VERSION,
                 "feature_order": list(FEATURE_COLUMNS), "split_boundaries": SPLIT_BOUNDARIES,
-                "model_settings": MODEL_SETTINGS, "positive_class_weight": POSITIVE_CLASS_WEIGHT,
-                "threshold": CLASSIFICATION_THRESHOLD, "reproducibility_seed": REPRODUCIBILITY_SEED,
+                "positive_class_weight": POSITIVE_CLASS_WEIGHT, "reproducibility_seed": REPRODUCIBILITY_SEED,
                 "source_snapshot_id": SNAPSHOT_ID, "historical_test_status": HISTORICAL_TEST_STATUS}
     for key, value in expected.items():
         if manifest.get(key) != value:
             raise ValueError(f"Incompatible model manifest: {key}")
+    selection = manifest.get('selection', {})
+    validate_selection(selection, expected_fingerprint)
+    name = selection['selected_classifier']
+    if (manifest.get('selected_classifier') != name
+            or manifest.get('model_settings') != ESTIMATOR_SETTINGS[name]
+            or manifest.get('threshold_step') != selection['threshold_step']
+            or manifest.get('threshold') != selection['threshold_step'] / 100
+            or manifest.get('training') != selection.get('training')
+            or manifest.get('raw_manifest_sha256') != selection.get('raw_manifest_sha256')
+            or manifest.get('code_provenance') != selection.get('code_provenance')):
+        raise ValueError('Production contract differs from frozen selection')
     for key in ("bundle_id", "spark_version", "code_provenance", "raw_manifest_sha256", "training"):
         if not manifest.get(key):
             raise ValueError(f"Missing model manifest field: {key}")
@@ -90,7 +118,7 @@ def validate_manifest(manifest, expected_fingerprint=None):
         raise ValueError("Model raw snapshot fingerprint differs from configured manifest")
 
 
-def validate_models(preprocessing, classifier):
+def validate_models(preprocessing, classifier, name="lr"):
     expected = build_preprocessing_pipeline().getStages()
     if len(preprocessing.stages) != len(expected):
         raise ValueError("Incompatible preprocessing stages")
@@ -115,9 +143,9 @@ def validate_models(preprocessing, classifier):
     expected_width = categorical_width + len(NUMERIC_COLUMNS) + len(HISTORY_COUNTS) + len(HISTORY_MISSING)
     if classifier.numClasses != 2 or classifier.numFeatures != expected_width:
         raise ValueError("Classifier dimensions differ from preprocessing contract")
-    for key, value in MODEL_SETTINGS.items():
+    for key, value in ESTIMATOR_SETTINGS[name].items():
         if classifier.getOrDefault(key) != value:
-            raise ValueError(f"Incompatible Logistic Regression setting: {key}")
+            raise ValueError(f"Incompatible classifier setting: {key}")
 
 
 def load_bundle(directory, expected_fingerprint=None):
@@ -128,8 +156,8 @@ def load_bundle(directory, expected_fingerprint=None):
         raise ValueError("Model bundle has no valid manifest") from exc
     validate_manifest(manifest, expected_fingerprint)
     preprocessing = PipelineModel.load(str(root / "preprocessing"))
-    classifier = LogisticRegressionModel.load(str(root / "logistic_regression"))
-    validate_models(preprocessing, classifier)
+    classifier = CLASSIFIERS[manifest["selected_classifier"]].load(str(root / "classifier"))
+    validate_models(preprocessing, classifier, manifest["selected_classifier"])
     return preprocessing, classifier, manifest
 
 
@@ -146,10 +174,10 @@ def publish_bundle(directory, preprocessing, classifier, manifest):
         validate_manifest(manifest)
         temporary.mkdir()
         preprocessing.write().save(str(temporary / "preprocessing"))
-        classifier.write().save(str(temporary / "logistic_regression"))
+        classifier.write().save(str(temporary / "classifier"))
         reloaded_preprocessing = PipelineModel.load(str(temporary / "preprocessing"))
-        reloaded_classifier = LogisticRegressionModel.load(str(temporary / "logistic_regression"))
-        validate_models(reloaded_preprocessing, reloaded_classifier)
+        reloaded_classifier = CLASSIFIERS[manifest["selected_classifier"]].load(str(temporary / "classifier"))
+        validate_models(reloaded_preprocessing, reloaded_classifier, manifest["selected_classifier"])
         write_json(temporary / "manifest.json", manifest)
         if destination.exists():
             destination.rename(backup)
@@ -166,3 +194,41 @@ def publish_bundle(directory, preprocessing, classifier, manifest):
             shutil.rmtree(temporary)
     if published and moved_old:
         shutil.rmtree(backup)
+
+
+def validate_selection(manifest, expected_fingerprint=None):
+    """Reconcile the winner with frozen validation counts, never evaluation data."""
+    from airline.ml.experiments import best_threshold, select_classifier
+    from airline.dws.flight_time import time_provenance
+    if not isinstance(manifest, dict):
+        raise ValueError('Missing frozen selection')
+    expected = {'schema_version': 3, 'source_snapshot_id': SNAPSHOT_ID,
+                'feature_version': FEATURE_CONTRACT_VERSION, 'estimator_settings': ESTIMATOR_SETTINGS,
+                'time_policy': time_provenance(), 'threshold_denominator': 100,
+                'positive_class_weight': POSITIVE_CLASS_WEIGHT}
+    for key, value in expected.items():
+        if manifest.get(key) != value:
+            raise ValueError(f'Incompatible frozen selection: {key}')
+    step = manifest.get('threshold_step')
+    if type(step) is not int or not 0 <= step <= 100:
+        raise ValueError('Invalid selected threshold step')
+    results = manifest.get('validation_results', {})
+    if set(results) != {'lr', 'gbt'}:
+        raise ValueError('Missing validation selection evidence')
+    chosen = {}
+    for name, result in results.items():
+        rows = result.get('thresholds', [])
+        if (any(type(r['step']) is not int for r in rows)
+                or sorted(r['step'] for r in rows) != list(range(101))):
+            raise ValueError('Incomplete threshold evidence')
+        for row in rows:
+            if any(type(row[k]) is not int or row[k] < 0 for k in ('tp', 'fp', 'fn', 'tn')):
+                raise ValueError('Invalid confusion counts')
+        chosen[name] = best_threshold(rows)
+        if chosen[name] != result.get('selected'):
+            raise ValueError('Classifier threshold differs from validation evidence')
+    name = select_classifier(chosen)
+    if manifest.get('selected_classifier') != name or chosen[name]['step'] != step:
+        raise ValueError('Frozen selection differs from validation evidence')
+    if expected_fingerprint is not None and manifest.get('raw_manifest_sha256') != expected_fingerprint:
+        raise ValueError('Selection raw snapshot fingerprint differs from configured manifest')

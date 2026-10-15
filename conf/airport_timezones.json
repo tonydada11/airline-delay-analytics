@@ -1,0 +1,8 @@
+{
+  "source": "https://github.com/mborsetti/airportsdata",
+  "commit": "47ae282a8491758e6dafe28d4139539e561b54d5",
+  "source_file": "airportsdata/airports.csv",
+  "mapping": "Pinned BTS airport ID/code pairs joined on IATA; no state-based inference",
+  "airport_count": 355,
+  "historical_limit": "Reference has no historical publication times; timezone rules use locked pytz for 2023/2024 dates."
+}

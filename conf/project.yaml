@@ -1,6 +1,6 @@
 paths:
   raw_manifest: conf/raw_data_manifest.csv
-  artifact_root: artifacts
+  artifact_root: artifacts/flighttime-v3
   raw_csv: data/raw/csv
   ods_flights: data/warehouse/ods/flights
   dwd_flights: data/warehouse/dwd/flights
@@ -11,7 +11,8 @@ paths:
   dws_carrier_daily: data/warehouse/dws/carrier_daily
   dws_origin_airport_daily: data/warehouse/dws/origin_airport_daily
   dws_route_daily: data/warehouse/dws/route_daily
-  dws_ml_flight_features: data/warehouse/dws/ml_flight_features
+  dws_ml_flight_features: data/warehouse/dws/ml_flighttime_v3_selection
+  dws_ml_test_features: data/warehouse/dws/ml_flighttime_v3_test
   ads_monthly_operations: data/warehouse/ads/monthly_operations
   ads_carrier_scorecard: data/warehouse/ads/carrier_scorecard
   ads_airport_scorecard: data/warehouse/ads/airport_scorecard

@@ -327,6 +327,7 @@ class PerformanceRunner:
 
     def prepare(self) -> None:
         self.output.mkdir(parents=True, exist_ok=True)
+        (self.output / "complete.json").unlink(missing_ok=True)
         for name in ("runs", "plans", "work"):
             target = self.output / name
             if target.exists():

@@ -3,7 +3,7 @@ import ast
 from pathlib import Path
 import pytest
 from airline.dws import ml_feature_contract as features
-from airline.ml.model_contract import MODEL_SETTINGS, CLASSIFICATION_THRESHOLD
+from airline.ml.model_contract import MODEL_SETTINGS, GBT_SETTINGS
 from airline.ml.metrics import confusion_metrics
 
 
@@ -18,7 +18,9 @@ def test_pure_feature_contract_and_frozen_settings():
     assert MODEL_SETTINGS["regParam"] == 0.1
     assert MODEL_SETTINGS["elasticNetParam"] == 0
     assert MODEL_SETTINGS["tol"] == 1e-6
-    assert CLASSIFICATION_THRESHOLD == 0.34
+    assert GBT_SETTINGS["seed"] == 42
+    assert GBT_SETTINGS["maxIter"] == 10
+    assert GBT_SETTINGS["maxDepth"] == 4
     assert "seed" not in MODEL_SETTINGS
 
 

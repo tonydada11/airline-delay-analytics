@@ -2,7 +2,6 @@
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
 from pyspark.sql import functions as F
 from airline.dws.ml_feature_contract import TARGET_COLUMN
-from airline.ml.model_contract import CLASSIFICATION_THRESHOLD
 
 
 def confusion_metrics(tp, fp, fn, tn):
@@ -18,8 +17,8 @@ def confusion_metrics(tp, fp, fn, tn):
             "predicted_positive_rate": (tp + fp) / rows}
 
 
-def calculate_metrics(scored):
-    positive = F.col("probability") >= CLASSIFICATION_THRESHOLD
+def calculate_metrics(scored, threshold):
+    positive = F.col("probability") >= threshold
     label = F.col(TARGET_COLUMN) == 1
     row = scored.agg(*[F.sum(F.when(c, 1).otherwise(0)).alias(name) for name, c in
                       (("tp", positive & label), ("fp", positive & ~label), ("fn", ~positive & label), ("tn", ~positive & ~label))]).first()

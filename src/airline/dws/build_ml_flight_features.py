@@ -1,4 +1,5 @@
-"""Build production features from DWD; histories include only days D-N through D-1."""
+"""Flight-time causal histories; selection and final-test datasets are separate."""
+import argparse
 import math
 from pathlib import Path
 from typing import Union
@@ -14,6 +15,10 @@ from airline.dws.ml_feature_contract import (
     CATEGORICAL_COLUMNS, NUMERIC_COLUMNS, HISTORY_COUNTS, HISTORY_MISSING,
     LEAKAGE_BLACKLIST, SPLIT_BOUNDARIES,
 )
+from airline.common.lineage import BUSINESS_KEY, INTEGER_KEYS, with_lineage, key_json_column
+from airline.common.raw_snapshot import verify_snapshot
+from airline.dws.dataset_manifest import MANIFEST_NAME, publish_dataset_manifest
+from airline.dws.flight_time import with_event_times, DAY_US, time_provenance
 PathLike = Union[str, Path]
 
 def eligibility_condition() -> Column:
@@ -46,11 +51,12 @@ def validate_ml_source(dataframe: DataFrame) -> None:
         "scheduled_departure_hour",
         "scheduled_departure_minute", "scheduled_arrival_hour",
         "scheduled_arrival_minute", "crs_elapsed_time",
-        "is_cancelled",
+        "is_cancelled", "dep_delay", "actual_elapsed_time",
         "is_diverted",
         TARGET_COLUMN,
     }
-    assert_required_columns(dataframe, required_columns)
+    assert_required_columns(dataframe, required_columns | set(BUSINESS_KEY))
+    key_json_column(dataframe)
     assert_not_empty(dataframe)
 
     eligible = eligibility_condition()
@@ -103,11 +109,12 @@ def validate_ml_source(dataframe: DataFrame) -> None:
 
 
 def select_eligible_flights(dataframe: DataFrame) -> DataFrame:
-    return dataframe.filter(eligibility_condition()).select(
+    return with_event_times(with_lineage(dataframe.filter(eligibility_condition()))).select(
+        "flight_id", *INTEGER_KEYS,
         "flight_date", "reporting_airline", "origin", F.col("dest").alias("destination"),
         "distance", "month", "day_of_week", "scheduled_departure_hour",
         "scheduled_departure_minute", "scheduled_arrival_hour", "scheduled_arrival_minute",
-        "crs_elapsed_time", TARGET_COLUMN,
+        "crs_elapsed_time", TARGET_COLUMN, "_prediction_us", "_available_us",
     )
 
 
@@ -126,23 +133,43 @@ def add_schedule_features(eligible: DataFrame) -> DataFrame:
 
 
 def entity_history(eligible: DataFrame, name: str, columns: tuple[str, ...]) -> DataFrame:
-    """One daily aggregation and one ordered partition for all three windows."""
-    daily = eligible.groupBy("flight_date", *columns).agg(
-        F.count("*").alias("_count"), F.sum(TARGET_COLUMN).alias("_delayed")
-    ).withColumn("history_day", F.datediff("flight_date", F.lit("1970-01-01")))
-    result = daily
+    """Sweep contribution intervals; integer microseconds encode strict boundaries.
+
+    A source is active for max(departure, arrival) < target <= departure+N days.
+    Collapse simultaneous events before cumulative sums; duplicates contribute independently.
+    """
+    query = eligible.select(*columns, F.col('_prediction_us').alias('_time')).distinct()
+    source = eligible.filter(F.col('_prediction_us').isNotNull() & F.col('_available_us').isNotNull())
+    start = F.greatest('_prediction_us', '_available_us') + 1
+    deltas = [f'_{kind}{days}' for days in WINDOW_DAYS for kind in ('count', 'delayed')]
+    events = []
+    for days in WINDOW_DAYS:
+        end = F.col('_prediction_us') + days * DAY_US + 1
+        valid = start < end
+        for point, sign in ((start, 1), (end, -1)):
+            values = []
+            for window in WINDOW_DAYS:
+                count = F.lit(sign if days == window else 0).cast('long')
+                values.extend([count.alias(f'_count{window}'),
+                               (count * F.col(TARGET_COLUMN)).alias(f'_delayed{window}')])
+            events.append(source.filter(valid).select(*columns, point.alias('_time'),
+                          F.lit(0).alias('_query'), *values))
+    timeline = query.select('*', F.lit(1).alias('_query'),
+                           *[F.lit(0).cast('long').alias(c) for c in deltas])
+    for event in events:
+        timeline = timeline.unionByName(event)
+    timeline = timeline.groupBy(*columns, '_time').agg(F.max('_query').alias('_query'),
+                                                     *[F.sum(c).alias(c) for c in deltas])
+    window = Window.partitionBy(*columns).orderBy('_time').rowsBetween(Window.unboundedPreceding, 0)
+    for c in deltas:
+        timeline = timeline.withColumn(c, F.sum(c).over(window))
     outputs = []
     for days in WINDOW_DAYS:
-        window = Window.partitionBy(*columns).orderBy("history_day").rangeBetween(-days, -1)
-        count_name = f"{name}_flight_count_{days}d"
-        rate_name = f"{name}_delay_rate_{days}d"
-        missing_name = f"{name}_history_missing_{days}d"
-        result = result.withColumn(count_name, F.coalesce(F.sum("_count").over(window), F.lit(0)))
-        result = result.withColumn(rate_name, F.when(
-            F.col(count_name) > 0, F.sum("_delayed").over(window).cast("double") / F.col(count_name)
-        )).withColumn(missing_name, (F.col(count_name) == 0).cast("double"))
-        outputs.extend((count_name, rate_name, missing_name))
-    return result.select("flight_date", *columns, *outputs)
+        count = F.col(f'_count{days}')
+        outputs.extend([count.alias(f'{name}_flight_count_{days}d'),
+                        F.when(count > 0, F.col(f'_delayed{days}').cast('double') / count).alias(f'{name}_delay_rate_{days}d'),
+                        (count == 0).cast('double').alias(f'{name}_history_missing_{days}d')])
+    return timeline.filter('_query = 1').select(F.col('_time').alias('_prediction_us'), *columns, *outputs)
 
 
 def assign_chronological_split(dataframe: DataFrame) -> DataFrame:
@@ -168,30 +195,48 @@ def assign_chronological_split(dataframe: DataFrame) -> DataFrame:
     return dataframe.withColumn(SPLIT_COLUMN, split)
 
 
-def assemble_ml_flight_features(eligible: DataFrame) -> DataFrame:
+def assemble_ml_flight_features(eligible: DataFrame, staged=None) -> DataFrame:
     featured = add_schedule_features(eligible)
     for name, columns in ENTITIES:
         history = entity_history(eligible, name, columns)
         # Null-safe keys also preserve histories for an unknown entity.
         left, right = featured.alias("f"), history.alias("h")
-        keys = ["flight_date", *columns]
+        keys = ["_prediction_us", *columns]
         condition = F.lit(True)
         for key in keys:
             condition = condition & F.col(f"f.{key}").eqNullSafe(F.col(f"h.{key}"))
         featured = left.join(right, condition, "left").select(
             "f.*", *[F.col(f"h.{c}").alias(c) for c in history.columns if c not in keys]
         )
+        if staged is not None:
+            # Materialize one entity at a time on the bounded runtime, so the four
+            # event sweeps do not compete for executor memory. Track before action
+            # so even an interrupted count is released by the caller's finally.
+            featured = featured.persist(StorageLevel.DISK_ONLY)
+            previous = list(staged)
+            staged.append(featured)
+            featured.count()
+            for frame in previous:
+                frame.unpersist()
+            staged[:] = [featured]
+            print(f'Completed {name} timestamp histories', flush=True)
     return assign_chronological_split(featured).select(*OUTPUT_COLUMNS)
 
 
-def transform_ml_flight_features(dataframe: DataFrame) -> DataFrame:
-    return assemble_ml_flight_features(select_eligible_flights(dataframe))
+def transform_ml_flight_features(dataframe: DataFrame, phase='selection') -> DataFrame:
+    if phase not in ('selection', 'test'):
+        raise ValueError('Feature phase must be selection|test')
+    source = dataframe.filter(F.col('flight_date') <= F.lit(VALIDATION_END)) if phase == 'selection' else dataframe
+    result = assemble_ml_flight_features(select_eligible_flights(source))
+    return result.filter(F.col('split') == 'test') if phase == 'test' else result
 
 
 def validate_feature_frame(dataframe: DataFrame, expected_rows=None) -> int:
     if tuple(dataframe.columns) != OUTPUT_COLUMNS:
         raise AssertionError("Feature column order/schema differs from contract")
     types = dict(dataframe.dtypes)
+    if types["flight_id"] != "string":
+        raise AssertionError("Invalid flight_id schema")
     if types["flight_date"] != "date" or types["split"] != "string":
         raise AssertionError("Invalid date/split schema")
     if any(types[c] != "string" for c in CATEGORICAL_COLUMNS):
@@ -199,7 +244,8 @@ def validate_feature_frame(dataframe: DataFrame, expected_rows=None) -> int:
     if any(types[c] not in ("double", "float", "int", "bigint")
            for c in (*NUMERIC_COLUMNS, *HISTORY_COUNTS, *HISTORY_MISSING, TARGET_COLUMN)):
         raise AssertionError("Invalid numeric schema")
-    invalid = F.col("flight_date").isNull() | F.col("split").isNull()
+    invalid = F.col("flight_id").isNull() | ~F.col("flight_id").eqNullSafe(F.sha2(key_json_column(dataframe), 256))
+    invalid = invalid | F.col("flight_date").isNull() | F.col("split").isNull()
     invalid = invalid | F.col(TARGET_COLUMN).isNull() | ~F.col(TARGET_COLUMN).isin(0, 1)
     valid_split = F.lit(False)
     for name, bounds in SPLIT_BOUNDARIES.items():
@@ -227,32 +273,65 @@ def validate_feature_frame(dataframe: DataFrame, expected_rows=None) -> int:
 
 
 def write_ml_flight_features(dataframe: DataFrame, output_directory: PathLike, rows=None) -> None:
+    (Path(output_directory) / MANIFEST_NAME).unlink(missing_ok=True)
     rows = dataframe.count() if rows is None else rows
     partitions = max(4, math.ceil(rows / 250000))
     dataframe.repartitionByRange(partitions, "split", "flight_date").write.mode("overwrite").partitionBy("split").parquet(str(output_directory))
 
 
-def build_ml_flight_features(spark: SparkSession, dwd_directory: PathLike, output_directory: PathLike) -> None:
+def build_ml_flight_features(spark: SparkSession, dwd_directory: PathLike, output_directory: PathLike, snapshot=None, phase='selection', selection_manifest=None) -> None:
+    if snapshot is None:
+        paths = get_project_paths(load_config())
+        snapshot = verify_snapshot(paths.resolve(paths.raw_csv), paths.resolve(paths.raw_manifest))
+    if phase not in ('selection', 'test'):
+        raise ValueError('Feature phase must be selection|test')
+    if phase == 'test':
+        from airline.ml.model_contract import validate_manifest
+        validate_manifest(selection_manifest, snapshot['raw_manifest_sha256'])
     dwd = read_dwd_flights(spark, dwd_directory)
+    if phase == 'selection':
+        dwd = dwd.filter(F.col('flight_date') <= F.lit(VALIDATION_END))
     validate_ml_source(dwd)
     eligible = select_eligible_flights(dwd).persist(StorageLevel.DISK_ONLY)
     featured = None
+    staged = []
     try:
-        rows = eligible.count()
-        featured = assemble_ml_flight_features(eligible).persist(StorageLevel.DISK_ONLY)
+        eligible.count()
+        audit = eligible.agg(F.sum(F.col('_prediction_us').isNull().cast('long')).alias('uncertain_prediction_rows'),
+                             F.sum(F.col('_available_us').isNull().cast('long')).alias('unavailable_source_rows')).first().asDict()
+        target = eligible.filter(F.col('flight_date') >= F.lit(TEST_START)) if phase == 'test' else eligible
+        rows = target.count()
+        featured = assemble_ml_flight_features(eligible, staged)
+        if phase == 'test':
+            featured = featured.filter(F.col('split') == 'test')
+        featured = featured.persist(StorageLevel.DISK_ONLY)
         validate_feature_frame(featured, rows)
         write_ml_flight_features(featured, output_directory, rows)
+        reloaded = spark.read.parquet(str(output_directory))
+        publish_dataset_manifest(output_directory, reloaded, snapshot, phase=phase,
+                                 time_audit=audit, selection_manifest=selection_manifest, expected_rows=rows)
     finally:
         if featured is not None:
             featured.unpersist()
+        for frame in staged:
+            frame.unpersist()
         eligible.unpersist()
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--phase', choices=('selection', 'test'), default='selection')
+    args = parser.parse_args()
     paths = get_project_paths(load_config())
+    manifest = None
     spark = create_spark_session("airline-build-ml-features")
     try:
-        build_ml_flight_features(spark, paths.resolve(paths.dwd_flights), paths.resolve(paths.dws_ml_flight_features))
+        if args.phase == 'test':
+            from airline.ml.model_contract import load_bundle
+            _, _, manifest = load_bundle(paths.resolve(paths.artifact_root) / 'models')
+        output = paths.dws_ml_test_features if args.phase == 'test' else paths.dws_ml_flight_features
+        build_ml_flight_features(spark, paths.resolve(paths.dwd_flights), paths.resolve(output),
+                                phase=args.phase, selection_manifest=manifest)
     finally:
         spark.stop()
 

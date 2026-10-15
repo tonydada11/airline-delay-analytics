@@ -1,7 +1,8 @@
-"""Pure definitions for the rolling as-of-date production feature contract."""
+"""Pure definitions for the flight-time causal production feature contract."""
 from datetime import date
 
-FEATURE_CONTRACT_VERSION = "m7-history-v1"
+ML_DATASET_SCHEMA_VERSION = 3
+FEATURE_CONTRACT_VERSION = "m7-flighttime-v2"
 TARGET_COLUMN = "is_arrival_delayed_15m"
 SPLIT_COLUMN = "split"
 ENTITIES = (
@@ -21,6 +22,8 @@ HISTORY_MISSING = tuple(f"{name}_history_missing_{days}d" for name, _ in ENTITIE
 
 LEAKAGE_BLACKLIST = frozenset(
     {
+        "_prediction_us",
+        "_available_us",
         "dep_time",
         "dep_delay",
         "dep_delay_minutes",
@@ -49,7 +52,8 @@ TEST_END = date(2024, 12, 31)
 CATEGORICAL_COLUMNS = SCHEDULE_CATEGORICAL
 NUMERIC_COLUMNS = (*SCHEDULE_NUMERIC, *HISTORY_RATES)
 FEATURE_COLUMNS = (*CATEGORICAL_COLUMNS, *NUMERIC_COLUMNS, *HISTORY_COUNTS, *HISTORY_MISSING)
-OUTPUT_COLUMNS = ("flight_date", *FEATURE_COLUMNS, TARGET_COLUMN, SPLIT_COLUMN)
+METADATA_COLUMNS = ("flight_id", "flight_date", "flight_number_reporting_airline", "origin_airport_id", "dest_airport_id", "crs_dep_time")
+OUTPUT_COLUMNS = (*METADATA_COLUMNS, *FEATURE_COLUMNS, TARGET_COLUMN, SPLIT_COLUMN)
 SPLIT_BOUNDARIES = {
     "train": {"start": TRAIN_START.isoformat(), "end": TRAIN_END.isoformat()},
     "validation": {"start": VALIDATION_START.isoformat(), "end": VALIDATION_END.isoformat()},

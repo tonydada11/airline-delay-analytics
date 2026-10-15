@@ -17,6 +17,7 @@ DWS_PATHS = (
     "  dws_origin_airport_daily: warehouse/dws/origin_airport_daily\n"
     "  dws_route_daily: warehouse/dws/route_daily\n"
     "  dws_ml_flight_features: warehouse/dws/ml_flight_features\n"
+    "  dws_ml_test_features: warehouse/dws/ml_test_features\n"
 )
 ADS_PATHS = (
     "  ads_monthly_operations: warehouse/ads/monthly_operations\n"
@@ -50,7 +51,7 @@ def test_load_default_config() -> None:
     )
     assert config.dws_route_daily == Path("data/warehouse/dws/route_daily")
     assert config.dws_ml_flight_features == Path(
-        "data/warehouse/dws/ml_flight_features"
+        "data/warehouse/dws/ml_flighttime_v3_selection"
     )
     assert config.ads_monthly_operations == Path(
         "data/warehouse/ads/monthly_operations"
@@ -137,6 +138,7 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
             "  dws_origin_airport_daily: warehouse/dws/origin_airport_daily\n"
             "  dws_route_daily: warehouse/dws/route_daily\n"
             "  dws_ml_flight_features: warehouse/dws/ml_flight_features\n"
+    "  dws_ml_test_features: warehouse/dws/ml_test_features\n"
             "  ads_monthly_operations: warehouse/ads/monthly_operations\n"
             "  ads_carrier_scorecard: warehouse/ads/carrier_scorecard\n"
             "  ads_airport_scorecard: warehouse/ads/airport_scorecard\n"

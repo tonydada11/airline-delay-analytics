@@ -322,6 +322,8 @@ def test_full_ads_reconciliation_quality_and_second_build_idempotency(
         assert_required_columns(dataframe, expected_columns)
         assert dataframe.columns == expected_columns
         row_counts[name] = dataframe.count()
+        if row_counts[name]:
+            assert len(list(outputs[name].glob("part-*.parquet"))) == 1
         assert row_counts[name] == dws_sources[name].select(*grain).distinct().count()
 
         expected_dws_counts = _aggregate_dws_counts(dws_sources[name], grain)
@@ -367,6 +369,8 @@ def test_full_ads_reconciliation_quality_and_second_build_idempotency(
             first_dataframe, second_dataframe, columns
         )
         assert idempotency[name] == (0, 0)
+        if row_counts[name]:
+            assert len(list(outputs[name].glob("part-*.parquet"))) == 1
 
     print(f"ads_row_counts={row_counts}")
     print(f"ads_quality_violations={quality}")

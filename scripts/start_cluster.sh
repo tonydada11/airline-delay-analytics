@@ -35,8 +35,8 @@ else
       exit 1
     fi
 
-    echo "Starting Colima with 2 CPUs, 4 GiB memory, and a 40 GiB disk..."
-    colima start --cpu 2 --memory 4 --disk 40
+    echo "Starting Colima with 2 CPUs, 6 GiB memory, and a 40 GiB disk..."
+    colima start --cpu 2 --memory 6 --disk 40
   fi
 
   docker context use colima >/dev/null
@@ -55,8 +55,15 @@ fi
 cd "${PROJECT_ROOT}"
 docker compose up -d --build
 
+service_url() {
+  local address
+  address="$(docker compose port "$1" "$2" 2>/dev/null)" || address="127.0.0.1:$2"
+  printf 'http://%s' "${address/127.0.0.1/localhost}"
+}
+
 echo
 echo "Airline Spark cluster is starting:"
-echo "  JupyterLab:          http://localhost:8888"
-echo "  Spark Master UI:     http://localhost:8080"
-echo "  Spark Application UI http://localhost:4040 (while a Spark app is active)"
+echo "  JupyterLab:          $(service_url spark-notebook 8888)"
+echo "  Jupyter login URL:   docker compose exec spark-notebook jupyter server list"
+echo "  Spark Master UI:     $(service_url spark-master 8080)"
+echo "  Spark Application UI $(service_url spark-notebook 4040) (while a Spark app is active)"

@@ -35,11 +35,11 @@ def test_publication_is_complete_or_preserves_previous(tmp_path, monkeypatch, fa
     monkeypatch.setattr(Path, "rename", fail_publish)
     if failure != "none":
         with pytest.raises((RuntimeError, OSError)):
-            c.publish_bundle(destination, Saved(), Saved(), {"complete": True})
+            c.publish_bundle(destination, Saved(), Saved(), {"complete": True, "selected_classifier": "lr"})
         assert (destination / "manifest.json").read_text() == '"previous usable bundle"'
     else:
-        c.publish_bundle(destination, Saved(), Saved(), {"complete": True})
+        c.publish_bundle(destination, Saved(), Saved(), {"complete": True, "selected_classifier": "lr"})
         assert (destination / "preprocessing/data").read_text() == "complete"
-        assert (destination / "logistic_regression/data").read_text() == "complete"
+        assert (destination / "classifier/data").read_text() == "complete"
         assert '"complete": true' in (destination / "manifest.json").read_text()
     assert list(tmp_path.iterdir()) == [destination]

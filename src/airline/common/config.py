@@ -29,6 +29,7 @@ class ProjectConfig:
     dws_carrier_daily: Path
     dws_origin_airport_daily: Path
     dws_route_daily: Path
+    dws_ml_test_features: Path
     dws_ml_flight_features: Path
     ads_monthly_operations: Path
     ads_carrier_scorecard: Path
@@ -82,6 +83,7 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
         "dws_origin_airport_daily",
         "dws_route_daily",
         "dws_ml_flight_features",
+        "dws_ml_test_features",
         "ads_monthly_operations",
         "ads_carrier_scorecard",
         "ads_airport_scorecard",
@@ -110,6 +112,7 @@ def load_config(config_path: PathLike = DEFAULT_CONFIG_PATH) -> ProjectConfig:
             paths["dws_origin_airport_daily"], "dws_origin_airport_daily"
         ),
         dws_route_daily=_relative_path(paths["dws_route_daily"], "dws_route_daily"),
+        dws_ml_test_features=_relative_path(paths["dws_ml_test_features"], "dws_ml_test_features"),
         dws_ml_flight_features=_relative_path(
             paths["dws_ml_flight_features"], "dws_ml_flight_features"
         ),

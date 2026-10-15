@@ -23,6 +23,9 @@ printf 'docker %s\n' "$*" >>"${TRACE_FILE}"
 
 case "$*" in
   "compose version"|"compose up -d --build"|"compose down") exit 0 ;;
+  "compose port spark-notebook 8888") printf '127.0.0.1:8889\n'; exit 0 ;;
+  "compose port spark-master 8080") printf '127.0.0.1:8082\n'; exit 0 ;;
+  "compose port spark-notebook 4040") printf '127.0.0.1:4041\n'; exit 0 ;;
   "context show")
     if [[ -f "${CONTEXT_MARKER}" ]]; then printf 'colima\n'; else printf 'desktop-linux\n'; fi
     exit 0
@@ -77,7 +80,10 @@ run_start() {
 
 healthy_root="$(make_case healthy)"
 write_fake_docker "${healthy_root}"
-run_start "${healthy_root}" healthy >/dev/null
+run_start "${healthy_root}" healthy >"${healthy_root}/stdout.log"
+grep -Fq 'http://localhost:8889' "${healthy_root}/stdout.log"
+grep -Fq 'http://localhost:8082' "${healthy_root}/stdout.log"
+grep -Fq 'http://localhost:4041' "${healthy_root}/stdout.log"
 grep -Fxq 'docker info' "${healthy_root}/trace.log"
 grep -Fxq 'docker compose up -d --build' "${healthy_root}/trace.log"
 if grep -q 'context use\|colima ' "${healthy_root}/trace.log"; then
@@ -90,7 +96,7 @@ write_fake_docker "${fallback_root}"
 write_fake_colima "${fallback_root}"
 run_start "${fallback_root}" unavailable >/dev/null
 grep -Fxq 'colima status' "${fallback_root}/trace.log"
-grep -Fxq 'colima start --cpu 2 --memory 4 --disk 40' "${fallback_root}/trace.log"
+grep -Fxq 'colima start --cpu 2 --memory 6 --disk 40' "${fallback_root}/trace.log"
 grep -Fxq 'docker context use colima' "${fallback_root}/trace.log"
 grep -Fxq 'docker compose up -d --build' "${fallback_root}/trace.log"
 
@@ -118,5 +124,7 @@ if grep -q -- '--context\|colima ' "${stop_root}/trace.log"; then
   echo "Shutdown must use the active context and leave the host runtime alone." >&2
   exit 1
 fi
+
+python3 "${PROJECT_ROOT}/tests/pipeline/test_runtime_contract.py"
 
 printf 'Docker daemon discovery, Colima fallback, failure, and shutdown checks passed.\n'

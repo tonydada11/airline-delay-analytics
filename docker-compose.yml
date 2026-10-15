@@ -39,6 +39,8 @@ services:
 
   spark-worker-1:
     <<: *spark-common
+    # Match the driver UID on shared warehouse/artifact bind mounts.
+    user: "0:0"
     hostname: spark-worker-1
     command:
       - /opt/spark/bin/spark-class
@@ -71,6 +73,8 @@ services:
 
   spark-worker-2:
     <<: *spark-common
+    # Match the driver UID on shared warehouse/artifact bind mounts.
+    user: "0:0"
     hostname: spark-worker-2
     command:
       - /opt/spark/bin/spark-class

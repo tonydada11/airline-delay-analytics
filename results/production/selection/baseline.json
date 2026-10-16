@@ -1,0 +1,23 @@
+{
+  "probability": 0.20423087799856254,
+  "threshold": 0.5,
+  "training_positive_rows": 1827125,
+  "training_rows": 8946370,
+  "validation": {
+    "confusion_matrix": {
+      "false_negative": 631898,
+      "false_positive": 0,
+      "true_negative": 1786841,
+      "true_positive": 0
+    },
+    "f1": 0.0,
+    "pr_auc": 0.26125100723972283,
+    "precision": 0.0,
+    "predicted_positive_rate": 0.0,
+    "prevalence": 0.26125100723972283,
+    "ranking_status": "defined",
+    "recall": 0.0,
+    "roc_auc": 0.5,
+    "rows": 2418739
+  }
+}

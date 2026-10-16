@@ -1,0 +1,297 @@
+{
+  "columns": [
+    {
+      "name": "flight_id",
+      "type": "string"
+    },
+    {
+      "name": "flight_date",
+      "type": "date"
+    },
+    {
+      "name": "flight_number_reporting_airline",
+      "type": "int"
+    },
+    {
+      "name": "origin_airport_id",
+      "type": "int"
+    },
+    {
+      "name": "dest_airport_id",
+      "type": "int"
+    },
+    {
+      "name": "crs_dep_time",
+      "type": "int"
+    },
+    {
+      "name": "reporting_airline",
+      "type": "string"
+    },
+    {
+      "name": "origin",
+      "type": "string"
+    },
+    {
+      "name": "destination",
+      "type": "string"
+    },
+    {
+      "name": "calendar_month",
+      "type": "string"
+    },
+    {
+      "name": "calendar_weekday",
+      "type": "string"
+    },
+    {
+      "name": "distance",
+      "type": "double"
+    },
+    {
+      "name": "crs_elapsed_time",
+      "type": "double"
+    },
+    {
+      "name": "departure_sin",
+      "type": "double"
+    },
+    {
+      "name": "departure_cos",
+      "type": "double"
+    },
+    {
+      "name": "arrival_sin",
+      "type": "double"
+    },
+    {
+      "name": "arrival_cos",
+      "type": "double"
+    },
+    {
+      "name": "departure_missing",
+      "type": "double"
+    },
+    {
+      "name": "arrival_missing",
+      "type": "double"
+    },
+    {
+      "name": "duration_missing",
+      "type": "double"
+    },
+    {
+      "name": "carrier_delay_rate_7d",
+      "type": "double"
+    },
+    {
+      "name": "carrier_delay_rate_30d",
+      "type": "double"
+    },
+    {
+      "name": "carrier_delay_rate_90d",
+      "type": "double"
+    },
+    {
+      "name": "origin_delay_rate_7d",
+      "type": "double"
+    },
+    {
+      "name": "origin_delay_rate_30d",
+      "type": "double"
+    },
+    {
+      "name": "origin_delay_rate_90d",
+      "type": "double"
+    },
+    {
+      "name": "destination_delay_rate_7d",
+      "type": "double"
+    },
+    {
+      "name": "destination_delay_rate_30d",
+      "type": "double"
+    },
+    {
+      "name": "destination_delay_rate_90d",
+      "type": "double"
+    },
+    {
+      "name": "route_delay_rate_7d",
+      "type": "double"
+    },
+    {
+      "name": "route_delay_rate_30d",
+      "type": "double"
+    },
+    {
+      "name": "route_delay_rate_90d",
+      "type": "double"
+    },
+    {
+      "name": "carrier_flight_count_7d",
+      "type": "bigint"
+    },
+    {
+      "name": "carrier_flight_count_30d",
+      "type": "bigint"
+    },
+    {
+      "name": "carrier_flight_count_90d",
+      "type": "bigint"
+    },
+    {
+      "name": "origin_flight_count_7d",
+      "type": "bigint"
+    },
+    {
+      "name": "origin_flight_count_30d",
+      "type": "bigint"
+    },
+    {
+      "name": "origin_flight_count_90d",
+      "type": "bigint"
+    },
+    {
+      "name": "destination_flight_count_7d",
+      "type": "bigint"
+    },
+    {
+      "name": "destination_flight_count_30d",
+      "type": "bigint"
+    },
+    {
+      "name": "destination_flight_count_90d",
+      "type": "bigint"
+    },
+    {
+      "name": "route_flight_count_7d",
+      "type": "bigint"
+    },
+    {
+      "name": "route_flight_count_30d",
+      "type": "bigint"
+    },
+    {
+      "name": "route_flight_count_90d",
+      "type": "bigint"
+    },
+    {
+      "name": "carrier_history_missing_7d",
+      "type": "double"
+    },
+    {
+      "name": "carrier_history_missing_30d",
+      "type": "double"
+    },
+    {
+      "name": "carrier_history_missing_90d",
+      "type": "double"
+    },
+    {
+      "name": "origin_history_missing_7d",
+      "type": "double"
+    },
+    {
+      "name": "origin_history_missing_30d",
+      "type": "double"
+    },
+    {
+      "name": "origin_history_missing_90d",
+      "type": "double"
+    },
+    {
+      "name": "destination_history_missing_7d",
+      "type": "double"
+    },
+    {
+      "name": "destination_history_missing_30d",
+      "type": "double"
+    },
+    {
+      "name": "destination_history_missing_90d",
+      "type": "double"
+    },
+    {
+      "name": "route_history_missing_7d",
+      "type": "double"
+    },
+    {
+      "name": "route_history_missing_30d",
+      "type": "double"
+    },
+    {
+      "name": "route_history_missing_90d",
+      "type": "double"
+    },
+    {
+      "name": "is_arrival_delayed_15m",
+      "type": "int"
+    },
+    {
+      "name": "split",
+      "type": "string"
+    }
+  ],
+  "dataset_schema_version": 3,
+  "duplicate_extra_rows": 0,
+  "duplicate_key_count": 0,
+  "feature_version": "m7-flighttime-v2",
+  "lineage": {
+    "date_format": "yyyy-MM-dd",
+    "encoding": "UTF-8",
+    "fields": [
+      {
+        "name": "flight_date",
+        "type": "string"
+      },
+      {
+        "name": "reporting_airline",
+        "type": "string"
+      },
+      {
+        "name": "flight_number_reporting_airline",
+        "type": "integer"
+      },
+      {
+        "name": "origin_airport_id",
+        "type": "integer"
+      },
+      {
+        "name": "dest_airport_id",
+        "type": "integer"
+      },
+      {
+        "name": "crs_dep_time",
+        "type": "integer"
+      }
+    ],
+    "grain": "business-key value; duplicates preserved",
+    "hash": "lowercase SHA-256 hex",
+    "json": "compact, explicit nulls, standard escaping, preserved strings"
+  },
+  "phase": "test",
+  "raw_manifest_sha256": "fef0d967bbc36d2beb2898701428ca55aa5b0f0a7c9bb0f5ede2ed8ac7852efb",
+  "rows": 2343541,
+  "selection_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+  "selection_run_id": "production-5936316dd7764ed79b049ae10ee1ca18",
+  "source_snapshot_id": "bts-2023-2024-v1",
+  "splits": [
+    "test"
+  ],
+  "time_audit": {
+    "unavailable_source_rows": 14,
+    "uncertain_prediction_rows": 14
+  },
+  "time_policy": {
+    "availability": "scheduled departure UTC + signed departure delay + actual elapsed time",
+    "limitation": "Arrival-event assumption; actual publication/ingestion availability is not observed.",
+    "prediction": "scheduled departure UTC",
+    "pytz_version": "2026.3.post1",
+    "reporting_latency_seconds": 0,
+    "test_history": "causal rolling outcomes, after frozen selection only",
+    "timezone_reference_sha256": "60fd42f7a8ba6a1f13f37c42a28e920a2dce2291c3fd5c815047228d2d6fc1a8",
+    "uncertain_time": "exclude source; retain target with empty histories",
+    "window": "target-N*24h <= source scheduled departure < target; arrival < target"
+  }
+}

@@ -1,0 +1,79 @@
+== Physical Plan ==
+AdaptiveSparkPlan (12)
++- HashAggregate (11)
+   +- Exchange (10)
+      +- HashAggregate (9)
+         +- Project (8)
+            +- BroadcastHashJoin Inner BuildRight (7)
+               :- Project (3)
+               :  +- Filter (2)
+               :     +- Scan parquet  (1)
+               +- BroadcastExchange (6)
+                  +- Filter (5)
+                     +- Scan parquet  (4)
+
+
+(1) Scan parquet 
+Output [5]: [flight_date#13167, reporting_airline#13168, is_arrival_delayed_15m#13277, year#13278, month#13279]
+Batched: true
+Location: InMemoryFileIndex [file:/workspace/data/warehouse/dwd/flights]
+PartitionFilters: [((year#13278 > 2023) OR ((year#13278 = 2023) AND (month#13279 >= 1))), ((year#13278 < 2023) OR ((year#13278 = 2023) AND (month#13279 <= 4)))]
+PushedFilters: [IsNotNull(flight_date), GreaterThanOrEqual(flight_date,2023-01-01), LessThanOrEqual(flight_date,2023-04-30), IsNotNull(reporting_airline)]
+ReadSchema: struct<flight_date:date,reporting_airline:string,is_arrival_delayed_15m:int>
+
+(2) Filter
+Input [5]: [flight_date#13167, reporting_airline#13168, is_arrival_delayed_15m#13277, year#13278, month#13279]
+Condition : (((isnotnull(flight_date#13167) AND (flight_date#13167 >= 2023-01-01)) AND (flight_date#13167 <= 2023-04-30)) AND isnotnull(reporting_airline#13168))
+
+(3) Project
+Output [2]: [reporting_airline#13168, is_arrival_delayed_15m#13277]
+Input [5]: [flight_date#13167, reporting_airline#13168, is_arrival_delayed_15m#13277, year#13278, month#13279]
+
+(4) Scan parquet 
+Output [3]: [carrier_key#13399, reporting_airline#13400, dot_id_reporting_airline#13401]
+Batched: true
+Location: InMemoryFileIndex [file:/workspace/data/warehouse/dim/carrier]
+PushedFilters: [IsNotNull(reporting_airline)]
+ReadSchema: struct<carrier_key:string,reporting_airline:string,dot_id_reporting_airline:int>
+
+(5) Filter
+Input [3]: [carrier_key#13399, reporting_airline#13400, dot_id_reporting_airline#13401]
+Condition : isnotnull(reporting_airline#13400)
+
+(6) BroadcastExchange
+Input [3]: [carrier_key#13399, reporting_airline#13400, dot_id_reporting_airline#13401]
+Arguments: HashedRelationBroadcastMode(List(input[1, string, false]),false), [plan_id=12191]
+
+(7) BroadcastHashJoin
+Left keys [1]: [reporting_airline#13168]
+Right keys [1]: [reporting_airline#13400]
+Join type: Inner
+Join condition: None
+
+(8) Project
+Output [3]: [is_arrival_delayed_15m#13277, carrier_key#13399, dot_id_reporting_airline#13401]
+Input [5]: [reporting_airline#13168, is_arrival_delayed_15m#13277, carrier_key#13399, reporting_airline#13400, dot_id_reporting_airline#13401]
+
+(9) HashAggregate
+Input [3]: [is_arrival_delayed_15m#13277, carrier_key#13399, dot_id_reporting_airline#13401]
+Keys [2]: [carrier_key#13399, dot_id_reporting_airline#13401]
+Functions [3]: [partial_count(1), partial_count(is_arrival_delayed_15m#13277), partial_sum(is_arrival_delayed_15m#13277)]
+Aggregate Attributes [3]: [count#13430L, count#13431L, sum#13432L]
+Results [5]: [carrier_key#13399, dot_id_reporting_airline#13401, count#13433L, count#13434L, sum#13435L]
+
+(10) Exchange
+Input [5]: [carrier_key#13399, dot_id_reporting_airline#13401, count#13433L, count#13434L, sum#13435L]
+Arguments: hashpartitioning(carrier_key#13399, dot_id_reporting_airline#13401, 4), ENSURE_REQUIREMENTS, [plan_id=12196]
+
+(11) HashAggregate
+Input [5]: [carrier_key#13399, dot_id_reporting_airline#13401, count#13433L, count#13434L, sum#13435L]
+Keys [2]: [carrier_key#13399, dot_id_reporting_airline#13401]
+Functions [3]: [count(1), count(is_arrival_delayed_15m#13277), sum(is_arrival_delayed_15m#13277)]
+Aggregate Attributes [3]: [count(1)#13419L, count(is_arrival_delayed_15m#13277)#13421L, sum(is_arrival_delayed_15m#13277)#13423L]
+Results [5]: [carrier_key#13399, dot_id_reporting_airline#13401, count(1)#13419L AS scheduled_flights#13420L, count(is_arrival_delayed_15m#13277)#13421L AS eligible_delay_flights#13422L, sum(is_arrival_delayed_15m#13277)#13423L AS delayed_flights#13424L]
+
+(12) AdaptiveSparkPlan
+Output [5]: [carrier_key#13399, dot_id_reporting_airline#13401, scheduled_flights#13420L, eligible_delay_flights#13422L, delayed_flights#13424L]
+Arguments: isFinalPlan=false
+
+

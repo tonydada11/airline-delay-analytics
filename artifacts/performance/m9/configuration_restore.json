@@ -1,0 +1,17 @@
+{
+  "configuration_restored": true,
+  "final": {
+    "spark.sql.adaptive.coalescePartitions.enabled": "true",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760b",
+    "spark.sql.shuffle.partitions": "4"
+  },
+  "initial": {
+    "spark.sql.adaptive.coalescePartitions.enabled": "true",
+    "spark.sql.adaptive.enabled": "true",
+    "spark.sql.autoBroadcastJoinThreshold": "10485760b",
+    "spark.sql.shuffle.partitions": "4"
+  },
+  "persistence_cleared": true,
+  "persistent_rdd_count": 0
+}

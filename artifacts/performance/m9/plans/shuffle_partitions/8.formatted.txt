@@ -1,0 +1,54 @@
+== Physical Plan ==
+AdaptiveSparkPlan (8)
++- Project (7)
+   +- HashAggregate (6)
+      +- Exchange (5)
+         +- HashAggregate (4)
+            +- Project (3)
+               +- Filter (2)
+                  +- Scan parquet  (1)
+
+
+(1) Scan parquet 
+Output [9]: [flight_date#10277, origin#10286, dest#10295, arr_delay#10314, is_cancelled#10381, is_diverted#10382, is_arrival_delayed_15m#10387, year#10388, month#10389]
+Batched: true
+Location: InMemoryFileIndex [file:/workspace/data/warehouse/dwd/flights]
+PartitionFilters: [((year#10388 > 2023) OR ((year#10388 = 2023) AND (month#10389 >= 1))), ((year#10388 < 2023) OR ((year#10388 = 2023) AND (month#10389 <= 4)))]
+PushedFilters: [IsNotNull(flight_date), GreaterThanOrEqual(flight_date,2023-01-01), LessThanOrEqual(flight_date,2023-04-30)]
+ReadSchema: struct<flight_date:date,origin:string,dest:string,arr_delay:double,is_cancelled:int,is_diverted:int,is_arrival_delayed_15m:int>
+
+(2) Filter
+Input [9]: [flight_date#10277, origin#10286, dest#10295, arr_delay#10314, is_cancelled#10381, is_diverted#10382, is_arrival_delayed_15m#10387, year#10388, month#10389]
+Condition : ((isnotnull(flight_date#10277) AND (flight_date#10277 >= 2023-01-01)) AND (flight_date#10277 <= 2023-04-30))
+
+(3) Project
+Output [7]: [flight_date#10277, origin#10286, is_cancelled#10381, is_diverted#10382, is_arrival_delayed_15m#10387, arr_delay#10314, dest#10295 AS destination#10514]
+Input [9]: [flight_date#10277, origin#10286, dest#10295, arr_delay#10314, is_cancelled#10381, is_diverted#10382, is_arrival_delayed_15m#10387, year#10388, month#10389]
+
+(4) HashAggregate
+Input [7]: [flight_date#10277, origin#10286, is_cancelled#10381, is_diverted#10382, is_arrival_delayed_15m#10387, arr_delay#10314, destination#10514]
+Keys [3]: [flight_date#10277, origin#10286, destination#10514]
+Functions [7]: [partial_count(1), partial_sum(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN 1 ELSE 0 END), partial_sum(is_cancelled#10381), partial_sum(is_diverted#10382), partial_count(is_arrival_delayed_15m#10387), partial_sum(is_arrival_delayed_15m#10387), partial_avg(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN arr_delay#10314 END)]
+Aggregate Attributes [8]: [count#10598L, sum#10599L, sum#10600L, sum#10601L, count#10602L, sum#10603L, sum#10604, count#10605L]
+Results [11]: [flight_date#10277, origin#10286, destination#10514, count#10606L, sum#10607L, sum#10608L, sum#10609L, count#10610L, sum#10611L, sum#10612, count#10613L]
+
+(5) Exchange
+Input [11]: [flight_date#10277, origin#10286, destination#10514, count#10606L, sum#10607L, sum#10608L, sum#10609L, count#10610L, sum#10611L, sum#10612, count#10613L]
+Arguments: hashpartitioning(flight_date#10277, origin#10286, destination#10514, 8), ENSURE_REQUIREMENTS, [plan_id=9518]
+
+(6) HashAggregate
+Input [11]: [flight_date#10277, origin#10286, destination#10514, count#10606L, sum#10607L, sum#10608L, sum#10609L, count#10610L, sum#10611L, sum#10612, count#10613L]
+Keys [3]: [flight_date#10277, origin#10286, destination#10514]
+Functions [7]: [count(1), sum(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN 1 ELSE 0 END), sum(is_cancelled#10381), sum(is_diverted#10382), count(is_arrival_delayed_15m#10387), sum(is_arrival_delayed_15m#10387), avg(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN arr_delay#10314 END)]
+Aggregate Attributes [7]: [count(1)#10537L, sum(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN 1 ELSE 0 END)#10539L, sum(is_cancelled#10381)#10541L, sum(is_diverted#10382)#10543L, count(is_arrival_delayed_15m#10387)#10545L, sum(is_arrival_delayed_15m#10387)#10547L, avg(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN arr_delay#10314 END)#10549]
+Results [10]: [flight_date#10277, origin#10286, destination#10514, count(1)#10537L AS scheduled_flights#10538L, sum(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN 1 ELSE 0 END)#10539L AS completed_flights#10540L, sum(is_cancelled#10381)#10541L AS cancelled_flights#10542L, sum(is_diverted#10382)#10543L AS diverted_flights#10544L, count(is_arrival_delayed_15m#10387)#10545L AS eligible_delay_flights#10546L, coalesce(sum(is_arrival_delayed_15m#10387)#10547L, 0) AS delayed_flights#10548L, avg(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN arr_delay#10314 END)#10549 AS avg_arrival_delay#10550]
+
+(7) Project
+Output [12]: [flight_date#10277, origin#10286, destination#10514, scheduled_flights#10538L, completed_flights#10540L, cancelled_flights#10542L, diverted_flights#10544L, eligible_delay_flights#10546L, delayed_flights#10548L, CASE WHEN (eligible_delay_flights#10546L > 0) THEN (cast(delayed_flights#10548L as double) / cast(eligible_delay_flights#10546L as double)) END AS delay_rate#10561, avg_arrival_delay#10550, CASE WHEN (scheduled_flights#10538L > 0) THEN (cast(cancelled_flights#10542L as double) / cast(scheduled_flights#10538L as double)) END AS cancellation_rate#10573]
+Input [10]: [flight_date#10277, origin#10286, destination#10514, scheduled_flights#10538L, completed_flights#10540L, cancelled_flights#10542L, diverted_flights#10544L, eligible_delay_flights#10546L, delayed_flights#10548L, avg_arrival_delay#10550]
+
+(8) AdaptiveSparkPlan
+Output [12]: [flight_date#10277, origin#10286, destination#10514, scheduled_flights#10538L, completed_flights#10540L, cancelled_flights#10542L, diverted_flights#10544L, eligible_delay_flights#10546L, delayed_flights#10548L, delay_rate#10561, avg_arrival_delay#10550, cancellation_rate#10573]
+Arguments: isFinalPlan=false
+
+

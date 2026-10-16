@@ -1,0 +1,59 @@
+== Physical Plan ==
+AdaptiveSparkPlan (9)
++- HashAggregate (8)
+   +- Exchange (7)
+      +- HashAggregate (6)
+         +- InMemoryTableScan (1)
+               +- InMemoryRelation (2)
+                     +- * Filter (5)
+                        +- * ColumnarToRow (4)
+                           +- Scan parquet  (3)
+
+
+(1) InMemoryTableScan
+Output [2]: [scheduled_flights#18083L, delayed_flights#18088L]
+Arguments: [scheduled_flights#18083L, delayed_flights#18088L]
+
+(2) InMemoryRelation
+Arguments: [flight_date#18080, origin#18081, destination#18082, scheduled_flights#18083L, completed_flights#18084L, cancelled_flights#18085L, diverted_flights#18086L, eligible_delay_flights#18087L, delayed_flights#18088L, delay_rate#18089, avg_arrival_delay#18090, cancellation_rate#18091], CachedRDDBuilder(org.apache.spark.sql.execution.columnar.DefaultCachedBatchSerializer@4e832cfb,StorageLevel(disk, memory, 1 replicas),*(1) Filter ((isnotnull(flight_date#18080) AND (flight_date#18080 >= 2023-01-01)) AND (flight_date#18080 <= 2023-04-30))
++- *(1) ColumnarToRow
+   +- FileScan parquet [flight_date#18080,origin#18081,destination#18082,scheduled_flights#18083L,completed_flights#18084L,cancelled_flights#18085L,diverted_flights#18086L,eligible_delay_flights#18087L,delayed_flights#18088L,delay_rate#18089,avg_arrival_delay#18090,cancellation_rate#18091] Batched: true, DataFilters: [isnotnull(flight_date#18080), (flight_date#18080 >= 2023-01-01), (flight_date#18080 <= 2023-04-30)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/workspace/data/warehouse/dws/route_daily], PartitionFilters: [], PushedFilters: [IsNotNull(flight_date), GreaterThanOrEqual(flight_date,2023-01-01), LessThanOrEqual(flight_date,..., ReadSchema: struct<flight_date:date,origin:string,destination:string,scheduled_flights:bigint,completed_fligh...
+,None)
+
+(3) Scan parquet 
+Output [12]: [flight_date#18080, origin#18081, destination#18082, scheduled_flights#18083L, completed_flights#18084L, cancelled_flights#18085L, diverted_flights#18086L, eligible_delay_flights#18087L, delayed_flights#18088L, delay_rate#18089, avg_arrival_delay#18090, cancellation_rate#18091]
+Batched: true
+Location: InMemoryFileIndex [file:/workspace/data/warehouse/dws/route_daily]
+PushedFilters: [IsNotNull(flight_date), GreaterThanOrEqual(flight_date,2023-01-01), LessThanOrEqual(flight_date,2023-04-30)]
+ReadSchema: struct<flight_date:date,origin:string,destination:string,scheduled_flights:bigint,completed_flights:bigint,cancelled_flights:bigint,diverted_flights:bigint,eligible_delay_flights:bigint,delayed_flights:bigint,delay_rate:double,avg_arrival_delay:double,cancellation_rate:double>
+
+(4) ColumnarToRow [codegen id : 1]
+Input [12]: [flight_date#18080, origin#18081, destination#18082, scheduled_flights#18083L, completed_flights#18084L, cancelled_flights#18085L, diverted_flights#18086L, eligible_delay_flights#18087L, delayed_flights#18088L, delay_rate#18089, avg_arrival_delay#18090, cancellation_rate#18091]
+
+(5) Filter [codegen id : 1]
+Input [12]: [flight_date#18080, origin#18081, destination#18082, scheduled_flights#18083L, completed_flights#18084L, cancelled_flights#18085L, diverted_flights#18086L, eligible_delay_flights#18087L, delayed_flights#18088L, delay_rate#18089, avg_arrival_delay#18090, cancellation_rate#18091]
+Condition : ((isnotnull(flight_date#18080) AND (flight_date#18080 >= 2023-01-01)) AND (flight_date#18080 <= 2023-04-30))
+
+(6) HashAggregate
+Input [2]: [scheduled_flights#18083L, delayed_flights#18088L]
+Keys: []
+Functions [3]: [partial_count(1), partial_sum(scheduled_flights#18083L), partial_sum(delayed_flights#18088L)]
+Aggregate Attributes [3]: [count#18366L, sum#18367L, sum#18368L]
+Results [3]: [count#18369L, sum#18370L, sum#18371L]
+
+(7) Exchange
+Input [3]: [count#18369L, sum#18370L, sum#18371L]
+Arguments: SinglePartition, ENSURE_REQUIREMENTS, [plan_id=16352]
+
+(8) HashAggregate
+Input [3]: [count#18369L, sum#18370L, sum#18371L]
+Keys: []
+Functions [3]: [count(1), sum(scheduled_flights#18083L), sum(delayed_flights#18088L)]
+Aggregate Attributes [3]: [count(1)#18165L, sum(scheduled_flights#18083L)#18167L, sum(delayed_flights#18088L)#18169L]
+Results [3]: [count(1)#18165L AS route_daily_rows#18166L, sum(scheduled_flights#18083L)#18167L AS scheduled_flights#18168L, sum(delayed_flights#18088L)#18169L AS delayed_flights#18170L]
+
+(9) AdaptiveSparkPlan
+Output [3]: [route_daily_rows#18166L, scheduled_flights#18168L, delayed_flights#18170L]
+Arguments: isFinalPlan=false
+
+

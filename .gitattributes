@@ -4,8 +4,7 @@
 # Keep the pinned manifest fingerprint stable across platforms.
 conf/raw_data_manifest.csv text eol=lf
 
-# The timezone reference and archived evidence are bound to their original bytes.
+# Preserve pinned timezone bytes and raw Spark evidence, including plan whitespace.
 conf/airport_timezones.csv -text -whitespace
-evidence/archive/** -text -whitespace
-evidence/consolidation/*.log -text -whitespace
-evidence/acceptance/**/*.log -text -whitespace
+artifacts/performance/m9/** -text -whitespace
+labs/fault_tolerance/evidence/** -text -whitespace

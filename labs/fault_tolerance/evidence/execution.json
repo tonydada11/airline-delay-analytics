@@ -1,0 +1,315 @@
+{
+  "actual_utc": "2026-10-16T17:23:30.834640+00:00",
+  "cleanup_exit_code": 0,
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "up",
+        "-d"
+      ],
+      "exit_code": 0,
+      "stderr": " Network airline-ft-825445010659_default Creating \n Network airline-ft-825445010659_default Creating \n Network airline-ft-825445010659_default Created \n Network airline-ft-825445010659_default Created \n Container airline-ft-825445010659-worker2-1 Creating \n Container airline-ft-825445010659-worker1-1 Creating \n Container airline-ft-825445010659-master-1 Creating \n Container airline-ft-825445010659-driver-1 Creating \n Container airline-ft-825445010659-master-1 Created \n Container airline-ft-825445010659-worker2-1 Created \n Container airline-ft-825445010659-worker1-1 Created \n Container airline-ft-825445010659-driver-1 Created \n Container airline-ft-825445010659-driver-1 Starting \n Container airline-ft-825445010659-worker2-1 Starting \n Container airline-ft-825445010659-master-1 Starting \n Container airline-ft-825445010659-worker1-1 Starting \n Container airline-ft-825445010659-driver-1 Started \n Container airline-ft-825445010659-worker2-1 Started \n Container airline-ft-825445010659-worker1-1 Started \n Container airline-ft-825445010659-master-1 Started \n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "ps",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"Command\":\"\\\"/opt/entrypoint.sh \u2026\\\"\",\"CreatedAt\":\"2026-10-16 12:20:47 -0500 CDT\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"4922aed6eb71\",\"Image\":\"airline-spark:3.5.9\",\"Labels\":\"com.docker.compose.image=sha256:3808fa504052c9c0e629f7db00c4d47df4314d671989e0cc3b63da4f8eac3fb4,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/tmp/airline-reconstruction/lab/compose.yml,com.docker.compose.project.working_dir=/tmp/airline-reconstruction/lab,com.docker.compose.service=driver,org.opencontainers.image.version=22.04,com.docker.compose.config-hash=50c45653f930eee2ff118173a67dfa19e759949f4663dc298642a322b5e36c7e,com.docker.compose.project=airline-ft-825445010659,com.docker.compose.version=5.5.0,com.docker.compose.container-number=1,com.docker.compose.depends_on=\",\"LocalVolumes\":\"0\",\"Mounts\":\"/tmp/airline-r\u2026,/tmp/airline-r\u2026\",\"Name\":\"airline-ft-825445010659-driver-1\",\"Names\":\"airline-ft-825445010659-driver-1\",\"Networks\":\"airline-ft-825445010659_default\",\"Ports\":\"\",\"Project\":\"airline-ft-825445010659\",\"Publishers\":[],\"RunningFor\":\"Less than a second ago\",\"Service\":\"driver\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up Less than a second\"}\n{\"Command\":\"\\\"/opt/entrypoint.sh \u2026\\\"\",\"CreatedAt\":\"2026-10-16 12:20:47 -0500 CDT\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"c300c93b81d9\",\"Image\":\"airline-spark:3.5.9\",\"Labels\":\"com.docker.compose.depends_on=,com.docker.compose.version=5.5.0,org.opencontainers.image.version=22.04,com.docker.compose.config-hash=d7640523c1d86490941a1fbedef2d9c002f5df3bbe247ec4e0b3144cc8b7ee23,com.docker.compose.container-number=1,com.docker.compose.image=sha256:3808fa504052c9c0e629f7db00c4d47df4314d671989e0cc3b63da4f8eac3fb4,com.docker.compose.oneoff=False,com.docker.compose.project=airline-ft-825445010659,com.docker.compose.project.config_files=/tmp/airline-reconstruction/lab/compose.yml,com.docker.compose.project.working_dir=/tmp/airline-reconstruction/lab,com.docker.compose.service=master\",\"LocalVolumes\":\"0\",\"Mounts\":\"/tmp/airline-r\u2026\",\"Name\":\"airline-ft-825445010659-master-1\",\"Names\":\"airline-ft-825445010659-master-1\",\"Networks\":\"airline-ft-825445010659_default\",\"Ports\":\"\",\"Project\":\"airline-ft-825445010659\",\"Publishers\":[],\"RunningFor\":\"Less than a second ago\",\"Service\":\"master\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up Less than a second\"}\n{\"Command\":\"\\\"/opt/entrypoint.sh \u2026\\\"\",\"CreatedAt\":\"2026-10-16 12:20:47 -0500 CDT\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"159e7547ab9b\",\"Image\":\"airline-spark:3.5.9\",\"Labels\":\"com.docker.compose.depends_on=,com.docker.compose.service=worker1,org.opencontainers.image.version=22.04,com.docker.compose.config-hash=8c4a4da5549c969dded7eabb3f335c9e42b97c93ecc77842ed8384705337bf8c,com.docker.compose.container-number=1,com.docker.compose.image=sha256:3808fa504052c9c0e629f7db00c4d47df4314d671989e0cc3b63da4f8eac3fb4,com.docker.compose.oneoff=False,com.docker.compose.project=airline-ft-825445010659,com.docker.compose.project.config_files=/tmp/airline-reconstruction/lab/compose.yml,com.docker.compose.project.working_dir=/tmp/airline-reconstruction/lab,com.docker.compose.version=5.5.0\",\"LocalVolumes\":\"0\",\"Mounts\":\"/tmp/airline-r\u2026\",\"Name\":\"airline-ft-825445010659-worker1-1\",\"Names\":\"airline-ft-825445010659-worker1-1\",\"Networks\":\"airline-ft-825445010659_default\",\"Ports\":\"\",\"Project\":\"airline-ft-825445010659\",\"Publishers\":[],\"RunningFor\":\"Less than a second ago\",\"Service\":\"worker1\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up Less than a second\"}\n{\"Command\":\"\\\"/opt/entrypoint.sh \u2026\\\"\",\"CreatedAt\":\"2026-10-16 12:20:47 -0500 CDT\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"ec67d8b32697\",\"Image\":\"airline-spark:3.5.9\",\"Labels\":\"com.docker.compose.project.working_dir=/tmp/airline-reconstruction/lab,com.docker.compose.service=worker2,com.docker.compose.version=5.5.0,org.opencontainers.image.version=22.04,com.docker.compose.container-number=1,com.docker.compose.image=sha256:3808fa504052c9c0e629f7db00c4d47df4314d671989e0cc3b63da4f8eac3fb4,com.docker.compose.project=airline-ft-825445010659,com.docker.compose.project.config_files=/tmp/airline-reconstruction/lab/compose.yml,com.docker.compose.config-hash=93d2304c39fba13c7a5dbd65b1ff635f8089f929cbd635f2c486fef7c4360c41,com.docker.compose.depends_on=,com.docker.compose.oneoff=False\",\"LocalVolumes\":\"0\",\"Mounts\":\"/tmp/airline-r\u2026\",\"Name\":\"airline-ft-825445010659-worker2-1\",\"Names\":\"airline-ft-825445010659-worker2-1\",\"Networks\":\"airline-ft-825445010659_default\",\"Ports\":\"\",\"Project\":\"airline-ft-825445010659\",\"Publishers\":[],\"RunningFor\":\"Less than a second ago\",\"Service\":\"worker2\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up Less than a second\"}\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import json,urllib.request; d=json.load(urllib.request.urlopen('http://master:8080/json/')); assert len([w for w in d['workers'] if w['state']=='ALIVE'])==2; print(json.dumps(d))"
+      ],
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1348, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/lib/python3.10/http/client.py\", line 1312, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1358, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1307, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1067, in _send_output\n    self.send(msg)\n  File \"/usr/lib/python3.10/http/client.py\", line 1005, in send\n    self.connect()\n  File \"/usr/lib/python3.10/http/client.py\", line 971, in connect\n    self.sock = self._create_connection(\n  File \"/usr/lib/python3.10/socket.py\", line 845, in create_connection\n    raise err\n  File \"/usr/lib/python3.10/socket.py\", line 833, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.10/urllib/request.py\", line 216, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 519, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 536, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/usr/lib/python3.10/urllib/request.py\", line 496, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1377, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1351, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "ps",
+        "-a",
+        "--status",
+        "exited",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import json,urllib.request; d=json.load(urllib.request.urlopen('http://master:8080/json/')); assert len([w for w in d['workers'] if w['state']=='ALIVE'])==2; print(json.dumps(d))"
+      ],
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1348, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/lib/python3.10/http/client.py\", line 1312, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1358, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1307, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1067, in _send_output\n    self.send(msg)\n  File \"/usr/lib/python3.10/http/client.py\", line 1005, in send\n    self.connect()\n  File \"/usr/lib/python3.10/http/client.py\", line 971, in connect\n    self.sock = self._create_connection(\n  File \"/usr/lib/python3.10/socket.py\", line 845, in create_connection\n    raise err\n  File \"/usr/lib/python3.10/socket.py\", line 833, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.10/urllib/request.py\", line 216, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 519, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 536, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/usr/lib/python3.10/urllib/request.py\", line 496, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1377, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1351, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "ps",
+        "-a",
+        "--status",
+        "exited",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import json,urllib.request; d=json.load(urllib.request.urlopen('http://master:8080/json/')); assert len([w for w in d['workers'] if w['state']=='ALIVE'])==2; print(json.dumps(d))"
+      ],
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1348, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/lib/python3.10/http/client.py\", line 1312, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1358, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1307, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1067, in _send_output\n    self.send(msg)\n  File \"/usr/lib/python3.10/http/client.py\", line 1005, in send\n    self.connect()\n  File \"/usr/lib/python3.10/http/client.py\", line 971, in connect\n    self.sock = self._create_connection(\n  File \"/usr/lib/python3.10/socket.py\", line 845, in create_connection\n    raise err\n  File \"/usr/lib/python3.10/socket.py\", line 833, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.10/urllib/request.py\", line 216, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 519, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 536, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/usr/lib/python3.10/urllib/request.py\", line 496, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1377, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1351, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "ps",
+        "-a",
+        "--status",
+        "exited",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import json,urllib.request; d=json.load(urllib.request.urlopen('http://master:8080/json/')); assert len([w for w in d['workers'] if w['state']=='ALIVE'])==2; print(json.dumps(d))"
+      ],
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1348, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/lib/python3.10/http/client.py\", line 1312, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1358, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1307, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1067, in _send_output\n    self.send(msg)\n  File \"/usr/lib/python3.10/http/client.py\", line 1005, in send\n    self.connect()\n  File \"/usr/lib/python3.10/http/client.py\", line 971, in connect\n    self.sock = self._create_connection(\n  File \"/usr/lib/python3.10/socket.py\", line 845, in create_connection\n    raise err\n  File \"/usr/lib/python3.10/socket.py\", line 833, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.10/urllib/request.py\", line 216, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 519, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 536, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/usr/lib/python3.10/urllib/request.py\", line 496, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1377, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1351, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "ps",
+        "-a",
+        "--status",
+        "exited",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import json,urllib.request; d=json.load(urllib.request.urlopen('http://master:8080/json/')); assert len([w for w in d['workers'] if w['state']=='ALIVE'])==2; print(json.dumps(d))"
+      ],
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1348, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/lib/python3.10/http/client.py\", line 1312, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1358, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1307, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/lib/python3.10/http/client.py\", line 1067, in _send_output\n    self.send(msg)\n  File \"/usr/lib/python3.10/http/client.py\", line 1005, in send\n    self.connect()\n  File \"/usr/lib/python3.10/http/client.py\", line 971, in connect\n    self.sock = self._create_connection(\n  File \"/usr/lib/python3.10/socket.py\", line 845, in create_connection\n    raise err\n  File \"/usr/lib/python3.10/socket.py\", line 833, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.10/urllib/request.py\", line 216, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 519, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 536, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/usr/lib/python3.10/urllib/request.py\", line 496, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1377, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1351, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "ps",
+        "-a",
+        "--status",
+        "exited",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import json,urllib.request; d=json.load(urllib.request.urlopen('http://master:8080/json/')); assert len([w for w in d['workers'] if w['state']=='ALIVE'])==2; print(json.dumps(d))"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"url\": \"spark://master:7077\", \"workers\": [{\"id\": \"worker-20261016172053-worker1-39055\", \"host\": \"worker1\", \"port\": 39055, \"webuiaddress\": \"http://worker1:8081\", \"cores\": 1, \"coresused\": 0, \"coresfree\": 1, \"memory\": 768, \"memoryused\": 0, \"memoryfree\": 768, \"resources\": {}, \"resourcesused\": {}, \"resourcesfree\": {}, \"state\": \"ALIVE\", \"lastheartbeat\": 1792171255815}, {\"id\": \"worker-20261016172053-worker2-42707\", \"host\": \"worker2\", \"port\": 42707, \"webuiaddress\": \"http://worker2:8081\", \"cores\": 1, \"coresused\": 0, \"coresfree\": 1, \"memory\": 768, \"memoryused\": 0, \"memoryfree\": 768, \"resources\": {}, \"resourcesused\": {}, \"resourcesfree\": {}, \"state\": \"ALIVE\", \"lastheartbeat\": 1792171255830}], \"aliveworkers\": 2, \"cores\": 2, \"coresused\": 0, \"memory\": 1536, \"memoryused\": 0, \"resources\": [{}, {}], \"resourcesused\": [{}, {}], \"activeapps\": [], \"completedapps\": [], \"activedrivers\": [], \"completeddrivers\": [], \"status\": \"ALIVE\"}\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "ps",
+        "-q",
+        "worker1"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "159e7547ab9b219e8b580f1cb55e7185fba2a8a8a603cf2af18460adc198e0d7\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "kill",
+        "-s",
+        "SIGKILL",
+        "worker1"
+      ],
+      "exit_code": 0,
+      "stderr": " Container airline-ft-825445010659-worker1-1 Killing \n Container airline-ft-825445010659-worker1-1 Killed \n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "/lab/run_experiment.py",
+        "--workload"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-ft-825445010659",
+        "-f",
+        "/tmp/airline-reconstruction/lab/compose.yml",
+        "down",
+        "--volumes",
+        "--remove-orphans"
+      ],
+      "exit_code": 0,
+      "stderr": " Container airline-ft-825445010659-master-1 Stopping \n Container airline-ft-825445010659-driver-1 Stopping \n Container airline-ft-825445010659-worker2-1 Stopping \n Container airline-ft-825445010659-worker1-1 Stopping \n Container airline-ft-825445010659-worker1-1 Stopped \n Container airline-ft-825445010659-worker1-1 Removing \n Container airline-ft-825445010659-worker1-1 Removed \n Container airline-ft-825445010659-master-1 Stopped \n Container airline-ft-825445010659-master-1 Removing \n Container airline-ft-825445010659-master-1 Removed \n Container airline-ft-825445010659-worker2-1 Stopped \n Container airline-ft-825445010659-worker2-1 Removing \n Container airline-ft-825445010659-worker2-1 Removed \n Container airline-ft-825445010659-driver-1 Stopped \n Container airline-ft-825445010659-driver-1 Removing \n Container airline-ft-825445010659-driver-1 Removed \n Network airline-ft-825445010659_default Removing \n Network airline-ft-825445010659_default Removed \n",
+      "stdout": ""
+    }
+  ],
+  "preexisting_containers_after": "b2828380d16120c67890597980d19618597a1eada5f38fc24e41b8b9b7cc8f57 serene_mahavira Up 33 seconds\nb80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03 airline-revision-spark-notebook-1 Exited (0) 3 hours ago\n77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1 airline-revision-spark-worker-1-1 Exited (143) 3 hours ago\n4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1 airline-revision-spark-worker-2-1 Exited (143) 3 hours ago\nd4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d airline-revision-spark-master-1 Exited (143) 3 hours ago\n",
+  "preexisting_containers_before": "dd9f2150a7cefbb8b9220a0d532b9f1a15036d98150828786f9d323329dea29d vigilant_swirles Up About a minute\nb80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03 airline-revision-spark-notebook-1 Exited (0) 2 hours ago\n77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1 airline-revision-spark-worker-1-1 Exited (143) 2 hours ago\n4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1 airline-revision-spark-worker-2-1 Exited (143) 2 hours ago\nd4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d airline-revision-spark-master-1 Exited (143) 2 hours ago\n",
+  "project": "airline-ft-825445010659",
+  "remaining_containers": "",
+  "source_sha256": {
+    "compose.yml": "b7adc0fde3a33b5e87d6c93c4bb4140dba2b31f12a1aa7f93e9aac2cff3f8d87",
+    "run_experiment.py": "5fec5229dc62a14b771b059257d8671b5b550cd2ab6f0768028cfa09aba44c42"
+  }
+}

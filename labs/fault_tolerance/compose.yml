@@ -1,0 +1,43 @@
+x-runtime: &runtime
+  image: airline-spark:3.5.9
+  user: "0:${LAB_GID}"
+  restart: "no"
+  cpus: 1.0
+  mem_limit: 1536m
+  pids_limit: 256
+  logging:
+    driver: json-file
+    options: {max-size: 5m, max-file: "1"}
+  environment:
+    SPARK_DAEMON_MEMORY: 256m
+    SPARK_SUBMIT_OPTS: -Duser.home=/tmp
+    SPARK_WORKER_DIR: /tmp/work
+    SPARK_LOG_DIR: /tmp/logs
+    PYTHONPATH: /opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip
+    PYTHONDONTWRITEBYTECODE: "1"
+  volumes:
+    - ${LAB_OUTPUT}:/evidence
+  tmpfs:
+    - /tmp:size=256m,mode=1777,exec
+services:
+  master:
+    <<: *runtime
+    hostname: master
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.master.Master, --host, master]
+  worker1:
+    <<: *runtime
+    hostname: worker1
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --host, worker1, --cores, "1", --memory, 768m, spark://master:7077]
+  worker2:
+    <<: *runtime
+    hostname: worker2
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --host, worker2, --cores, "1", --memory, 768m, spark://master:7077]
+  driver:
+    <<: *runtime
+    hostname: driver
+    cpus: 2.0
+    mem_limit: 2g
+    command: [sleep, infinity]
+    volumes:
+      - ${LAB_OUTPUT}:/evidence
+      - ./run_experiment.py:/lab/run_experiment.py:ro

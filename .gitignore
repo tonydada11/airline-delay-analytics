@@ -1,57 +1,38 @@
-# Local datasets and generated data
-data/
+# Raw inputs, warehouse outputs, and verification scratch.
+/data/
 
-# Keep reproducible binary data and delivery/log archives out of source review.
+# Reproducible models, predictions and experiment runtime outputs.
+/artifacts/flighttime-v3/
+/artifacts/experiments/
+/artifacts/models/
+/artifacts/metrics/
+/artifacts/predictions/
+/artifacts/offline/
+/artifacts/offline-runs/
+/artifacts/fault_tolerance/
+/studies/*/runtime/
+
+# Generated binaries and delivery archives.
 *.parquet
 *.zip
 *.tar.gz
 *.tgz
 
-# Historical binaries and deliveries are transferred separately from Git.
-/archive/models/
-/archive/deliveries/
-/archive/failed-publication/
-
-# Reproducible Spark ML outputs
-artifacts/models/*
-!artifacts/models/.gitkeep
-artifacts/metrics/*
-!artifacts/metrics/.gitkeep
-artifacts/predictions/*
-!artifacts/predictions/.gitkeep
-artifacts/experiments/
-artifacts/flighttime-v3/
-artifacts/failed-publication/
-
-# Python runtime caches
+# Local Python, notebook, editor and host state.
 __pycache__/
 *.py[cod]
-
-# Temporarily excluded project scripts
-scripts/
-!scripts/
-scripts/*
-!scripts/run_pipeline.sh
-!scripts/run_tests.sh
-!scripts/scripts_download_bts.sh
-!scripts/start_cluster.sh
-!scripts/stop_cluster.sh
-
-# macOS metadata
-.DS_Store
-
-# IntelliJ IDEA local workspace state
-.idea/workspace.xml
-.idea/**/workspace.xml
-.idea/shelf/
-.idea/httpRequests/
-.idea/dataSources/
-.idea/dataSources.local.xml
-!scripts/verify_dependencies.py
-!scripts/package_evidence.py
-!scripts/validate_csv.py
 .pytest_cache/
-notebooks/.ipynb_checkpoints/
-
-# Host-specific mounts; a clean clone uses docker-compose.yml.
+.ipynb_checkpoints/
+.idea/
+.DS_Store
 docker-compose.override.yml
+
+# Windows download metadata.
+*:Zone.Identifier
+
+# Local-only documentation and helpers.
+/docs/RUNBOOK.md
+/docs/guides/video-walkthrough-script.md
+/labs/fault_tolerance/worker-recovery.md
+/scripts/jupyter_url.sh
+/scripts/render_guide.py

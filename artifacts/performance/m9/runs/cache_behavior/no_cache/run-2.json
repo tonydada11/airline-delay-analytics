@@ -1,22 +1,22 @@
 {
   "action_seconds": {
-    "first": 0.4340644159999556,
-    "second": 0.3875631250000424
+    "first": 0.10275527596240863,
+    "second": 0.2076538690016605
   },
-  "elapsed_seconds": 0.821627540999998,
+  "elapsed_seconds": 0.31040914496406913,
   "executed_plan": "AdaptiveSparkPlan isFinalPlan=false\n+- HashAggregate(keys=[], functions=[count(1), sum(scheduled_flights#17015L), sum(delayed_flights#17020L)], output=[route_daily_rows#17038L, scheduled_flights#17040L, delayed_flights#17042L])\n   +- Exchange SinglePartition, ENSURE_REQUIREMENTS, [plan_id=16137]\n      +- HashAggregate(keys=[], functions=[partial_count(1), partial_sum(scheduled_flights#17015L), partial_sum(delayed_flights#17020L)], output=[count#17061L, sum#17062L, sum#17063L])\n         +- Project [scheduled_flights#17015L, delayed_flights#17020L]\n            +- Filter ((isnotnull(flight_date#17012) AND (flight_date#17012 >= 2023-01-01)) AND (flight_date#17012 <= 2023-04-30))\n               +- FileScan parquet [flight_date#17012,scheduled_flights#17015L,delayed_flights#17020L] Batched: true, DataFilters: [isnotnull(flight_date#17012), (flight_date#17012 >= 2023-01-01), (flight_date#17012 <= 2023-04-30)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/workspace/data/warehouse/dws/route_daily], PartitionFilters: [], PushedFilters: [IsNotNull(flight_date), GreaterThanOrEqual(flight_date,2023-01-01), LessThanOrEqual(flight_date,..., ReadSchema: struct<flight_date:date,scheduled_flights:bigint,delayed_flights:bigint>\n",
   "experiment": "cache_behavior",
   "first_action_runtime": {
     "available": true,
     "diskBytesSpilled": 0,
-    "executorRunTime": 446,
-    "inputBytes": 3941832,
-    "inputRecords": 1068003,
+    "executorRunTime": 53,
+    "inputBytes": 4007168,
+    "inputRecords": 1097701,
     "job_count": 2,
     "jobs": [
       {
         "job_id": 388,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "num_tasks": 2,
         "stage_ids": [
           658
@@ -24,7 +24,7 @@
       },
       {
         "job_id": 389,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "num_tasks": 3,
         "stage_ids": [
           659,
@@ -45,11 +45,11 @@
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 435,
-        "inputBytes": 3941832,
-        "inputRecords": 1068003,
+        "executorRunTime": 48,
+        "inputBytes": 4007168,
+        "inputRecords": 1097701,
         "memoryBytesSpilled": 0,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "numTasks": 2,
         "outputBytes": 0,
         "outputRecords": 0,
@@ -65,29 +65,29 @@
             0.0
           ],
           "duration": [
-            299.0,
-            299.0,
-            299.0
+            40.0,
+            40.0,
+            40.0
           ],
           "executorCpuTime": [
-            80132124.0,
-            80132124.0,
-            80132124.0
+            27814126.0,
+            27814126.0,
+            27814126.0
           ],
           "executorDeserializeCpuTime": [
-            19780170.0,
-            19780170.0,
-            19780170.0
+            4414889.0,
+            4414889.0,
+            4414889.0
           ],
           "executorDeserializeTime": [
-            33.0,
-            33.0,
-            33.0
+            6.0,
+            6.0,
+            6.0
           ],
           "executorRunTime": [
-            271.0,
-            271.0,
-            271.0
+            30.0,
+            30.0,
+            30.0
           ],
           "gettingResultTime": [
             0.0,
@@ -96,14 +96,14 @@
           ],
           "inputMetrics": {
             "bytesRead": [
-              3272864.0,
-              3272864.0,
-              3272864.0
+              3338200.0,
+              3338200.0,
+              3338200.0
             ],
             "recordsRead": [
-              768003.0,
-              768003.0,
-              768003.0
+              797701.0,
+              797701.0,
+              797701.0
             ]
           },
           "jvmGcTime": [
@@ -149,9 +149,9 @@
             2185.0
           ],
           "schedulerDelay": [
-            18.0,
-            18.0,
-            18.0
+            5.0,
+            5.0,
+            5.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
@@ -259,9 +259,9 @@
               1.0
             ],
             "writeTime": [
-              637449.0,
-              637449.0,
-              637449.0
+              276727.0,
+              276727.0,
+              276727.0
             ]
           }
         }
@@ -269,11 +269,11 @@
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 11,
+        "executorRunTime": 5,
         "inputBytes": 0,
         "inputRecords": 0,
         "memoryBytesSpilled": 0,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "numTasks": 1,
         "outputBytes": 0,
         "outputRecords": 0,
@@ -289,29 +289,29 @@
             0.0
           ],
           "duration": [
-            24.0,
-            24.0,
-            24.0
+            14.0,
+            14.0,
+            14.0
           ],
           "executorCpuTime": [
-            4310833.0,
-            4310833.0,
-            4310833.0
+            2465712.0,
+            2465712.0,
+            2465712.0
           ],
           "executorDeserializeCpuTime": [
-            3195877.0,
-            3195877.0,
-            3195877.0
+            2923581.0,
+            2923581.0,
+            2923581.0
           ],
           "executorDeserializeTime": [
-            7.0,
-            7.0,
-            7.0
+            5.0,
+            5.0,
+            5.0
           ],
           "executorRunTime": [
-            11.0,
-            11.0,
-            11.0
+            5.0,
+            5.0,
+            5.0
           ],
           "gettingResultTime": [
             0.0,
@@ -373,9 +373,9 @@
             4007.0
           ],
           "schedulerDelay": [
-            6.0,
-            6.0,
-            6.0
+            4.0,
+            4.0,
+            4.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
@@ -414,9 +414,9 @@
               0.0
             ],
             "remoteReqsDuration": [
-              3.0,
-              3.0,
-              3.0
+              1.0,
+              1.0,
+              1.0
             ],
             "shufflePushReadMetricsDist": {
               "corruptMergedBlockChunks": [
@@ -512,14 +512,14 @@
   "runtime": {
     "available": true,
     "diskBytesSpilled": 0,
-    "executorRunTime": 765,
-    "inputBytes": 9272208,
-    "inputRecords": 2136006,
+    "executorRunTime": 198,
+    "inputBytes": 9406976,
+    "inputRecords": 2195402,
     "job_count": 5,
     "jobs": [
       {
         "job_id": 388,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "num_tasks": 2,
         "stage_ids": [
           658
@@ -527,7 +527,7 @@
       },
       {
         "job_id": 389,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "num_tasks": 3,
         "stage_ids": [
           659,
@@ -536,7 +536,7 @@
       },
       {
         "job_id": 390,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:673",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:674",
         "num_tasks": 2,
         "stage_ids": [
           661
@@ -544,7 +544,7 @@
       },
       {
         "job_id": 391,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:673",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:674",
         "num_tasks": 3,
         "stage_ids": [
           662,
@@ -553,7 +553,7 @@
       },
       {
         "job_id": 392,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:673",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:674",
         "num_tasks": 4,
         "stage_ids": [
           665,
@@ -566,20 +566,20 @@
     "numTasks": 7,
     "outputBytes": 0,
     "outputRecords": 0,
-    "shuffleReadBytes": 11982,
+    "shuffleReadBytes": 11993,
     "shuffleReadRecords": 687,
-    "shuffleWriteBytes": 11982,
+    "shuffleWriteBytes": 11993,
     "shuffleWriteRecords": 687,
     "stage_count": 5,
     "stages": [
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 435,
-        "inputBytes": 3941832,
-        "inputRecords": 1068003,
+        "executorRunTime": 48,
+        "inputBytes": 4007168,
+        "inputRecords": 1097701,
         "memoryBytesSpilled": 0,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "numTasks": 2,
         "outputBytes": 0,
         "outputRecords": 0,
@@ -595,29 +595,29 @@
             0.0
           ],
           "duration": [
-            299.0,
-            299.0,
-            299.0
+            40.0,
+            40.0,
+            40.0
           ],
           "executorCpuTime": [
-            80132124.0,
-            80132124.0,
-            80132124.0
+            27814126.0,
+            27814126.0,
+            27814126.0
           ],
           "executorDeserializeCpuTime": [
-            19780170.0,
-            19780170.0,
-            19780170.0
+            4414889.0,
+            4414889.0,
+            4414889.0
           ],
           "executorDeserializeTime": [
-            33.0,
-            33.0,
-            33.0
+            6.0,
+            6.0,
+            6.0
           ],
           "executorRunTime": [
-            271.0,
-            271.0,
-            271.0
+            30.0,
+            30.0,
+            30.0
           ],
           "gettingResultTime": [
             0.0,
@@ -626,14 +626,14 @@
           ],
           "inputMetrics": {
             "bytesRead": [
-              3272864.0,
-              3272864.0,
-              3272864.0
+              3338200.0,
+              3338200.0,
+              3338200.0
             ],
             "recordsRead": [
-              768003.0,
-              768003.0,
-              768003.0
+              797701.0,
+              797701.0,
+              797701.0
             ]
           },
           "jvmGcTime": [
@@ -679,9 +679,9 @@
             2185.0
           ],
           "schedulerDelay": [
-            18.0,
-            18.0,
-            18.0
+            5.0,
+            5.0,
+            5.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
@@ -789,9 +789,9 @@
               1.0
             ],
             "writeTime": [
-              637449.0,
-              637449.0,
-              637449.0
+              276727.0,
+              276727.0,
+              276727.0
             ]
           }
         }
@@ -799,11 +799,11 @@
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 11,
+        "executorRunTime": 5,
         "inputBytes": 0,
         "inputRecords": 0,
         "memoryBytesSpilled": 0,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:657",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:658",
         "numTasks": 1,
         "outputBytes": 0,
         "outputRecords": 0,
@@ -819,29 +819,29 @@
             0.0
           ],
           "duration": [
-            24.0,
-            24.0,
-            24.0
+            14.0,
+            14.0,
+            14.0
           ],
           "executorCpuTime": [
-            4310833.0,
-            4310833.0,
-            4310833.0
+            2465712.0,
+            2465712.0,
+            2465712.0
           ],
           "executorDeserializeCpuTime": [
-            3195877.0,
-            3195877.0,
-            3195877.0
+            2923581.0,
+            2923581.0,
+            2923581.0
           ],
           "executorDeserializeTime": [
-            7.0,
-            7.0,
-            7.0
+            5.0,
+            5.0,
+            5.0
           ],
           "executorRunTime": [
-            11.0,
-            11.0,
-            11.0
+            5.0,
+            5.0,
+            5.0
           ],
           "gettingResultTime": [
             0.0,
@@ -903,9 +903,9 @@
             4007.0
           ],
           "schedulerDelay": [
-            6.0,
-            6.0,
-            6.0
+            4.0,
+            4.0,
+            4.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
@@ -944,9 +944,9 @@
               0.0
             ],
             "remoteReqsDuration": [
-              3.0,
-              3.0,
-              3.0
+              1.0,
+              1.0,
+              1.0
             ],
             "shufflePushReadMetricsDist": {
               "corruptMergedBlockChunks": [
@@ -1023,17 +1023,17 @@
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 300,
-        "inputBytes": 5330376,
-        "inputRecords": 1068003,
+        "executorRunTime": 137,
+        "inputBytes": 5399808,
+        "inputRecords": 1097701,
         "memoryBytesSpilled": 0,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:673",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:674",
         "numTasks": 2,
         "outputBytes": 0,
         "outputRecords": 0,
         "shuffleReadBytes": 0,
         "shuffleReadRecords": 0,
-        "shuffleWriteBytes": 11770,
+        "shuffleWriteBytes": 11781,
         "shuffleWriteRecords": 684,
         "stage_id": 661,
         "task_summary": {
@@ -1043,29 +1043,29 @@
             0.0
           ],
           "duration": [
-            197.0,
-            197.0,
-            197.0
+            93.0,
+            93.0,
+            93.0
           ],
           "executorCpuTime": [
-            80545250.0,
-            80545250.0,
-            80545250.0
+            79524639.0,
+            79524639.0,
+            79524639.0
           ],
           "executorDeserializeCpuTime": [
-            9981874.0,
-            9981874.0,
-            9981874.0
+            5281463.0,
+            5281463.0,
+            5281463.0
           ],
           "executorDeserializeTime": [
-            17.0,
-            17.0,
-            17.0
+            8.0,
+            8.0,
+            8.0
           ],
           "executorRunTime": [
-            175.0,
-            175.0,
-            175.0
+            82.0,
+            82.0,
+            82.0
           ],
           "gettingResultTime": [
             0.0,
@@ -1074,20 +1074,20 @@
           ],
           "inputMetrics": {
             "bytesRead": [
-              4595872.0,
-              4595872.0,
-              4595872.0
+              4665304.0,
+              4665304.0,
+              4665304.0
             ],
             "recordsRead": [
-              768003.0,
-              768003.0,
-              768003.0
+              797701.0,
+              797701.0,
+              797701.0
             ]
           },
           "jvmGcTime": [
-            54.0,
-            54.0,
-            54.0
+            0.0,
+            0.0,
+            0.0
           ],
           "memoryBytesSpilled": [
             0.0,
@@ -1122,14 +1122,14 @@
             0.0
           ],
           "resultSize": [
-            2823.0,
-            2823.0,
-            2823.0
+            2780.0,
+            2780.0,
+            2780.0
           ],
           "schedulerDelay": [
-            8.0,
-            8.0,
-            8.0
+            6.0,
+            6.0,
+            6.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
@@ -1237,9 +1237,9 @@
               342.0
             ],
             "writeTime": [
-              2499592.0,
-              2499592.0,
-              2499592.0
+              662137.0,
+              662137.0,
+              662137.0
             ]
           }
         }
@@ -1247,15 +1247,15 @@
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 16,
+        "executorRunTime": 5,
         "inputBytes": 0,
         "inputRecords": 0,
         "memoryBytesSpilled": 0,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:673",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:674",
         "numTasks": 1,
         "outputBytes": 0,
         "outputRecords": 0,
-        "shuffleReadBytes": 11770,
+        "shuffleReadBytes": 11781,
         "shuffleReadRecords": 684,
         "shuffleWriteBytes": 70,
         "shuffleWriteRecords": 1,
@@ -1267,29 +1267,29 @@
             0.0
           ],
           "duration": [
-            43.0,
-            43.0,
-            43.0
+            15.0,
+            15.0,
+            15.0
           ],
           "executorCpuTime": [
-            9025706.0,
-            9025706.0,
-            9025706.0
+            4453576.0,
+            4453576.0,
+            4453576.0
           ],
           "executorDeserializeCpuTime": [
-            10708754.0,
-            10708754.0,
-            10708754.0
+            4112145.0,
+            4112145.0,
+            4112145.0
           ],
           "executorDeserializeTime": [
-            19.0,
-            19.0,
-            19.0
+            6.0,
+            6.0,
+            6.0
           ],
           "executorRunTime": [
-            16.0,
-            16.0,
-            16.0
+            5.0,
+            5.0,
+            5.0
           ],
           "gettingResultTime": [
             0.0,
@@ -1351,15 +1351,15 @@
             5852.0
           ],
           "schedulerDelay": [
-            8.0,
-            8.0,
-            8.0
+            4.0,
+            4.0,
+            4.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
-              3.0,
-              3.0,
-              3.0
+              0.0,
+              0.0,
+              0.0
             ],
             "localBlocksFetched": [
               1.0,
@@ -1367,9 +1367,9 @@
               1.0
             ],
             "readBytes": [
-              11770.0,
-              11770.0,
-              11770.0
+              11781.0,
+              11781.0,
+              11781.0
             ],
             "readRecords": [
               684.0,
@@ -1382,9 +1382,9 @@
               1.0
             ],
             "remoteBytesRead": [
-              5867.0,
-              5867.0,
-              5867.0
+              5878.0,
+              5878.0,
+              5878.0
             ],
             "remoteBytesReadToDisk": [
               0.0,
@@ -1392,9 +1392,9 @@
               0.0
             ],
             "remoteReqsDuration": [
-              6.0,
-              6.0,
-              6.0
+              1.0,
+              1.0,
+              1.0
             ],
             "shufflePushReadMetricsDist": {
               "corruptMergedBlockChunks": [
@@ -1461,9 +1461,9 @@
               1.0
             ],
             "writeTime": [
-              530735.0,
-              530735.0,
-              530735.0
+              229639.0,
+              229639.0,
+              229639.0
             ]
           }
         }
@@ -1475,7 +1475,7 @@
         "inputBytes": 0,
         "inputRecords": 0,
         "memoryBytesSpilled": 0,
-        "name": "first at /workspace/src/airline/performance/run_experiments.py:673",
+        "name": "first at /workspace/src/airline/performance/run_experiments.py:674",
         "numTasks": 1,
         "outputBytes": 0,
         "outputRecords": 0,
@@ -1491,24 +1491,24 @@
             0.0
           ],
           "duration": [
-            9.0,
-            9.0,
-            9.0
+            11.0,
+            11.0,
+            11.0
           ],
           "executorCpuTime": [
-            1738583.0,
-            1738583.0,
-            1738583.0
+            1920599.0,
+            1920599.0,
+            1920599.0
           ],
           "executorDeserializeCpuTime": [
-            1973416.0,
-            1973416.0,
-            1973416.0
+            2638514.0,
+            2638514.0,
+            2638514.0
           ],
           "executorDeserializeTime": [
-            3.0,
-            3.0,
-            3.0
+            4.0,
+            4.0,
+            4.0
           ],
           "executorRunTime": [
             3.0,
@@ -1575,9 +1575,9 @@
             4006.0
           ],
           "schedulerDelay": [
-            3.0,
-            3.0,
-            3.0
+            4.0,
+            4.0,
+            4.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [

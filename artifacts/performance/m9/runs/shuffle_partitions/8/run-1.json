@@ -1,5 +1,5 @@
 {
-  "elapsed_seconds": 3.220844210999985,
+  "elapsed_seconds": 1.6369599959580228,
   "executed_plan": "AdaptiveSparkPlan isFinalPlan=false\n+- Project [flight_date#10277, origin#10286, destination#10514, scheduled_flights#10538L, completed_flights#10540L, cancelled_flights#10542L, diverted_flights#10544L, eligible_delay_flights#10546L, delayed_flights#10548L, CASE WHEN (eligible_delay_flights#10546L > 0) THEN (cast(delayed_flights#10548L as double) / cast(eligible_delay_flights#10546L as double)) END AS delay_rate#10561, avg_arrival_delay#10550, CASE WHEN (scheduled_flights#10538L > 0) THEN (cast(cancelled_flights#10542L as double) / cast(scheduled_flights#10538L as double)) END AS cancellation_rate#10573]\n   +- HashAggregate(keys=[flight_date#10277, origin#10286, destination#10514], functions=[count(1), sum(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN 1 ELSE 0 END), sum(is_cancelled#10381), sum(is_diverted#10382), count(is_arrival_delayed_15m#10387), sum(is_arrival_delayed_15m#10387), avg(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN arr_delay#10314 END)], output=[flight_date#10277, origin#10286, destination#10514, scheduled_flights#10538L, completed_flights#10540L, cancelled_flights#10542L, diverted_flights#10544L, eligible_delay_flights#10546L, delayed_flights#10548L, avg_arrival_delay#10550])\n      +- Exchange hashpartitioning(flight_date#10277, origin#10286, destination#10514, 8), ENSURE_REQUIREMENTS, [plan_id=9518]\n         +- HashAggregate(keys=[flight_date#10277, origin#10286, destination#10514], functions=[partial_count(1), partial_sum(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN 1 ELSE 0 END), partial_sum(is_cancelled#10381), partial_sum(is_diverted#10382), partial_count(is_arrival_delayed_15m#10387), partial_sum(is_arrival_delayed_15m#10387), partial_avg(CASE WHEN ((is_cancelled#10381 = 0) AND (is_diverted#10382 = 0)) THEN arr_delay#10314 END)], output=[flight_date#10277, origin#10286, destination#10514, count#10606L, sum#10607L, sum#10608L, sum#10609L, count#10610L, sum#10611L, sum#10612, count#10613L])\n            +- Project [flight_date#10277, origin#10286, is_cancelled#10381, is_diverted#10382, is_arrival_delayed_15m#10387, arr_delay#10314, dest#10295 AS destination#10514]\n               +- Filter ((isnotnull(flight_date#10277) AND (flight_date#10277 >= 2023-01-01)) AND (flight_date#10277 <= 2023-04-30))\n                  +- FileScan parquet [flight_date#10277,origin#10286,dest#10295,arr_delay#10314,is_cancelled#10381,is_diverted#10382,is_arrival_delayed_15m#10387,year#10388,month#10389] Batched: true, DataFilters: [isnotnull(flight_date#10277), (flight_date#10277 >= 2023-01-01), (flight_date#10277 <= 2023-04-30)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/workspace/data/warehouse/dwd/flights], PartitionFilters: [((year#10388 > 2023) OR ((year#10388 = 2023) AND (month#10389 >= 1))), ((year#10388 < 2023) OR (..., PushedFilters: [IsNotNull(flight_date), GreaterThanOrEqual(flight_date,2023-01-01), LessThanOrEqual(flight_date,..., ReadSchema: struct<flight_date:date,origin:string,dest:string,arr_delay:double,is_cancelled:int,is_diverted:i...\n",
   "experiment": "shuffle_partitions",
   "logical_differences": {
@@ -19,7 +19,7 @@
   "runtime": {
     "available": true,
     "diskBytesSpilled": 0,
-    "executorRunTime": 5051,
+    "executorRunTime": 2928,
     "inputBytes": 11972280,
     "inputRecords": 2183349,
     "job_count": 2,
@@ -44,7 +44,7 @@
     ],
     "memoryBytesSpilled": 0,
     "numTasks": 5,
-    "outputBytes": 4825374,
+    "outputBytes": 4814296,
     "outputRecords": 570181,
     "shuffleReadBytes": 18038257,
     "shuffleReadRecords": 716167,
@@ -55,7 +55,7 @@
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 3657,
+        "executorRunTime": 1868,
         "inputBytes": 11972280,
         "inputRecords": 2183349,
         "memoryBytesSpilled": 0,
@@ -75,29 +75,29 @@
             0.0
           ],
           "duration": [
-            1925.0,
-            1925.0,
-            1925.0
+            964.0,
+            964.0,
+            964.0
           ],
           "executorCpuTime": [
-            1231941043.0,
-            1231941043.0,
-            1231941043.0
+            936888422.0,
+            936888422.0,
+            936888422.0
           ],
           "executorDeserializeCpuTime": [
-            24750331.0,
-            24750331.0,
-            24750331.0
+            5468891.0,
+            5468891.0,
+            5468891.0
           ],
           "executorDeserializeTime": [
-            39.0,
-            39.0,
-            39.0
+            13.0,
+            13.0,
+            13.0
           ],
           "executorRunTime": [
-            1867.0,
-            1867.0,
-            1867.0
+            947.0,
+            947.0,
+            947.0
           ],
           "gettingResultTime": [
             0.0,
@@ -117,9 +117,9 @@
             ]
           },
           "jvmGcTime": [
-            58.0,
-            58.0,
-            58.0
+            7.0,
+            7.0,
+            7.0
           ],
           "memoryBytesSpilled": [
             0.0,
@@ -159,9 +159,9 @@
             3002.0
           ],
           "schedulerDelay": [
-            61.0,
-            61.0,
-            61.0
+            5.0,
+            5.0,
+            5.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
@@ -269,9 +269,9 @@
               365283.0
             ],
             "writeTime": [
-              50946361.0,
-              50946361.0,
-              50946361.0
+              12129958.0,
+              12129958.0,
+              12129958.0
             ]
           }
         }
@@ -279,13 +279,13 @@
       {
         "attempt_id": 0,
         "diskBytesSpilled": 0,
-        "executorRunTime": 1394,
+        "executorRunTime": 1060,
         "inputBytes": 0,
         "inputRecords": 0,
         "memoryBytesSpilled": 0,
         "name": "parquet at NativeMethodAccessorImpl.java:0",
         "numTasks": 3,
-        "outputBytes": 4825374,
+        "outputBytes": 4814296,
         "outputRecords": 570181,
         "shuffleReadBytes": 18038257,
         "shuffleReadRecords": 716167,
@@ -299,29 +299,29 @@
             0.0
           ],
           "duration": [
-            650.0,
-            710.0,
-            710.0
+            421.0,
+            549.0,
+            549.0
           ],
           "executorCpuTime": [
-            442001122.0,
-            548719071.0,
-            548719071.0
+            394363866.0,
+            517366119.0,
+            517366119.0
           ],
           "executorDeserializeCpuTime": [
-            28082582.0,
-            28389167.0,
-            28389167.0
+            8758188.0,
+            8942250.0,
+            8942250.0
           ],
           "executorDeserializeTime": [
-            40.0,
-            47.0,
-            47.0
+            11.0,
+            11.0,
+            11.0
           ],
           "executorRunTime": [
-            587.0,
-            659.0,
-            659.0
+            406.0,
+            533.0,
+            533.0
           ],
           "gettingResultTime": [
             0.0,
@@ -341,9 +341,9 @@
             ]
           },
           "jvmGcTime": [
-            9.0,
-            31.0,
-            31.0
+            3.0,
+            5.0,
+            5.0
           ],
           "memoryBytesSpilled": [
             0.0,
@@ -352,9 +352,9 @@
           ],
           "outputMetrics": {
             "bytesWritten": [
-              1795253.0,
-              2425316.0,
-              2425316.0
+              1818740.0,
+              2384294.0,
+              2384294.0
             ],
             "recordsWritten": [
               213713.0,
@@ -373,19 +373,19 @@
             1.0
           ],
           "resultSerializationTime": [
-            1.0,
-            2.0,
-            2.0
+            0.0,
+            0.0,
+            0.0
           ],
           "resultSize": [
             6576.0,
-            6619.0,
-            6619.0
+            6576.0,
+            6576.0
           ],
           "schedulerDelay": [
-            12.0,
-            16.0,
-            16.0
+            5.0,
+            5.0,
+            5.0
           ],
           "shuffleReadMetrics": {
             "fetchWaitTime": [
@@ -414,9 +414,9 @@
               1.0
             ],
             "remoteBytesRead": [
-              3457443.0,
-              4395569.0,
-              4395569.0
+              3307923.0,
+              4611232.0,
+              4611232.0
             ],
             "remoteBytesReadToDisk": [
               0.0,
@@ -424,9 +424,9 @@
               0.0
             ],
             "remoteReqsDuration": [
-              11.0,
-              13.0,
-              13.0
+              2.0,
+              3.0,
+              3.0
             ],
             "shufflePushReadMetricsDist": {
               "corruptMergedBlockChunks": [

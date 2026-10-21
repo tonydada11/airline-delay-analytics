@@ -1,6 +1,6 @@
 # Isolated worker-loss experiment
 
-**PASS — newly executed 24 October 2026.** Spark 3.5.9 recovered the exact active
+**PASS — newly executed 2026-10-21 UTC.** Spark 3.5.9 recovered the exact active
 shuffle-map task whose worker was killed. Baseline and recovery outputs matched
 all ten independently calculated groups: 100 rows per group, 1,000 total rows,
 and sum 499,500. This is a worker/executor-loss experiment, separate from the
@@ -21,11 +21,13 @@ The host needs Python 3 and Docker Compose. Spark and its dependencies come from
 uses only Python's standard library. Every new run receives a unique Compose
 project and exclusive output directory; existing evidence cannot be overwritten.
 
-The recorded execution used a staging location before these exact source bytes
-were copied into the reconstructed repository. [execution.json](evidence/execution.json)
-records the exact absolute commands, actual UTC finish time, project name and
-SHA-256 of both source/configuration files. Those hashes match the delivered files.
-The public command above resolves the same configuration from its new location.
+The recorded execution ran from this reconstructed repository using the public
+script above, with `--output artifacts/fault_tolerance/final-location`.
+[execution.json](evidence/execution.json) records exact commands, actual UTC finish
+time, project identity and source/configuration hashes matching the delivered files.
+An earlier staging execution also passed; its full evidence remains in the external
+reconstruction audit. The final source removes an unused earlier polling helper;
+the marker trigger and strict recovery assertions are unchanged.
 
 ## Topology, bounds and isolation
 
@@ -58,7 +60,7 @@ an exactly-once output or a recovery mechanism.
 Actual injection (project identity from the observed run):
 
 ```bash
-docker compose -p airline-ft-825445010659 -f /tmp/airline-reconstruction/lab/compose.yml kill -s SIGKILL worker1
+docker compose -p airline-ft-5c6e8f478911 -f /home/server/workspace/industry/airline-spark-history-lab/labs/fault_tolerance/compose.yml kill -s SIGKILL worker1
 ```
 
 The exact authoritative project/command is in [injection.json](evidence/injection.json).
@@ -69,10 +71,10 @@ The exact authoritative project/command is in [injection.json](evidence/injectio
 |---|---|
 | Baseline | Exact ten-group reference matched |
 | Worker failure | Label-verified worker1 received SIGKILL |
-| Active task | Stage 2, partition 1, task 13, attempt 0, executor 1 |
+| Active task | Stage 2, partition 1, task 13, attempt 0, executor 0 |
 | Failure | `ExecutorLostFailure`, followed by executor removal |
-| Retry | Stage 2, partition 1, task 14, attempt 1, executor 0 on worker2 |
-| Application | Two successful jobs; four completed stages; 25 task attempts |
+| Retry | Stage 2, partition 1, task 14, attempt 1, executor 1 on worker2 |
+| Application | 2 successful jobs; 4 completed stages; 25 task attempts |
 | Recovery output | Exact baseline/reference equality; no missing or duplicate groups |
 | Shutdown | Compose down exit 0; no experiment containers remained |
 
@@ -80,7 +82,7 @@ The exact authoritative project/command is in [injection.json](evidence/injectio
 successful TaskEnd records. [Raw events](evidence/events/) preserve independent
 verification of task IDs, stages, executor removal and job completion.
 [Baseline](evidence/baseline.json) and [recovery](evidence/recovery.json) contain
-all output groups. The original production containers remained stopped with the
+all output groups. [Production preservation](evidence/production-preservation.json) confirms the new warehouse/model file set and size/mtime/inode metadata stayed unchanged. The original production containers remained stopped with the
 same IDs; the experiment never mounted original datasets or artifacts.
 
 ## Failed attempts and verification limits

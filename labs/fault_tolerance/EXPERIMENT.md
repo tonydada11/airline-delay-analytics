@@ -21,11 +21,11 @@ The host needs Python 3 and Docker Compose. Spark and its dependencies come from
 uses only Python's standard library. Every new run receives a unique Compose
 project and exclusive output directory; existing evidence cannot be overwritten.
 
-The recorded execution used a staging location before these exact source bytes
-were copied into the reconstructed repository. [execution.json](evidence/execution.json)
-records the exact absolute commands, actual UTC finish time, project name and
-SHA-256 of both source/configuration files. Those hashes match the delivered files.
-The public command above resolves the same configuration from its new location.
+The recorded execution used a staging location with an earlier unused polling
+helper still present. The marker trigger and strict verifier are unchanged by
+this branch's helper cleanup. [execution.json](evidence/execution.json) identifies
+the exact previously executed source; a final-path rerun will bind the cleaned
+source and its new missing-task-start regression check to fresh evidence.
 
 ## Topology, bounds and isolation
 

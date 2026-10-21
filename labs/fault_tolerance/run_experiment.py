@@ -66,21 +66,6 @@ def events(root):
     return result
 
 
-def active_victim(rows):
-    stages = set()
-    executors = set()
-    running = {}
-    for e in rows:
-        kind = e['Event']
-        if kind == 'SparkListenerExecutorAdded' and e['Executor Info']['Host'] == 'worker1':
-            executors.add(e['Executor ID'])
-        if kind == 'SparkListenerJobStart' and e.get('Properties',{}).get('spark.jobGroup.id') == 'recovery':
-            stages.update(e['Stage IDs'])
-        if kind == 'SparkListenerTaskStart': running[e['Task Info']['Task ID']] = e
-        if kind == 'SparkListenerTaskEnd': running.pop(e['Task Info']['Task ID'], None)
-    return next((e for e in running.values() if e['Stage ID'] in stages and e['Task Info']['Executor ID'] in executors), None)
-
-
 def verify(root):
     rows = events(root)
     injection = json.loads((root/'injection.json').read_text())

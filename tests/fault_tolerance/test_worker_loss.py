@@ -28,12 +28,10 @@ def save(tmp_path,rows):
     (tmp_path/'events/app').write_text(''.join(json.dumps(r)+'\n' for r in rows))
 
 
-def test_requires_active_recovery_work(tmp_path):
-    rows=fixture(tmp_path)
-    assert lab.active_victim(rows[:3])==rows[2]
-    assert lab.active_victim(rows) is None
-    rows[1]['Properties']['spark.jobGroup.id']='baseline'
-    assert lab.active_victim(rows[:3]) is None
+def test_missing_active_task_start_rejected(tmp_path):
+    rows=fixture(tmp_path);rows.pop(2);save(tmp_path,rows)
+    with pytest.raises(ValueError, match='matching Spark start'):
+        lab.verify(tmp_path)
 
 
 def test_correct_recovery(tmp_path):

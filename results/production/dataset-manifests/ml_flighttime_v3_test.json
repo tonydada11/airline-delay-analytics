@@ -273,8 +273,8 @@
   "phase": "test",
   "raw_manifest_sha256": "fef0d967bbc36d2beb2898701428ca55aa5b0f0a7c9bb0f5ede2ed8ac7852efb",
   "rows": 2343541,
-  "selection_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
-  "selection_run_id": "production-5936316dd7764ed79b049ae10ee1ca18",
+  "selection_bundle_id": "c9c3f85037ab4690a52b80416a31d68e",
+  "selection_run_id": "production-cbc7e671580f4b0b8711cd83a7b44047",
   "source_snapshot_id": "bts-2023-2024-v1",
   "splits": [
     "test"

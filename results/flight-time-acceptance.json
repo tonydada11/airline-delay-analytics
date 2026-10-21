@@ -1,0 +1,337 @@
+{
+  "status": "passed",
+  "comprehensive_rebuild_both_phases_reported": true,
+  "historical_accepted_bundle": "d0098a9572834c53bf76b04d732a94a6",
+  "newly_executed_bundle": "c9c3f85037ab4690a52b80416a31d68e",
+  "selected_classifier": "lr",
+  "threshold": 0.39,
+  "feature_version": "m7-flighttime-v2",
+  "predictors": 50,
+  "schema_version": 3,
+  "datasets": {
+    "selection": {
+      "dataset_schema_version": 3,
+      "feature_version": "m7-flighttime-v2",
+      "rows": 11365109,
+      "splits": [
+        "train",
+        "validation"
+      ],
+      "duplicate_key_count": 0,
+      "duplicate_extra_rows": 0
+    },
+    "test": {
+      "dataset_schema_version": 3,
+      "feature_version": "m7-flighttime-v2",
+      "rows": 2343541,
+      "splits": [
+        "test"
+      ],
+      "duplicate_key_count": 0,
+      "duplicate_extra_rows": 0
+    }
+  },
+  "production_python_sha256": "55dd33b3cd4ca61d71432b827cc8f63774928ca49b3a41281d1ee1849f090017",
+  "production_source_byte_identical_to_original_accepted_main": true,
+  "actual_commands": {
+    "pipeline": {
+      "command": [
+        "./scripts/run_pipeline.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T19:38:11.631583+00:00",
+      "actual_finished_utc": "2026-10-19T22:27:25.133764+00:00",
+      "log": "/tmp/airline-reconstruction/pipeline.log"
+    },
+    "ordinary-tests": {
+      "command": [
+        "./scripts/run_tests.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T22:27:25.172799+00:00",
+      "actual_finished_utc": "2026-10-19T23:09:57.284369+00:00",
+      "log": "/tmp/airline-reconstruction/ordinary-tests.log"
+    },
+    "rebuild-tests": {
+      "command": [
+        "./scripts/run_tests.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab",
+        "AIRLINE_RUN_REBUILD_ACCEPTANCE": "1"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T23:09:57.322978+00:00",
+      "actual_finished_utc": "2026-10-20T01:10:29.632547+00:00",
+      "log": "/tmp/airline-reconstruction/rebuild-tests.log"
+    },
+    "features-comparison": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "spark-notebook",
+        "python3",
+        "tests/pipeline/check_consolidation.py",
+        "features",
+        "--baseline",
+        "data/verification/baseline",
+        "--output",
+        "data/verification/features-comparison.json"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:14:34.689837+00:00",
+      "actual_finished_utc": "2026-10-20T01:24:33.451071+00:00",
+      "log": "/tmp/airline-reconstruction/features-comparison.log"
+    },
+    "frozen-rescore": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "spark-notebook",
+        "python3",
+        "tests/pipeline/check_consolidation.py",
+        "frozen-rescore",
+        "--baseline",
+        "data/verification/baseline",
+        "--output",
+        "data/verification/frozen-rescore.json",
+        "--verification-root",
+        "data/verification/frozen-rescore"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:24:33.472941+00:00",
+      "actual_finished_utc": "2026-10-20T01:29:41.615098+00:00",
+      "log": "/tmp/airline-reconstruction/frozen-rescore.log"
+    }
+  },
+  "focused_pre_merge_tests": {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--hostname",
+      "localhost",
+      "-e",
+      "SPARK_LOCAL_IP=127.0.0.1",
+      "--cpus",
+      "2",
+      "--memory",
+      "4g",
+      "--user",
+      "0:1000",
+      "-e",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "-e",
+      "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+      "-v",
+      "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+      "-w",
+      "/workspace",
+      "-e",
+      "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+      "-e",
+      "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+      "--entrypoint",
+      "python3",
+      "airline-spark:3.5.9",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "tests/unit/test_flight_time.py",
+      "tests/unit/test_model_contract.py",
+      "tests/unit/test_experiment_selection.py"
+    ],
+    "exit_code": 0,
+    "actual_started_utc": "2026-10-21T14:23:48.955263+00:00",
+    "actual_finished_utc": "2026-10-21T14:23:50.552639+00:00",
+    "log": "/tmp/airline-reconstruction/flight-time-pre-merge-tests.log",
+    "scope": "small fixtures, local[2], pinned image; not full-data acceptance"
+  },
+  "baseline_feature_comparison": {
+    "status": "passed",
+    "check": "features",
+    "result": {
+      "selection": {
+        "rows": 11365109,
+        "baseline_minus_current": 0,
+        "current_minus_baseline": 0,
+        "columns": [
+          "flight_id",
+          "flight_date",
+          "flight_number_reporting_airline",
+          "origin_airport_id",
+          "dest_airport_id",
+          "crs_dep_time",
+          "reporting_airline",
+          "origin",
+          "destination",
+          "calendar_month",
+          "calendar_weekday",
+          "distance",
+          "crs_elapsed_time",
+          "departure_sin",
+          "departure_cos",
+          "arrival_sin",
+          "arrival_cos",
+          "departure_missing",
+          "arrival_missing",
+          "duration_missing",
+          "carrier_delay_rate_7d",
+          "carrier_delay_rate_30d",
+          "carrier_delay_rate_90d",
+          "origin_delay_rate_7d",
+          "origin_delay_rate_30d",
+          "origin_delay_rate_90d",
+          "destination_delay_rate_7d",
+          "destination_delay_rate_30d",
+          "destination_delay_rate_90d",
+          "route_delay_rate_7d",
+          "route_delay_rate_30d",
+          "route_delay_rate_90d",
+          "carrier_flight_count_7d",
+          "carrier_flight_count_30d",
+          "carrier_flight_count_90d",
+          "origin_flight_count_7d",
+          "origin_flight_count_30d",
+          "origin_flight_count_90d",
+          "destination_flight_count_7d",
+          "destination_flight_count_30d",
+          "destination_flight_count_90d",
+          "route_flight_count_7d",
+          "route_flight_count_30d",
+          "route_flight_count_90d",
+          "carrier_history_missing_7d",
+          "carrier_history_missing_30d",
+          "carrier_history_missing_90d",
+          "origin_history_missing_7d",
+          "origin_history_missing_30d",
+          "origin_history_missing_90d",
+          "destination_history_missing_7d",
+          "destination_history_missing_30d",
+          "destination_history_missing_90d",
+          "route_history_missing_7d",
+          "route_history_missing_30d",
+          "route_history_missing_90d",
+          "is_arrival_delayed_15m",
+          "split"
+        ]
+      },
+      "test": {
+        "rows": 2343541,
+        "baseline_minus_current": 0,
+        "current_minus_baseline": 0,
+        "columns": [
+          "flight_id",
+          "flight_date",
+          "flight_number_reporting_airline",
+          "origin_airport_id",
+          "dest_airport_id",
+          "crs_dep_time",
+          "reporting_airline",
+          "origin",
+          "destination",
+          "calendar_month",
+          "calendar_weekday",
+          "distance",
+          "crs_elapsed_time",
+          "departure_sin",
+          "departure_cos",
+          "arrival_sin",
+          "arrival_cos",
+          "departure_missing",
+          "arrival_missing",
+          "duration_missing",
+          "carrier_delay_rate_7d",
+          "carrier_delay_rate_30d",
+          "carrier_delay_rate_90d",
+          "origin_delay_rate_7d",
+          "origin_delay_rate_30d",
+          "origin_delay_rate_90d",
+          "destination_delay_rate_7d",
+          "destination_delay_rate_30d",
+          "destination_delay_rate_90d",
+          "route_delay_rate_7d",
+          "route_delay_rate_30d",
+          "route_delay_rate_90d",
+          "carrier_flight_count_7d",
+          "carrier_flight_count_30d",
+          "carrier_flight_count_90d",
+          "origin_flight_count_7d",
+          "origin_flight_count_30d",
+          "origin_flight_count_90d",
+          "destination_flight_count_7d",
+          "destination_flight_count_30d",
+          "destination_flight_count_90d",
+          "route_flight_count_7d",
+          "route_flight_count_30d",
+          "route_flight_count_90d",
+          "carrier_history_missing_7d",
+          "carrier_history_missing_30d",
+          "carrier_history_missing_90d",
+          "origin_history_missing_7d",
+          "origin_history_missing_30d",
+          "origin_history_missing_90d",
+          "destination_history_missing_7d",
+          "destination_history_missing_30d",
+          "destination_history_missing_90d",
+          "route_history_missing_7d",
+          "route_history_missing_30d",
+          "route_history_missing_90d",
+          "is_arrival_delayed_15m",
+          "split"
+        ]
+      }
+    }
+  },
+  "frozen_rescore": {
+    "status": "passed",
+    "check": "frozen-rescore",
+    "result": {
+      "baseline_model_manifest_sha256": "7e1d0a1a9336dd383da9802db02586e23fcc411a4cd79294ee52c554c6d49ee7",
+      "baseline_code_provenance": {
+        "git_commit": null,
+        "git_dirty": null,
+        "production_python_sha256": "55dd33b3cd4ca61d71432b827cc8f63774928ca49b3a41281d1ee1849f090017"
+      },
+      "verification_output": "data/verification/frozen-rescore",
+      "splits": {
+        "validation": {
+          "rows": 2418739,
+          "decision_multiset_differences": 0,
+          "score_multiset_differences_at_10_decimal_places": 0,
+          "metric_absolute_tolerance": 1e-10,
+          "metric_relative_tolerance": 1e-06
+        },
+        "test": {
+          "rows": 2343541,
+          "decision_multiset_differences": 0,
+          "score_multiset_differences_at_10_decimal_places": 0,
+          "metric_absolute_tolerance": 1e-10,
+          "metric_relative_tolerance": 1e-06
+        }
+      }
+    }
+  },
+  "history_adaptation": "Accepted schema-3 implementation already existed in preserved commit da9d0e588cd23cc1975d38c9d33b56570e598582 before branch amendment. This branch adds newly executed acceptance and publishes the fresh selected bundle evidence without duplicating or rewriting that implementation. Full production acceptance ran against these same unchanged source bytes; focused regressions run before and after integration.",
+  "selection_integrity": "Unchanged train-only preprocessing, chronological splits, validation-based candidate/threshold selection and frozen test contracts. Observed selection is compared with the accepted contract only after training; neither winner nor threshold was forced."
+}

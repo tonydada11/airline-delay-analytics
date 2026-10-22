@@ -1,0 +1,3376 @@
+{
+  "months": {
+    "2023-01": {
+      "confusion_matrix": {
+        "false_negative": 595,
+        "false_positive": 1342,
+        "true_negative": 2657,
+        "true_positive": 584
+      },
+      "f1": 0.3761674718196457,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.311842291755172,
+      "precision": 0.3032191069574247,
+      "predicted_positive_rate": 0.3719582850521437,
+      "prevalence": 0.22769409038238703,
+      "ranking_status": "defined",
+      "recall": 0.4953350296861747,
+      "roc_auc": 0.6043005662357066,
+      "rows": 5178,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.8498823979313971,
+            "mean": 0.3512754988705645,
+            "min": 0.07837149479179895,
+            "quantiles": [
+              0.14198799055376632,
+              0.20452502507732284,
+              0.25803675750555377,
+              0.3371833787020687,
+              0.42685737791788225,
+              0.5159279966718374,
+              0.6946827019233744
+            ],
+            "rows": 3999,
+            "stddev": 0.12272853481875262
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.8783383128259451,
+            "mean": 0.3999400648584692,
+            "min": 0.09898311562073359,
+            "quantiles": [
+              0.15132836061861576,
+              0.23003947425042237,
+              0.3027012729537427,
+              0.38908597166144254,
+              0.4791409010598683,
+              0.5880865068632706,
+              0.7848264808245803
+            ],
+            "rows": 1179,
+            "stddev": 0.13794076470197078
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 3,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 51,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 300,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 550,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 630,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 609,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 617,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 430,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 325,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 220,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 103,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 80,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 43,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 18,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 14,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 16,
+            "count": 6,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 1,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 2,
+            "count": 10,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 51,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 107,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 122,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 158,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 182,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 183,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 116,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 77,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 69,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 38,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 29,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 17,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 12,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 16,
+            "count": 5,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 17,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-02": {
+      "confusion_matrix": {
+        "false_negative": 620,
+        "false_positive": 674,
+        "true_negative": 3393,
+        "true_positive": 312
+      },
+      "f1": 0.3253388946819603,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.29076444030571014,
+      "precision": 0.31643002028397565,
+      "predicted_positive_rate": 0.19723944788957792,
+      "prevalence": 0.1864372874574915,
+      "ranking_status": "defined",
+      "recall": 0.33476394849785407,
+      "roc_auc": 0.6530949936208001,
+      "rows": 4999,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.8024079723579698,
+            "mean": 0.2923952759272959,
+            "min": 0.0996226548651965,
+            "quantiles": [
+              0.12862083323110196,
+              0.1738645535019061,
+              0.21550575175909958,
+              0.28350324318784825,
+              0.3562928001775061,
+              0.4239566687463914,
+              0.5406540845315859
+            ],
+            "rows": 4067,
+            "stddev": 0.09710381199535459
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.6970669074769011,
+            "mean": 0.34693580813015806,
+            "min": 0.10528572313873508,
+            "quantiles": [
+              0.15058606946695152,
+              0.22132086889232716,
+              0.2709237031772518,
+              0.33971961570969533,
+              0.41660288080795715,
+              0.4823796853018978,
+              0.5813614567561067
+            ],
+            "rows": 932,
+            "stddev": 0.1017293868363486
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 173,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 605,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 764,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 742,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 669,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 530,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 319,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 147,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 82,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 26,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 7,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 16,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 9,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 56,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 110,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 143,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 174,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 157,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 126,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 88,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 47,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 16,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 4,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-03": {
+      "confusion_matrix": {
+        "false_negative": 578,
+        "false_positive": 1471,
+        "true_negative": 2949,
+        "true_positive": 817
+      },
+      "f1": 0.44366005973391254,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.3787198713623933,
+      "precision": 0.3570804195804196,
+      "predicted_positive_rate": 0.3934651762682717,
+      "prevalence": 0.23989681857265693,
+      "ranking_status": "defined",
+      "recall": 0.5856630824372759,
+      "roc_auc": 0.6668322548208696,
+      "rows": 5815,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.811256612021601,
+            "mean": 0.41758672425196225,
+            "min": 0.1369571342082183,
+            "quantiles": [
+              0.1814647155420226,
+              0.26210024937594933,
+              0.3312178109279147,
+              0.41473435811037973,
+              0.5038946280796277,
+              0.5723553182367921,
+              0.6973088886702903
+            ],
+            "rows": 1395,
+            "stddev": 0.11814030420711025
+          },
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7605022680052579,
+            "mean": 0.3491367632844046,
+            "min": 0.11784538553051827,
+            "quantiles": [
+              0.15941092685011726,
+              0.2132857088436525,
+              0.2641869925798309,
+              0.33928488033122906,
+              0.421238857571295,
+              0.49922289190989577,
+              0.6371661482981451
+            ],
+            "rows": 4420,
+            "stddev": 0.11006936496720077
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 2,
+            "count": 28,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 259,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 645,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 692,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 764,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 697,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 519,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 378,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 232,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 122,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 45,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 25,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 13,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 30,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 73,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 151,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 157,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 199,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 245,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 175,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 158,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 120,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 51,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 20,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 8,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 4,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 16,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-04": {
+      "confusion_matrix": {
+        "false_negative": 568,
+        "false_positive": 1233,
+        "true_negative": 2905,
+        "true_positive": 702
+      },
+      "f1": 0.43806552262090487,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.38591183434860965,
+      "precision": 0.3627906976744186,
+      "predicted_positive_rate": 0.3578032544378698,
+      "prevalence": 0.23483727810650887,
+      "ranking_status": "defined",
+      "recall": 0.552755905511811,
+      "roc_auc": 0.6752054132431128,
+      "rows": 5408,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.784618189718102,
+            "mean": 0.3374730060349196,
+            "min": 0.11669865595281514,
+            "quantiles": [
+              0.1437390625031747,
+              0.20065294403860723,
+              0.2515763782356888,
+              0.3255318420204425,
+              0.4062671313779346,
+              0.4939428703354737,
+              0.6217178342698182
+            ],
+            "rows": 4138,
+            "stddev": 0.11109719843971218
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.8166011452615011,
+            "mean": 0.4114530664139285,
+            "min": 0.1303770197740748,
+            "quantiles": [
+              0.17300880151031472,
+              0.2518462442669328,
+              0.31814285930002006,
+              0.40889100111700016,
+              0.49705606969855,
+              0.5723379192101774,
+              0.6659504013057513
+            ],
+            "rows": 1270,
+            "stddev": 0.12081218518124189
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 2,
+            "count": 53,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 351,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 611,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 693,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 694,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 630,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 415,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 304,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 205,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 111,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 52,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 15,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 3,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 41,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 77,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 125,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 173,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 180,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 177,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 187,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 129,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 97,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 58,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 17,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 16,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-05": {
+      "confusion_matrix": {
+        "false_negative": 606,
+        "false_positive": 801,
+        "true_negative": 3845,
+        "true_positive": 442
+      },
+      "f1": 0.3858577040593627,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.3266948106998611,
+      "precision": 0.35559131134352373,
+      "predicted_positive_rate": 0.21829996487530734,
+      "prevalence": 0.1840533895328416,
+      "ranking_status": "defined",
+      "recall": 0.4217557251908397,
+      "roc_auc": 0.7099226372189161,
+      "rows": 5694,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7933336669493609,
+            "mean": 0.28923227557291487,
+            "min": 0.08489448845546155,
+            "quantiles": [
+              0.11585899286565216,
+              0.1632749574049921,
+              0.20901732387004224,
+              0.2763548976198873,
+              0.3562165249070218,
+              0.43304408398813243,
+              0.5695154323103699
+            ],
+            "rows": 4646,
+            "stddev": 0.10426653084485583
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.7119832263732858,
+            "mean": 0.36837343418953533,
+            "min": 0.10364338665044937,
+            "quantiles": [
+              0.1499114500283304,
+              0.2277155046154844,
+              0.2930526363527928,
+              0.3679729100778335,
+              0.4402094120883525,
+              0.5037177409173035,
+              0.6163163165290777
+            ],
+            "rows": 1048,
+            "stddev": 0.10477068999297183
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 5,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 293,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 700,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 871,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 861,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 672,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 534,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 357,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 195,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 95,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 34,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 18,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 5,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 5,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 11,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 47,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 93,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 130,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 161,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 194,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 188,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 116,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 67,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 29,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 6,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 4,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-06": {
+      "confusion_matrix": {
+        "false_negative": 418,
+        "false_positive": 1658,
+        "true_negative": 2375,
+        "true_positive": 1087
+      },
+      "f1": 0.5115294117647059,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.47384572662571284,
+      "precision": 0.3959927140255009,
+      "predicted_positive_rate": 0.4956663055254605,
+      "prevalence": 0.2717587576742506,
+      "ranking_status": "defined",
+      "recall": 0.7222591362126246,
+      "roc_auc": 0.7191558347948364,
+      "rows": 5538,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.8430255224619019,
+            "mean": 0.36950654824102513,
+            "min": 0.10083791411441012,
+            "quantiles": [
+              0.15481453034407355,
+              0.21763777029627462,
+              0.2785758505354421,
+              0.3591425851294995,
+              0.44878809347052206,
+              0.5388770735380017,
+              0.6796952404814073
+            ],
+            "rows": 4033,
+            "stddev": 0.12091989910106259
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.8528493580443895,
+            "mean": 0.46911605363550807,
+            "min": 0.14614469378383732,
+            "quantiles": [
+              0.19234712679387211,
+              0.304969174065833,
+              0.3809059958244939,
+              0.46962808434137626,
+              0.5600773750130805,
+              0.6251401398029024,
+              0.7619065064282311
+            ],
+            "rows": 1505,
+            "stddev": 0.12500481939459326
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 2,
+            "count": 31,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 234,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 418,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 584,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 645,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 608,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 521,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 382,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 256,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 193,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 87,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 51,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 18,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 4,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 16,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 23,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 42,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 74,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 127,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 173,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 223,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 231,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 197,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 180,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 131,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 61,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 23,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 12,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 16,
+            "count": 6,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 17,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-07": {
+      "confusion_matrix": {
+        "false_negative": 363,
+        "false_positive": 1962,
+        "true_negative": 2182,
+        "true_positive": 1327
+      },
+      "f1": 0.5330387628037758,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.5008364766986435,
+      "precision": 0.403466099118273,
+      "predicted_positive_rate": 0.563764141241001,
+      "prevalence": 0.289681179293795,
+      "ranking_status": "defined",
+      "recall": 0.785207100591716,
+      "roc_auc": 0.7189180621872929,
+      "rows": 5834,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.8007022272593538,
+            "mean": 0.39265098324800607,
+            "min": 0.132359386581129,
+            "quantiles": [
+              0.17163712342409443,
+              0.2347073155145567,
+              0.3013482943741421,
+              0.38141980798451114,
+              0.47490722321044765,
+              0.564730420626687,
+              0.6948016367031384
+            ],
+            "rows": 4144,
+            "stddev": 0.1226222568791778
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.8624849222536792,
+            "mean": 0.49416844797525156,
+            "min": 0.16371223462851814,
+            "quantiles": [
+              0.22013015507650102,
+              0.32065651326818023,
+              0.40499746614758825,
+              0.4975844790279036,
+              0.5900848484593415,
+              0.6566467857852486,
+              0.7621830206355826
+            ],
+            "rows": 1690,
+            "stddev": 0.12566711247478718
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 2,
+            "count": 11,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 143,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 367,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 496,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 645,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 656,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 536,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 458,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 334,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 248,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 147,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 65,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 32,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 5,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 16,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 8,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 35,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 75,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 128,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 155,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 217,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 246,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 247,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 194,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 195,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 121,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 46,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 19,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 16,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 17,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-08": {
+      "confusion_matrix": {
+        "false_negative": 517,
+        "false_positive": 1377,
+        "true_negative": 3270,
+        "true_positive": 743
+      },
+      "f1": 0.4396449704142012,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.3964333832365234,
+      "precision": 0.35047169811320755,
+      "predicted_positive_rate": 0.35889622481801253,
+      "prevalence": 0.2133062468257999,
+      "ranking_status": "defined",
+      "recall": 0.5896825396825397,
+      "roc_auc": 0.6978297997342544,
+      "rows": 5907,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.7863834027202409,
+            "mean": 0.42017073019336465,
+            "min": 0.12395958256664097,
+            "quantiles": [
+              0.1768528142213155,
+              0.25886768737773747,
+              0.3285946194513538,
+              0.4177420699802973,
+              0.5089843076167856,
+              0.5817420594861514,
+              0.7027326455888712
+            ],
+            "rows": 1260,
+            "stddev": 0.12392169693592701
+          },
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7578730417250398,
+            "mean": 0.333800432213658,
+            "min": 0.09136798213095598,
+            "quantiles": [
+              0.14180080377866222,
+              0.19695112394368208,
+              0.24785283025217741,
+              0.32269465728754565,
+              0.40790776688751185,
+              0.4889363137090459,
+              0.619673574106668
+            ],
+            "rows": 4647,
+            "stddev": 0.11128172297356596
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 3,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 82,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 416,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 685,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 789,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 778,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 639,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 524,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 335,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 213,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 114,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 49,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 15,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 4,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 6,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 30,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 74,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 124,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 150,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 174,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 191,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 172,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 142,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 100,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 53,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 30,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 9,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 5,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-09": {
+      "confusion_matrix": {
+        "false_negative": 627,
+        "false_positive": 775,
+        "true_negative": 3684,
+        "true_positive": 432
+      },
+      "f1": 0.38128861429832306,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.3374572494768077,
+      "precision": 0.35791217895608946,
+      "predicted_positive_rate": 0.21873867343240305,
+      "prevalence": 0.19191736136281262,
+      "ranking_status": "defined",
+      "recall": 0.40793201133144474,
+      "roc_auc": 0.6817826716653099,
+      "rows": 5518,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7799915297624004,
+            "mean": 0.29435965054664365,
+            "min": 0.0979464925589485,
+            "quantiles": [
+              0.12981035150595743,
+              0.17547500108824832,
+              0.21741339893005207,
+              0.28108300490524196,
+              0.35837292683333766,
+              0.43116450519051186,
+              0.5632958527789894
+            ],
+            "rows": 4459,
+            "stddev": 0.09974638345536896
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.7198392602663743,
+            "mean": 0.364208870081102,
+            "min": 0.1052083865799801,
+            "quantiles": [
+              0.15131775140055725,
+              0.21742936279671732,
+              0.28008629952614694,
+              0.36276288399911616,
+              0.43719254694898824,
+              0.5119774292390866,
+              0.658106101201694
+            ],
+            "rows": 1059,
+            "stddev": 0.11221146642286248
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 2,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 183,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 622,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 878,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 856,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 693,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 543,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 356,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 170,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 102,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 31,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 17,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 3,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 2,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 10,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 70,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 102,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 142,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 161,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 181,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 165,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 98,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 71,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 32,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 13,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 11,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-10": {
+      "confusion_matrix": {
+        "false_negative": 712,
+        "false_positive": 456,
+        "true_negative": 4610,
+        "true_positive": 206
+      },
+      "f1": 0.2607594936708861,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.2573249771822688,
+      "precision": 0.311178247734139,
+      "predicted_positive_rate": 0.1106283422459893,
+      "prevalence": 0.1534090909090909,
+      "ranking_status": "defined",
+      "recall": 0.22440087145969498,
+      "roc_auc": 0.66476948721323,
+      "rows": 5984,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7069657288019109,
+            "mean": 0.26240945456770765,
+            "min": 0.07890733533861183,
+            "quantiles": [
+              0.10954742995160416,
+              0.1547403211997983,
+              0.19284379184506906,
+              0.25354433569461143,
+              0.3214031416002763,
+              0.382727557395513,
+              0.5018874602516569
+            ],
+            "rows": 5066,
+            "stddev": 0.08949888276769509
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.6624044877113026,
+            "mean": 0.3170638962597581,
+            "min": 0.09345640790170351,
+            "quantiles": [
+              0.12768185965729983,
+              0.18368658063211019,
+              0.24928012411666578,
+              0.31782938703857944,
+              0.381558911753888,
+              0.4463916544112213,
+              0.5564825692658243
+            ],
+            "rows": 918,
+            "stddev": 0.09702187508750963
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 16,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 421,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 992,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 1045,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 960,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 794,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 461,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 224,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 102,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 36,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 9,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 4,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 1,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 2,
+            "count": 32,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 95,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 105,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 161,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 189,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 151,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 99,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 61,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 14,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 6,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-11": {
+      "confusion_matrix": {
+        "false_negative": 714,
+        "false_positive": 192,
+        "true_negative": 4672,
+        "true_positive": 88
+      },
+      "f1": 0.16266173752310537,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.2295689866296521,
+      "precision": 0.3142857142857143,
+      "predicted_positive_rate": 0.049417578538651606,
+      "prevalence": 0.1415460642428521,
+      "ranking_status": "defined",
+      "recall": 0.10972568578553615,
+      "roc_auc": 0.6428747210920069,
+      "rows": 5666,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7369733389859335,
+            "mean": 0.23618719889837222,
+            "min": 0.07172743420421157,
+            "quantiles": [
+              0.1016584472839267,
+              0.14007590161056815,
+              0.17448233447077333,
+              0.2255266978550341,
+              0.28996897619940165,
+              0.3458366235115905,
+              0.4494493423370858
+            ],
+            "rows": 4864,
+            "stddev": 0.08051771917543123
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.7283228077479065,
+            "mean": 0.27975261084944164,
+            "min": 0.0890687653539124,
+            "quantiles": [
+              0.12228114153390435,
+              0.16702734399858854,
+              0.2120227703609351,
+              0.2748206665502443,
+              0.3393642461050118,
+              0.3950607793413795,
+              0.5225978049590831
+            ],
+            "rows": 802,
+            "stddev": 0.08971279217506864
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 41,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 661,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 1152,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 1097,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 850,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 613,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 297,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 106,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 34,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 7,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 3,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 2,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 1,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 2,
+            "count": 46,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 119,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 153,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 158,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 158,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 96,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 47,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 12,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 7,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2023-12": {
+      "confusion_matrix": {
+        "false_negative": 677,
+        "false_positive": 367,
+        "true_negative": 4389,
+        "true_positive": 166
+      },
+      "f1": 0.24127906976744187,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.25202957212058313,
+      "precision": 0.31144465290806755,
+      "predicted_positive_rate": 0.09519557063761386,
+      "prevalence": 0.15056260046436865,
+      "ranking_status": "defined",
+      "recall": 0.19691577698695137,
+      "roc_auc": 0.6473571000282348,
+      "rows": 5599,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7095244142110722,
+            "mean": 0.2583347439200177,
+            "min": 0.07749246456290682,
+            "quantiles": [
+              0.1133400709925233,
+              0.15285878790617557,
+              0.19052207520455677,
+              0.24928492901480903,
+              0.314496554629075,
+              0.37574829645860697,
+              0.48426311208726247
+            ],
+            "rows": 4756,
+            "stddev": 0.0869001356723404
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.6757500484874805,
+            "mean": 0.3080109467797077,
+            "min": 0.10105363273357437,
+            "quantiles": [
+              0.1278133117272241,
+              0.18196484577886973,
+              0.2336233679276013,
+              0.30426004090601577,
+              0.3700260903006748,
+              0.4418253865490456,
+              0.5599908668788571
+            ],
+            "rows": 843,
+            "stddev": 0.09856535278112626
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 8,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 428,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 953,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 1005,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 934,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 681,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 443,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 196,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 75,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 15,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 10,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 7,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 25,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 104,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 126,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 153,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 172,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 116,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 74,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 44,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 16,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 8,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2024-01": {
+      "confusion_matrix": {
+        "false_negative": 574,
+        "false_positive": 1374,
+        "true_negative": 2513,
+        "true_positive": 647
+      },
+      "f1": 0.3991363355953115,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.331868644204999,
+      "precision": 0.32013854527461655,
+      "predicted_positive_rate": 0.3956538762725137,
+      "prevalence": 0.2390368050117463,
+      "ranking_status": "defined",
+      "recall": 0.5298935298935299,
+      "roc_auc": 0.6270493193570118,
+      "rows": 5108,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.7511881380298694,
+            "mean": 0.4045387490669212,
+            "min": 0.08991876042731772,
+            "quantiles": [
+              0.1577578847388328,
+              0.24650177482915225,
+              0.31554724739838147,
+              0.397933417483721,
+              0.49241797499450735,
+              0.5697464567746018,
+              0.6820732190888048
+            ],
+            "rows": 1221,
+            "stddev": 0.12250080972094109
+          },
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.8130144888756416,
+            "mean": 0.35033775146416507,
+            "min": 0.0952382464113779,
+            "quantiles": [
+              0.14183038745756482,
+              0.20380429375763243,
+              0.2588811478185331,
+              0.3400507300721194,
+              0.43043086518135154,
+              0.5080584554654037,
+              0.6537602169423904
+            ],
+            "rows": 3887,
+            "stddev": 0.11844747890062624
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 66,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 297,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 504,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 578,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 613,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 561,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 460,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 369,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 212,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 112,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 71,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 31,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 9,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 2,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 16,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 1,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 2,
+            "count": 7,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 40,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 84,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 123,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 169,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 196,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 168,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 163,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 108,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 83,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 46,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 26,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 5,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2024-02": {
+      "confusion_matrix": {
+        "false_negative": 625,
+        "false_positive": 456,
+        "true_negative": 3863,
+        "true_positive": 237
+      },
+      "f1": 0.3048231511254019,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.2709564291456779,
+      "precision": 0.341991341991342,
+      "predicted_positive_rate": 0.1337579617834395,
+      "prevalence": 0.16637714726886701,
+      "ranking_status": "defined",
+      "recall": 0.27494199535962877,
+      "roc_auc": 0.6528910458240686,
+      "rows": 5181,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.6346171268035117,
+            "mean": 0.32346042850484685,
+            "min": 0.10186170807423511,
+            "quantiles": [
+              0.12915725675612322,
+              0.19538539977175828,
+              0.2497946833351039,
+              0.3247284187153776,
+              0.39743040788534423,
+              0.44399687584142644,
+              0.5691151609548419
+            ],
+            "rows": 862,
+            "stddev": 0.09821069221721589
+          },
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.6899149113043261,
+            "mean": 0.27190117749264175,
+            "min": 0.08890665058981395,
+            "quantiles": [
+              0.11855413778296564,
+              0.15983854687419452,
+              0.2004172562178661,
+              0.2631776305368959,
+              0.3316079820810879,
+              0.39432236645022267,
+              0.5078371722112119
+            ],
+            "rows": 4319,
+            "stddev": 0.0904794355636862
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 4,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 297,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 768,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 856,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 835,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 709,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 453,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 250,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 97,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 31,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 16,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 2,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 24,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 68,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 124,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 143,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 164,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 132,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 133,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 41,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 23,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 6,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 4,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2024-03": {
+      "confusion_matrix": {
+        "false_negative": 630,
+        "false_positive": 1122,
+        "true_negative": 3413,
+        "true_positive": 643
+      },
+      "f1": 0.423304805793285,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.3624094664533663,
+      "precision": 0.3643059490084986,
+      "predicted_positive_rate": 0.30389118457300274,
+      "prevalence": 0.21918044077134985,
+      "ranking_status": "defined",
+      "recall": 0.5051060487038491,
+      "roc_auc": 0.6833615823857558,
+      "rows": 5808,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.7749299080242886,
+            "mean": 0.39168241183103053,
+            "min": 0.12836601996934438,
+            "quantiles": [
+              0.16686824418636803,
+              0.23975447472593736,
+              0.3086627466149767,
+              0.39148525618268837,
+              0.47343315700120525,
+              0.5392503715208579,
+              0.6471356699614712
+            ],
+            "rows": 1273,
+            "stddev": 0.11225921462650079
+          },
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7856391855118559,
+            "mean": 0.3192640974791912,
+            "min": 0.10110953586013882,
+            "quantiles": [
+              0.13753332062422507,
+              0.18833178827660868,
+              0.23731170720305017,
+              0.3080847922916433,
+              0.38880727324445286,
+              0.46276204586811953,
+              0.5974244867333443
+            ],
+            "rows": 4535,
+            "stddev": 0.10655444822426591
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 2,
+            "count": 97,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 535,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 687,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 817,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 758,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 638,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 467,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 265,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 151,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 77,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 30,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 9,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 3,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 15,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 52,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 99,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 135,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 179,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 208,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 198,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 179,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 116,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 65,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 28,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 8,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 15,
+            "count": 1,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    },
+    "2024-04": {
+      "confusion_matrix": {
+        "false_negative": 629,
+        "false_positive": 969,
+        "true_negative": 3739,
+        "true_positive": 404
+      },
+      "f1": 0.33582709891936824,
+      "interpretation": "in-sample diagnostic on deterministic approximately 1% sample; not a validation estimate",
+      "pr_auc": 0.28917728977397683,
+      "precision": 0.2942461762563729,
+      "predicted_positive_rate": 0.2391569412994252,
+      "prevalence": 0.17993380944086396,
+      "ranking_status": "defined",
+      "recall": 0.3910939012584705,
+      "roc_auc": 0.6607895275780304,
+      "rows": 5741,
+      "score_distribution": {
+        "by_label": [
+          {
+            "is_arrival_delayed_15m": 0,
+            "max": 0.7176205514626798,
+            "mean": 0.3064029424267891,
+            "min": 0.09777546021730743,
+            "quantiles": [
+              0.13363648809497486,
+              0.18423570490389918,
+              0.22972271275229872,
+              0.2970859848751134,
+              0.37418373955236706,
+              0.4419848016090778,
+              0.5568335985068921
+            ],
+            "rows": 4708,
+            "stddev": 0.09894884892571447
+          },
+          {
+            "is_arrival_delayed_15m": 1,
+            "max": 0.7143948984551101,
+            "mean": 0.3646318089028032,
+            "min": 0.1130354757811044,
+            "quantiles": [
+              0.1529614617470122,
+              0.2270172751377969,
+              0.29031983448626386,
+              0.36391004083892065,
+              0.4317861958059329,
+              0.4925426113555953,
+              0.6249487012425664
+            ],
+            "rows": 1033,
+            "stddev": 0.10368988428382524
+          }
+        ],
+        "histogram": [
+          {
+            "bin": 1,
+            "count": 1,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 136,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 3,
+            "count": 571,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 4,
+            "count": 812,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 5,
+            "count": 876,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 6,
+            "count": 819,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 7,
+            "count": 631,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 8,
+            "count": 445,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 9,
+            "count": 251,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 10,
+            "count": 111,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 11,
+            "count": 35,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 12,
+            "count": 15,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 13,
+            "count": 3,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 14,
+            "count": 2,
+            "is_arrival_delayed_15m": 0
+          },
+          {
+            "bin": 2,
+            "count": 10,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 3,
+            "count": 45,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 4,
+            "count": 100,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 5,
+            "count": 130,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 6,
+            "count": 176,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 7,
+            "count": 198,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 8,
+            "count": 170,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 9,
+            "count": 111,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 10,
+            "count": 49,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 11,
+            "count": 28,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 12,
+            "count": 11,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 13,
+            "count": 3,
+            "is_arrival_delayed_15m": 1
+          },
+          {
+            "bin": 14,
+            "count": 2,
+            "is_arrival_delayed_15m": 1
+          }
+        ],
+        "histogram_bin_width": 0.05,
+        "quantile_accuracy": 10000,
+        "quantile_probabilities": [
+          0.01,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9,
+          0.99
+        ]
+      }
+    }
+  },
+  "overall": {
+    "confusion_matrix": {
+      "false_negative": 9453,
+      "false_positive": 16229,
+      "true_negative": 54459,
+      "true_positive": 8837
+    },
+    "f1": 0.4076483070393948,
+    "pr_auc": 0.35984133583955186,
+    "precision": 0.35254926992739166,
+    "predicted_positive_rate": 0.28171008563914673,
+    "prevalence": 0.20555642967924656,
+    "ranking_status": "defined",
+    "recall": 0.48316019682886824,
+    "roc_auc": 0.6837240171488921,
+    "rows": 88978
+  },
+  "sampling": "deterministic approximately 1% of training rows using pmod(xxhash64(flight_id),100)=0; in-sample only; full training population used for prevalence and feature profiles"
+}

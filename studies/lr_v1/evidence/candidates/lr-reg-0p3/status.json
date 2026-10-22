@@ -1,0 +1,23 @@
+{
+  "elapsed_seconds": 355.7356320569961,
+  "finished_at_utc": "2026-10-21T05:24:57.715129+00:00",
+  "fit_elapsed_seconds": 118.62844850600231,
+  "fit_started": true,
+  "fit_started_at_utc": "2026-10-21T05:21:05.870052+00:00",
+  "name": "lr-reg-0p3",
+  "settings": {
+    "classifier_settings": {
+      "elasticNetParam": 0.0,
+      "family": "binomial",
+      "featuresCol": "features",
+      "labelCol": "is_arrival_delayed_15m",
+      "maxIter": 100,
+      "regParam": 0.3,
+      "tol": 1e-06,
+      "weightCol": "class_weight"
+    },
+    "positive_class_weight": 2.0
+  },
+  "started_at_utc": "2026-10-21T05:19:00.363228+00:00",
+  "status": "complete"
+}

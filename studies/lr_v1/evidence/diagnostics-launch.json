@@ -1,0 +1,30 @@
+{
+  "stage": "baseline diagnostics",
+  "started_at_utc": "2026-10-21T04:35:17.437171+00:00",
+  "command": [
+    "docker",
+    "compose",
+    "exec",
+    "-T",
+    "-e",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "-e",
+    "PYTHONPATH=/workspace/data/studies/lr-improvement-v1/project:/workspace/data/studies/lr-improvement-v1/project/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+    "-w",
+    "/workspace/data/studies/lr-improvement-v1/project",
+    "spark-notebook",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=20s",
+    "14400s",
+    "python3",
+    "-u",
+    "-m",
+    "studies.lr_v1.diagnose"
+  ],
+  "maximum_seconds": 14400,
+  "classifier_fits_started": 0,
+  "exit_code": 0,
+  "elapsed_seconds": 493.19425812299596,
+  "finished_at_utc": "2026-10-21T04:43:30.631623+00:00"
+}

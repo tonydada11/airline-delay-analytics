@@ -1,0 +1,82 @@
+{
+  "status": "approved by user; only these two candidates, in this order",
+  "recorded_at_utc": "2026-10-21T05:07:24.686365+00:00",
+  "baseline_results_sha256": "c1313197e55e9d9d90793ec3401c3c0d3d61597ca35da94eae5c1f7b8fdee828",
+  "protocol_sha256": "9fd010e415ceaa8f3a156e9f7bcc83a3c1ca0239cd7ef5350c665e69a7ae1bc6",
+  "baseline_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+  "baseline_settings": {
+    "classifier_settings": {
+      "elasticNetParam": 0.0,
+      "family": "binomial",
+      "featuresCol": "features",
+      "labelCol": "is_arrival_delayed_15m",
+      "maxIter": 100,
+      "regParam": 0.1,
+      "tol": 1e-06,
+      "weightCol": "class_weight"
+    },
+    "positive_class_weight": 2.0
+  },
+  "candidates": [
+    {
+      "order": 1,
+      "name": "lr-positive-weight-1",
+      "status": "approved for exactly one attempt",
+      "changed_factor": "positive_class_weight",
+      "settings": {
+        "classifier_settings": {
+          "elasticNetParam": 0.0,
+          "family": "binomial",
+          "featuresCol": "features",
+          "labelCol": "is_arrival_delayed_15m",
+          "maxIter": 100,
+          "regParam": 0.1,
+          "tol": 1e-06,
+          "weightCol": "class_weight"
+        },
+        "positive_class_weight": 1.0
+      },
+      "reason": "The accepted weighted scores shift by month and threshold 0.39 alerts on 34.6%-59.2% of validation flights. Test whether changing fitting weights improves ranking at fixed budgets; a mere score rescaling cannot improve the primary metric.",
+      "verified_setting_differences": [
+        "positive_class_weight"
+      ],
+      "maximum_seconds_including_evaluation": 3600
+    },
+    {
+      "order": 2,
+      "name": "lr-reg-0p3",
+      "status": "approved for exactly one attempt",
+      "changed_factor": "classifier_settings.regParam",
+      "settings": {
+        "classifier_settings": {
+          "elasticNetParam": 0.0,
+          "family": "binomial",
+          "featuresCol": "features",
+          "labelCol": "is_arrival_delayed_15m",
+          "maxIter": 100,
+          "regParam": 0.3,
+          "tol": 1e-06,
+          "weightCol": "class_weight"
+        },
+        "positive_class_weight": 2.0
+      },
+      "reason": "Summer-2023 in-sample ROC-AUC exceeds the corresponding 2024 validation ROC-AUC by about 0.023-0.036 in May-July, with little August gap. Test stronger regularization as a variance-control hypothesis. Cohort shift and in-sample evaluation confound this diagnostic; it is not proof of overfitting.",
+      "verified_setting_differences": [
+        "classifier_settings.regParam"
+      ],
+      "maximum_seconds_including_evaluation": 3600
+    }
+  ],
+  "active_Spark_seconds_remaining_at_approval": 13906.805741877004,
+  "maximum_seconds_per_candidate_including_evaluation": 3600,
+  "automatic_retries": false,
+  "window_experiment": false,
+  "additional_candidates": false,
+  "combined_settings": false,
+  "production_promotion": false,
+  "historical_test_used_for_selection": false,
+  "evaluation": "unchanged preregistered monthly rules, full-precision paired baseline differences; incomplete candidates excluded",
+  "commit_changes": true,
+  "stop_services_afterward": true,
+  "push_remotely": false
+}

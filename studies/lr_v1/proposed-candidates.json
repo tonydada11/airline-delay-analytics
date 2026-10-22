@@ -1,0 +1,104 @@
+{
+  "approval_status": "pending; no fitting authorized or started",
+  "baseline_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+  "baseline_threshold": 0.39,
+  "protocol_sha256": "9fd010e415ceaa8f3a156e9f7bcc83a3c1ca0239cd7ef5350c665e69a7ae1bc6",
+  "study_code_commit_before_diagnostics": "e8a47dec6c669fb2366444e42de405922fc6b085",
+  "baseline_mean_monthly_PR_AUC": 0.4280983226531411,
+  "minimum_candidate_mean_monthly_PR_AUC_equivalent": 0.4330983226531411,
+  "required_paired_mean_monthly_gain": 0.005,
+  "minimum_mean_recall": {
+    "10": 0.1863846324382602,
+    "20": 0.3449774279140397
+  },
+  "baseline_settings": {
+    "classifier_settings": {
+      "elasticNetParam": 0.0,
+      "family": "binomial",
+      "featuresCol": "features",
+      "labelCol": "is_arrival_delayed_15m",
+      "maxIter": 100,
+      "regParam": 0.1,
+      "tol": 1e-06,
+      "weightCol": "class_weight"
+    },
+    "positive_class_weight": 2.0
+  },
+  "candidates": [
+    {
+      "order": 1,
+      "name": "lr-positive-weight-1",
+      "status": "proposed; approval required before fitting",
+      "changed_factor": "positive_class_weight",
+      "settings": {
+        "classifier_settings": {
+          "elasticNetParam": 0.0,
+          "family": "binomial",
+          "featuresCol": "features",
+          "labelCol": "is_arrival_delayed_15m",
+          "maxIter": 100,
+          "regParam": 0.1,
+          "tol": 1e-06,
+          "weightCol": "class_weight"
+        },
+        "positive_class_weight": 1.0
+      },
+      "reason": "The accepted weighted scores shift by month and threshold 0.39 alerts on 34.6%-59.2% of validation flights. Test whether changing fitting weights improves ranking at fixed budgets; a mere score rescaling cannot improve the primary metric.",
+      "verified_setting_differences": [
+        "positive_class_weight"
+      ],
+      "maximum_seconds_including_evaluation": 3600
+    },
+    {
+      "order": 2,
+      "name": "lr-reg-0p3",
+      "status": "proposed; approval required before fitting",
+      "changed_factor": "classifier_settings.regParam",
+      "settings": {
+        "classifier_settings": {
+          "elasticNetParam": 0.0,
+          "family": "binomial",
+          "featuresCol": "features",
+          "labelCol": "is_arrival_delayed_15m",
+          "maxIter": 100,
+          "regParam": 0.3,
+          "tol": 1e-06,
+          "weightCol": "class_weight"
+        },
+        "positive_class_weight": 2.0
+      },
+      "reason": "Summer-2023 in-sample ROC-AUC exceeds the corresponding 2024 validation ROC-AUC by about 0.023-0.036 in May-July, with little August gap. Test stronger regularization as a variance-control hypothesis. Cohort shift and in-sample evaluation confound this diagnostic; it is not proof of overfitting.",
+      "verified_setting_differences": [
+        "classifier_settings.regParam"
+      ],
+      "maximum_seconds_including_evaluation": 3600
+    }
+  ],
+  "unchanged_for_both": {
+    "training_dates": [
+      "2023-01-01",
+      "2024-04-30"
+    ],
+    "training_rows": 8946370,
+    "validation_months": [
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08"
+    ],
+    "validation_rows": 2418739,
+    "features_and_preprocessing": "accepted 50-feature contract and 784-dimensional train-fitted preprocessing",
+    "evaluation_weights": "none; natural prevalence",
+    "other_estimator_parameters": "identical to baseline",
+    "publication": "none; study artifacts only"
+  },
+  "withheld_classifier_fitting_window_candidate": "Temporal and seasonal shifts are present, but these diagnostics do not isolate a benefit from excluding January-April 2023 fitting rows. Do not fill the third slot. A future window experiment would retain full-period preprocessing and change only classifier fitting rows.",
+  "budget_after_diagnostics": {
+    "limit_seconds": 14400,
+    "active_Spark_seconds_used": 493.19425812299596,
+    "active_Spark_seconds_remaining": 13906.805741877004,
+    "classifier_fits_started": 0
+  },
+  "incomplete_candidates": "record and exclude; no automatic retries, reduced evaluation, or budget expansion",
+  "interpretation": "retrospective development-data study only; no untouched later data, no statistical-significance claim, no baseline overwrite"
+}

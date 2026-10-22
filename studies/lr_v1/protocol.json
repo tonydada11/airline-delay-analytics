@@ -1,0 +1,58 @@
+{
+  "stage": "diagnostics only; no fitting without approval of diagnosis-supported candidates",
+  "baseline_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+  "baseline_threshold": 0.39,
+  "training_period": [
+    "2023-01-01",
+    "2024-04-30"
+  ],
+  "validation_months": [
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08"
+  ],
+  "pr_auc": "existing Spark BinaryClassificationEvaluator areaUnderPR, numBins=0, natural-prevalence unweighted rows",
+  "primary_comparison": "equal-month mean of candidate minus baseline PR-AUC; recompute baseline monthly, never subtract pooled PR-AUC",
+  "alert_budgets": [
+    0.1,
+    0.2
+  ],
+  "budget_grain": "calendar month",
+  "capacity": "floor(budget * month rows)",
+  "ordering": "descending probability, ascending flight_id",
+  "identical_score_and_id_boundary": "preserve multiplicity; equal fractional selection weights within the boundary group; report expected precision/recall",
+  "threshold_grid": {
+    "start": 0,
+    "end": 100,
+    "denominator": 100
+  },
+  "training_score_diagnostic": "deterministic approximately 1% of training rows using pmod(xxhash64(flight_id),100)=0; in-sample only; full training population used for prevalence and feature profiles",
+  "candidate_qualification": {
+    "minimum_mean_monthly_PR_AUC_gain": 0.005,
+    "maximum_mean_monthly_recall_loss_at_either_budget": 0.01,
+    "monthly_results": "report every change and worst month; no additional monthly elimination rule"
+  },
+  "candidate_tie_order": [
+    "mean monthly PR-AUC descending",
+    "mean monthly recall at 10% descending",
+    "mean monthly recall at 20% descending",
+    "preregistered candidate order ascending"
+  ],
+  "compute_limits": {
+    "active_Spark_seconds": 14400,
+    "maximum_started_classifier_fits": 3,
+    "maximum_seconds_per_candidate_including_evaluation": 3600,
+    "sequential": true,
+    "automatic_retries": false,
+    "incomplete_candidates": "excluded from ranking"
+  },
+  "prohibited_inputs_for_candidate_selection": "September-December 2024 predictions, metrics, and labels; no later untouched evaluation data is present",
+  "interpretation": "retrospective development-data comparison only; 0.005 is an agreed practical threshold, not statistical significance",
+  "candidate_menu": [
+    "positive-class weight 1.0 versus 2.0",
+    "one justified regularization direction: 0.03 or 0.3 versus 0.1",
+    "classifier fitting window May 2023-April 2024 only if temporal-drift diagnostics justify it; preprocessing still uses full original training period"
+  ],
+  "production_contracts": "unchanged; no acceptance exemptions, publication, or baseline overwrite"
+}

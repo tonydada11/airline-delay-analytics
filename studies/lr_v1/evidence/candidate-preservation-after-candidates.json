@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "phase": "after-candidates",
+  "completed_at_utc": "2026-10-21T05:25:18.485414+00:00",
+  "protected_files": 700,
+  "protected_bytes": 11975984016,
+  "inventory_sha256": "113bb120777efc0e64a876857cd37f3db1d8c3d7af8b48f8b3d06fae5f235b3d",
+  "hashes_modes_mtime_inodes_links_file_set_unchanged": true,
+  "source_runtime_acceptance_identities_unchanged": true,
+  "tags_and_main_unchanged": true
+}

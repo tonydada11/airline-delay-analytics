@@ -1,0 +1,23 @@
+{
+  "elapsed_seconds": 370.3523215810055,
+  "finished_at_utc": "2026-10-21T05:18:58.747655+00:00",
+  "fit_elapsed_seconds": 129.34389798200573,
+  "fit_started": true,
+  "fit_started_at_utc": "2026-10-21T05:14:58.999308+00:00",
+  "name": "lr-positive-weight-1",
+  "settings": {
+    "classifier_settings": {
+      "elasticNetParam": 0.0,
+      "family": "binomial",
+      "featuresCol": "features",
+      "labelCol": "is_arrival_delayed_15m",
+      "maxIter": 100,
+      "regParam": 0.1,
+      "tol": 1e-06,
+      "weightCol": "class_weight"
+    },
+    "positive_class_weight": 1.0
+  },
+  "started_at_utc": "2026-10-21T05:12:47.440047+00:00",
+  "status": "complete"
+}

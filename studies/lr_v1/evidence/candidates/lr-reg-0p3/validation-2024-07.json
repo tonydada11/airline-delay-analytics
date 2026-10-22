@@ -1,0 +1,54 @@
+{
+  "budgets": {
+    "10": {
+      "capacity": 61393,
+      "fractional_boundary_groups": 0,
+      "minimum_selected_score": 0.5708209570022997,
+      "precision": 0.5532878341178962,
+      "recall": 0.18677590520440987,
+      "selected_mass": 61393,
+      "true_positive_mass": 33968.0
+    },
+    "20": {
+      "capacity": 122787,
+      "fractional_boundary_groups": 0,
+      "minimum_selected_score": 0.5197066757032656,
+      "precision": 0.5059004617752694,
+      "recall": 0.34156104803013226,
+      "selected_mass": 122787,
+      "true_positive_mass": 62118.0
+    }
+  },
+  "confusion_matrix": {
+    "false_negative": 41222,
+    "false_positive": 225935,
+    "true_negative": 206138,
+    "true_positive": 140643
+  },
+  "differences_from_baseline": {
+    "budgets": {
+      "10": {
+        "precision": -0.006222207743553865,
+        "recall": -0.0021004591317735632
+      },
+      "20": {
+        "precision": -0.005806803651852377,
+        "recall": -0.00392049047370302
+      }
+    },
+    "pr_auc": -0.004574231545579177
+  },
+  "duplicate_score_id_check": {
+    "duplicate_excess_rows": 0,
+    "identical_score_id_groups": 0
+  },
+  "f1": 0.5128810104240549,
+  "pr_auc": 0.4660130052969073,
+  "precision": 0.3836645952566712,
+  "predicted_positive_rate": 0.5970928660548785,
+  "prevalence": 0.2962269805745857,
+  "ranking_status": "defined",
+  "recall": 0.7733373656283506,
+  "roc_auc": 0.6849842710200642,
+  "rows": 613938
+}

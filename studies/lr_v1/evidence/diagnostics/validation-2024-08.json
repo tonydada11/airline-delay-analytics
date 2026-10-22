@@ -1,0 +1,1875 @@
+{
+  "budgets": {
+    "10": {
+      "capacity": 60430,
+      "fractional_boundary_groups": 0,
+      "minimum_selected_score": 0.5396346930668188,
+      "precision": 0.49392685752109877,
+      "recall": 0.2104758412546188,
+      "selected_mass": 60430,
+      "true_positive_mass": 29848.0
+    },
+    "20": {
+      "capacity": 120860,
+      "fractional_boundary_groups": 0,
+      "minimum_selected_score": 0.4781131370344247,
+      "precision": 0.4380688399801423,
+      "recall": 0.37334640227907373,
+      "selected_mass": 120860,
+      "true_positive_mass": 52945.0
+    }
+  },
+  "confusion_matrix": {
+    "false_negative": 51789,
+    "false_positive": 160303,
+    "true_negative": 302188,
+    "true_positive": 90023
+  },
+  "duplicate_score_id_check": {
+    "duplicate_excess_rows": 0,
+    "identical_score_id_groups": 0
+  },
+  "f1": 0.4591393846043995,
+  "pr_auc": 0.4058145952380886,
+  "precision": 0.35962305154079083,
+  "predicted_positive_rate": 0.4142392144338188,
+  "prevalence": 0.23467035576523698,
+  "ranking_status": "defined",
+  "recall": 0.6348052350999915,
+  "roc_auc": 0.6966261205126648,
+  "rows": 604303,
+  "score_distribution": {
+    "by_label": [
+      {
+        "is_arrival_delayed_15m": 0,
+        "max": 0.8440241900906438,
+        "mean": 0.35069842269372536,
+        "min": 0.06548245565810928,
+        "quantiles": [
+          0.14742497548846034,
+          0.20710856687596302,
+          0.2624994788498466,
+          0.34002775403307584,
+          0.4270139283418578,
+          0.5094257936881554,
+          0.6449553441369366
+        ],
+        "rows": 462491,
+        "stddev": 0.11532151668794109
+      },
+      {
+        "is_arrival_delayed_15m": 1,
+        "max": 0.8532495751494007,
+        "mean": 0.4363081764364173,
+        "min": 0.07026171793554936,
+        "quantiles": [
+          0.1805793969761248,
+          0.2751838527770962,
+          0.34770351086531326,
+          0.43533054853255193,
+          0.523026767102391,
+          0.5973032705450945,
+          0.7076498461395455
+        ],
+        "rows": 141812,
+        "stddev": 0.12178544826722855
+      }
+    ],
+    "histogram": [
+      {
+        "bin": 1,
+        "count": 50,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 2,
+        "count": 5395,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 3,
+        "count": 33508,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 4,
+        "count": 59494,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 5,
+        "count": 72169,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 6,
+        "count": 75693,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 7,
+        "count": 68595,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 8,
+        "count": 55199,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 9,
+        "count": 40189,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 10,
+        "count": 26013,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 11,
+        "count": 14741,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 12,
+        "count": 7320,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 13,
+        "count": 3010,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 14,
+        "count": 926,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 15,
+        "count": 170,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 16,
+        "count": 19,
+        "is_arrival_delayed_15m": 0
+      },
+      {
+        "bin": 1,
+        "count": 6,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 2,
+        "count": 322,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 3,
+        "count": 2420,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 4,
+        "count": 6489,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 5,
+        "count": 11082,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 6,
+        "count": 15950,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 7,
+        "count": 19633,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 8,
+        "count": 21199,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 9,
+        "count": 20670,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 10,
+        "count": 17540,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 11,
+        "count": 12845,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 12,
+        "count": 7935,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 13,
+        "count": 3970,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 14,
+        "count": 1376,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 15,
+        "count": 351,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 16,
+        "count": 22,
+        "is_arrival_delayed_15m": 1
+      },
+      {
+        "bin": 17,
+        "count": 2,
+        "is_arrival_delayed_15m": 1
+      }
+    ],
+    "histogram_bin_width": 0.05,
+    "quantile_accuracy": 10000,
+    "quantile_probabilities": [
+      0.01,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      0.9,
+      0.99
+    ]
+  },
+  "thresholds": [
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462491,
+        "true_negative": 0,
+        "true_positive": 141812
+      },
+      "f1": 0.3801344296790709,
+      "precision": 0.23467035576523698,
+      "predicted_positive_rate": 1.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 0,
+      "threshold": 0.0
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462491,
+        "true_negative": 0,
+        "true_positive": 141812
+      },
+      "f1": 0.3801344296790709,
+      "precision": 0.23467035576523698,
+      "predicted_positive_rate": 1.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 1,
+      "threshold": 0.01
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462491,
+        "true_negative": 0,
+        "true_positive": 141812
+      },
+      "f1": 0.3801344296790709,
+      "precision": 0.23467035576523698,
+      "predicted_positive_rate": 1.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 2,
+      "threshold": 0.02
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462491,
+        "true_negative": 0,
+        "true_positive": 141812
+      },
+      "f1": 0.3801344296790709,
+      "precision": 0.23467035576523698,
+      "predicted_positive_rate": 1.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 3,
+      "threshold": 0.03
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462491,
+        "true_negative": 0,
+        "true_positive": 141812
+      },
+      "f1": 0.3801344296790709,
+      "precision": 0.23467035576523698,
+      "predicted_positive_rate": 1.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 4,
+      "threshold": 0.04
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462491,
+        "true_negative": 0,
+        "true_positive": 141812
+      },
+      "f1": 0.3801344296790709,
+      "precision": 0.23467035576523698,
+      "predicted_positive_rate": 1.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 5,
+      "threshold": 0.05
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462491,
+        "true_negative": 0,
+        "true_positive": 141812
+      },
+      "f1": 0.3801344296790709,
+      "precision": 0.23467035576523698,
+      "predicted_positive_rate": 1.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 6,
+      "threshold": 0.06
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 0,
+        "false_positive": 462488,
+        "true_negative": 3,
+        "true_positive": 141812
+      },
+      "f1": 0.38013595814033285,
+      "precision": 0.23467152076783054,
+      "predicted_positive_rate": 0.9999950356030005,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.0,
+      "rows": 604303,
+      "step": 7,
+      "threshold": 0.07
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 2,
+        "false_positive": 462479,
+        "true_negative": 12,
+        "true_positive": 141810
+      },
+      "f1": 0.3801362013990063,
+      "precision": 0.23467248286829645,
+      "predicted_positive_rate": 0.9999768328140023,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9999858968211435,
+      "rows": 604303,
+      "step": 8,
+      "threshold": 0.08
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 2,
+        "false_positive": 462473,
+        "true_negative": 18,
+        "true_positive": 141810
+      },
+      "f1": 0.38013925840543095,
+      "precision": 0.23467481296015277,
+      "predicted_positive_rate": 0.9999669040200032,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9999858968211435,
+      "rows": 604303,
+      "step": 9,
+      "threshold": 0.09
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 6,
+        "false_positive": 462441,
+        "true_negative": 50,
+        "true_positive": 141806
+      },
+      "f1": 0.38014687846403566,
+      "precision": 0.23468217467360203,
+      "predicted_positive_rate": 0.999907331256009,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9999576904634304,
+      "rows": 604303,
+      "step": 10,
+      "threshold": 0.1
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 12,
+        "false_positive": 462328,
+        "true_negative": 163,
+        "true_positive": 141800
+      },
+      "f1": 0.3801914363085503,
+      "precision": 0.23471847025795858,
+      "predicted_positive_rate": 0.999710410175028,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9999153809268609,
+      "rows": 604303,
+      "step": 11,
+      "threshold": 0.11
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 26,
+        "false_positive": 462032,
+        "true_negative": 459,
+        "true_positive": 141786
+      },
+      "f1": 0.38031195096763815,
+      "precision": 0.23481578886353172,
+      "predicted_positive_rate": 0.9991974224850778,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9998166586748654,
+      "rows": 604303,
+      "step": 12,
+      "threshold": 0.12
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 60,
+        "false_positive": 461289,
+        "true_negative": 1202,
+        "true_positive": 141752
+      },
+      "f1": 0.3806173835642737,
+      "precision": 0.235061960961195,
+      "predicted_positive_rate": 0.9979116436622025,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9995769046343046,
+      "rows": 604303,
+      "step": 13,
+      "threshold": 0.13
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 158,
+        "false_positive": 459778,
+        "true_negative": 2713,
+        "true_positive": 141654
+      },
+      "f1": 0.38117764825548534,
+      "precision": 0.2355278734753056,
+      "predicted_positive_rate": 0.9952490720714608,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9988858488703354,
+      "rows": 604303,
+      "step": 14,
+      "threshold": 0.14
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 328,
+        "false_positive": 457046,
+        "true_negative": 5445,
+        "true_positive": 141484
+      },
+      "f1": 0.3822125450129804,
+      "precision": 0.23638581190583596,
+      "predicted_positive_rate": 0.9904468453739267,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9976870786675317,
+      "rows": 604303,
+      "step": 15,
+      "threshold": 0.15
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 555,
+        "false_positive": 453009,
+        "true_negative": 9482,
+        "true_positive": 141257
+      },
+      "f1": 0.38380986797594824,
+      "precision": 0.23769995254650275,
+      "predicted_positive_rate": 0.9833907824386111,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9960863678673173,
+      "rows": 604303,
+      "step": 16,
+      "threshold": 0.16
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 912,
+        "false_positive": 447398,
+        "true_negative": 15093,
+        "true_positive": 140900
+      },
+      "f1": 0.3859692375121557,
+      "precision": 0.2395044688236234,
+      "predicted_positive_rate": 0.973514942007569,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9935689504414295,
+      "rows": 604303,
+      "step": 17,
+      "threshold": 0.17
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 1388,
+        "false_positive": 440664,
+        "true_negative": 21827,
+        "true_positive": 140424
+      },
+      "f1": 0.3885018674782128,
+      "precision": 0.241657029572113,
+      "predicted_positive_rate": 0.9615838412187264,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9902123938735791,
+      "rows": 604303,
+      "step": 18,
+      "threshold": 0.18
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 1990,
+        "false_positive": 432755,
+        "true_negative": 29736,
+        "true_positive": 139822
+      },
+      "f1": 0.39144499705342606,
+      "precision": 0.24419772362494477,
+      "predicted_positive_rate": 0.9474998469310925,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9859673370377683,
+      "rows": 604303,
+      "step": 19,
+      "threshold": 0.19
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 2748,
+        "false_positive": 423538,
+        "true_negative": 38953,
+        "true_positive": 139064
+      },
+      "f1": 0.39483599133464126,
+      "precision": 0.24718006690342373,
+      "predicted_positive_rate": 0.9309932269076937,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9806222322511494,
+      "rows": 604303,
+      "step": 20,
+      "threshold": 0.2
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 3677,
+        "false_positive": 413214,
+        "true_negative": 49277,
+        "true_positive": 138135
+      },
+      "f1": 0.3985654126530489,
+      "precision": 0.2505400390678137,
+      "predicted_positive_rate": 0.9123717737624999,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9740713056722985,
+      "rows": 604303,
+      "step": 21,
+      "threshold": 0.21
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 4787,
+        "false_positive": 401981,
+        "true_negative": 60510,
+        "true_positive": 137025
+      },
+      "f1": 0.4025304853866966,
+      "precision": 0.25421794933637104,
+      "predicted_positive_rate": 0.8919465897074812,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9662440414069331,
+      "rows": 604303,
+      "step": 22,
+      "threshold": 0.22
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 6069,
+        "false_positive": 389961,
+        "true_negative": 72530,
+        "true_positive": 135743
+      },
+      "f1": 0.4067108503766202,
+      "precision": 0.2582118454491501,
+      "predicted_positive_rate": 0.8699344534116163,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9572039037599075,
+      "rows": 604303,
+      "step": 23,
+      "threshold": 0.23
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 7556,
+        "false_positive": 377216,
+        "true_negative": 85275,
+        "true_positive": 134256
+      },
+      "f1": 0.41101879121484686,
+      "precision": 0.26248944223730725,
+      "predicted_positive_rate": 0.8463833540459008,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9467181902800891,
+      "rows": 604303,
+      "step": 24,
+      "threshold": 0.24
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 9237,
+        "false_positive": 364044,
+        "true_negative": 98447,
+        "true_positive": 132575
+      },
+      "f1": 0.41531504579194933,
+      "precision": 0.26695515072923104,
+      "predicted_positive_rate": 0.821804624501285,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9348644684511889,
+      "rows": 604303,
+      "step": 25,
+      "threshold": 0.25
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 11066,
+        "false_positive": 350202,
+        "true_negative": 112289,
+        "true_positive": 130746
+      },
+      "f1": 0.4198920932622519,
+      "precision": 0.2718505950747274,
+      "predicted_positive_rate": 0.7958722693748004,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9219671113869066,
+      "rows": 604303,
+      "step": 26,
+      "threshold": 0.26
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 13021,
+        "false_positive": 336289,
+        "true_negative": 126202,
+        "true_positive": 128791
+      },
+      "f1": 0.4244280695741582,
+      "precision": 0.27692224993549497,
+      "predicted_positive_rate": 0.7696139188453475,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.9081812540546639,
+      "rows": 604303,
+      "step": 27,
+      "threshold": 0.27
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 15283,
+        "false_positive": 321710,
+        "true_negative": 140781,
+        "true_positive": 126529
+      },
+      "f1": 0.4288747921789811,
+      "precision": 0.2822802121189812,
+      "predicted_positive_rate": 0.7417454488890507,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.8922305587679463,
+      "rows": 604303,
+      "step": 28,
+      "threshold": 0.28
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 17709,
+        "false_positive": 306872,
+        "true_negative": 155619,
+        "true_positive": 124103
+      },
+      "f1": 0.43333036538887937,
+      "precision": 0.28795869830036547,
+      "predicted_positive_rate": 0.7131769989558219,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.8751234028149945,
+      "rows": 604303,
+      "step": 29,
+      "threshold": 0.29
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 20319,
+        "false_positive": 291875,
+        "true_negative": 170616,
+        "true_positive": 121493
+      },
+      "f1": 0.43767066536979005,
+      "precision": 0.2939100269009696,
+      "predicted_positive_rate": 0.684040952965648,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.8567187544072434,
+      "rows": 604303,
+      "step": 30,
+      "threshold": 0.3
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 23079,
+        "false_positive": 276926,
+        "true_negative": 185565,
+        "true_positive": 118733
+      },
+      "f1": 0.44182104708905223,
+      "precision": 0.30008921824096,
+      "predicted_positive_rate": 0.6547361174774906,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.8372563675852537,
+      "rows": 604303,
+      "step": 31,
+      "threshold": 0.31
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 26118,
+        "false_positive": 261537,
+        "true_negative": 200954,
+        "true_positive": 115694
+      },
+      "f1": 0.4457973616829434,
+      "precision": 0.30669271613414595,
+      "predicted_positive_rate": 0.6242414815084486,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.8158265873127803,
+      "rows": 604303,
+      "step": 32,
+      "threshold": 0.32
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 29334,
+        "false_positive": 246202,
+        "true_negative": 216289,
+        "true_positive": 112478
+      },
+      "f1": 0.44946972179375494,
+      "precision": 0.31358871417419426,
+      "predicted_positive_rate": 0.5935433052624263,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.7931486757115054,
+      "rows": 604303,
+      "step": 33,
+      "threshold": 0.33
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 32822,
+        "false_positive": 231291,
+        "true_negative": 231200,
+        "true_positive": 108990
+      },
+      "f1": 0.4521534226798563,
+      "precision": 0.3202941098680208,
+      "predicted_positive_rate": 0.5630966584643796,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.7685527317857445,
+      "rows": 604303,
+      "step": 34,
+      "threshold": 0.34
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 36269,
+        "false_positive": 216182,
+        "true_negative": 246309,
+        "true_positive": 105543
+      },
+      "f1": 0.45538112383693213,
+      "precision": 0.32805346180744427,
+      "predicted_positive_rate": 0.5323902082233581,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.7442459030265421,
+      "rows": 604303,
+      "step": 35,
+      "threshold": 0.35
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 39928,
+        "false_positive": 201595,
+        "true_negative": 260896,
+        "true_positive": 101884
+      },
+      "f1": 0.4576063742586308,
+      "precision": 0.33572009924904195,
+      "predicted_positive_rate": 0.5021967456722869,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.7184441373085494,
+      "rows": 604303,
+      "step": 36,
+      "threshold": 0.36
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 43825,
+        "false_positive": 187506,
+        "true_negative": 274985,
+        "true_positive": 97987
+      },
+      "f1": 0.4586279121470612,
+      "precision": 0.34322032414104725,
+      "predicted_positive_rate": 0.47243353086117396,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.6909640933066313,
+      "rows": 604303,
+      "step": 37,
+      "threshold": 0.37
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 47811,
+        "false_positive": 173713,
+        "true_negative": 288778,
+        "true_positive": 94001
+      },
+      "f1": 0.4590721956603489,
+      "precision": 0.35112470771046717,
+      "predicted_positive_rate": 0.44301285944302776,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.6628564578455984,
+      "rows": 604303,
+      "step": 38,
+      "threshold": 0.38
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 51789,
+        "false_positive": 160303,
+        "true_negative": 302188,
+        "true_positive": 90023
+      },
+      "f1": 0.4591393846043995,
+      "precision": 0.35962305154079083,
+      "predicted_positive_rate": 0.4142392144338188,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.6348052350999915,
+      "rows": 604303,
+      "step": 39,
+      "threshold": 0.39
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 55902,
+        "false_positive": 147587,
+        "true_negative": 314904,
+        "true_positive": 85910
+      },
+      "f1": 0.45780943169495003,
+      "precision": 0.36792763932727185,
+      "predicted_positive_rate": 0.3863906020655201,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.60580204778157,
+      "rows": 604303,
+      "step": 40,
+      "threshold": 0.4
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 60080,
+        "false_positive": 135205,
+        "true_negative": 327286,
+        "true_positive": 81732
+      },
+      "f1": 0.4556500505924755,
+      "precision": 0.3767545416411216,
+      "predicted_positive_rate": 0.3589871306281783,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.5763405071503117,
+      "rows": 604303,
+      "step": 41,
+      "threshold": 0.41
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 64216,
+        "false_positive": 123595,
+        "true_negative": 338896,
+        "true_positive": 77596
+      },
+      "f1": 0.4524508531995347,
+      "precision": 0.3856832562092738,
+      "predicted_positive_rate": 0.3329306655767057,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.5471751332750402,
+      "rows": 604303,
+      "step": 42,
+      "threshold": 0.42
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 68574,
+        "false_positive": 112407,
+        "true_negative": 350084,
+        "true_positive": 73238
+      },
+      "f1": 0.44731369309558205,
+      "precision": 0.3945056424896981,
+      "predicted_positive_rate": 0.3072051603252011,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.5164443065466956,
+      "rows": 604303,
+      "step": 43,
+      "threshold": 0.43
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 72848,
+        "false_positive": 102171,
+        "true_negative": 360320,
+        "true_positive": 68964
+      },
+      "f1": 0.4407391666959581,
+      "precision": 0.40298010342711893,
+      "predicted_positive_rate": 0.2831940268375302,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.48630581333032463,
+      "rows": 604303,
+      "step": 44,
+      "threshold": 0.44
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 77101,
+        "false_positive": 92388,
+        "true_negative": 370103,
+        "true_positive": 64711
+      },
+      "f1": 0.43297837817945806,
+      "precision": 0.4119122336870381,
+      "predicted_positive_rate": 0.2599672680757832,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.4563154034919471,
+      "rows": 604303,
+      "step": 45,
+      "threshold": 0.45
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 81263,
+        "false_positive": 83191,
+        "true_negative": 379300,
+        "true_positive": 60549
+      },
+      "f1": 0.4240838796436376,
+      "precision": 0.4212397384165855,
+      "predicted_positive_rate": 0.2378608082369275,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.4269666882915409,
+      "rows": 604303,
+      "step": 46,
+      "threshold": 0.46
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 85521,
+        "false_positive": 74417,
+        "true_negative": 388074,
+        "true_positive": 56291
+      },
+      "f1": 0.4131146337883458,
+      "precision": 0.43066223949566973,
+      "predicted_positive_rate": 0.21629546767101934,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.39694102050602204,
+      "rows": 604303,
+      "step": 47,
+      "threshold": 0.47
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 89633,
+        "false_positive": 66499,
+        "true_negative": 395992,
+        "true_positive": 52179
+      },
+      "f1": 0.40062190487158816,
+      "precision": 0.43966868332799675,
+      "predicted_positive_rate": 0.19638823570295033,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.36794488477702875,
+      "rows": 604303,
+      "step": 48,
+      "threshold": 0.48
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 93711,
+        "false_positive": 58976,
+        "true_negative": 403515,
+        "true_positive": 48101
+      },
+      "f1": 0.38652572030101773,
+      "precision": 0.44921878648075686,
+      "predicted_positive_rate": 0.17719091250581248,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.33918850308859616,
+      "rows": 604303,
+      "step": 49,
+      "threshold": 0.49
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 97771,
+        "false_positive": 52199,
+        "true_negative": 410292,
+        "true_positive": 44041
+      },
+      "f1": 0.37001159410548956,
+      "precision": 0.4576163757273483,
+      "predicted_positive_rate": 0.15925785574455198,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.3105590500098722,
+      "rows": 604303,
+      "step": 50,
+      "threshold": 0.5
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 101548,
+        "false_positive": 45915,
+        "true_negative": 416576,
+        "true_positive": 40264
+      },
+      "f1": 0.3532069248347522,
+      "precision": 0.46721359031782683,
+      "predicted_positive_rate": 0.14260892300716693,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.2839251967393451,
+      "rows": 604303,
+      "step": 51,
+      "threshold": 0.51
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 105252,
+        "false_positive": 40155,
+        "true_negative": 422336,
+        "true_positive": 36560
+      },
+      "f1": 0.33460396198181463,
+      "precision": 0.4765691194681614,
+      "predicted_positive_rate": 0.12694790527268604,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.25780610949708066,
+      "rows": 604303,
+      "step": 52,
+      "threshold": 0.52
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 108808,
+        "false_positive": 35092,
+        "true_negative": 427399,
+        "true_positive": 33004
+      },
+      "f1": 0.3144615736417859,
+      "precision": 0.4846687030075188,
+      "predicted_positive_rate": 0.11268519269306954,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.23273065749019828,
+      "rows": 604303,
+      "step": 53,
+      "threshold": 0.53
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 112092,
+        "false_positive": 30421,
+        "true_negative": 432070,
+        "true_positive": 29720
+      },
+      "f1": 0.29432590751313426,
+      "precision": 0.4941720290650305,
+      "predicted_positive_rate": 0.09952126664934643,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.20957323780780188,
+      "rows": 604303,
+      "step": 54,
+      "threshold": 0.54
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 115311,
+        "false_positive": 26186,
+        "true_negative": 436305,
+        "true_positive": 26501
+      },
+      "f1": 0.2725052570964375,
+      "precision": 0.5029893522121206,
+      "predicted_positive_rate": 0.08718639490454291,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.18687417143824217,
+      "rows": 604303,
+      "step": 55,
+      "threshold": 0.55
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 118328,
+        "false_positive": 22335,
+        "true_negative": 440156,
+        "true_positive": 23484
+      },
+      "f1": 0.25032110898518906,
+      "precision": 0.5125384665750017,
+      "predicted_positive_rate": 0.07582123537364534,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.16559952613319043,
+      "rows": 604303,
+      "step": 56,
+      "threshold": 0.56
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 121159,
+        "false_positive": 18986,
+        "true_negative": 443505,
+        "true_positive": 20653
+      },
+      "f1": 0.22764272448209158,
+      "precision": 0.521027271121875,
+      "predicted_positive_rate": 0.06559457755463732,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.14563647646179448,
+      "rows": 604303,
+      "step": 57,
+      "threshold": 0.57
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 123755,
+        "false_positive": 16130,
+        "true_negative": 446361,
+        "true_positive": 18057
+      },
+      "f1": 0.20519434769515735,
+      "precision": 0.5281832275426331,
+      "predicted_positive_rate": 0.056572613407512455,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.127330550306039,
+      "rows": 604303,
+      "step": 58,
+      "threshold": 0.58
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 126025,
+        "false_positive": 13650,
+        "true_negative": 448841,
+        "true_positive": 15787
+      },
+      "f1": 0.18437479926890082,
+      "precision": 0.5362978564391752,
+      "predicted_positive_rate": 0.048712318158274905,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.11132344230389529,
+      "rows": 604303,
+      "step": 59,
+      "threshold": 0.59
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 128156,
+        "false_positive": 11445,
+        "true_negative": 451046,
+        "true_positive": 13656
+      },
+      "f1": 0.1636301546314547,
+      "precision": 0.5440420700370503,
+      "predicted_positive_rate": 0.0415371096949709,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.09629650523227935,
+      "rows": 604303,
+      "step": 60,
+      "threshold": 0.6
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 130079,
+        "false_positive": 9498,
+        "true_negative": 452993,
+        "true_positive": 11733
+      },
+      "f1": 0.1439252221806517,
+      "precision": 0.5526352974424191,
+      "predicted_positive_rate": 0.03513303756559209,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.08273629876174089,
+      "rows": 604303,
+      "step": 61,
+      "threshold": 0.61
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 131877,
+        "false_positive": 7846,
+        "true_negative": 454645,
+        "true_positive": 9935
+      },
+      "f1": 0.1245042075780266,
+      "precision": 0.558742477925876,
+      "predicted_positive_rate": 0.029423981016145875,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.07005754096973457,
+      "rows": 604303,
+      "step": 62,
+      "threshold": 0.62
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 133427,
+        "false_positive": 6401,
+        "true_negative": 456090,
+        "true_positive": 8385
+      },
+      "f1": 0.10708949028723229,
+      "precision": 0.5670904910050047,
+      "predicted_positive_rate": 0.02446785801162662,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.05912757735593603,
+      "rows": 604303,
+      "step": 63,
+      "threshold": 0.63
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 134882,
+        "false_positive": 5180,
+        "true_negative": 457311,
+        "true_positive": 6930
+      },
+      "f1": 0.09004560751549487,
+      "precision": 0.5722543352601156,
+      "predicted_positive_rate": 0.020039615888056157,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.04886751473782191,
+      "rows": 604303,
+      "step": 64,
+      "threshold": 0.64
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 136091,
+        "false_positive": 4125,
+        "true_negative": 458366,
+        "true_positive": 5721
+      },
+      "f1": 0.07544606944572657,
+      "precision": 0.5810481413772091,
+      "predicted_positive_rate": 0.016293150952419563,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.04034214311905904,
+      "rows": 604303,
+      "step": 65,
+      "threshold": 0.65
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 137133,
+        "false_positive": 3262,
+        "true_negative": 459229,
+        "true_positive": 4679
+      },
+      "f1": 0.06248956615226406,
+      "precision": 0.5892205011963229,
+      "predicted_positive_rate": 0.013140758857725346,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.03299438693481511,
+      "rows": 604303,
+      "step": 66,
+      "threshold": 0.66
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 138040,
+        "false_positive": 2555,
+        "true_negative": 459936,
+        "true_positive": 3772
+      },
+      "f1": 0.05092514462768076,
+      "precision": 0.596175122490912,
+      "predicted_positive_rate": 0.010469913271984418,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.02659859532338589,
+      "rows": 604303,
+      "step": 67,
+      "threshold": 0.67
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 138782,
+        "false_positive": 1958,
+        "true_negative": 460533,
+        "true_positive": 3030
+      },
+      "f1": 0.04128065395095368,
+      "precision": 0.607457898957498,
+      "predicted_positive_rate": 0.008254137411199349,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0213663159676191,
+      "rows": 604303,
+      "step": 68,
+      "threshold": 0.68
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 139496,
+        "false_positive": 1501,
+        "true_negative": 460990,
+        "true_positive": 2316
+      },
+      "f1": 0.03180685165729353,
+      "precision": 0.6067592350013099,
+      "predicted_positive_rate": 0.006316367782387313,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.01633148111584351,
+      "rows": 604303,
+      "step": 69,
+      "threshold": 0.69
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 140061,
+        "false_positive": 1115,
+        "true_negative": 461376,
+        "true_positive": 1751
+      },
+      "f1": 0.024205476990281864,
+      "precision": 0.6109560362875087,
+      "predicted_positive_rate": 0.004742653933539963,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.012347333088878233,
+      "rows": 604303,
+      "step": 70,
+      "threshold": 0.7
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 140474,
+        "false_positive": 813,
+        "true_negative": 461678,
+        "true_positive": 1338
+      },
+      "f1": 0.018588109444787896,
+      "precision": 0.6220362622036262,
+      "predicted_positive_rate": 0.003559472648654731,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.009435026655008038,
+      "rows": 604303,
+      "step": 71,
+      "threshold": 0.71
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 140806,
+        "false_positive": 600,
+        "true_negative": 461891,
+        "true_positive": 1006
+      },
+      "f1": 0.014028922450459495,
+      "precision": 0.6264009962640099,
+      "predicted_positive_rate": 0.002657607193742212,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.007093898964826672,
+      "rows": 604303,
+      "step": 72,
+      "threshold": 0.72
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141088,
+        "false_positive": 434,
+        "true_negative": 462057,
+        "true_positive": 724
+      },
+      "f1": 0.010127998880884103,
+      "precision": 0.6252158894645942,
+      "predicted_positive_rate": 0.001916257241814123,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.005105350746058161,
+      "rows": 604303,
+      "step": 73,
+      "threshold": 0.73
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141286,
+        "false_positive": 299,
+        "true_negative": 462192,
+        "true_positive": 526
+      },
+      "f1": 0.0073753654381401735,
+      "precision": 0.6375757575757576,
+      "predicted_positive_rate": 0.0013652091748675747,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.00370913603926325,
+      "rows": 604303,
+      "step": 74,
+      "threshold": 0.74
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141437,
+        "false_positive": 189,
+        "true_negative": 462302,
+        "true_positive": 375
+      },
+      "f1": 0.005267741754228241,
+      "precision": 0.6648936170212766,
+      "predicted_positive_rate": 0.0009333066359094692,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0026443460355964235,
+      "rows": 604303,
+      "step": 75,
+      "threshold": 0.75
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141556,
+        "false_positive": 129,
+        "true_negative": 462362,
+        "true_positive": 256
+      },
+      "f1": 0.0036006385507429835,
+      "precision": 0.6649350649350649,
+      "predicted_positive_rate": 0.0006370976149382016,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.001805206893633825,
+      "rows": 604303,
+      "step": 76,
+      "threshold": 0.76
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141648,
+        "false_positive": 88,
+        "true_negative": 462403,
+        "true_positive": 164
+      },
+      "f1": 0.0023088185606487217,
+      "precision": 0.6507936507936508,
+      "predicted_positive_rate": 0.0004170093479595501,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0011564606662341692,
+      "rows": 604303,
+      "step": 77,
+      "threshold": 0.77
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141725,
+        "false_positive": 62,
+        "true_negative": 462429,
+        "true_positive": 87
+      },
+      "f1": 0.0012256887455005248,
+      "precision": 0.5838926174496645,
+      "predicted_positive_rate": 0.0002465650509760832,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0006134882802583703,
+      "rows": 604303,
+      "step": 78,
+      "threshold": 0.78
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141761,
+        "false_positive": 35,
+        "true_negative": 462456,
+        "true_positive": 51
+      },
+      "f1": 0.0007188261991007625,
+      "precision": 0.5930232558139535,
+      "predicted_positive_rate": 0.00014231271398619568,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0003596310608411136,
+      "rows": 604303,
+      "step": 79,
+      "threshold": 0.79
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141788,
+        "false_positive": 19,
+        "true_negative": 462472,
+        "true_positive": 24
+      },
+      "f1": 0.00033837369144549016,
+      "precision": 0.5581395348837209,
+      "predicted_positive_rate": 7.115635699309784e-05,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0001692381462781711,
+      "rows": 604303,
+      "step": 80,
+      "threshold": 0.8
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141800,
+        "false_positive": 12,
+        "true_negative": 462479,
+        "true_positive": 12
+      },
+      "f1": 0.0001692095095744381,
+      "precision": 0.5,
+      "predicted_positive_rate": 3.971517599614763e-05,
+      "prevalence": 0.23467035576523698,
+      "recall": 8.461907313908555e-05,
+      "rows": 604303,
+      "step": 81,
+      "threshold": 0.81
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141805,
+        "false_positive": 8,
+        "true_negative": 462483,
+        "true_positive": 7
+      },
+      "f1": 9.871181086817038e-05,
+      "precision": 0.4666666666666667,
+      "predicted_positive_rate": 2.4821984997592268e-05,
+      "prevalence": 0.23467035576523698,
+      "recall": 4.9361125997799905e-05,
+      "rows": 604303,
+      "step": 82,
+      "threshold": 0.82
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141809,
+        "false_positive": 4,
+        "true_negative": 462487,
+        "true_positive": 3
+      },
+      "f1": 4.230744822626023e-05,
+      "precision": 0.42857142857142855,
+      "predicted_positive_rate": 1.1583592998876392e-05,
+      "prevalence": 0.23467035576523698,
+      "recall": 2.1154768284771388e-05,
+      "rows": 604303,
+      "step": 83,
+      "threshold": 0.83
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141809,
+        "false_positive": 2,
+        "true_negative": 462489,
+        "true_positive": 3
+      },
+      "f1": 4.230804487473293e-05,
+      "precision": 0.6,
+      "predicted_positive_rate": 8.273994999197423e-06,
+      "prevalence": 0.23467035576523698,
+      "recall": 2.1154768284771388e-05,
+      "rows": 604303,
+      "step": 84,
+      "threshold": 0.84
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141810,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 2
+      },
+      "f1": 2.8205959919330955e-05,
+      "precision": 1.0,
+      "predicted_positive_rate": 3.309597999678969e-06,
+      "prevalence": 0.23467035576523698,
+      "recall": 1.4103178856514259e-05,
+      "rows": 604303,
+      "step": 85,
+      "threshold": 0.85
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 86,
+      "threshold": 0.86
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 87,
+      "threshold": 0.87
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 88,
+      "threshold": 0.88
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 89,
+      "threshold": 0.89
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 90,
+      "threshold": 0.9
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 91,
+      "threshold": 0.91
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 92,
+      "threshold": 0.92
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 93,
+      "threshold": 0.93
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 94,
+      "threshold": 0.94
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 95,
+      "threshold": 0.95
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 96,
+      "threshold": 0.96
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 97,
+      "threshold": 0.97
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 98,
+      "threshold": 0.98
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 99,
+      "threshold": 0.99
+    },
+    {
+      "confusion_matrix": {
+        "false_negative": 141812,
+        "false_positive": 0,
+        "true_negative": 462491,
+        "true_positive": 0
+      },
+      "f1": 0.0,
+      "precision": 0.0,
+      "predicted_positive_rate": 0.0,
+      "prevalence": 0.23467035576523698,
+      "recall": 0.0,
+      "rows": 604303,
+      "step": 100,
+      "threshold": 1.0
+    }
+  ]
+}

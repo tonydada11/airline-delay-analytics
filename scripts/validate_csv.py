@@ -1,3 +1,5 @@
+"""Runs validate csv for the airline analytics project."""
+
 from pathlib import Path
 import csv
 from collections import Counter

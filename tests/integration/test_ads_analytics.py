@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests ads analytics behavior."""
+
 import os
 import shutil
 import tempfile
@@ -80,6 +82,7 @@ def _row(
     cancelled: int = 0,
     diverted: int = 0,
 ) -> Dict[str, object]:
+    """Build one representative flight row."""
     return {
         "flight_date": flight_date,
         "year": flight_date.year,
@@ -99,6 +102,7 @@ def _row(
 
 @pytest.fixture(scope="module")
 def dwd_rows() -> List[Dict[str, object]]:
+    """Create the sample trusted flight records."""
     return [
         _row(date(2024, 1, 1), 1, 30.0),
         _row(date(2024, 1, 1), None, None, cancelled=1),
@@ -150,6 +154,7 @@ def dwd_rows() -> List[Dict[str, object]]:
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m6-integration-tests")
     yield session
     session.stop()
@@ -157,6 +162,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture(scope="module")
 def shared_tmp_path() -> Iterator[Path]:
+    """Return the shared temporary directory for test outputs."""
     shared_root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     shared_root.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix="airline-m6-", dir=shared_root))
@@ -167,6 +173,7 @@ def shared_tmp_path() -> Iterator[Path]:
 
 
 def _dataframe(spark: SparkSession, rows: List[Dict[str, object]]) -> DataFrame:
+    """Build a small Spark DataFrame for the test."""
     return spark.createDataFrame(
         [[row.get(field.name) for field in DWD_ADS_SCHEMA.fields] for row in rows],
         DWD_ADS_SCHEMA,
@@ -179,6 +186,7 @@ def built_ads(
     shared_tmp_path: Path,
     dwd_rows: List[Dict[str, object]],
 ) -> Dict[str, Path]:
+    """Build and return the ADS fixture tables."""
     paths = {
         "dwd": shared_tmp_path / "dwd" / "flights",
         "dws_carrier": shared_tmp_path / "dws" / "carrier_daily",
@@ -198,6 +206,7 @@ def built_ads(
 
 
 def _build_all_ads(spark: SparkSession, paths: Dict[str, Path]) -> None:
+    """Build all ads."""
     build_monthly_operations(
         spark, paths["dwd"], paths["dws_carrier"], paths["monthly"]
     )
@@ -213,6 +222,7 @@ def _build_all_ads(spark: SparkSession, paths: Dict[str, Path]) -> None:
 
 
 def _assert_same_rows(first: DataFrame, second: DataFrame) -> None:
+    """Check same rows."""
     assert first.columns == second.columns
     assert [field.dataType for field in first.schema.fields] == [
         field.dataType for field in second.schema.fields
@@ -224,6 +234,7 @@ def _assert_same_rows(first: DataFrame, second: DataFrame) -> None:
 def test_transforms_have_exact_ordered_schemas_and_types(
     spark: SparkSession, dwd_rows: List[Dict[str, object]]
 ) -> None:
+    """Exercise the transforms have exact ordered schemas and types case."""
     dwd = _dataframe(spark, dwd_rows)
     carrier_daily = transform_carrier_daily(dwd)
     airport_daily = transform_origin_airport_daily(dwd)
@@ -247,6 +258,7 @@ def test_transforms_have_exact_ordered_schemas_and_types(
 def test_weighted_rates_and_arrival_averages_are_not_daily_averages(
     spark: SparkSession, built_ads: Dict[str, Path]
 ) -> None:
+    """Exercise the weighted rates and arrival averages are not daily averages case."""
     january = spark.read.parquet(str(built_ads["monthly"])).filter(
         (F.col("year") == 2024) & (F.col("month") == 1)
     ).first()
@@ -276,6 +288,7 @@ def test_weighted_rates_and_arrival_averages_are_not_daily_averages(
 def test_monthly_counts_reconcile_to_carrier_daily_and_independent_dwd(
     spark: SparkSession, built_ads: Dict[str, Path]
 ) -> None:
+    """Exercise the monthly counts reconcile to carrier daily and independent dwd case."""
     monthly = spark.read.parquet(str(built_ads["monthly"]))
     carrier_daily = spark.read.parquet(str(built_ads["dws_carrier"])).select(
         F.year("flight_date").cast("int").alias("year"),
@@ -308,6 +321,7 @@ def test_monthly_counts_reconcile_to_carrier_daily_and_independent_dwd(
 def test_grains_rates_and_directional_routes(
     spark: SparkSession, built_ads: Dict[str, Path]
 ) -> None:
+    """Exercise the grains rates and directional routes case."""
     for name, grain in GRAINS.items():
         dataframe = spark.read.parquet(str(built_ads[name]))
         assert dataframe.count() == dataframe.select(*grain).distinct().count()
@@ -333,6 +347,7 @@ def test_grains_rates_and_directional_routes(
 def test_parquet_round_trip_is_unpartitioned_and_second_build_is_identical(
     spark: SparkSession, built_ads: Dict[str, Path]
 ) -> None:
+    """Exercise the parquet round trip is unpartitioned and second build is identical case."""
     snapshots = {
         name: spark.read.parquet(str(built_ads[name])).cache()
         for name in GRAINS

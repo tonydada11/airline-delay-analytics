@@ -21,6 +21,7 @@ pytestmark = pytest.mark.skipif(os.environ.get("AIRLINE_RUN_FULL_ML_QUALITY") !=
 
 @pytest.fixture(scope="module")
 def context():
+    """Build the test context for the Spark operation."""
     paths = get_project_paths(load_config())
     spark = create_spark_session("airline-artifact-quality")
     root = paths.resolve(paths.artifact_root)
@@ -31,6 +32,7 @@ def context():
 
 
 def test_training_bundle(context):
+    """Exercise the training bundle case."""
     spark, paths, _, (_, _, manifest) = context
     features = spark.read.parquet(str(paths.resolve(paths.dws_ml_flight_features))).filter("split = 'train'")
     stats = features.agg(F.count("*"), F.min("flight_date"), F.max("flight_date")).first()
@@ -42,6 +44,7 @@ def test_training_bundle(context):
 
 @pytest.mark.parametrize("split", ["validation", "test"])
 def test_predictions_metrics_and_reload(context, split):
+    """Exercise the predictions metrics and reload case."""
     spark, paths, root, (preprocessing, classifier, manifest) = context
     predictions = spark.read.parquet(str(root / "predictions" / split))
     assert tuple(predictions.columns) == PREDICTION_COLUMNS

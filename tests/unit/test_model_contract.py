@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests model contract behavior."""
+
 import ast
 from pathlib import Path
 import pytest
@@ -8,6 +10,7 @@ from airline.ml.metrics import confusion_metrics
 
 
 def test_pure_feature_contract_and_frozen_settings():
+    """Exercise the pure feature contract and frozen settings case."""
     tree = ast.parse(Path(features.__file__).read_text())
     imports = [n.module for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)]
     assert imports == ["datetime"]
@@ -25,12 +28,14 @@ def test_pure_feature_contract_and_frozen_settings():
 
 
 def test_evaluation_has_no_fit_calls():
+    """Exercise the evaluation has no fit calls case."""
     from airline.ml import evaluate
     tree = ast.parse(Path(evaluate.__file__).read_text())
     assert not any(isinstance(n, ast.Attribute) and n.attr == "fit" for n in ast.walk(tree))
 
 
 def test_confusion_metrics_and_zero_denominators():
+    """Exercise the confusion metrics and zero denominators case."""
     result = confusion_metrics(3, 2, 1, 4)
     assert result["rows"] == 10
     assert result["precision"] == 0.6
@@ -42,6 +47,7 @@ def test_confusion_metrics_and_zero_denominators():
 
 
 def test_feature_contract_import_does_not_load_spark_or_ml():
+    """Exercise the feature contract import does not load spark or ml case."""
     import subprocess
     import sys
     subprocess.run([sys.executable, "-c", "import sys; import airline.dws.ml_feature_contract; assert not any(n.startswith(('pyspark', 'airline.ml')) for n in sys.modules)"], check=True)

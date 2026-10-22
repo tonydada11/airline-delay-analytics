@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Run unit, integration, and configured quality checks.
 
 set -Eeuo pipefail
 
@@ -7,10 +8,12 @@ cd "${PROJECT_ROOT}"
 
 CURRENT_STEP="startup"
 
+# Print a concise status message.
 log() {
   printf '[M8-TEST][%s][%s] %s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$1" "$2"
 }
 
+# Report the command that failed.
 on_error() {
   local exit_code=$?
   log "FAIL" "${CURRENT_STEP} (exit ${exit_code})" >&2
@@ -19,6 +22,7 @@ on_error() {
 
 trap on_error ERR
 
+# Run one named command and record its result.
 run_step() {
   CURRENT_STEP="$1"
   shift
@@ -27,6 +31,7 @@ run_step() {
   log "PASS" "${CURRENT_STEP}"
 }
 
+# Check that the required runtime is available.
 preflight() {
   local running_services
 
@@ -51,6 +56,7 @@ run_step "Docker runtime discovery and context-neutral shutdown tests" \
 run_step "Pipeline orchestration and controlled fail-fast tests" \
   bash tests/pipeline/test_m8_orchestration.sh
 run_step "Preflight: running Spark services" preflight
+# Run Python inside the Spark container.
 runtime_python() {
   docker compose exec -T -w "${AIRLINE_RUNTIME_ROOT:-/workspace}" -e "AIRLINE_TEST_TMP_ROOT=${AIRLINE_RUNTIME_ROOT:-/workspace}/data/.test-tmp" \
     -e "PYTHONPATH=${AIRLINE_RUNTIME_ROOT:-/workspace}/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip" \

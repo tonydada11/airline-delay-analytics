@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests dws analytics behavior."""
+
 import os
 import shutil
 import tempfile
@@ -46,6 +48,7 @@ DWD_ANALYTICS_SCHEMA = StructType(
 
 
 def _row(**overrides: object) -> Dict[str, object]:
+    """Build one representative flight row."""
     row: Dict[str, object] = {
         "flight_date": date(2024, 9, 13),
         "reporting_airline": "AA",
@@ -63,6 +66,7 @@ def _row(**overrides: object) -> Dict[str, object]:
 
 @pytest.fixture(scope="module")
 def dwd_rows() -> List[Dict[str, object]]:
+    """Create the sample trusted flight records."""
     return [
         _row(),
         _row(
@@ -106,6 +110,7 @@ def dwd_rows() -> List[Dict[str, object]]:
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m4-integration-tests")
     yield session
     session.stop()
@@ -113,6 +118,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture(scope="module")
 def shared_tmp_path() -> Iterator[Path]:
+    """Return the shared temporary directory for test outputs."""
     shared_root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     shared_root.mkdir(parents=True, exist_ok=True)
     test_directory = Path(tempfile.mkdtemp(prefix="airline-m4-", dir=shared_root))
@@ -123,6 +129,7 @@ def shared_tmp_path() -> Iterator[Path]:
 
 
 def _dataframe(spark: SparkSession, rows: List[Dict[str, object]]) -> DataFrame:
+    """Build a small Spark DataFrame for the test."""
     return spark.createDataFrame(
         [[row.get(field.name) for field in DWD_ANALYTICS_SCHEMA.fields] for row in rows],
         DWD_ANALYTICS_SCHEMA,
@@ -133,6 +140,7 @@ def _dataframe(spark: SparkSession, rows: List[Dict[str, object]]) -> DataFrame:
 def built_dws(
     spark: SparkSession, shared_tmp_path: Path, dwd_rows: List[Dict[str, object]]
 ) -> Dict[str, Path]:
+    """Build and return daily summary fixture rows."""
     paths = {
         "dwd": shared_tmp_path / "dwd" / "flights",
         "carrier": shared_tmp_path / "dws" / "carrier_daily",
@@ -147,6 +155,7 @@ def built_dws(
 
 
 def _stable_rows(dataframe: DataFrame) -> List[str]:
+    """Return fixture rows in deterministic order."""
     columns = sorted(dataframe.columns)
     return sorted(repr(row.asDict()) for row in dataframe.select(*columns).collect())
 
@@ -154,6 +163,7 @@ def _stable_rows(dataframe: DataFrame) -> List[str]:
 def test_transforms_have_exact_grains_metrics_and_types(
     spark: SparkSession, dwd_rows: List[Dict[str, object]]
 ) -> None:
+    """Exercise the transforms have exact grains metrics and types case."""
     dwd = _dataframe(spark, dwd_rows)
     outputs = {
         "carrier": transform_carrier_daily(dwd),
@@ -185,6 +195,7 @@ def test_transforms_have_exact_grains_metrics_and_types(
 def test_carrier_metrics_use_arr_delay_and_preserve_early_arrivals(
     spark: SparkSession, built_dws: Dict[str, Path]
 ) -> None:
+    """Exercise the carrier metrics use arr delay and preserve early arrivals case."""
     carrier = spark.read.parquet(str(built_dws["carrier"]))
     aa = carrier.filter(
         (F.col("flight_date") == date(2024, 9, 13))
@@ -206,6 +217,7 @@ def test_carrier_metrics_use_arr_delay_and_preserve_early_arrivals(
 def test_zero_denominator_nulls_and_reverse_routes_are_distinct(
     spark: SparkSession, built_dws: Dict[str, Path]
 ) -> None:
+    """Exercise the zero denominator nulls and reverse routes are distinct case."""
     routes = spark.read.parquet(str(built_dws["route"]))
     pairs = {
         (row["origin"], row["destination"])
@@ -229,6 +241,7 @@ def test_zero_denominator_nulls_and_reverse_routes_are_distinct(
 def test_grains_rates_and_components_are_internally_consistent(
     spark: SparkSession, built_dws: Dict[str, Path]
 ) -> None:
+    """Exercise the grains rates and components are internally consistent case."""
     grains = {
         "carrier": ["flight_date", "reporting_airline"],
         "origin": ["flight_date", "origin"],
@@ -262,6 +275,7 @@ def test_grains_rates_and_components_are_internally_consistent(
 def test_aggregate_count_totals_reconcile_to_dwd(
     spark: SparkSession, built_dws: Dict[str, Path]
 ) -> None:
+    """Exercise the aggregate count totals reconcile to dwd case."""
     dwd = spark.read.parquet(str(built_dws["dwd"]))
     completed = (F.col("is_cancelled") == 0) & (F.col("is_diverted") == 0)
     expected = dwd.agg(
@@ -283,6 +297,7 @@ def test_aggregate_count_totals_reconcile_to_dwd(
 def test_validation_rejects_overlapping_statuses_and_ineligible_targets(
     spark: SparkSession,
 ) -> None:
+    """Exercise the validation rejects overlapping statuses and ineligible targets case."""
     overlapping = _row(
         is_cancelled=1,
         is_diverted=1,
@@ -306,6 +321,7 @@ def test_validation_rejects_overlapping_statuses_and_ineligible_targets(
 def test_parquet_round_trip_is_unpartitioned_and_content_idempotent(
     spark: SparkSession, built_dws: Dict[str, Path]
 ) -> None:
+    """Exercise the parquet round trip is unpartitioned and content idempotent case."""
     first_rows = {
         name: _stable_rows(spark.read.parquet(str(built_dws[name])))
         for name in ("carrier", "origin", "route")

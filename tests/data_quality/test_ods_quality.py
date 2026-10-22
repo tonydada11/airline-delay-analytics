@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests ods quality behavior."""
+
 import os
 from pathlib import Path
 from typing import Iterator, Sequence, Set, Tuple
@@ -37,6 +39,7 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m1-full-data-quality")
     yield session
     session.stop()
@@ -45,6 +48,7 @@ def spark() -> Iterator[SparkSession]:
 def _assert_same_rows(
     first: DataFrame, second: DataFrame, columns: Sequence[str]
 ) -> None:
+    """Check same rows."""
     first_aligned = first.select(*columns)
     second_aligned = second.select(*columns)
     assert [
@@ -56,6 +60,7 @@ def _assert_same_rows(
 
 
 def _distinct_pairs(dataframe: DataFrame, first: str, second: str) -> Set[Tuple[int, int]]:
+    """Return distinct key pairs from the fixture."""
     return {
         (row[first], row[second])
         for row in dataframe.select(first, second).distinct().collect()
@@ -63,6 +68,7 @@ def _distinct_pairs(dataframe: DataFrame, first: str, second: str) -> Set[Tuple[
 
 
 def test_full_ods_flights_quality(spark: SparkSession) -> None:
+    """Exercise the full ods flights quality case."""
     config = load_config()
     paths = get_project_paths(config)
     raw_directory = paths.resolve(paths.raw_csv)

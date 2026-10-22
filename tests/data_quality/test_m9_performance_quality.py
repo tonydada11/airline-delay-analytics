@@ -27,10 +27,12 @@ EXPECTED_VARIANTS = {
 
 
 def _read_json(path: Path) -> dict:
+    """Read json."""
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 def test_m9_manifest_summary_and_restoration_are_complete() -> None:
+    """Exercise the m9 manifest summary and restoration are complete case."""
     root = get_project_paths(load_config()).project_root / "artifacts/performance/m9"
     manifest = _read_json(root / "manifest.json")
     summary = _read_json(root / "summary.json")
@@ -61,6 +63,7 @@ def test_m9_manifest_summary_and_restoration_are_complete() -> None:
 
 
 def test_every_variant_has_two_correct_runs_with_runtime_and_plan_evidence() -> None:
+    """Exercise the every variant has two correct runs with runtime and plan evidence case."""
     root = get_project_paths(load_config()).project_root / "artifacts/performance/m9"
     summary = _read_json(root / "summary.json")
     for experiment, expected_variants in EXPECTED_VARIANTS.items():
@@ -100,6 +103,7 @@ def test_every_variant_has_two_correct_runs_with_runtime_and_plan_evidence() -> 
 
 
 def test_plan_operators_and_protected_test_exclusion() -> None:
+    """Exercise the plan operators and protected test exclusion case."""
     paths = get_project_paths(load_config())
     root = paths.project_root / "artifacts/performance/m9"
     plans = root / "plans"

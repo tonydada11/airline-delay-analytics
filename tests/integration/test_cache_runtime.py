@@ -7,6 +7,7 @@ from airline.common.spark_session import create_spark_session
 
 
 def test_wide_disk_cache_roundtrip():
+    """Exercise the wide disk cache roundtrip case."""
     spark = create_spark_session('airline-wide-cache-regression')
     first = second = None
     try:

@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests config behavior."""
+
 from pathlib import Path
 
 import pytest
@@ -28,6 +30,7 @@ ADS_PATHS = (
 
 
 def _write_config(tmp_path: Path, body: str) -> Path:
+    """Write config."""
     config_dir = tmp_path / "conf"
     config_dir.mkdir()
     config_path = config_dir / "project.yaml"
@@ -36,6 +39,7 @@ def _write_config(tmp_path: Path, body: str) -> Path:
 
 
 def test_load_default_config() -> None:
+    """Exercise the load default config case."""
     config = load_config()
 
     assert config.raw_csv == Path("data/raw/csv")
@@ -67,6 +71,7 @@ def test_load_default_config() -> None:
 
 
 def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
+    """Exercise the load custom config sets project root case."""
     config_path = _write_config(
         tmp_path,
         "paths:\n  raw_manifest: conf/raw_data_manifest.csv\n  artifact_root: artifacts\n  raw_csv: inputs/flights\n  ods_flights: warehouse/ods\n"
@@ -148,15 +153,18 @@ def test_load_custom_config_sets_project_root(tmp_path: Path) -> None:
     ],
 )
 def test_rejects_invalid_config(tmp_path: Path, body: str, message: str) -> None:
+    """Exercise the rejects invalid config case."""
     with pytest.raises(ValueError, match=message):
         load_config(_write_config(tmp_path, body))
 
 
 def test_rejects_invalid_yaml(tmp_path: Path) -> None:
+    """Exercise the rejects invalid yaml case."""
     with pytest.raises(ValueError, match="Invalid YAML"):
         load_config(_write_config(tmp_path, "paths: [\n"))
 
 
 def test_missing_config_file_raises_file_not_found(tmp_path: Path) -> None:
+    """Exercise the missing config file raises file not found case."""
     with pytest.raises(FileNotFoundError):
         load_config(tmp_path / "missing.yaml")

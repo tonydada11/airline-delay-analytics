@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests lineage behavior."""
+
 from datetime import date
 import json
 import os
@@ -13,12 +15,14 @@ from airline.ads import write_ads_table
 
 @pytest.fixture(scope='module')
 def spark():
+    """Create the test Spark session and stop it after use."""
     s = create_spark_session('lineage-tests')
     yield s
     s.stop()
 
 
 def test_golden_json_hash_reload_and_duplicate_preservation(spark):
+    """Exercise the golden json hash reload and duplicate preservation case."""
     values = dict(zip(BUSINESS_KEY, [date(2024, 2, 29), ' A"\\\n雪 ', 7, None, 12, 0]))
     literal = '{"flight_date":"2024-02-29","reporting_airline":" A\\"\\\\\\n雪 ","flight_number_reporting_airline":7,"origin_airport_id":null,"dest_airport_id":12,"crs_dep_time":0}'
     assert canonical_json(values) == literal
@@ -45,6 +49,7 @@ def test_golden_json_hash_reload_and_duplicate_preservation(spark):
 
 
 def test_ads_one_file_logical_equality(spark):
+    """Exercise the ads one file logical equality case."""
     root = Path(tempfile.mkdtemp(dir=os.environ.get('AIRLINE_TEST_TMP_ROOT', tempfile.gettempdir())))
     try:
         original = spark.range(12).repartition(4)

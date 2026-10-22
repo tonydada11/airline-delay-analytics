@@ -15,10 +15,12 @@ GRAINS = {
 
 
 def digest(path):
+    """Calculate a file's SHA-256 digest."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def main():
+    """Export the analytics tables to the results folder."""
     from pyspark.sql import SparkSession
 
     parser = argparse.ArgumentParser(description=__doc__)

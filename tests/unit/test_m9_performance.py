@@ -19,6 +19,7 @@ from airline.performance.run_experiments import (
 
 @pytest.fixture
 def runner(tmp_path: Path) -> PerformanceRunner:
+    """Load the M9 runner for unit tests."""
     spark = Mock()
     spark.version = "3.5.9"
     spark.sparkContext.applicationId = "m9-unit-test"
@@ -39,6 +40,7 @@ def runner(tmp_path: Path) -> PerformanceRunner:
 def test_prepare_removes_completion_marker_before_replacing_evidence(
     runner: PerformanceRunner,
 ) -> None:
+    """Exercise the prepare removes completion marker before replacing evidence case."""
     runner.output.mkdir(parents=True)
     marker = runner.output / "complete.json"
     marker.write_text('{"status": "PASS"}', encoding="utf-8")
@@ -51,6 +53,7 @@ def test_prepare_removes_completion_marker_before_replacing_evidence(
     rmtree = shutil.rmtree
 
     def remove_evidence(target: Path) -> None:
+        """Remove evidence."""
         assert not marker.exists()
         rmtree(target)
 
@@ -74,6 +77,7 @@ def test_prepare_removes_completion_marker_before_replacing_evidence(
 def test_interrupted_rerun_leaves_no_completion_marker(
     runner: PerformanceRunner, failure_stage: str
 ) -> None:
+    """Exercise the interrupted rerun leaves no completion marker case."""
     runner.output.mkdir(parents=True)
     marker = runner.output / "complete.json"
     marker.write_text('{"status": "PASS"}', encoding="utf-8")
@@ -95,6 +99,7 @@ def test_interrupted_rerun_leaves_no_completion_marker(
 
 
 def test_prepare_without_previous_completion_marker(runner: PerformanceRunner) -> None:
+    """Exercise the prepare without previous completion marker case."""
     runner.prepare()
 
     assert runner.work.is_dir()
@@ -103,6 +108,7 @@ def test_prepare_without_previous_completion_marker(runner: PerformanceRunner) -
 
 
 def test_output_root_must_be_named_performance_directory(tmp_path: Path) -> None:
+    """Exercise the output root must be named performance directory case."""
     expected = (tmp_path / "artifacts/performance/m9").resolve()
     assert validate_output_root(Path("artifacts/performance/m9"), tmp_path) == expected
 
@@ -118,6 +124,7 @@ def test_output_root_must_be_named_performance_directory(tmp_path: Path) -> None
 
 
 def test_alternating_order_reverses_even_repetitions() -> None:
+    """Exercise the alternating order reverses even repetitions case."""
     variants = ["one", "two", "three"]
     assert alternating_order(variants, 1) == variants
     assert alternating_order(variants, 2) == list(reversed(variants))
@@ -127,6 +134,7 @@ def test_alternating_order_reverses_even_repetitions() -> None:
 
 
 def test_median_runtime_uses_all_measured_runs() -> None:
+    """Exercise the median runtime uses all measured runs case."""
     assert median_runtime([{"elapsed_seconds": 9}, {"elapsed_seconds": 3}]) == 6.0
     assert median_runtime(
         [

@@ -10,6 +10,7 @@ lab=importlib.util.module_from_spec(spec);spec.loader.exec_module(lab)
 
 
 def fixture(tmp_path):
+    """Create the inputs used by the test."""
     task={'Task ID':1,'Executor ID':'0','Index':2,'Attempt':0}
     active={'Event':'SparkListenerTaskStart','Stage ID':2,'Task Info':task}
     rows=[{'Event':'SparkListenerExecutorAdded','Executor ID':'0','Executor Info':{'Host':'worker1'}},
@@ -25,32 +26,38 @@ def fixture(tmp_path):
 
 
 def save(tmp_path,rows):
+    """Handle the save task."""
     (tmp_path/'events/app').write_text(''.join(json.dumps(r)+'\n' for r in rows))
 
 
 def test_missing_active_task_start_rejected(tmp_path):
+    """Exercise the missing active task start rejection case."""
     rows=fixture(tmp_path);rows.pop(2);save(tmp_path,rows)
     with pytest.raises(ValueError, match='matching Spark start'):
         lab.verify(tmp_path)
 
 
 def test_correct_recovery(tmp_path):
+    """Exercise the correct recovery case."""
     rows=fixture(tmp_path);save(tmp_path,rows)
     assert lab.verify(tmp_path)['status']=='passed'
 
 
 @pytest.mark.parametrize('remove',[3,4,5,6,8])
 def test_missing_loss_retry_or_completion_rejected(tmp_path,remove):
+    """Exercise the missing loss retry or completion rejection case."""
     rows=fixture(tmp_path);rows.pop(remove);save(tmp_path,rows)
     with pytest.raises(ValueError): lab.verify(tmp_path)
 
 
 def test_success_on_wrong_partition_rejected(tmp_path):
+    """Exercise the success on wrong partition rejection case."""
     rows=fixture(tmp_path);rows[5]['Task Info']['Index']=3;save(tmp_path,rows)
     with pytest.raises(ValueError): lab.verify(tmp_path)
 
 
 def test_duplicate_output_rejected(tmp_path):
+    """Exercise the duplicate output rejection case."""
     rows=fixture(tmp_path);save(tmp_path,rows)
     lab.write(tmp_path/'recovery.json',lab.expected()+lab.expected()[:1])
     with pytest.raises(ValueError): lab.verify(tmp_path)

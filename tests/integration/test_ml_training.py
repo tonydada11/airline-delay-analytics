@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests ml training behavior."""
+
 from datetime import date, timedelta
 import copy
 import json
@@ -24,6 +26,7 @@ from airline.dws.dataset_manifest import publish_dataset_manifest
 
 @pytest.fixture(scope="module")
 def spark():
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-production-ml-tests")
     yield session
     session.stop()
@@ -31,6 +34,7 @@ def spark():
 
 @pytest.fixture(scope="module")
 def workspace():
+    """Create the isolated workspace used by the test."""
     root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     root.mkdir(parents=True, exist_ok=True)
     path = Path(tempfile.mkdtemp(prefix="airline-ml-", dir=root))
@@ -40,6 +44,7 @@ def workspace():
 
 @pytest.fixture(scope="module")
 def trained(spark, workspace):
+    """Build and return the trained model fixture."""
     rows = []
     for i in range(50):
         split = "train" if i < 40 else "validation" if i < 45 else "test"
@@ -65,13 +70,16 @@ def trained(spark, workspace):
 
 
 def test_train_only_preprocessing_and_save_reload(spark, workspace, trained):
+    """Exercise the train only preprocessing and save reload case."""
     features, manifest = trained
     preprocessing, classifier, loaded = contract.load_bundle(workspace / "artifacts/models", "a" * 64)
     assert loaded == manifest
     class WrongDimensions:
         numClasses = 2
         numFeatures = classifier.numFeatures + 1
-        def getOrDefault(self, key): return classifier.getOrDefault(key)
+        def getOrDefault(self, key):
+            """Return the configured default value."""
+            return classifier.getOrDefault(key)
     with pytest.raises(ValueError, match="dimensions"):
         contract.validate_models(preprocessing, WrongDimensions(), manifest["selected_classifier"])
     assert manifest["training"]["rows"] == 40
@@ -92,7 +100,10 @@ def test_train_only_preprocessing_and_save_reload(spark, workspace, trained):
 
 
 def test_evaluation_never_fits_and_reports_bundle(spark, workspace, trained, monkeypatch):
-    def forbidden(*args, **kwargs): raise AssertionError("Evaluation invoked fit")
+    """Exercise the evaluation never fits and reports bundle case."""
+    def forbidden(*args, **kwargs):
+        """Raise an error if evaluation tries to fit a model."""
+        raise AssertionError("Evaluation invoked fit")
     monkeypatch.setattr(Pipeline, "fit", forbidden)
     monkeypatch.setattr(LogisticRegression, "fit", forbidden)
     monkeypatch.setattr(GBTClassifier, "fit", forbidden)
@@ -110,6 +121,7 @@ def test_evaluation_never_fits_and_reports_bundle(spark, workspace, trained, mon
 
 
 def test_threshold_and_continuous_ranking(spark):
+    """Exercise the threshold and continuous ranking case."""
     scores = spark.createDataFrame([(date(2024,5,1), "validation", y, p) for y,p in
                                    [(0,0.33999), (1,0.34), (0,0.341), (1,0.9)]],
                                   ["flight_date", "split", TARGET_COLUMN, "probability"])
@@ -130,6 +142,7 @@ def test_threshold_and_continuous_ranking(spark):
 
 
 def test_invalid_and_absent_manifests_fail(workspace, trained):
+    """Exercise the invalid and absent manifests fail case."""
     manifest = copy.deepcopy(trained[1])
     for key, value in (("feature_order", []), ("threshold", -1), ("model_settings", {}), ("training", {})):
         changed = {**manifest, key: value}
@@ -141,15 +154,18 @@ def test_invalid_and_absent_manifests_fail(workspace, trained):
 
 
 def test_training_partitioning_and_persistence_released_on_failure(spark, workspace, trained, monkeypatch):
+    """Exercise the training partitioning and persistence released on failure case."""
     import importlib
     workflow = importlib.import_module("airline.ml.experiments")
     preprocessing, _, _ = contract.load_bundle(workspace / "artifacts/models")
     class Preprocessing:
         def fit(self, frame):
+            """Fit the test estimator to its input."""
             assert {r.split for r in frame.select("split").distinct().collect()} == {"train"}
             return preprocessing
     class FailingEstimator:
         def fit(self, frame):
+            """Fit the test estimator to its input."""
             assert frame.rdd.getNumPartitions() == 2
             assert frame.storageLevel.useDisk and not frame.storageLevel.useMemory
             assert {r.class_weight for r in frame.filter(F.col(TARGET_COLUMN) == 1).select("class_weight").distinct().collect()} == {2.0}
@@ -164,6 +180,7 @@ def test_training_partitioning_and_persistence_released_on_failure(spark, worksp
 
 
 def test_dataset_manifest_fail_closed(spark, workspace, trained):
+    """Exercise the dataset manifest fail closed case."""
     from airline.dws.dataset_manifest import validate_dataset_manifest, MANIFEST_NAME
     path = workspace / 'features' / MANIFEST_NAME
     original = path.read_text()
@@ -187,6 +204,7 @@ def test_dataset_manifest_fail_closed(spark, workspace, trained):
 
 
 def test_experiments_train_only_no_test_selection_and_no_fit_evaluation(spark, workspace, trained, monkeypatch):
+    """Exercise the experiments train only no test selection and no fit evaluation case."""
     from airline.ml import experiments as exp
     from pyspark.ml.classification import GBTClassifier
     # Wide scored caches exhausted full-data executor heaps even with DISK_ONLY.
@@ -194,6 +212,7 @@ def test_experiments_train_only_no_test_selection_and_no_fit_evaluation(spark, w
     original_persist = DataFrame.persist
     scored_cache_columns = []
     def bounded_cache(self, *args, **kwargs):
+        """Build the small cached DataFrame used by the test."""
         if 'probability' in self.columns:
             assert 'features' not in self.columns and 'rawPrediction' not in self.columns
             scored_cache_columns.append(tuple(self.columns))
@@ -201,13 +220,16 @@ def test_experiments_train_only_no_test_selection_and_no_fit_evaluation(spark, w
     monkeypatch.setattr(DataFrame, 'persist', bounded_cache)
     original_fit = Pipeline.fit
     def train_only(self, frame, *args, **kwargs):
+        """Train only."""
         assert {r.split for r in frame.select('split').distinct().collect()} == {'train'}
         return original_fit(self, frame, *args, **kwargs)
     monkeypatch.setattr(Pipeline, 'fit', train_only)
     from pyspark.ml.functions import vector_to_array
     fitted_estimators = []
     def train_classifier_only(original):
+        """Train classifier only."""
         def fit(self, frame, *args, **kwargs):
+            """Fit the test estimator to its input."""
             assert frame.count() == 40
             assert frame.select(F.max(F.array_max(vector_to_array('features')))).first()[0] <= 10
             fitted_estimators.append(type(self).__name__)
@@ -218,6 +240,7 @@ def test_experiments_train_only_no_test_selection_and_no_fit_evaluation(spark, w
     original_validate = exp.validate_feature_frame
     seen = []
     def record(frame):
+        """Create a sample performance record."""
         splits = {r.split for r in frame.select('split').distinct().collect()}
         assert 'test' not in splits
         seen.extend(splits)
@@ -230,6 +253,7 @@ def test_experiments_train_only_no_test_selection_and_no_fit_evaluation(spark, w
     changed_test.write.mode('overwrite').partitionBy('split').parquet(str(workspace / 'test-features'))
     original_read = DataFrameReader.parquet
     def no_test_read(self, *paths, **kwargs):
+        """Fail if selection reads final-test data."""
         assert not any('test-features' in str(path) for path in paths)
         return original_read(self, *paths, **kwargs)
     monkeypatch.setattr(DataFrameReader, 'parquet', no_test_read)
@@ -250,7 +274,9 @@ def test_experiments_train_only_no_test_selection_and_no_fit_evaluation(spark, w
     with pytest.raises(FileExistsError):
         exp.select(spark, workspace / 'features', workspace / 'artifacts', 'fixture', snapshot, workspace)
     monkeypatch.setattr(exp, 'validate_feature_frame', original_validate)
-    def forbidden(*args, **kwargs): raise AssertionError('Evaluation invoked fit')
+    def forbidden(*args, **kwargs):
+        """Raise an error if evaluation tries to fit a model."""
+        raise AssertionError('Evaluation invoked fit')
     for cls in (Pipeline, LogisticRegression, GBTClassifier):
         monkeypatch.setattr(cls, 'fit', forbidden)
     # Test features are bound to the frozen selection, not to mutable selection data.
@@ -266,6 +292,7 @@ def test_experiments_train_only_no_test_selection_and_no_fit_evaluation(spark, w
 
 
 def test_threshold_counts_use_direct_comparisons(spark):
+    """Exercise the threshold counts use direct comparisons case."""
     from airline.ml.experiments import threshold_counts
     scores = spark.createDataFrame([(1, 0.34), (0, 0.339999999999), (1, 0.340000000001), (0, 1.0), (1, 0.0)],
                                   [TARGET_COLUMN, 'probability'])
@@ -276,6 +303,7 @@ def test_threshold_counts_use_direct_comparisons(spark):
 
 
 def test_added_identifiers_never_change_predictor_vectors(workspace, trained):
+    """Exercise the added identifiers never change predictor vectors case."""
     from pyspark.ml.functions import vector_to_array
     features, _ = trained
     pre, _, _ = contract.load_bundle(workspace / 'artifacts/models')
@@ -289,6 +317,7 @@ def test_added_identifiers_never_change_predictor_vectors(workspace, trained):
 
 
 def test_overwrite_invalidates_completion_before_writing(spark, workspace, trained, monkeypatch):
+    """Exercise the overwrite invalidates completion before writing case."""
     from airline.dws.build_ml_flight_features import write_ml_flight_features
     from airline.dws.dataset_manifest import MANIFEST_NAME
     from pyspark.sql.readwriter import DataFrameWriter
@@ -297,6 +326,7 @@ def test_overwrite_invalidates_completion_before_writing(spark, workspace, train
     marker = root / MANIFEST_NAME
     marker.write_text('{}')
     def fail(*args, **kwargs):
+        """Simulate a failed pipeline step."""
         assert not marker.exists()
         raise RuntimeError('interrupted write')
     monkeypatch.setattr(DataFrameWriter, 'parquet', fail)
@@ -306,8 +336,10 @@ def test_overwrite_invalidates_completion_before_writing(spark, workspace, train
 
 
 def test_production_selection_rejects_test_dataset_before_fitting(spark, workspace, trained, monkeypatch):
+    """Exercise the production selection rejects test dataset before fitting case."""
     from airline.ml import experiments
     def forbidden(*args, **kwargs):
+        """Raise an error if evaluation tries to fit a model."""
         raise AssertionError('Selection attempted fitting a test dataset')
     monkeypatch.setattr(Pipeline, 'fit', forbidden)
     with pytest.raises(ValueError, match='phase'):
@@ -316,6 +348,7 @@ def test_production_selection_rejects_test_dataset_before_fitting(spark, workspa
 
 
 def test_production_manifest_reconciles_selection_and_rejects_old_schema(trained):
+    """Exercise the production manifest reconciles selection and rejects old schema case."""
     manifest = trained[1]
     assert manifest['threshold'] == manifest['selection']['threshold_step'] / 100
     assert manifest['selected_classifier'] == manifest['selection']['selected_classifier']
@@ -330,6 +363,7 @@ def test_production_manifest_reconciles_selection_and_rejects_old_schema(trained
 
 def test_selected_gbt_publication_and_reload(spark, workspace, trained):
     # Exercise the GBT publication branch even when this fixture's real winner is LR.
+    """Exercise the selected gbt publication and reload case."""
     selection = copy.deepcopy(trained[1]['selection'])
     from airline.ml.experiments import run_directory, best_threshold
     original = run_directory(workspace / 'artifacts', selection['run_id'])
@@ -365,6 +399,7 @@ def recovery_case(spark, workspace, trained, monkeypatch, request):
     document['selection_run_id'] = run_id
     marker.write_text(json.dumps(document))
     def forbidden(*args, **kwargs):
+        """Raise an error if evaluation tries to fit a model."""
         raise AssertionError('Recovery attempted fitting')
     for cls in (Pipeline, LogisticRegression, GBTClassifier):
         monkeypatch.setattr(cls, 'fit', forbidden)
@@ -372,10 +407,12 @@ def recovery_case(spark, workspace, trained, monkeypatch, request):
     if request.param == 'production':
         original = production.score
         def counted(*args, **kwargs):
+            """Count rows in the requested groups."""
             calls.append('score')
             return original(*args, **kwargs)
         monkeypatch.setattr(production, 'score', counted)
         def run():
+            """Run the requested workflow."""
             return production.evaluate(spark, root / 'features', root / 'artifacts', 'test', 'a'*64)
         report = root / 'artifacts/metrics/test.json'
         predictions = root / 'artifacts/predictions/test'
@@ -384,10 +421,12 @@ def recovery_case(spark, workspace, trained, monkeypatch, request):
     else:
         original = experiments.continuous_score
         def counted(*args, **kwargs):
+            """Count rows in the requested groups."""
             calls.append('score')
             return original(*args, **kwargs)
         monkeypatch.setattr(experiments, 'continuous_score', counted)
         def run():
+            """Run the requested workflow."""
             return experiments.evaluate(spark, root / 'features', root / 'artifacts', run_id, 'test', 'a'*64)
         directory = experiments.run_directory(root / 'artifacts', run_id)
         report, predictions = directory / 'test.json', directory / 'test_predictions'
@@ -403,6 +442,7 @@ def recovery_case(spark, workspace, trained, monkeypatch, request):
 
 @pytest.mark.parametrize('recovery_case', ['production', 'experiment'], indirect=True)
 def test_evaluation_complete_cache_reuses_without_scoring(recovery_case):
+    """Exercise the evaluation complete cache reuses without scoring case."""
     case = recovery_case
     assert case['run']() == case['first']
     assert len(case['calls']) == 1
@@ -412,6 +452,7 @@ def test_evaluation_complete_cache_reuses_without_scoring(recovery_case):
 @pytest.mark.parametrize('damage', ['missing', 'part', 'truncated', 'success', 'temporary',
                                     'report', 'legacy', 'completion', 'schema', 'population', 'threshold'])
 def test_evaluation_recovers_incomplete_outputs(spark, recovery_case, damage):
+    """Exercise the evaluation recovers incomplete outputs case."""
     from airline.ml.evaluation_artifacts import inventory
     case = recovery_case
     predictions = case['predictions']
@@ -459,6 +500,7 @@ def test_evaluation_recovers_incomplete_outputs(spark, recovery_case, damage):
 @pytest.mark.parametrize('recovery_case', ['production', 'experiment'], indirect=True)
 @pytest.mark.parametrize('changed', ['model_bytes', 'model_manifest', 'dataset_bytes', 'dataset_manifest'])
 def test_evaluation_rejects_changed_identity(spark, recovery_case, changed):
+    """Exercise the evaluation rejects changed identity case."""
     case = recovery_case
     if changed == 'model_bytes':
         marker = case['model'] / 'metadata/part-00000'
@@ -495,18 +537,21 @@ def test_evaluation_rejects_changed_identity(spark, recovery_case, changed):
 @pytest.mark.parametrize('recovery_case', ['production', 'experiment'], indirect=True)
 @pytest.mark.parametrize('failure', ['parquet', 'report'])
 def test_evaluation_interruption_revokes_completion(recovery_case, monkeypatch, failure):
+    """Exercise the evaluation interruption revokes completion case."""
     from pyspark.sql.readwriter import DataFrameWriter
     case = recovery_case
     (case['predictions'] / '_SUCCESS').unlink()  # Force repair.
     if failure == 'parquet':
         original = DataFrameWriter.parquet
         def interrupt(self, *args, **kwargs):
+            """Simulate an interrupted process."""
             assert not case['report'].exists()
             raise RuntimeError('injected interrupted predictions')
         monkeypatch.setattr(DataFrameWriter, 'parquet', interrupt)
     else:
         original = Path.replace
         def interrupt(self, target):
+            """Simulate an interrupted process."""
             if target == case['report']:
                 assert not case['report'].exists()
                 raise RuntimeError('injected interrupted report')

@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests paths behavior."""
+
 from pathlib import Path
 
 import pytest
@@ -8,6 +10,7 @@ from airline.common.paths import get_project_paths
 
 
 def test_project_paths_remain_portable() -> None:
+    """Exercise the project paths remain portable case."""
     paths = get_project_paths(load_config())
 
     assert paths.raw_csv == Path("data/raw/csv")
@@ -53,6 +56,7 @@ def test_project_paths_remain_portable() -> None:
 
 
 def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
+    """Exercise the resolve uses configured project root case."""
     config = ProjectConfig(
         project_root=tmp_path,
         raw_manifest=Path("conf/raw_data_manifest.csv"),
@@ -113,6 +117,7 @@ def test_resolve_uses_configured_project_root(tmp_path: Path) -> None:
     "unsafe_path", [Path("/tmp/flights"), Path("../flights"), Path("C:\\data\\flights")]
 )
 def test_resolve_rejects_unsafe_paths(unsafe_path: Path) -> None:
+    """Exercise the resolve rejects unsafe paths case."""
     paths = get_project_paths(load_config())
 
     with pytest.raises(ValueError, match="project-relative"):

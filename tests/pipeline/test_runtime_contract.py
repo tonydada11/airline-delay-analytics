@@ -1,8 +1,11 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests runtime contract behavior."""
+
 from pathlib import Path
 
 
 def test_supported_architecture_and_pinned_runtime_contract():
+    """Exercise the supported architecture and pinned runtime contract case."""
     root = Path(__file__).resolve().parents[2]
     compose = (root / 'docker-compose.yml').read_text()
     dockerfile = (root / 'docker/Dockerfile').read_text()

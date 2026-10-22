@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Build and start the local Spark cluster.
 
 set -euo pipefail
 
@@ -55,6 +56,7 @@ fi
 cd "${PROJECT_ROOT}"
 docker compose up -d --build
 
+# Resolve the published URL for a Compose service.
 service_url() {
   local address
   address="$(docker compose port "$1" "$2" 2>/dev/null)" || address="127.0.0.1:$2"

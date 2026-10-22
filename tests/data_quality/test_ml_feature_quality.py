@@ -24,6 +24,7 @@ pytestmark = pytest.mark.skipif(os.environ.get("AIRLINE_RUN_FULL_ML_QUALITY") !=
 
 @pytest.fixture(scope="module")
 def spark():
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-ml-feature-quality")
     yield session
     session.stop()
@@ -31,6 +32,7 @@ def spark():
 
 @pytest.fixture(scope="module")
 def datasets(spark):
+    """Create the dataset fixtures used by the quality checks."""
     paths = get_project_paths(load_config())
     dwd = spark.read.parquet(str(paths.resolve(paths.dwd_flights)))
     features = spark.read.parquet(str(paths.resolve(paths.dws_ml_flight_features)))
@@ -49,6 +51,7 @@ def datasets(spark):
 
 
 def test_feature_contract_counts_and_reconciliation(datasets):
+    """Exercise the feature contract counts and reconciliation case."""
     _, dwd, features = datasets
     expected = {k:v for k,v in EXPECTED_ROWS.items() if k != 'test' or os.environ.get('AIRLINE_ML_FEATURE_PHASE') != 'selection'}
     assert validate_feature_frame(features) == sum(expected.values())
@@ -63,6 +66,7 @@ def test_feature_contract_counts_and_reconciliation(datasets):
 
 
 def test_sampled_independent_histories(datasets):
+    """Exercise the sampled independent histories case."""
     _, dwd, features = datasets
     from airline.dws.flight_time import DAY_US
     eligible = select_eligible_flights(dwd)
@@ -102,6 +106,7 @@ def test_sampled_independent_histories(datasets):
 
 @pytest.mark.skipif(os.environ.get("AIRLINE_RUN_REBUILD_ACCEPTANCE") != "1", reason="explicit comprehensive rebuild only")
 def test_comprehensive_rebuild_multiset_equality(spark, datasets):
+    """Exercise the comprehensive rebuild multiset equality case."""
     paths, _, original = datasets
     root = paths.project_root / "data/.test-tmp"
     root.mkdir(parents=True, exist_ok=True)

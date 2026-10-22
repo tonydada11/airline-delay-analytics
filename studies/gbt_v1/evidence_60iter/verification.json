@@ -1,0 +1,78 @@
+{
+  "additional_checks": {
+    "accepted_artifact_file_set_unchanged": true,
+    "changed_protected_files": [],
+    "executed_source_checks": {
+      "plan_sha256": true,
+      "runner_sha256": true
+    },
+    "historical_file_sets_unchanged": {
+      "attempt-001": true,
+      "attempt-002": true,
+      "prefix-diagnostic-001": true
+    },
+    "protected_files": 397,
+    "selection_metadata_files": 97,
+    "selection_metadata_unchanged": true
+  },
+  "checks": [
+    "authoritative_completion_matches_attempt",
+    "one_fit_successful_worker_shutdown",
+    "results_digest",
+    "source_revision_and_budget",
+    "all_required_checks",
+    "worker_results_not_rewritten",
+    "complete_grid",
+    "exact_F1_lower_step_rule",
+    "threshold_counts_match_overall",
+    "every_grid_population",
+    "candidate_settings_only_maxIter_changed",
+    "effective_defaults_only_maxIter_changed",
+    "model_metadata_dimensions_parameters",
+    "primary_helper_reproduces_supervisor",
+    "month_record_2024-05",
+    "budget_2024-05_10",
+    "budget_2024-05_20",
+    "month_record_2024-06",
+    "budget_2024-06_10",
+    "budget_2024-06_20",
+    "month_record_2024-07",
+    "budget_2024-07_10",
+    "budget_2024-07_20",
+    "month_record_2024-08",
+    "budget_2024-08_10",
+    "budget_2024-08_20",
+    "overall_month_counts",
+    "all_equal_month_metrics",
+    "artifact_inventory_classifier",
+    "artifact_inventory_predictions",
+    "frozen_LR_mean_target"
+  ],
+  "no_Spark_session_started": true,
+  "original_generated_copies_match": true,
+  "passed_assertions": 31,
+  "process_cleanup": {
+    "active_apps": [],
+    "application_id": "app-20261022185141-0001",
+    "master_reported_state": "FINISHED",
+    "owned_processes_remaining": [],
+    "source_staging_remaining": []
+  },
+  "selected_exact_f1": "224251/461258",
+  "service_cleanup": {
+    "final_running_services": [],
+    "initial_running_services": [],
+    "restore_command": "docker compose stop spark-notebook spark-worker-1 spark-worker-2 spark-master",
+    "restored_to_stopped": true,
+    "started_existing_services": [
+      "spark-master",
+      "spark-worker-1",
+      "spark-worker-2",
+      "spark-notebook"
+    ]
+  },
+  "status": "PASS",
+  "steps_tied_for_best_F1": [
+    36
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "coverage": [
+    "ordered prefix selection and exact nonuniform weights",
+    "native weighted tree oracle on three generated vectors plus a duplicate; no fitting permitted",
+    "full model unchanged; maxIter on a copy does not truncate trees",
+    "multiset checks reject dropped duplicates and changed labels",
+    "four-month reconciliation and numerical tolerance gate",
+    "equal-month means and paired changes",
+    "exclusive existing/symlink output refusal",
+    "blocking sleep interrupted with nonzero exit and no completion",
+    "completion rejects failed checks, fits, failed shutdown and nonzero worker exit",
+    "import/help without Spark or output side effects",
+    "reused supervisor timeout, source bootstrap and deliberately incompatible clock origins"
+  ],
+  "development_runs": [
+    {
+      "failed": 1,
+      "passed": 6,
+      "reason": "Py4J rejected NumPy float64 representation. Converted to Python float preserving binary64 weights before any real validation run.",
+      "seconds": 17.34
+    },
+    {
+      "deselected": 39,
+      "exit_code": 0,
+      "note": "Before five additional completion-gate cases and raw monthly evidence recording.",
+      "passed": 14,
+      "seconds": 33.44
+    }
+  ],
+  "final_command": "docker compose exec -T -e PYTHONDONTWRITEBYTECODE=1 -e PYTHONPATH=/tmp/gbt-prefix-fixtures/source/project:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip -w /workspace spark-notebook python3 -B -m pytest -q -p no:cacheprovider /tmp/gbt-prefix-fixtures/source/project/studies/gbt_v1/test_prefix_diagnostic.py /tmp/gbt-prefix-fixtures/source/project/studies/gbt_v1/test_candidate.py -k 'prefix or timeout_interrupts or clock_origins or container_bootstrap'",
+  "final_result": {
+    "deselected": 39,
+    "exit_code": 0,
+    "passed": 19,
+    "seconds": 35.05,
+    "warnings": 1
+  },
+  "fits": 0,
+  "generated_fixture_only": true,
+  "saved_gbt30_classifier_loaded": true,
+  "warehouse_rows_read_by_tests": 0,
+  "warning": "Existing PySpark distutils deprecation warning"
+}

@@ -1,0 +1,93 @@
+{
+  "attempt_count": 1,
+  "base_commit": "1b6d6e5174f87fcef1e82a0660edded2c6147d34",
+  "branch": "study/gbt-improvement-v1",
+  "candidate_directory": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter",
+  "docker_context": "default",
+  "executed_source_revision": "f5794673b48ff4fdc1970a98a9b8aeb63b5b4e67",
+  "full_data_classifier_fits": 1,
+  "generated_records": {
+    "attempt.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/attempt.json",
+      "sha256": "986365e8babe98b06fdad5c6316911b423cddbaf9b1010da3f1525096580fa0f",
+      "verbatim_copy": true
+    },
+    "completion.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/completion.json",
+      "sha256": "986365e8babe98b06fdad5c6316911b423cddbaf9b1010da3f1525096580fa0f",
+      "verbatim_copy": true
+    },
+    "inputs.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/inputs.json",
+      "sha256": "ecd2f16e561412ca2325451026623886dda8fb5fc70f188907a1f3fbc889b0e9",
+      "verbatim_copy": true
+    },
+    "results.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/results.json",
+      "sha256": "9e4ef9de9fc6deb58b1de201088a5f63d3be9a8f7e0887b325a6b68545c03870",
+      "verbatim_copy": true
+    },
+    "thresholds.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/thresholds.json",
+      "sha256": "4d92185db0fbc1aaf56ce758d01a57b678af5b1c86a34d6df7f6f8d2ba816ef0",
+      "verbatim_copy": true
+    },
+    "validation-2024-05.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/validation-2024-05.json",
+      "sha256": "4b3662590f554be93890ee7750b0169c5b535f35bb865855191599bd8ecc855b",
+      "verbatim_copy": true
+    },
+    "validation-2024-06.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/validation-2024-06.json",
+      "sha256": "69212f9f683a8304a0db04f97f2104d8cd806a0734370337ab6224bf7f9c3364",
+      "verbatim_copy": true
+    },
+    "validation-2024-07.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/validation-2024-07.json",
+      "sha256": "5f0670eeebdaf13c436d11768e13eb7df22b0dfec462f5e8dc2676da8697080d",
+      "verbatim_copy": true
+    },
+    "validation-2024-08.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/validation-2024-08.json",
+      "sha256": "e820e2c4c4b23e56782aa498baf2d4d53d7fd002d7ee705ef3ccc6b25f2d69be",
+      "verbatim_copy": true
+    },
+    "worker-status.json": {
+      "path": "data/studies/gbt-improvement-v1/attempt-003/gbt-all-60iter/status.json",
+      "sha256": "91963d0aa46e14a20c014a58e1c8c6c2f2a18dc62c233c5b75462a7b6ec119a2",
+      "verbatim_copy": true
+    }
+  },
+  "launch_command": "python3 -B studies/gbt_v1/launch.py --execute --candidate gbt-all-60iter",
+  "launcher_exit_code": 0,
+  "local_attempt_directory": "data/studies/gbt-improvement-v1/attempt-003",
+  "no_baseline_fit_or_rescoring": true,
+  "no_preprocessing_refit": true,
+  "no_promotion": true,
+  "no_test_evaluation": true,
+  "pinned_image_id": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+  "production_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+  "production_classifier": "lr",
+  "production_threshold": 0.39,
+  "references": {
+    "GBT30": {
+      "path": "studies/gbt_v1/evidence_30iter/results.json",
+      "sha256": "6c02d060a8b974e89d59ac210410bb048c74720f5212af76918191162675718e"
+    },
+    "LR": {
+      "path": "studies/lr_v1/evidence/diagnostics/results.json",
+      "sha256": "c1313197e55e9d9d90793ec3401c3c0d3d61597ca35da94eae5c1f7b8fdee828"
+    }
+  },
+  "repository": "tonydada11/airline-spark",
+  "retries": 0,
+  "source_files": {
+    "studies/gbt_v1/PLAN_60ITER.md": "e986d0df0ef2dc23d1405d4c5b69d6fd1590d5875aec6458e07f7507f55f2af9",
+    "studies/gbt_v1/launch.py": "3d4a3ecad01f9c9c4cf232043b61a04eccf09fd5078949556a42b113fdb3d4ca",
+    "studies/gbt_v1/run_candidate.py": "85580d2651d38516aee7d9053a85a36ad514261dba59df0aa563e98f65ce1d12",
+    "studies/gbt_v1/test_candidate.py": "960c2eecd7d8cb4ce24a75f8779fdb8bb7fd0817f52a0b6df1ecd5a835e142bf"
+  },
+  "source_python_calculation_version": "3.10.12",
+  "source_tree_clean_at_launch": true,
+  "worker_exit_code": 0
+}

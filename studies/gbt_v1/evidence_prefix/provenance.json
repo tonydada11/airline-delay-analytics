@@ -1,0 +1,74 @@
+{
+  "accepted_preprocessing_directory": "artifacts/flighttime-v3/models/preprocessing",
+  "attempt_count": 1,
+  "base_commit": "d8314485d1e92fc85953c624675c7813a16ac5a0",
+  "branch": "study/gbt-improvement-v1",
+  "classifier_fits": 0,
+  "evaluated_dates": [
+    "2024-05-01",
+    "2024-08-31"
+  ],
+  "evaluated_partition": "split=validation",
+  "executed_commit": "b5077bfbdaffba4260ae385d275f4801435a3612",
+  "frozen_lr_results": "studies/lr_v1/evidence/diagnostics/results.json",
+  "generated_records": {
+    "attempt.json": {
+      "copied_verbatim": true,
+      "path": "data/studies/gbt-improvement-v1/prefix-diagnostic-001/attempt.json",
+      "sha256": "cb920e28159913eb64b87230350582e33a17581ea531916f121d93027e2de6b1"
+    },
+    "completion.json": {
+      "copied_verbatim": true,
+      "path": "data/studies/gbt-improvement-v1/prefix-diagnostic-001/completion.json",
+      "sha256": "cb920e28159913eb64b87230350582e33a17581ea531916f121d93027e2de6b1"
+    },
+    "inputs.json": {
+      "copied_verbatim": true,
+      "path": "data/studies/gbt-improvement-v1/prefix-diagnostic-001/inputs.json",
+      "sha256": "ff355b4c033e5d5b55519b8e3d4e2a6dfb77adbad39144ec847a2839182baab9"
+    },
+    "monthly-pr-auc.json": {
+      "copied_verbatim": true,
+      "path": "data/studies/gbt-improvement-v1/prefix-diagnostic-001/monthly-pr-auc.json",
+      "sha256": "54e1c488cf41872747c66fd7f95bb2bce25d460eee88d25524c0d21e750c0137"
+    },
+    "results.json": {
+      "copied_verbatim": true,
+      "path": "data/studies/gbt-improvement-v1/prefix-diagnostic-001/results.json",
+      "sha256": "a7b920368e41528e3eaeb494914c8809b5c8ead635d74c2158c1135993d4dcf9"
+    },
+    "worker-status.json": {
+      "copied_verbatim": true,
+      "path": "data/studies/gbt-improvement-v1/prefix-diagnostic-001/worker-status.json",
+      "sha256": "ef21f005aa686a76ff17f9a063c022d30a1ee397c781bfeba4812a69dbb4abbc"
+    }
+  },
+  "launch_command": "python3 -B studies/gbt_v1/launch_prefix.py --execute",
+  "launch_source_tree_clean": true,
+  "launcher_exit_code": 0,
+  "local_classifier_directory": "data/studies/gbt-improvement-v1/attempt-002/gbt-all-30iter/classifier",
+  "local_output_directory": "data/studies/gbt-improvement-v1/prefix-diagnostic-001",
+  "no_retry": true,
+  "repository": "tonydada11/airline-spark",
+  "saved_gbt30_results": "studies/gbt_v1/evidence_30iter/results.json",
+  "selection_dataset": "data/warehouse/dws/ml_flighttime_v3_selection",
+  "source_files": {
+    "studies/gbt_v1/launch.py": "067277fa8cdf6655db0bea4781487c66857d58e6b69200bc8e8141a85b543155",
+    "studies/gbt_v1/launch_prefix.py": "24b3f70229694f1dc33d009a5c0238d97123e9933ba0a9aff5924bf0c8ff55dc",
+    "studies/gbt_v1/prefix_diagnostic.py": "b73f9cd4b3fdd248eac7dd0efccc97f8a1ac4669bd477c7bd1e8e026e70c3bc7",
+    "studies/gbt_v1/run_candidate.py": "c38e1b2b50ae82454cb20d862a3be1c71e2c877df6d863a7c15a1b9712c40b84",
+    "studies/gbt_v1/test_prefix_diagnostic.py": "dc34c62a6617566ee4e7a69b7c7c8151506fb9f57fed5276b833af8792a1cbc9"
+  },
+  "spark_semantics_verification": {
+    "classes": [
+      "org.apache.spark.ml.classification.GBTClassificationModel",
+      "org.apache.spark.mllib.tree.loss.LogLoss$"
+    ],
+    "constructor": "GBTClassificationModel(String, DecisionTreeRegressionModel[], double[], int, int)",
+    "margin": "native BLAS dot(tree predictions, original weights)",
+    "method": "javap -c -p against installed /opt/spark/jars/spark-mllib_2.12-3.5.9.jar",
+    "metric": "BinaryClassificationEvaluator(labelCol=is_arrival_delayed_15m, metricName=areaUnderPR, rawPredictionCol=probability_n, numBins=0); no weightCol",
+    "probability": "predictRaw=[-margin,+margin]; p0=1/(1+exp(2*margin)); p1=1-p0"
+  },
+  "training_or_test_rows_scored": false
+}

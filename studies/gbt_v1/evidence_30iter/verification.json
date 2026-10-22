@@ -1,0 +1,292 @@
+{
+  "artifact_checks": {
+    "classifier": {
+      "actual_sha256_inventory_matches_results": true,
+      "bytes": 58865,
+      "files": 6,
+      "inventory_digest": "a3b5dc1c1e62210027d5884e7f9c79c209ad9505e170b1275369266f5993b427"
+    },
+    "predictions": {
+      "actual_sha256_inventory_matches_results": true,
+      "bytes": 193949228,
+      "files": 12,
+      "inventory_digest": "5a1afc3b8645ff965c4df3c75e08187f2bdba02c4afab6c0264fba8060f88fc8"
+    }
+  },
+  "checks_passed": [
+    "authoritative_completion_matches_attempt_bytes",
+    "launcher_worker_exit_zero",
+    "one_full_data_fit_no_retry",
+    "successful_completion_and_shutdown",
+    "correct_candidate_and_pending_worker_record",
+    "frozen_budget_and_allowance",
+    "clean_committed_execution_source",
+    "source_runtime_hash_conf/airport_timezones.csv",
+    "source_runtime_hash_conf/project.yaml",
+    "source_runtime_hash_docker-compose.override.yml",
+    "source_runtime_hash_docker-compose.yml",
+    "source_runtime_hash_requirements.lock",
+    "source_runtime_hash_studies/gbt_v1/PLAN_30ITER.md",
+    "source_runtime_hash_studies/gbt_v1/launch.py",
+    "source_runtime_hash_studies/gbt_v1/run_candidate.py",
+    "source_runtime_hash_studies/gbt_v1/test_candidate.py",
+    "runner_plan_results_recorded_digests",
+    "all_required_worker_artifact_checks",
+    "all_four_months",
+    "standalone_month_2024-05",
+    "standalone_month_2024-06",
+    "standalone_month_2024-07",
+    "standalone_month_2024-08",
+    "only_maxIter_changes_relative_to_GBT10",
+    "two_fields_change_relative_to_production_GBT",
+    "saved_model_type_dimensions_parameters",
+    "class_weights_runtime_preprocessing_unchanged",
+    "selection_fingerprints_match_frozen_and_reference",
+    "current_small_inputs_match_recorded_identities",
+    "accepted_LR_039_preserved",
+    "reference_local_and_published_identities",
+    "actual_artifact_sha256_classifier",
+    "actual_artifact_sha256_predictions",
+    "prediction_write_completed",
+    "complete_threshold_grid",
+    "exact_F1_lower_step_rule",
+    "threshold_counts_match_overall",
+    "grid_population_unchanged",
+    "overall_monthly_population",
+    "monthly_population_confusion_2024-05",
+    "monthly_LR_changes_2024-05",
+    "capacity_and_metrics_2024-05_10",
+    "capacity_and_metrics_2024-05_20",
+    "monthly_population_confusion_2024-06",
+    "monthly_LR_changes_2024-06",
+    "capacity_and_metrics_2024-06_10",
+    "capacity_and_metrics_2024-06_20",
+    "monthly_population_confusion_2024-07",
+    "monthly_LR_changes_2024-07",
+    "capacity_and_metrics_2024-07_10",
+    "capacity_and_metrics_2024-07_20",
+    "monthly_population_confusion_2024-08",
+    "monthly_LR_changes_2024-08",
+    "capacity_and_metrics_2024-08_10",
+    "capacity_and_metrics_2024-08_20",
+    "mean_worst_pr_auc",
+    "mean_worst_roc_auc",
+    "mean_worst_precision",
+    "mean_worst_recall",
+    "mean_worst_f1",
+    "mean_worst_prevalence",
+    "mean_worst_predicted_positive_rate",
+    "budget_mean_worst_10_precision",
+    "budget_mean_worst_10_recall",
+    "budget_mean_worst_20_precision",
+    "budget_mean_worst_20_recall",
+    "pinned_helper_matches_completion",
+    "secondary_is_descriptive_only",
+    "frozen_mean_and_target",
+    "original_study_reference_and_attempt_bytes_unchanged",
+    "original_attempt_file_set_unchanged",
+    "all_160_accepted_artifacts_unchanged",
+    "selection_47_parts_metadata_unchanged",
+    "owned_processes_and_source_cleaned",
+    "Spark_application_finished",
+    "only_started_services_restored"
+  ],
+  "cleanup": {
+    "live_owned_processes": 0,
+    "process_checks": [
+      {
+        "id": "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+        "service": "spark-master",
+        "study_or_executor_process_matches": []
+      },
+      {
+        "id": "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+        "service": "spark-notebook",
+        "study_or_executor_process_matches": []
+      },
+      {
+        "id": "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+        "service": "spark-worker-1",
+        "study_or_executor_process_matches": []
+      },
+      {
+        "id": "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1",
+        "service": "spark-worker-2",
+        "study_or_executor_process_matches": []
+      }
+    ],
+    "processes": [
+      {
+        "exists": false,
+        "expected_start_ticks": "13203711",
+        "pid": 683
+      },
+      {
+        "exists": false,
+        "expected_start_ticks": "13203718",
+        "pid": 689
+      },
+      {
+        "actual_start_ticks": "13203766",
+        "exists": true,
+        "expected_start_ticks": "13203766",
+        "pid": 698,
+        "same_process": true,
+        "state": "Z"
+      }
+    ],
+    "recorded_at_utc": "2026-10-22T06:08:41.188056+00:00",
+    "remaining_running_containers": [],
+    "services": [
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "oom_killed": false,
+        "service": "spark-master"
+      },
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "oom_killed": false,
+        "service": "spark-notebook"
+      },
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "oom_killed": false,
+        "service": "spark-worker-1"
+      },
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "oom_killed": false,
+        "service": "spark-worker-2"
+      }
+    ],
+    "source_staging_removed": true,
+    "spark_master": {
+      "activeapps": [],
+      "study_completed_application": [
+        {
+          "cores": 2,
+          "duration": 5276141,
+          "id": "app-20261022043820-0001",
+          "memoryperexecutor": 640,
+          "memoryperslave": 640,
+          "name": "airline-study-gbt-all-30iter",
+          "resourcesperexecutor": [],
+          "resourcesperslave": [],
+          "starttime": 1792643900234,
+          "state": "FINISHED",
+          "submitdate": "Thu Oct 22 04:38:20 UTC 2026",
+          "user": "root"
+        }
+      ]
+    },
+    "stop_exit_code": 0,
+    "stop_stderr": "",
+    "stopped_container_ids": [
+      "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+      "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+      "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+      "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1"
+    ],
+    "temporary_phase_a_and_comparison_source_removed": true
+  },
+  "completion_authority": "data/studies/gbt-improvement-v1/attempt-002/completion.json",
+  "execution": {
+    "command": [
+      "python3",
+      "-B",
+      "studies/gbt_v1/launch.py",
+      "--execute",
+      "--candidate",
+      "gbt-all-30iter"
+    ],
+    "exit_observed_at_utc": "2026-10-22T06:07:19.597353+00:00",
+    "launcher_exit_code": 0,
+    "recorded_at_utc": "2026-10-22T04:38:32.029756+00:00",
+    "session_id": 88784,
+    "source_revision": "27c832f3b093b901fa20a9210258d50922d95a13",
+    "status": "exited"
+  },
+  "failed_checks": [],
+  "original_worker_results_intentionally_pending_termination": true,
+  "outcome": "COMPLETE \u2014 DOES NOT QUALIFY",
+  "prelaunch": {
+    "attempt002_absent": true,
+    "branch": "study/gbt-improvement-v1",
+    "command": [
+      "python3",
+      "-B",
+      "studies/gbt_v1/launch.py",
+      "--execute",
+      "--candidate",
+      "gbt-all-30iter"
+    ],
+    "execution_tree_clean": true,
+    "phase_a_tests": {
+      "command": "docker compose exec -T -e PYTHONDONTWRITEBYTECODE=1 -e PYTHONPATH=/tmp/gbt30-fixtures/source/project:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip -w /workspace spark-notebook python3 -B -m pytest -q -p no:cacheprovider /tmp/gbt30-fixtures/source/project/studies/gbt_v1/test_candidate.py /tmp/gbt30-fixtures/source/project/studies/lr_v1/test_metrics.py /workspace/tests/unit/test_experiment_selection.py /workspace/tests/unit/test_model_contract.py",
+      "elapsed_seconds": 94.36,
+      "exit_code": 0,
+      "fixture_only_classifier_fits": 2,
+      "fixture_tree_counts": [
+        10,
+        30
+      ],
+      "full_data_fits": 0,
+      "log_local_path": "/tmp/gbt30-phasea-tests.log",
+      "log_sha256": "a1b692f8edab9a13d18181feeb0aea67950c65db889745610a646066d51162bd",
+      "passed": 70,
+      "real_attempt002_absent": true,
+      "recorded_at_utc": "2026-10-22T04:37:18.264774+00:00",
+      "warnings": 1
+    },
+    "recorded_at_utc": "2026-10-22T04:38:09.789220+00:00",
+    "runtime_identity_preflight": "pinned inspect_inputs passed without Spark; no active Spark applications after fixtures",
+    "source_and_runtime_sha256": {
+      "conf/airport_timezones.csv": "60fd42f7a8ba6a1f13f37c42a28e920a2dce2291c3fd5c815047228d2d6fc1a8",
+      "conf/project.yaml": "cc3b2cb0207afa9557016cef12d07f0d2ae50e193257a029a37a2a70704cd724",
+      "docker-compose.override.yml": "158d2ad780cb895cd59489d52263743bb9cf74cc61d6091e3e1b103072bd33d3",
+      "docker-compose.yml": "ae48ca185a81d66dff7ac7e43d7a692ada936b543bb8f89bd0ef20763e842b8a",
+      "requirements.lock": "909ee6549a004c7378493f5c2b1cb16cd366cce6a700e149a5c2d0b228a06b8a",
+      "studies/gbt_v1/PLAN_30ITER.md": "2aafeac7e59bf7423f59702f34c51844215a7de08782d4b3c687f6eb6f6082bc",
+      "studies/gbt_v1/launch.py": "067277fa8cdf6655db0bea4781487c66857d58e6b69200bc8e8141a85b543155",
+      "studies/gbt_v1/run_candidate.py": "c38e1b2b50ae82454cb20d862a3be1c71e2c877df6d863a7c15a1b9712c40b84",
+      "studies/gbt_v1/test_candidate.py": "20792862e5dc1a739e76091622fa2c2dda6071074328283cae207c3c872434df"
+    },
+    "source_revision": "27c832f3b093b901fa20a9210258d50922d95a13"
+  },
+  "threshold_verification": {
+    "best_tied_steps": [
+      36
+    ],
+    "denominator": 100,
+    "exact_F1": "446419/920109",
+    "selected": {
+      "fn": 185479,
+      "fp": 761901,
+      "step": 36,
+      "tn": 1024940,
+      "tp": 446419
+    },
+    "steps": 101
+  },
+  "verification_method": "Saved JSON/metadata/byte digests and pinned-Python existing monthly_comparison; no additional Spark evaluation, fit, or baseline scoring.",
+  "verified_at_utc": "2026-10-22T06:11:45.288991+00:00",
+  "worker_required_checks": {
+    "all_months": true,
+    "full_validation_score_reload": true,
+    "inputs_unchanged": true,
+    "parameters_defaults_dimensions": true,
+    "saved_prediction_schema_population_threshold": true
+  }
+}

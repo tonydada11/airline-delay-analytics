@@ -1,0 +1,38 @@
+{
+  "classifier_fits_started": 1,
+  "elapsed_seconds": 9950.146153447975,
+  "finished_at": "2026-10-22T21:37:27.962223+00:00",
+  "fit_finished_at": "2026-10-22T21:33:30.888361+00:00",
+  "fit_seconds": 9417.098940163996,
+  "fit_started": true,
+  "fit_started_at": "2026-10-22T18:56:28.879049+00:00",
+  "negative_class_weight": 1.0,
+  "positive_class_weight": 2.0,
+  "runtime": {
+    "spark.cores.max": "2",
+    "spark.driver.memory": "768m",
+    "spark.executor.cores": "1",
+    "spark.executor.memory": "640m",
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.sql.inMemoryColumnarStorage.batchSize": "1000",
+    "spark.sql.shuffle.partitions": "4"
+  },
+  "settings": {
+    "featureSubsetStrategy": "all",
+    "featuresCol": "features",
+    "labelCol": "is_arrival_delayed_15m",
+    "maxBins": 32,
+    "maxDepth": 4,
+    "maxIter": 60,
+    "maxMemoryInMB": 128,
+    "seed": 42,
+    "stepSize": 0.1,
+    "subsamplingRate": 0.5,
+    "weightCol": "class_weight"
+  },
+  "shutdown_successful": true,
+  "spark_application_id": "app-20261022185141-0001",
+  "spark_version": "3.5.9",
+  "stage": "evaluated",
+  "started_at": "2026-10-22T18:51:37.815121+00:00"
+}

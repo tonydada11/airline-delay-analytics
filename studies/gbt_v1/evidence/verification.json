@@ -1,0 +1,597 @@
+{
+  "additional_production_preservation": {
+    "file_count": 160,
+    "frozen_inventory_path": "studies/lr_v1/evidence/baseline-identities-before.json",
+    "frozen_inventory_sha256": "113bb120777efc0e64a876857cd37f3db1d8c3d7af8b48f8b3d06fae5f235b3d",
+    "scope": [
+      "artifacts/flighttime-v3/models/",
+      "artifacts/flighttime-v3/experiments/production-5936316dd7764ed79b049ae10ee1ca18/"
+    ],
+    "sha256_matches_frozen": true,
+    "verified_file_digest_map_sha256": "ad5e219d6075fed13f23763260f3c07b1bd7907ff1203bf132f28f2f90dd5b4a"
+  },
+  "arithmetic_reconciliation": {
+    "comparison_helper_exact_match": true,
+    "host_python312_sum_equal_month_roc_auc": 0.6849516522011272,
+    "left_fold_equal_month_roc_auc": 0.6849516522011271,
+    "recorded_python_version": "3.10.12",
+    "saved_equal_month_roc_auc": 0.6849516522011271,
+    "summary_mean_check": "left-fold addition reproduces Python 3.10 sum; comparison helper unchanged"
+  },
+  "artifact_checks": {
+    "classifier": {
+      "bytes": 25338,
+      "files": 6,
+      "sha256_inventory": {
+        "data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "data/part-00000-9e521a49-c41e-4a45-bf7d-be729ca17e8c-c000.snappy.parquet": "19b6a88d3729bf7ae8beebe6f4679f44e84cc028b2b6f52da8fcc83a2cdb44a0",
+        "metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "metadata/part-00000": "4e8c5f95b2361516d94ba9c3bf733afe4aad90a275aa591ba586a84197099cd6",
+        "treesMetadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "treesMetadata/part-00000-223bdb42-7b28-415f-aedb-ba34ee4d1e28-c000.snappy.parquet": "f0d35f872b5ea62be18281769d1096214a6447a73eb3e61a466db824f25ad0a3"
+      }
+    },
+    "predictions": {
+      "bytes": 181188824,
+      "files": 12,
+      "sha256_inventory": {
+        "_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "part-00000-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "88000719afaba33129a201005293aef69a4012e2b3591017e7e998d89ed28836",
+        "part-00004-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "129c49b7e2df7142c2ee624878e780748d0ea7cd021f9378d6a79b8882f76562",
+        "part-00007-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "c27b5843c46f664d73530c8ede40e8ab0824d58c609d7c78cf17bb3207331185",
+        "part-00011-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "0797060b8a224051e31b420c5db9a0df185a35d170f149a424c8cce86dcab4d7",
+        "part-00022-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "12fb528eca23dc5008ebc81ced38a4569bcfdd5cac14f2ab978f4c51be87b6e9",
+        "part-00024-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "648edec9777dd77b93431c4a92a349ad14f5f0f5be682f172d466604dbde4616",
+        "part-00028-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "55680af880db70c3e9fcdfaa0393ada6c520fa7497fa591bea899e6af854e44f",
+        "part-00030-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "424c80a1a4515aaca3ccb254cb4ad95bd55ef80e85b2f5f213c43c46d185be5a",
+        "part-00034-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "ad8d07330180ee76676c46d5faa708e2ec065c63f90474b8225156ad86d679ed",
+        "part-00035-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "c91c7dadb72eadfe6b8f40ee3a2cdc6b4a3593c83a6456ea161ccdfeced791be",
+        "part-00045-d30b146f-71c8-4ab7-8386-7b4d05afcae2-c000.snappy.parquet": "c027f8d03b1961fe88d92d651430c61ae03183fcd5228d3ca56dd4a76311d696"
+      }
+    }
+  },
+  "authoritative_completion_path": "data/studies/gbt-improvement-v1/attempt-001/completion.json",
+  "baseline_mean_monthly_pr_auc": 0.4280983226531411,
+  "baseline_mean_plus_0_005_target": 0.4330983226531411,
+  "calculation_runtime": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "candidate_mean_monthly_pr_auc": 0.4182170318313452,
+  "checks_passed": [
+    "completion_matches_final_attempt_bytes",
+    "launcher_and_worker_exit_zero",
+    "complete_evaluated_shutdown",
+    "one_fit_no_retries",
+    "worker_intentionally_pending_termination",
+    "reviewed_clean_execution_revision",
+    "reviewed_runner_plan_digests",
+    "source_unchanged_launch.py",
+    "source_unchanged_run_candidate.py",
+    "results_digest",
+    "all_required_worker_artifact_checks",
+    "all_four_months",
+    "standalone_month_matches_2024-05",
+    "standalone_month_matches_2024-06",
+    "standalone_month_matches_2024-07",
+    "standalone_month_matches_2024-08",
+    "baseline_digest",
+    "single_factor_change",
+    "effective_defaults_preserved",
+    "saved_model_class_version_dimensions",
+    "class_weights_seed_subsampling",
+    "accepted_lr_identity_threshold",
+    "selection_contract",
+    "runtime_resources_preserved",
+    "budget_and_allowance",
+    "saved_classifier_digests",
+    "saved_predictions_digests",
+    "prediction_success_marker",
+    "complete_threshold_grid",
+    "exact_f1_lower_step_threshold",
+    "selected_confusion_matches_overall",
+    "threshold_grid_population",
+    "overall_monthly_population",
+    "monthly_population_deltas_2024-05",
+    "monthly_confusion_metrics_2024-05",
+    "capacity_metrics_deltas_2024-05_10",
+    "capacity_metrics_deltas_2024-05_20",
+    "monthly_population_deltas_2024-06",
+    "monthly_confusion_metrics_2024-06",
+    "capacity_metrics_deltas_2024-06_10",
+    "capacity_metrics_deltas_2024-06_20",
+    "monthly_population_deltas_2024-07",
+    "monthly_confusion_metrics_2024-07",
+    "capacity_metrics_deltas_2024-07_10",
+    "capacity_metrics_deltas_2024-07_20",
+    "monthly_population_deltas_2024-08",
+    "monthly_confusion_metrics_2024-08",
+    "capacity_metrics_deltas_2024-08_10",
+    "capacity_metrics_deltas_2024-08_20",
+    "equal_means_worst_pr_auc",
+    "equal_means_worst_roc_auc",
+    "equal_means_worst_precision",
+    "equal_means_worst_recall",
+    "equal_means_worst_f1",
+    "equal_means_worst_prevalence",
+    "equal_means_worst_predicted_positive_rate",
+    "budget_means_worst_10_precision",
+    "budget_means_worst_10_recall",
+    "budget_means_worst_20_precision",
+    "budget_means_worst_20_recall",
+    "comparison_helper_matches_supervisor",
+    "comparison_matches_worker",
+    "baseline_mean_target_full_precision",
+    "92_protected_small_files_unchanged",
+    "47_selection_parts_metadata_unchanged",
+    "worker_frozen_selection_fingerprints",
+    "owned_processes_terminated_source_removed",
+    "services_restored"
+  ],
+  "comparison": {
+    "mean_monthly_PR_AUC_gain": -0.009881290821795952,
+    "mean_monthly_recall_changes": {
+      "10": -0.004475281336162512,
+      "20": -0.007217435689373511
+    },
+    "monthly_PR_AUC_changes": {
+      "2024-05": -0.011406812046795778,
+      "2024-06": -0.005919073693701371,
+      "2024-07": -0.006791174368533159,
+      "2024-08": -0.015408103178153498
+    },
+    "qualifies": false,
+    "worst_monthly_PR_AUC_change": -0.015408103178153498
+  },
+  "execution": {
+    "command": [
+      "python3",
+      "-B",
+      "studies/gbt_v1/launch.py",
+      "--execute"
+    ],
+    "launcher_exit_code": 0,
+    "launcher_exit_observed_at_utc": "2026-10-22T02:46:01.139429+00:00",
+    "reviewed_execution_commit": "9e73cc43201a1b0369e2943cc97a96cf9a8378c3",
+    "status": "exited",
+    "tool_session_id": 74647
+  },
+  "failed_checks": [],
+  "input_preservation": {
+    "post_run_independent_selection_check": "bytes/mtime metadata only; no added selection scan or baseline scoring",
+    "protected_small_file_sha256": {
+      "artifacts/flighttime-v3/experiments/production-5936316dd7764ed79b049ae10ee1ca18/baseline.json": "06be1ed2a1dd191e7798a9e021612e7ae1546239efc563ebb85eae245f0ba523",
+      "artifacts/flighttime-v3/experiments/production-5936316dd7764ed79b049ae10ee1ca18/gbt/metadata/part-00000": "4aa68fe2b668dac88a6257f0151440d941d40ee18a06f21f54c30511fef33aa1",
+      "artifacts/flighttime-v3/experiments/production-5936316dd7764ed79b049ae10ee1ca18/selection.json": "55f0022c50bf987df48d0506b15dc4bdf8acd57933838deae0708215ea35109e",
+      "artifacts/flighttime-v3/experiments/production-5936316dd7764ed79b049ae10ee1ca18/validation.json": "1d6a4acb84070edd0c68dea080c8581514d5d1b0b66a917f8cf027b5c41e918e",
+      "artifacts/flighttime-v3/models/classifier/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/classifier/data/.part-00000-1ae2c319-38c0-4e08-8067-da1345d0988d-c000.snappy.parquet.crc": "5031bf94c5020ee0e6214488fee06c314b93ce11dd1c1b0f0bb573171f7527ef",
+      "artifacts/flighttime-v3/models/classifier/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/classifier/data/part-00000-1ae2c319-38c0-4e08-8067-da1345d0988d-c000.snappy.parquet": "2cace39ce8c11339a9e2d395e937d3fe125c848a1005bb20deb30b7d2962ce91",
+      "artifacts/flighttime-v3/models/classifier/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/classifier/metadata/.part-00000.crc": "a127199b0f57e4a345044e9274fce2a4394565dde215b8de0f8d0346057fa328",
+      "artifacts/flighttime-v3/models/classifier/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/classifier/metadata/part-00000": "1dd38d52d8ce93546c1518cc351ecda77baf4d0f9e4a5a19ac17bf530c859e85",
+      "artifacts/flighttime-v3/models/manifest.json": "7e1d0a1a9336dd383da9802db02586e23fcc411a4cd79294ee52c554c6d49ee7",
+      "artifacts/flighttime-v3/models/preprocessing/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/metadata/.part-00000.crc": "79416022d3198fefde30bc15a63c6cabce6c6b6e1e94c22c3fa753365671c548",
+      "artifacts/flighttime-v3/models/preprocessing/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/metadata/part-00000": "c647816e6ff585df88476432ea67bf1b88391bd3236cb51652fc483d3e46b2c5",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/data/.part-00000-bb4e6062-dc93-4198-84ef-db72728edb16-c000.snappy.parquet.crc": "108e06356b99b94a71493dc38f16d1c138abdaf9a7d3e789a0c291bd1041565d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/data/part-00000-bb4e6062-dc93-4198-84ef-db72728edb16-c000.snappy.parquet": "3a32052802573fbd4b8f40cf0464d49398718578fecc5acc9fe6f72c1fcf0ec4",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/metadata/.part-00000.crc": "8ddc387894310f80f61312e3f3935f7fc2bd6ac91e9cffe1cb3ed7557091e6bb",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/0_StringIndexer_4135952c730d/metadata/part-00000": "5e29a276c45b0b56bcba9bffa11bb67812949d98d73b1d6157da34f3937aaaea",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/data/.part-00000-547d73b8-2d77-4e5e-b237-b04c316584ec-c000.snappy.parquet.crc": "f63482f0a2c8fd10664f5bf401fff1d31e76918b7df4da7080dc453e4ca08c8f",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/data/part-00000-547d73b8-2d77-4e5e-b237-b04c316584ec-c000.snappy.parquet": "50e67dbe2f4f34f4f979c65ea640b709efc32881ba4a2d7170b18adfde263a01",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/metadata/.part-00000.crc": "784254b9e249ebf9c4344d05ca770e914267b30475156ef52b3bae0fe442b2b6",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/1_StringIndexer_e36980075bb4/metadata/part-00000": "c50d34aef050ca143fcdb0627cff1a520cdaa9464efd8a98e6b96581fe89566e",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/data/.part-00000-b4de7ca4-fe4f-4304-a407-807d9274fe87-c000.snappy.parquet.crc": "06dc11c1acb9500a58c94eb1a5c2f9d318cc6859a4a83f38dcef721abfc7346b",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/data/part-00000-b4de7ca4-fe4f-4304-a407-807d9274fe87-c000.snappy.parquet": "460e98a919993d1e157bb46fe0c9ceb93b2c31d39031ca07bf9c1d66aec7b67d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/metadata/.part-00000.crc": "3a4e8176e44193d9456b329d27936b5ee1ef2aeeae829aede8f741a47482562e",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/2_StringIndexer_e2beb27c2ec2/metadata/part-00000": "8557a761a0cc95abe24848297b0b841de627789876179c44ac7be7f233864e8a",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/data/.part-00000-a90cb479-c811-43ab-81cb-6e381f8ca142-c000.snappy.parquet.crc": "912f6b313b2673e4ed7ed829d64d2300e6c4af9f05e663cf3af1eee303c18054",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/data/part-00000-a90cb479-c811-43ab-81cb-6e381f8ca142-c000.snappy.parquet": "c3c4926d84eb88f75ae319b10b1c582ce55225d8126c8eac0798c76b9b41d248",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/metadata/.part-00000.crc": "ee4d4be3da7905b1c5b4c8268584ca39ef44b6a0422e0edbe1cd91377b75536f",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/3_StringIndexer_3a5d4c24aedf/metadata/part-00000": "b0c55c9e8543fe3b2546f56aab6a20ddd797a940959b49be174051a9ef61f9a5",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/data/.part-00000-2d017557-9378-456c-91f0-e6bb2fe2d12b-c000.snappy.parquet.crc": "cf6030c0c4f84edf96ea522cc668cd6dba5f5d1239ad88628897ee81aa830c9d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/data/part-00000-2d017557-9378-456c-91f0-e6bb2fe2d12b-c000.snappy.parquet": "34d8d76ca295a860388e13e69cc41fcbe6edbce4d2da2f174be4400a65470c24",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/metadata/.part-00000.crc": "e62b1e0d829f6471cd4310d501dfc3f9713d928dd336cc8c2b292483fbc16289",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/4_StringIndexer_91ad8062c12c/metadata/part-00000": "327ab2baea7b27ff4811b3f26ba3d3759c19ae2b73e969e0a3224687cc2a0099",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/data/.part-00000-43084f63-f310-4296-8bd3-af8eca4defcd-c000.snappy.parquet.crc": "c385f2ab4b411cc5e6bdcce5de98c64dec694702196b58403eb765de169f224c",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/data/part-00000-43084f63-f310-4296-8bd3-af8eca4defcd-c000.snappy.parquet": "7fc6dd1e77a8f84c97ef5e7cd3ae097d3bd79371adbbe81a48c2489b3cc02539",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/metadata/.part-00000.crc": "bb7aef869f0cd98e0dd179210e072d9acc5e63290b1477c37c47997057fe6447",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/5_OneHotEncoder_d822dda10efb/metadata/part-00000": "59796b5e96ec185f2f26a3fa38ae3c40b53e01a5a802fae1c4c9989db58a6459",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/data/.part-00000-fae79cda-55f7-460f-933e-13a8a2299d34-c000.snappy.parquet.crc": "49015c7e8dee36dae287fabc78ece690d98d73be44d895db73afd66c47a6ad72",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/data/part-00000-fae79cda-55f7-460f-933e-13a8a2299d34-c000.snappy.parquet": "e40361bd9b9e835f52dabf9e8519ea12b459fab061e6224882eabcf54dd6ccb0",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/metadata/.part-00000.crc": "4d844e1439f0002da93b5cb00bed83ee4b40207b56ec9c0e341c1868831dd892",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/6_Imputer_5d10e1d8217a/metadata/part-00000": "75fec74651b57f162d437889e5f25728396a3a399154a939fc7100d743322ba8",
+      "artifacts/flighttime-v3/models/preprocessing/stages/7_VectorAssembler_49418defb9da/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+      "artifacts/flighttime-v3/models/preprocessing/stages/7_VectorAssembler_49418defb9da/metadata/.part-00000.crc": "9b86aa1541e269fce9c4abdec04cd2d32eaf104f84ac7c413b26ecc6c25196c4",
+      "artifacts/flighttime-v3/models/preprocessing/stages/7_VectorAssembler_49418defb9da/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts/flighttime-v3/models/preprocessing/stages/7_VectorAssembler_49418defb9da/metadata/part-00000": "8bef6ffba439ad712d23399afce5273e085deec70f480069bbe27146db098588",
+      "conf/airport_timezones.csv": "60fd42f7a8ba6a1f13f37c42a28e920a2dce2291c3fd5c815047228d2d6fc1a8",
+      "conf/project.yaml": "cc3b2cb0207afa9557016cef12d07f0d2ae50e193257a029a37a2a70704cd724",
+      "conf/raw_data_manifest.csv": "fef0d967bbc36d2beb2898701428ca55aa5b0f0a7c9bb0f5ede2ed8ac7852efb",
+      "data/warehouse/dws/ml_flighttime_v3_selection/_dataset_manifest.json": "093b15fd2085ba50d005b0fd70a804e81597b8df4c3e2f89a56fef18a799a265",
+      "docker-compose.override.yml": "158d2ad780cb895cd59489d52263743bb9cf74cc61d6091e3e1b103072bd33d3",
+      "docker-compose.yml": "ae48ca185a81d66dff7ac7e43d7a692ada936b543bb8f89bd0ef20763e842b8a",
+      "requirements.lock": "909ee6549a004c7378493f5c2b1cb16cd366cce6a700e149a5c2d0b228a06b8a",
+      "studies/gbt_v1/PLAN.md": "aac37a9fe010ef011adc1c4aad129adfa54d9919c3f447069d029e29561d2137",
+      "studies/gbt_v1/launch.py": "f6a3d7fe013189c760fa9a34ed56c1e65e6f9d18f0d1cf2f39c92864f2178b13",
+      "studies/gbt_v1/run_candidate.py": "871d25234435805007e6b960957f3b8ca8af264ed0e9cd95e3eaec80edb3956c",
+      "studies/lr_v1/evidence/diagnostics/results.json": "c1313197e55e9d9d90793ec3401c3c0d3d61597ca35da94eae5c1f7b8fdee828",
+      "studies/lr_v1/evidence/diagnostics/validation-2024-05.json": "ed2a248af9db05580623af9dd0661bc7291832b720f3988d06eb9620d75152bd",
+      "studies/lr_v1/evidence/diagnostics/validation-2024-06.json": "2d4cd1194a6d37637c65b103e302831cb0a0ea87baaa7c53de6119a12420965e",
+      "studies/lr_v1/evidence/diagnostics/validation-2024-07.json": "21b3105ea6c926424a1114f1db090fe838928661f23d4f777c2514210a1a3b6d",
+      "studies/lr_v1/evidence/diagnostics/validation-2024-08.json": "528a1eefb225082158743e2f291d59b4530c1a0a28b7aeef01e6c4c0c6913f7c"
+    },
+    "protected_small_files_checked": 92,
+    "selection_part_metadata": {
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00000-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 39487549,
+        "mtime_ns": 1792519215615195944
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00001-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 39326396,
+        "mtime_ns": 1792519215947951498
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00002-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 34803265,
+        "mtime_ns": 1792519219073596573
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00003-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 40810190,
+        "mtime_ns": 1792519220871737496
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00004-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 42205103,
+        "mtime_ns": 1792519222866682805
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00005-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 34774758,
+        "mtime_ns": 1792519223621386847
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00006-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 39337252,
+        "mtime_ns": 1792519225500797782
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00007-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 36438743,
+        "mtime_ns": 1792519226046964602
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00008-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 36617543,
+        "mtime_ns": 1792519227899353314
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00009-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 41882287,
+        "mtime_ns": 1792519228930430880
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00010-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 39406505,
+        "mtime_ns": 1792519230426893168
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00011-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 34923978,
+        "mtime_ns": 1792519231179514622
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00012-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 36982230,
+        "mtime_ns": 1792519232790975687
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00013-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 40139812,
+        "mtime_ns": 1792519233873046667
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00014-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 38503341,
+        "mtime_ns": 1792519235288636125
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00015-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 41364966,
+        "mtime_ns": 1792519236654414958
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00016-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 35417762,
+        "mtime_ns": 1792519237582656859
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00017-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 40109585,
+        "mtime_ns": 1792519241779478015
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00018-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 39888087,
+        "mtime_ns": 1792519242625309043
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00019-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 37635154,
+        "mtime_ns": 1792519244731893103
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00020-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 38189834,
+        "mtime_ns": 1792519245508367552
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00021-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 38461516,
+        "mtime_ns": 1792519247430805998
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00022-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 36710297,
+        "mtime_ns": 1792519247816312979
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00023-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 37228504,
+        "mtime_ns": 1792519250738356849
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00024-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 37790428,
+        "mtime_ns": 1792519251237580819
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00025-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 35887814,
+        "mtime_ns": 1792519253917355417
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00026-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 33583846,
+        "mtime_ns": 1792519253863128876
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00027-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 39529794,
+        "mtime_ns": 1792519256406888613
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00028-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 33926151,
+        "mtime_ns": 1792519256030987955
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00029-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 41878946,
+        "mtime_ns": 1792519258774403958
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00030-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 35944335,
+        "mtime_ns": 1792519258655195945
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00031-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 35858966,
+        "mtime_ns": 1792519260825329743
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00032-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 34506725,
+        "mtime_ns": 1792519260869631755
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00033-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 34330258,
+        "mtime_ns": 1792519262960412799
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00034-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 35473500,
+        "mtime_ns": 1792519263182655647
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00035-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 40815127,
+        "mtime_ns": 1792519265614477036
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=train/part-00036-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 2913242,
+        "mtime_ns": 1792519263742779699
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00036-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 32208858,
+        "mtime_ns": 1792519265383176340
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00037-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 35807423,
+        "mtime_ns": 1792519267893067963
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00038-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 41340587,
+        "mtime_ns": 1792519268420630576
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00039-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 37275446,
+        "mtime_ns": 1792519270323254521
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00040-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 40161393,
+        "mtime_ns": 1792519271172509806
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00041-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 36368283,
+        "mtime_ns": 1792519272655898203
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00042-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 39769172,
+        "mtime_ns": 1792519276053170488
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00043-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 36541376,
+        "mtime_ns": 1792519277445190294
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00044-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 37007415,
+        "mtime_ns": 1792519278618475116
+      },
+      "data/warehouse/dws/ml_flighttime_v3_selection/split=validation/part-00045-7f8185c8-8da1-4a5f-80a9-20ffb803867a.c000.snappy.parquet": {
+        "bytes": 35564352,
+        "mtime_ns": 1792519279805162253
+      }
+    },
+    "selection_parts_metadata_checked": 47,
+    "worker_before_after_full_selection_sha256_matches_frozen": true
+  },
+  "method": "Standard-library JSON/SHA-256/metadata verification plus existing studies.lr_v1.metrics.monthly_comparison/capacity on saved records; no Step 4 Spark execution.",
+  "original_attempt_path": "data/studies/gbt-improvement-v1/attempt-001",
+  "outcome": "COMPLETE \u2014 DOES NOT QUALIFY",
+  "preflight": {
+    "attempt_initially_absent": true,
+    "baseline_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+    "baseline_threshold": 0.39,
+    "clean_execution_tree": true,
+    "docker_context": "default",
+    "image_id": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+    "recorded_at_utc": "2026-10-22T02:10:01.078214+00:00"
+  },
+  "process_shutdown": {
+    "application_id": "app-20261022021038-0000",
+    "container_process_checks": [
+      {
+        "id": "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+        "service": "spark-master",
+        "study_or_executor_process_matches": []
+      },
+      {
+        "id": "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+        "service": "spark-notebook",
+        "study_or_executor_process_matches": []
+      },
+      {
+        "id": "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+        "service": "spark-worker-1",
+        "study_or_executor_process_matches": []
+      },
+      {
+        "id": "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1",
+        "service": "spark-worker-2",
+        "study_or_executor_process_matches": []
+      }
+    ],
+    "live_owned_processes": 0,
+    "processes": [
+      {
+        "exists": false,
+        "expected_start_ticks": "12317474",
+        "pid": 9
+      },
+      {
+        "exists": false,
+        "expected_start_ticks": "12317482",
+        "pid": 15
+      },
+      {
+        "actual_start_ticks": "12317543",
+        "exists": true,
+        "expected_start_ticks": "12317543",
+        "pid": 24,
+        "same_process": true,
+        "state": "Z"
+      }
+    ],
+    "recorded_at_utc": "2026-10-22T02:46:49.470014+00:00",
+    "staged_source_removed": true
+  },
+  "reviewed_execution_commit": "9e73cc43201a1b0369e2943cc97a96cf9a8378c3",
+  "service_restoration": {
+    "command": [
+      "docker",
+      "stop",
+      "--timeout",
+      "10",
+      "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+      "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+      "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+      "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1"
+    ],
+    "docker_context": "default",
+    "exit_code": 0,
+    "other_initially_running_containers": [],
+    "recorded_at_utc": "2026-10-22T02:47:13.347674+00:00",
+    "remaining_running_containers": [],
+    "services": [
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "initially_running": false,
+        "oom_killed": false,
+        "service": "spark-master"
+      },
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "initially_running": false,
+        "oom_killed": false,
+        "service": "spark-notebook"
+      },
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "initially_running": false,
+        "oom_killed": false,
+        "service": "spark-worker-1"
+      },
+      {
+        "final_state": "exited",
+        "finally_running": false,
+        "id": "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1",
+        "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+        "initially_running": false,
+        "oom_killed": false,
+        "service": "spark-worker-2"
+      }
+    ],
+    "stderr": "",
+    "stdout": [
+      "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+      "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+      "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+      "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1"
+    ]
+  },
+  "threshold_verification": {
+    "exact_f1": "900712/1864743",
+    "grid_steps": 101,
+    "rule": "maximum exact rational F1, lower step on ties",
+    "selected": {
+      "fn": 181542,
+      "fp": 782489,
+      "step": 35,
+      "tn": 1004352,
+      "tp": 450356
+    },
+    "tied_best_steps": [
+      35
+    ]
+  },
+  "verification_notes": [
+    "Initial read-only extraction stopped on ast.literal_eval of a dict(...) call; corrected keyword extraction, with no artifact modifications.",
+    "An initial exact summary-mean check found a 1.1102230246251565e-16 host Python 3.12 versus pinned Python 3.10 sum difference in ROC-AUC only. Python 3.10 left-fold arithmetic reproduces the saved mean exactly; full-precision qualification comparison matches exactly."
+  ],
+  "verified_at_utc": "2026-10-22T02:53:27.270968+00:00",
+  "worker_required_checks": {
+    "all_months": true,
+    "full_validation_score_reload": true,
+    "inputs_unchanged": true,
+    "parameters_defaults_dimensions": true,
+    "saved_prediction_schema_population_threshold": true
+  }
+}

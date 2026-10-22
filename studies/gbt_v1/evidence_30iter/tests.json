@@ -1,0 +1,17 @@
+{
+  "command": "docker compose exec -T -e PYTHONDONTWRITEBYTECODE=1 -e PYTHONPATH=/tmp/gbt30-fixtures/source/project:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip -w /workspace spark-notebook python3 -B -m pytest -q -p no:cacheprovider /tmp/gbt30-fixtures/source/project/studies/gbt_v1/test_candidate.py /tmp/gbt30-fixtures/source/project/studies/lr_v1/test_metrics.py /workspace/tests/unit/test_experiment_selection.py /workspace/tests/unit/test_model_contract.py",
+  "elapsed_seconds": 94.36,
+  "exit_code": 0,
+  "fixture_only_classifier_fits": 2,
+  "fixture_tree_counts": [
+    10,
+    30
+  ],
+  "full_data_fits": 0,
+  "log_local_path": "/tmp/gbt30-phasea-tests.log",
+  "log_sha256": "a1b692f8edab9a13d18181feeb0aea67950c65db889745610a646066d51162bd",
+  "passed": 70,
+  "real_attempt002_absent": true,
+  "recorded_at_utc": "2026-10-22T04:37:18.264774+00:00",
+  "warnings": 1
+}

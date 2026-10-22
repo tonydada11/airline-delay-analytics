@@ -1,0 +1,88 @@
+{
+  "absolute_local_attempt_path": "/home/server/workspace/industry/Airline/data/studies/gbt-improvement-v1/attempt-001",
+  "completion_authority": "completion.json; worker results.json intentionally retains pending_termination",
+  "execution_revision": "9e73cc43201a1b0369e2943cc97a96cf9a8378c3",
+  "generated_records_unchanged": true,
+  "large_local_only_artifacts": [
+    "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/classifier",
+    "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/validation-predictions",
+    "data/studies/gbt-improvement-v1/attempt-001/worker.log"
+  ],
+  "project_relative_local_attempt_path": "data/studies/gbt-improvement-v1/attempt-001",
+  "published_at_utc": "2026-10-22T02:54:22.045504+00:00",
+  "records": {
+    "attempt.json": {
+      "bytes": 1617,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/attempt.json",
+      "sha256": "a07dfb207edd9c79c01ce22563ccd298d5aa8f2690f5886289d292a0d2a71b56"
+    },
+    "comparison.json": {
+      "bytes": 7693,
+      "copy": "derived verification",
+      "sha256": "8d13581d3548b947579f76daf37e143c429bb17df89f00c045475c7d10d119eb",
+      "source": "derived from frozen LR records and original local candidate results"
+    },
+    "completion.json": {
+      "bytes": 1617,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/completion.json",
+      "sha256": "a07dfb207edd9c79c01ce22563ccd298d5aa8f2690f5886289d292a0d2a71b56"
+    },
+    "inputs.json": {
+      "bytes": 31658,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/inputs.json",
+      "sha256": "28cb48ed058d19661cd627fb1923ce3591285e57f2c9ad0f049202631ddebb16"
+    },
+    "results.json": {
+      "bytes": 12324,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/results.json",
+      "sha256": "89a66fae1b905395a8a5f2c88d0613c741fc8a46ff134133a9130e1fb996a007"
+    },
+    "thresholds.json": {
+      "bytes": 10908,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/thresholds.json",
+      "sha256": "b303fac0e5a11820ae8486622b3ca4921af9e333304a9e4bcf3816e4e9425956"
+    },
+    "validation-2024-05.json": {
+      "bytes": 1630,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/validation-2024-05.json",
+      "sha256": "c11a4badd7631481aa237101fcbe876a7da4594751cfa05c665c9c1807c02ddc"
+    },
+    "validation-2024-06.json": {
+      "bytes": 1635,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/validation-2024-06.json",
+      "sha256": "96ec7df2d97282c52b7111b31a7a480f5c8e2bd99faa1150df579c7e33a8bfe0"
+    },
+    "validation-2024-07.json": {
+      "bytes": 1639,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/validation-2024-07.json",
+      "sha256": "d1c843e4675bd4442f75d85f2d00b984e50bf2f46583efee4e81107ef8a6dc6f"
+    },
+    "validation-2024-08.json": {
+      "bytes": 1633,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/validation-2024-08.json",
+      "sha256": "a5044815dbf9c40ccb22371103d73361ecf7107a6f2c06fc9ea20037a0327362"
+    },
+    "verification.json": {
+      "bytes": 39175,
+      "copy": "temporary read-only verification result",
+      "sha256": "71c9e98d9fe5cc8fb484d02b9aaed210ff075acebcca11831f245cc8aa5b5353",
+      "source": "/tmp/gbt-steps34-verification.json"
+    },
+    "worker-status.json": {
+      "bytes": 1167,
+      "copy": "byte-for-byte original; unmodified",
+      "original_local_path": "data/studies/gbt-improvement-v1/attempt-001/gbt-feature-subset-all/status.json",
+      "sha256": "37b34c11b7e3b90b7947761d3ebf5e36fc12fcf109bc04a49e16b60dcee50342"
+    }
+  },
+  "repository": "tonydada11/airline-spark"
+}

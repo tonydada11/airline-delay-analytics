@@ -1,0 +1,47 @@
+{
+  "automatic_retries": false,
+  "classifier_fits_started": 1,
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/tmp/gbt-study-code-hr35ft_r/source/project/studies/gbt_v1/run_candidate.py",
+    "--worker",
+    "e7f60cbb4b9546f6969b9792397679d9",
+    "--project-root",
+    "/workspace"
+  ],
+  "comparison": {
+    "mean_monthly_PR_AUC_gain": -0.009881290821795952,
+    "mean_monthly_recall_changes": {
+      "10": -0.004475281336162512,
+      "20": -0.007217435689373511
+    },
+    "monthly_PR_AUC_changes": {
+      "2024-05": -0.011406812046795778,
+      "2024-06": -0.005919073693701371,
+      "2024-07": -0.006791174368533159,
+      "2024-08": -0.015408103178153498
+    },
+    "qualifies": false,
+    "worst_monthly_PR_AUC_change": -0.015408103178153498
+  },
+  "exit_code": 0,
+  "finished_at": "2026-10-22T02:45:21.812753+00:00",
+  "fit_seconds": 1633.7367135810055,
+  "fit_started": true,
+  "limit_seconds": 14400,
+  "maximum_classifier_fits": 1,
+  "name": "gbt-feature-subset-all",
+  "plan_sha256": "aac37a9fe010ef011adc1c4aad129adfa54d9919c3f447069d029e29561d2137",
+  "preparation_seconds": 0.21062753700243775,
+  "qualifies": false,
+  "results_sha256": "89a66fae1b905395a8a5f2c88d0613c741fc8a46ff134133a9130e1fb996a007",
+  "runner_sha256": "871d25234435805007e6b960957f3b8ca8af264ed0e9cd95e3eaec80edb3956c",
+  "shutdown_successful": true,
+  "source_revision": "9e73cc43201a1b0369e2943cc97a96cf9a8378c3",
+  "started_at": "2026-10-22T02:10:34.565366+00:00",
+  "status": "complete",
+  "termination_allowance_seconds": 60,
+  "token": "e7f60cbb4b9546f6969b9792397679d9",
+  "total_seconds": 2087.4594736050058
+}

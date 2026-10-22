@@ -1,0 +1,18 @@
+{
+  "command": "docker compose exec -T -e PYTHONDONTWRITEBYTECODE=1 -e PYTHONPATH=/tmp/gbt60-fixtures/source/project:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip -w /workspace spark-notebook python3 -B -m pytest -q -p no:cacheprovider /tmp/gbt60-fixtures/source/project/studies/gbt_v1/test_candidate.py /tmp/gbt60-fixtures/source/project/studies/lr_v1/test_metrics.py /workspace/tests/unit/test_experiment_selection.py /workspace/tests/unit/test_model_contract.py",
+  "diff_check": "PASS",
+  "exit_code": 0,
+  "fixture_tree_counts": [
+    10,
+    30,
+    60
+  ],
+  "full_data_candidate_fits": 1,
+  "full_pipeline_run": false,
+  "generated_fixture_classifier_fits": 3,
+  "passed": 86,
+  "seconds": 117.39,
+  "warehouse_rows_read_by_tests": 0,
+  "warning": "Existing PySpark distutils deprecation warning",
+  "warnings": 1
+}

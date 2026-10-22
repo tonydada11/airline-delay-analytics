@@ -1,0 +1,348 @@
+{
+  "artifacts": {
+    "classifier": {
+      "data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data/part-00000-45649622-d39e-4bf4-8cc8-17b610b167b2-c000.snappy.parquet": "602a212272d493422684cfe5afcc102a3afd71fa3bc3abf748b19502746dc947",
+      "metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metadata/part-00000": "80a12ba0445ad34ce05e7a6ac5f757144a62006648392c4bf8272ce000c7d141",
+      "treesMetadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "treesMetadata/part-00000-779d4eb0-aad0-4c7c-b3bd-d6fccac63fbb-c000.snappy.parquet": "2f23da4f91c748e117beda49fc6eb095101a6ae8fc31484eb3514830a3bd227a"
+    },
+    "predictions": {
+      "_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "part-00000-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "88000719afaba33129a201005293aef69a4012e2b3591017e7e998d89ed28836",
+      "part-00004-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "bc0cf4ba20605559bb77426b556897fabd060b280bc1e5ce4d375d00206fdc32",
+      "part-00007-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "8b0166bd63f955ca375b3cd905a2e6cfc81de071d9f8b82843f069d43079abc2",
+      "part-00011-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "5ec2338849e063b2eddc1b6885933f036e14026484350556a60939018897d127",
+      "part-00022-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "44699959c87069eafc127a86a1f812fb4a519a6940a0e6e73a8905640f503a92",
+      "part-00024-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "52ecfbab38d563440c22c9809e4bae2120a1811e0bfb297e54c04a43c447ba48",
+      "part-00028-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "94f11d3edf73a252e807f2d6ef4d0529aef2b7e3231f89a6a00f729e6cad612a",
+      "part-00030-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "5cb385492c6ae7d11850c8d088f3abe414b1f5492f1b69207c34cd2c5980aa64",
+      "part-00034-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "6022160f4989fb68ea901bb4065973abd6031db44e722f2582a8ab4435d758b6",
+      "part-00035-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "2ee8090f8a1af0adb555755f925c3cfa0d78e89197e6233570111071c4882119",
+      "part-00045-f5c8492e-b449-476d-94ea-e11b77e62cbb-c000.snappy.parquet": "ede018c79beff34a0c1956ce97f99dd315b69929d339822d230e0c0ab838f4cc"
+    }
+  },
+  "checks": {
+    "all_months": true,
+    "full_validation_score_reload": true,
+    "inputs_unchanged": true,
+    "parameters_defaults_dimensions": true,
+    "saved_prediction_schema_population_threshold": true
+  },
+  "comparison": {
+    "mean_monthly_PR_AUC_gain": -0.004560425386183925,
+    "mean_monthly_recall_changes": {
+      "10": -0.0018174130069710526,
+      "20": -0.0015157072582849263
+    },
+    "monthly_PR_AUC_changes": {
+      "2024-05": -0.00836035427194487,
+      "2024-06": -0.004002968899306458,
+      "2024-07": -6.311370642753111e-05,
+      "2024-08": -0.005815264667056841
+    },
+    "worst_monthly_PR_AUC_change": -0.00836035427194487
+  },
+  "equal_month_budget_means": {
+    "10": {
+      "precision": 0.506776996297805,
+      "recall": 0.19456721943128916
+    },
+    "20": {
+      "precision": 0.46080981279272165,
+      "recall": 0.35346172065575476
+    }
+  },
+  "equal_month_means": {
+    "f1": 0.48317636661712493,
+    "pr_auc": 0.4235378972669571,
+    "precision": 0.3687297664882737,
+    "predicted_positive_rate": 0.4992454712019301,
+    "prevalence": 0.2611027627743036,
+    "recall": 0.7040574339881722,
+    "roc_auc": 0.6899819072966914
+  },
+  "months": {
+    "2024-05": {
+      "budgets": {
+        "10": {
+          "capacity": 59922,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5802842323030766,
+          "precision": 0.5090951570374821,
+          "recall": 0.19273926558669666,
+          "selected_mass": 59922,
+          "true_positive_mass": 30506.0
+        },
+        "20": {
+          "capacity": 119845,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5040151706540423,
+          "precision": 0.45962701823188284,
+          "recall": 0.34802496904142133,
+          "selected_mass": 119845,
+          "true_positive_mass": 55084.0
+        }
+      },
+      "changes": {
+        "budgets": {
+          "10": {
+            "precision": -0.007159307099228962,
+            "recall": -0.0027104551542874444
+          },
+          "20": {
+            "precision": -0.0060077600233635065,
+            "recall": -0.004549015643559362
+          }
+        },
+        "f1": 0.012231247207616924,
+        "pr_auc": -0.00836035427194487,
+        "precision": -0.030092764649653825,
+        "predicted_positive_rate": 0.09867228725055321,
+        "prevalence": 0.0,
+        "recall": 0.10431145593772895,
+        "roc_auc": -0.0018619787124365406
+      },
+      "confusion_matrix": {
+        "false_negative": 55729,
+        "false_positive": 163963,
+        "true_negative": 276987,
+        "true_positive": 102547
+      },
+      "duplicate_score_id_check": {
+        "duplicate_excess_rows": 0,
+        "identical_score_id_groups": 0
+      },
+      "f1": 0.48281723032303325,
+      "pr_auc": 0.4240945523140833,
+      "precision": 0.38477730666766724,
+      "predicted_positive_rate": 0.44475706995357345,
+      "prevalence": 0.264134066278833,
+      "ranking_status": "defined",
+      "recall": 0.6478998711112234,
+      "roc_auc": 0.6845628519390866,
+      "rows": 599226
+    },
+    "2024-06": {
+      "budgets": {
+        "10": {
+          "capacity": 60127,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.6453090594348603,
+          "precision": 0.47464533404294246,
+          "recall": 0.19032978758878255,
+          "selected_mass": 60127,
+          "true_positive_mass": 28539.0
+        },
+        "20": {
+          "capacity": 120254,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5676903038099965,
+          "precision": 0.43359888236565935,
+          "recall": 0.3477408383073794,
+          "selected_mass": 120254,
+          "true_positive_mass": 52142.0
+        }
+      },
+      "changes": {
+        "budgets": {
+          "10": {
+            "precision": -0.0010145192675503067,
+            "recall": -0.0004068158324719018
+          },
+          "20": {
+            "precision": -0.0009563091456417094,
+            "recall": -0.0007669478808896568
+          }
+        },
+        "f1": 0.0032011906890758723,
+        "pr_auc": -0.004002968899306458,
+        "precision": 0.0019875309060344293,
+        "predicted_positive_rate": 0.0017579398342181252,
+        "prevalence": 0.0,
+        "recall": 0.0066891193437593754,
+        "roc_auc": 0.002310011608488427
+      },
+      "confusion_matrix": {
+        "false_negative": 38817,
+        "false_positive": 211253,
+        "true_negative": 240074,
+        "true_positive": 111128
+      },
+      "duplicate_score_id_check": {
+        "duplicate_excess_rows": 0,
+        "identical_score_id_groups": 0
+      },
+      "f1": 0.4705563530273582,
+      "pr_auc": 0.3995335830466547,
+      "precision": 0.3447101411063307,
+      "predicted_positive_rate": 0.5361649968732953,
+      "prevalence": 0.24937964847855879,
+      "ranking_status": "defined",
+      "recall": 0.7411250791957051,
+      "roc_auc": 0.6854577290807877,
+      "rows": 601272
+    },
+    "2024-07": {
+      "budgets": {
+        "10": {
+          "capacity": 61393,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.6564041255713853,
+          "precision": 0.5579463456745883,
+          "recall": 0.18834850026118274,
+          "selected_mass": 61393,
+          "true_positive_mass": 34254.0
+        },
+        "20": {
+          "capacity": 122787,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5839954787424344,
+          "precision": 0.5170661389235017,
+          "recall": 0.3490996068512358,
+          "selected_mass": 122787,
+          "true_positive_mass": 63489.0
+        }
+      },
+      "changes": {
+        "budgets": {
+          "10": {
+            "precision": -0.001563696186861696,
+            "recall": -0.0005278640750006891
+          },
+          "20": {
+            "precision": 0.005358873496379979,
+            "recall": 0.003618068347400527
+          }
+        },
+        "f1": 0.00569167466169429,
+        "pr_auc": -6.311370642753111e-05,
+        "precision": 0.011078946261923295,
+        "predicted_positive_rate": -0.029291231362124526,
+        "prevalence": 0.0,
+        "recall": -0.017309542792730892,
+        "roc_auc": 0.005200281055459222
+      },
+      "confusion_matrix": {
+        "false_negative": 44061,
+        "false_positive": 207620,
+        "true_negative": 224453,
+        "true_positive": 137804
+      },
+      "duplicate_score_id_check": {
+        "duplicate_excess_rows": 0,
+        "identical_score_id_groups": 0
+      },
+      "f1": 0.5226886963316132,
+      "pr_auc": 0.47052412313605896,
+      "precision": 0.39894159062485524,
+      "predicted_positive_rate": 0.5626366180298337,
+      "prevalence": 0.2962269805745857,
+      "ranking_status": "defined",
+      "recall": 0.7577268853270283,
+      "roc_auc": 0.6955592467357726,
+      "rows": 613938
+    },
+    "2024-08": {
+      "budgets": {
+        "10": {
+          "capacity": 60430,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.6131919677068083,
+          "precision": 0.4854211484362072,
+          "recall": 0.20685132428849462,
+          "selected_mass": 60430,
+          "true_positive_mass": 29334.0
+        },
+        "20": {
+          "capacity": 120860,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5129108160620046,
+          "precision": 0.4329472116498428,
+          "recall": 0.3689814684229825,
+          "selected_mass": 120860,
+          "true_positive_mass": 52326.0
+        }
+      },
+      "changes": {
+        "budgets": {
+          "10": {
+            "precision": -0.008505709084891566,
+            "recall": -0.003624516966124175
+          },
+          "20": {
+            "precision": -0.005121628330299499,
+            "recall": -0.004364933856091213
+          }
+        },
+        "f1": -0.002496197817904555,
+        "pr_auc": -0.005815264667056841,
+        "precision": -0.013133023986549142,
+        "predicted_positive_rate": 0.03918398551719915,
+        "prevalence": 0.0,
+        "recall": 0.03467266521874035,
+        "roc_auc": -0.0022783190815460763
+      },
+      "confusion_matrix": {
+        "false_negative": 46872,
+        "false_positive": 179065,
+        "true_negative": 283426,
+        "true_positive": 94940
+      },
+      "duplicate_score_id_check": {
+        "duplicate_excess_rows": 0,
+        "identical_score_id_groups": 0
+      },
+      "f1": 0.45664318678649496,
+      "pr_auc": 0.39999933057103176,
+      "precision": 0.3464900275542417,
+      "predicted_positive_rate": 0.45342319995101793,
+      "prevalence": 0.23467035576523698,
+      "ranking_status": "defined",
+      "recall": 0.6694779003187319,
+      "roc_auc": 0.6943478014311187,
+      "rows": 604303
+    }
+  },
+  "name": "gbt-all-30iter",
+  "overall": {
+    "confusion_matrix": {
+      "false_negative": 185479,
+      "false_positive": 761901,
+      "true_negative": 1024940,
+      "true_positive": 446419
+    },
+    "f1": 0.4851805601292891,
+    "pr_auc": 0.42240714654825096,
+    "precision": 0.3694542836334746,
+    "predicted_positive_rate": 0.49956609621790526,
+    "prevalence": 0.26125100723972283,
+    "ranking_status": "defined",
+    "recall": 0.7064731966235057,
+    "roc_auc": 0.6902277934065765,
+    "rows": 2418739
+  },
+  "status": "pending_termination",
+  "threshold": 0.36,
+  "threshold_step": 36,
+  "worst_monthly_budget_changes": {
+    "10": {
+      "precision": -0.008505709084891566,
+      "recall": -0.003624516966124175
+    },
+    "20": {
+      "precision": -0.0060077600233635065,
+      "recall": -0.004549015643559362
+    }
+  },
+  "worst_monthly_changes": {
+    "f1": -0.002496197817904555,
+    "pr_auc": -0.00836035427194487,
+    "precision": -0.030092764649653825,
+    "predicted_positive_rate": -0.029291231362124526,
+    "prevalence": 0.0,
+    "recall": -0.017309542792730892,
+    "roc_auc": -0.0022783190815460763
+  }
+}

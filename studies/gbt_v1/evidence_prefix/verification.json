@@ -1,0 +1,64 @@
+{
+  "additional_targeted_checks": {
+    "attempt_001_and_002_file_sets_unchanged": true,
+    "monthly_rows_positives_and_lr_values": "PASS",
+    "protected_files_unchanged": 246,
+    "saved_gbt30_absolute_errors_recomputed": "PASS",
+    "selection_file_metadata_unchanged": 97,
+    "source_digest_matches_executed_file": "PASS"
+  },
+  "auc_absolute_tolerance": 1e-10,
+  "checks": [
+    "completion_matches_final_attempt_bytes",
+    "worker_exit_and_no_fit",
+    "shutdown_and_authoritative_completion",
+    "result_digest",
+    "bounded_duration",
+    "complete_month_record",
+    "native_full_validation_scores",
+    "all_worker_checks",
+    "unmodified_worker_status_semantics",
+    "mean_prefix_10",
+    "original_prefix_members_10",
+    "mean_prefix_20",
+    "original_prefix_members_20",
+    "mean_prefix_25",
+    "original_prefix_members_25",
+    "mean_prefix_30",
+    "original_prefix_members_30",
+    "paired_changes_10_20",
+    "paired_changes_20_25",
+    "paired_changes_25_30",
+    "lr_frozen_mean",
+    "auc_reconciliation_tolerance",
+    "all_sixteen_auc_values_finite"
+  ],
+  "max_observed_auc_error": 1.8318679906315083e-15,
+  "max_observed_score_error": 0.0,
+  "pinned_python_saved_json_assertions": 23,
+  "positives": 631898,
+  "process_cleanup": {
+    "master_active_apps": [],
+    "master_reported_state": "FINISHED",
+    "owned_driver_worker_processes_remaining": [],
+    "source_staging_directories_remaining": [],
+    "spark_application_id": "app-20261022175209-0003"
+  },
+  "row_label_multiset_checks": "Bidirectional exceptAll on lineage and labels before and after native transforms; no deduplication or joins",
+  "rows": 2418739,
+  "score_absolute_tolerance": 1e-12,
+  "service_cleanup": {
+    "docker_context": "default",
+    "image_id": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+    "initial_running_services": [],
+    "restored_to_stopped": true,
+    "started_existing_services": [
+      "spark-master",
+      "spark-worker-1",
+      "spark-worker-2",
+      "spark-notebook"
+    ]
+  },
+  "spark_started_for_saved_json_verification": false,
+  "status": "PASS"
+}

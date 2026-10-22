@@ -1,0 +1,16 @@
+{
+  "automatic_retries": 0,
+  "classifier_fits_started": 0,
+  "diagnostic_sha256": "b73f9cd4b3fdd248eac7dd0efccc97f8a1ac4669bd477c7bd1e8e026e70c3bc7",
+  "exit_code": 0,
+  "finished_at": "2026-10-22T17:55:36.874800+00:00",
+  "limit_seconds": 3600,
+  "preparation_seconds": 0.20236284099519253,
+  "results_sha256": "a7b920368e41528e3eaeb494914c8809b5c8ead635d74c2158c1135993d4dcf9",
+  "source_revision": "b5077bfbdaffba4260ae385d275f4801435a3612",
+  "started_at": "2026-10-22T17:52:05.786841+00:00",
+  "status": "complete",
+  "termination_allowance_seconds": 60,
+  "token": "8d91f59cb1f744ceaeecea3a8e3dfb5f",
+  "total_seconds": 211.2919645429938
+}

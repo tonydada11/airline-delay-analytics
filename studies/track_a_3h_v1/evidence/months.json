@@ -1,0 +1,362 @@
+[
+  {
+    "month": "train-2023-01",
+    "elapsed_seconds": 168.57500911399256,
+    "source_rows": 527230,
+    "utc_bounds": {
+      "lo": 1672522500000000,
+      "hi": 1675245300000000
+    },
+    "exact_original_multiset": true,
+    "rows": 527197,
+    "origin_missing": 81739.0,
+    "origin_missing_fraction": 0.1550445089786171,
+    "origin_max_count": 89,
+    "destination_missing": 93205.0,
+    "destination_missing_fraction": 0.1767934946519043,
+    "destination_max_count": 132,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-02",
+    "elapsed_seconds": 125.33844319102354,
+    "source_rows": 500702,
+    "utc_bounds": {
+      "lo": 1675202400000000,
+      "hi": 1677664740000000
+    },
+    "exact_original_multiset": true,
+    "rows": 492747,
+    "origin_missing": 73736.0,
+    "origin_missing_fraction": 0.14964271725652312,
+    "origin_max_count": 88,
+    "destination_missing": 83168.0,
+    "destination_missing_fraction": 0.16878438630778067,
+    "destination_max_count": 134,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-03",
+    "elapsed_seconds": 137.13634314198862,
+    "source_rows": 581162,
+    "utc_bounds": {
+      "lo": 1677621600000000,
+      "hi": 1680342000000000
+    },
+    "exact_original_multiset": true,
+    "rows": 571533,
+    "origin_missing": 85442.0,
+    "origin_missing_fraction": 0.149496179573183,
+    "origin_max_count": 91,
+    "destination_missing": 96906.0,
+    "destination_missing_fraction": 0.16955451391258247,
+    "destination_max_count": 133,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-04",
+    "elapsed_seconds": 112.93451608798932,
+    "source_rows": 560247,
+    "utc_bounds": {
+      "lo": 1680296100000000,
+      "hi": 1682932500000000
+    },
+    "exact_original_multiset": true,
+    "rows": 550249,
+    "origin_missing": 79597.0,
+    "origin_missing_fraction": 0.14465632831681657,
+    "origin_max_count": 97,
+    "destination_missing": 88126.0,
+    "destination_missing_fraction": 0.16015658365576313,
+    "destination_max_count": 141,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-05",
+    "elapsed_seconds": 131.48996542100213,
+    "source_rows": 586202,
+    "utc_bounds": {
+      "lo": 1682888100000000,
+      "hi": 1685614800000000
+    },
+    "exact_original_multiset": true,
+    "rows": 575429,
+    "origin_missing": 79433.0,
+    "origin_missing_fraction": 0.13804135697019093,
+    "origin_max_count": 101,
+    "destination_missing": 87088.0,
+    "destination_missing_fraction": 0.15134447516548524,
+    "destination_max_count": 143,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-06",
+    "elapsed_seconds": 107.16716977400938,
+    "source_rows": 572963,
+    "utc_bounds": {
+      "lo": 1685566500000000,
+      "hi": 1688203740000000
+    },
+    "exact_original_multiset": true,
+    "rows": 562804,
+    "origin_missing": 79313.0,
+    "origin_missing_fraction": 0.14092472690314922,
+    "origin_max_count": 100,
+    "destination_missing": 91343.0,
+    "destination_missing_fraction": 0.1622998415078784,
+    "destination_max_count": 142,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-07",
+    "elapsed_seconds": 120.20092344700242,
+    "source_rows": 596376,
+    "utc_bounds": {
+      "lo": 1688158500000000,
+      "hi": 1690885200000000
+    },
+    "exact_original_multiset": true,
+    "rows": 585058,
+    "origin_missing": 83311.0,
+    "origin_missing_fraction": 0.1423978477347545,
+    "origin_max_count": 94,
+    "destination_missing": 95698.0,
+    "destination_missing_fraction": 0.16357010757907764,
+    "destination_max_count": 143,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-08",
+    "elapsed_seconds": 140.79637961401022,
+    "source_rows": 603718,
+    "utc_bounds": {
+      "lo": 1690836900000000,
+      "hi": 1693563600000000
+    },
+    "exact_original_multiset": true,
+    "rows": 592142,
+    "origin_missing": 79495.0,
+    "origin_missing_fraction": 0.13424989276220906,
+    "origin_max_count": 95,
+    "destination_missing": 92403.0,
+    "destination_missing_fraction": 0.15604871804398268,
+    "destination_max_count": 143,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-09",
+    "elapsed_seconds": 141.10625732102199,
+    "source_rows": 571785,
+    "utc_bounds": {
+      "lo": 1693515300000000,
+      "hi": 1696152720000000
+    },
+    "exact_original_multiset": true,
+    "rows": 560887,
+    "origin_missing": 75538.0,
+    "origin_missing_fraction": 0.13467596859973577,
+    "origin_max_count": 100,
+    "destination_missing": 86116.0,
+    "destination_missing_fraction": 0.15353538234974246,
+    "destination_max_count": 146,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-10",
+    "elapsed_seconds": 123.90781023001182,
+    "source_rows": 605002,
+    "utc_bounds": {
+      "lo": 1696107300000000,
+      "hi": 1698832740000000
+    },
+    "exact_original_multiset": true,
+    "rows": 596003,
+    "origin_missing": 79145.0,
+    "origin_missing_fraction": 0.13279295574015568,
+    "origin_max_count": 100,
+    "destination_missing": 87904.0,
+    "destination_missing_fraction": 0.1474891904906519,
+    "destination_max_count": 147,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-11",
+    "elapsed_seconds": 124.86103377098334,
+    "source_rows": 570570,
+    "utc_bounds": {
+      "lo": 1698788100000000,
+      "hi": 1701426000000000
+    },
+    "exact_original_multiset": true,
+    "rows": 562413,
+    "origin_missing": 78543.0,
+    "origin_missing_fraction": 0.1396535997567624,
+    "origin_max_count": 96,
+    "destination_missing": 84073.0,
+    "destination_missing_fraction": 0.1494862316482727,
+    "destination_max_count": 146,
+    "invalid": 0
+  },
+  {
+    "month": "train-2023-12",
+    "elapsed_seconds": 125.50051296502352,
+    "source_rows": 577530,
+    "utc_bounds": {
+      "lo": 1701380100000000,
+      "hi": 1704103140000000
+    },
+    "exact_original_multiset": true,
+    "rows": 566941,
+    "origin_missing": 82714.0,
+    "origin_missing_fraction": 0.14589525188688066,
+    "origin_max_count": 98,
+    "destination_missing": 91309.0,
+    "destination_missing_fraction": 0.16105555957321838,
+    "destination_max_count": 137,
+    "invalid": 0
+  },
+  {
+    "month": "train-2024-01",
+    "elapsed_seconds": 114.89355968098971,
+    "source_rows": 534281,
+    "utc_bounds": {
+      "lo": 1704058500000000,
+      "hi": 1706781540000000
+    },
+    "exact_original_multiset": true,
+    "rows": 525370,
+    "origin_missing": 84142.0,
+    "origin_missing_fraction": 0.1601576032129737,
+    "origin_max_count": 95,
+    "destination_missing": 94231.0,
+    "destination_missing_fraction": 0.17936121209814035,
+    "destination_max_count": 131,
+    "invalid": 0
+  },
+  {
+    "month": "train-2024-02",
+    "elapsed_seconds": 94.987752867979,
+    "source_rows": 524393,
+    "utc_bounds": {
+      "lo": 1706736900000000,
+      "hi": 1709288100000000
+    },
+    "exact_original_multiset": true,
+    "rows": 515269,
+    "origin_missing": 75433.0,
+    "origin_missing_fraction": 0.14639537794821733,
+    "origin_max_count": 100,
+    "destination_missing": 85063.0,
+    "destination_missing_fraction": 0.16508464510770102,
+    "destination_max_count": 139,
+    "invalid": 0
+  },
+  {
+    "month": "train-2024-03",
+    "elapsed_seconds": 109.39478830900043,
+    "source_rows": 596179,
+    "utc_bounds": {
+      "lo": 1709242500000000,
+      "hi": 1711963800000000
+    },
+    "exact_original_multiset": true,
+    "rows": 585413,
+    "origin_missing": 84266.0,
+    "origin_missing_fraction": 0.14394282327177566,
+    "origin_max_count": 99,
+    "destination_missing": 95234.0,
+    "destination_missing_fraction": 0.1626783142841037,
+    "destination_max_count": 150,
+    "invalid": 0
+  },
+  {
+    "month": "train-2024-04",
+    "elapsed_seconds": 114.86223585897824,
+    "source_rows": 587919,
+    "utc_bounds": {
+      "lo": 1711918500000000,
+      "hi": 1714555800000000
+    },
+    "exact_original_multiset": true,
+    "rows": 576915,
+    "origin_missing": 77239.0,
+    "origin_missing_fraction": 0.13388280769264102,
+    "origin_max_count": 100,
+    "destination_missing": 88271.0,
+    "destination_missing_fraction": 0.15300520873958903,
+    "destination_max_count": 151,
+    "invalid": 0
+  },
+  {
+    "month": "validation-2024-05",
+    "elapsed_seconds": 95.24666447000345,
+    "source_rows": 609157,
+    "utc_bounds": {
+      "lo": 1714510500000000,
+      "hi": 1717233480000000
+    },
+    "exact_original_multiset": true,
+    "rows": 599226,
+    "origin_missing": 83348.0,
+    "origin_missing_fraction": 0.13909276299760023,
+    "origin_max_count": 102,
+    "destination_missing": 96139.0,
+    "destination_missing_fraction": 0.16043863250259502,
+    "destination_max_count": 149,
+    "invalid": 0
+  },
+  {
+    "month": "validation-2024-06",
+    "elapsed_seconds": 102.29388379401644,
+    "source_rows": 612487,
+    "utc_bounds": {
+      "lo": 1717188900000000,
+      "hi": 1719826200000000
+    },
+    "exact_original_multiset": true,
+    "rows": 601272,
+    "origin_missing": 83472.0,
+    "origin_missing_fraction": 0.13882568953817906,
+    "origin_max_count": 102,
+    "destination_missing": 96773.0,
+    "destination_missing_fraction": 0.1609471254274272,
+    "destination_max_count": 148,
+    "invalid": 0
+  },
+  {
+    "month": "validation-2024-07",
+    "elapsed_seconds": 104.50168774701888,
+    "source_rows": 624961,
+    "utc_bounds": {
+      "lo": 1719780900000000,
+      "hi": 1722507600000000
+    },
+    "exact_original_multiset": true,
+    "rows": 613938,
+    "origin_missing": 90335.0,
+    "origin_missing_fraction": 0.14714026497789678,
+    "origin_max_count": 99,
+    "destination_missing": 103150.0,
+    "destination_missing_fraction": 0.168013708224609,
+    "destination_max_count": 144,
+    "invalid": 0
+  },
+  {
+    "month": "validation-2024-08",
+    "elapsed_seconds": 109.88885345499148,
+    "source_rows": 614933,
+    "utc_bounds": {
+      "lo": 1722459900000000,
+      "hi": 1725183000000000
+    },
+    "exact_original_multiset": true,
+    "rows": 604303,
+    "origin_missing": 82936.0,
+    "origin_missing_fraction": 0.13724240985068747,
+    "origin_max_count": 102,
+    "destination_missing": 96498.0,
+    "destination_missing_fraction": 0.15968479388651058,
+    "destination_max_count": 151,
+    "invalid": 0
+  }
+]

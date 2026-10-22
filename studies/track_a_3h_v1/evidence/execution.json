@@ -1,0 +1,30 @@
+{
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds_including_cleanup": 2789.2163388880144,
+  "cap_seconds": 14400,
+  "cgroups": {
+    "airline-track-a-3h-v1-master-1": {
+      "memory.peak": "454197248",
+      "memory.max": "536870912",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+    },
+    "airline-track-a-3h-v1-worker1-1": {
+      "memory.peak": "2153201664",
+      "memory.max": "2147483648",
+      "memory.events": "low 0\nhigh 0\nmax 46082\noom 0\noom_kill 0\noom_group_kill 0"
+    },
+    "airline-track-a-3h-v1-worker2-1": {
+      "memory.peak": "2154749952",
+      "memory.max": "2147483648",
+      "memory.events": "low 0\nhigh 0\nmax 46058\noom 0\noom_kill 0\noom_group_kill 0"
+    },
+    "airline-track-a-3h-v1-driver-1": {
+      "memory.peak": "1785135104",
+      "memory.max": "2147483648",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+    }
+  },
+  "preserved": true,
+  "study_containers_removed": true
+}

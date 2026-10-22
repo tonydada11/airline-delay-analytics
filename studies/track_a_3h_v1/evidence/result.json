@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "totals": {
+    "train": 8946370,
+    "validation": 2418739
+  },
+  "seconds": 2748.2755545230175,
+  "no_model_fit": true
+}

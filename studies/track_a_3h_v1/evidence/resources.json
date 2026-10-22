@@ -1,0 +1,534 @@
+{
+  "sampled_cgroup_memory_max_by_split": {
+    "train": {
+      "airline-track-a-3h-v1-worker2-1": 2147483648,
+      "airline-track-a-3h-v1-worker1-1": 2147475456,
+      "airline-track-a-3h-v1-driver-1": 1739177984,
+      "airline-track-a-3h-v1-master-1": 453746688
+    },
+    "validation": {
+      "airline-track-a-3h-v1-worker2-1": 2147450880,
+      "airline-track-a-3h-v1-worker1-1": 2147393536,
+      "airline-track-a-3h-v1-driver-1": 1785135104,
+      "airline-track-a-3h-v1-master-1": 454197248
+    }
+  },
+  "task_metrics_by_split": {
+    "train": {
+      "tasks": 5669,
+      "Executor Run Time": 3410805,
+      "Executor CPU Time": 1436574679387,
+      "JVM GC Time": 155610,
+      "Memory Bytes Spilled": 12927158989,
+      "Disk Bytes Spilled": 5906719237,
+      "shuffle_read_bytes": 16450316451,
+      "shuffle_write_bytes": 16450316451
+    },
+    "validation": {
+      "tasks": 793,
+      "Executor Run Time": 692530,
+      "Executor CPU Time": 330576534933,
+      "JVM GC Time": 24623,
+      "Memory Bytes Spilled": 3459221469,
+      "Disk Bytes Spilled": 1576208559,
+      "shuffle_read_bytes": 4478980966,
+      "shuffle_write_bytes": 4478980966
+    }
+  },
+  "population_by_split": {
+    "train": {
+      "rows": 8946370,
+      "elapsed_seconds": 1993.1527007950062,
+      "origin_missing_fraction": 0.1429726246511155,
+      "destination_missing_fraction": 0.1609745628673976
+    },
+    "validation": {
+      "rows": 2418739,
+      "elapsed_seconds": 411.93108946603024,
+      "origin_missing_fraction": 0.14060673764304457,
+      "destination_missing_fraction": 0.1622994461163441
+    }
+  },
+  "task_metrics_by_phase": {
+    "generated": {
+      "tasks": 64,
+      "Executor Run Time": 29564,
+      "Executor CPU Time": 5817719609,
+      "JVM GC Time": 679,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 17301472,
+      "shuffle_read_bytes": 10989,
+      "shuffle_write_bytes": 10989,
+      "first_task_epoch_ms": 1792635309603,
+      "last_task_epoch_ms": 1792635345072
+    },
+    "sample": {
+      "tasks": 56,
+      "Executor Run Time": 73393,
+      "Executor CPU Time": 13840548823,
+      "JVM GC Time": 2310,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 41942976,
+      "shuffle_read_bytes": 28733967,
+      "shuffle_write_bytes": 28733967,
+      "first_task_epoch_ms": 1792635347598,
+      "last_task_epoch_ms": 1792635417885
+    },
+    "source_preparation": {
+      "tasks": 52,
+      "Executor Run Time": 398462,
+      "Executor CPU Time": 30046458551,
+      "JVM GC Time": 1781,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 0,
+      "shuffle_read_bytes": 1388,
+      "shuffle_write_bytes": 1388,
+      "first_task_epoch_ms": 1792635423199,
+      "last_task_epoch_ms": 1792635636380
+    },
+    "train-2023-01": {
+      "tasks": 354,
+      "Executor Run Time": 296263,
+      "Executor CPU Time": 99588741818,
+      "JVM GC Time": 13370,
+      "Memory Bytes Spilled": 1168441263,
+      "Disk Bytes Spilled": 464162620,
+      "peak_task_execution_memory_bytes": 158785045,
+      "shuffle_read_bytes": 861548778,
+      "shuffle_write_bytes": 861548778,
+      "first_task_epoch_ms": 1792635637288,
+      "last_task_epoch_ms": 1792635804979
+    },
+    "train-2023-02": {
+      "tasks": 354,
+      "Executor Run Time": 204814,
+      "Executor CPU Time": 79610160156,
+      "JVM GC Time": 8638,
+      "Memory Bytes Spilled": 332372209,
+      "Disk Bytes Spilled": 154850329,
+      "peak_task_execution_memory_bytes": 157513613,
+      "shuffle_read_bytes": 893234393,
+      "shuffle_write_bytes": 893234393,
+      "first_task_epoch_ms": 1792635805397,
+      "last_task_epoch_ms": 1792635930321
+    },
+    "train-2023-03": {
+      "tasks": 354,
+      "Executor Run Time": 232361,
+      "Executor CPU Time": 91371740392,
+      "JVM GC Time": 12533,
+      "Memory Bytes Spilled": 1086570904,
+      "Disk Bytes Spilled": 495598542,
+      "peak_task_execution_memory_bytes": 157937315,
+      "shuffle_read_bytes": 1066852813,
+      "shuffle_write_bytes": 1066852813,
+      "first_task_epoch_ms": 1792635930583,
+      "last_task_epoch_ms": 1792636067461
+    },
+    "train-2023-04": {
+      "tasks": 354,
+      "Executor Run Time": 188246,
+      "Executor CPU Time": 88055412666,
+      "JVM GC Time": 6752,
+      "Memory Bytes Spilled": 702895955,
+      "Disk Bytes Spilled": 322668395,
+      "peak_task_execution_memory_bytes": 158361392,
+      "shuffle_read_bytes": 1018174667,
+      "shuffle_write_bytes": 1018174667,
+      "first_task_epoch_ms": 1792636067794,
+      "last_task_epoch_ms": 1792636180410
+    },
+    "train-2023-05": {
+      "tasks": 354,
+      "Executor Run Time": 228297,
+      "Executor CPU Time": 93604780449,
+      "JVM GC Time": 10984,
+      "Memory Bytes Spilled": 1090430222,
+      "Disk Bytes Spilled": 501256545,
+      "peak_task_execution_memory_bytes": 159208806,
+      "shuffle_read_bytes": 1074768873,
+      "shuffle_write_bytes": 1074768873,
+      "first_task_epoch_ms": 1792636180596,
+      "last_task_epoch_ms": 1792636311903
+    },
+    "train-2023-06": {
+      "tasks": 354,
+      "Executor Run Time": 181783,
+      "Executor CPU Time": 83430981943,
+      "JVM GC Time": 7898,
+      "Memory Bytes Spilled": 704590854,
+      "Disk Bytes Spilled": 330743179,
+      "peak_task_execution_memory_bytes": 158785102,
+      "shuffle_read_bytes": 1043443451,
+      "shuffle_write_bytes": 1043443451,
+      "first_task_epoch_ms": 1792636312090,
+      "last_task_epoch_ms": 1792636419005
+    },
+    "train-2023-07": {
+      "tasks": 354,
+      "Executor Run Time": 204676,
+      "Executor CPU Time": 90455373781,
+      "JVM GC Time": 9108,
+      "Memory Bytes Spilled": 742087349,
+      "Disk Bytes Spilled": 345084816,
+      "peak_task_execution_memory_bytes": 158785093,
+      "shuffle_read_bytes": 1086808208,
+      "shuffle_write_bytes": 1086808208,
+      "first_task_epoch_ms": 1792636419233,
+      "last_task_epoch_ms": 1792636539198
+    },
+    "train-2023-08": {
+      "tasks": 355,
+      "Executor Run Time": 234530,
+      "Executor CPU Time": 94061830558,
+      "JVM GC Time": 12353,
+      "Memory Bytes Spilled": 742510942,
+      "Disk Bytes Spilled": 348935491,
+      "peak_task_execution_memory_bytes": 158569826,
+      "shuffle_read_bytes": 1099328603,
+      "shuffle_write_bytes": 1099328603,
+      "first_task_epoch_ms": 1792636539603,
+      "last_task_epoch_ms": 1792636680081
+    },
+    "train-2023-09": {
+      "tasks": 355,
+      "Executor Run Time": 250502,
+      "Executor CPU Time": 102892122479,
+      "JVM GC Time": 11850,
+      "Memory Bytes Spilled": 1038547112,
+      "Disk Bytes Spilled": 480589367,
+      "peak_task_execution_memory_bytes": 159208891,
+      "shuffle_read_bytes": 1048408095,
+      "shuffle_write_bytes": 1048408095,
+      "first_task_epoch_ms": 1792636680223,
+      "last_task_epoch_ms": 1792636821158
+    },
+    "train-2023-10": {
+      "tasks": 354,
+      "Executor Run Time": 217665,
+      "Executor CPU Time": 101750660067,
+      "JVM GC Time": 8956,
+      "Memory Bytes Spilled": 759304764,
+      "Disk Bytes Spilled": 350598675,
+      "peak_task_execution_memory_bytes": 159208510,
+      "shuffle_read_bytes": 1099897110,
+      "shuffle_write_bytes": 1099897110,
+      "first_task_epoch_ms": 1792636821389,
+      "last_task_epoch_ms": 1792636945104
+    },
+    "train-2023-11": {
+      "tasks": 355,
+      "Executor Run Time": 218488,
+      "Executor CPU Time": 91502087318,
+      "JVM GC Time": 9462,
+      "Memory Bytes Spilled": 702236712,
+      "Disk Bytes Spilled": 329575081,
+      "peak_task_execution_memory_bytes": 158026047,
+      "shuffle_read_bytes": 1034935446,
+      "shuffle_write_bytes": 1034935446,
+      "first_task_epoch_ms": 1792636945291,
+      "last_task_epoch_ms": 1792637069968
+    },
+    "train-2023-12": {
+      "tasks": 355,
+      "Executor Run Time": 204269,
+      "Executor CPU Time": 87001981259,
+      "JVM GC Time": 9427,
+      "Memory Bytes Spilled": 707290330,
+      "Disk Bytes Spilled": 332549286,
+      "peak_task_execution_memory_bytes": 159208593,
+      "shuffle_read_bytes": 1045318329,
+      "shuffle_write_bytes": 1045318329,
+      "first_task_epoch_ms": 1792637070097,
+      "last_task_epoch_ms": 1792637195479
+    },
+    "train-2024-01": {
+      "tasks": 354,
+      "Executor Run Time": 191918,
+      "Executor CPU Time": 80249773572,
+      "JVM GC Time": 9416,
+      "Memory Bytes Spilled": 667332757,
+      "Disk Bytes Spilled": 308024787,
+      "peak_task_execution_memory_bytes": 158639467,
+      "shuffle_read_bytes": 971372408,
+      "shuffle_write_bytes": 971372408,
+      "first_task_epoch_ms": 1792637195693,
+      "last_task_epoch_ms": 1792637310309
+    },
+    "train-2024-02": {
+      "tasks": 355,
+      "Executor Run Time": 165665,
+      "Executor CPU Time": 78967295882,
+      "JVM GC Time": 6591,
+      "Memory Bytes Spilled": 668047850,
+      "Disk Bytes Spilled": 300897693,
+      "peak_task_execution_memory_bytes": 158361320,
+      "shuffle_read_bytes": 950787247,
+      "shuffle_write_bytes": 950787247,
+      "first_task_epoch_ms": 1792637311033,
+      "last_task_epoch_ms": 1792637405373
+    },
+    "train-2024-03": {
+      "tasks": 354,
+      "Executor Run Time": 190899,
+      "Executor CPU Time": 86311255080,
+      "JVM GC Time": 9189,
+      "Memory Bytes Spilled": 741649114,
+      "Disk Bytes Spilled": 344152079,
+      "peak_task_execution_memory_bytes": 158361363,
+      "shuffle_read_bytes": 1079483461,
+      "shuffle_write_bytes": 1079483461,
+      "first_task_epoch_ms": 1792637405616,
+      "last_task_epoch_ms": 1792637514772
+    },
+    "train-2024-04": {
+      "tasks": 354,
+      "Executor Run Time": 200429,
+      "Executor CPU Time": 87720481967,
+      "JVM GC Time": 9083,
+      "Memory Bytes Spilled": 1072850652,
+      "Disk Bytes Spilled": 497032352,
+      "peak_task_execution_memory_bytes": 158784892,
+      "shuffle_read_bytes": 1075954569,
+      "shuffle_write_bytes": 1075954569,
+      "first_task_epoch_ms": 1792637515024,
+      "last_task_epoch_ms": 1792637629639
+    },
+    "validation-2024-05": {
+      "tasks": 198,
+      "Executor Run Time": 159794,
+      "Executor CPU Time": 79890445145,
+      "JVM GC Time": 4664,
+      "Memory Bytes Spilled": 778593216,
+      "Disk Bytes Spilled": 353255969,
+      "peak_task_execution_memory_bytes": 159208504,
+      "shuffle_read_bytes": 1106213144,
+      "shuffle_write_bytes": 1106213144,
+      "first_task_epoch_ms": 1792637629822,
+      "last_task_epoch_ms": 1792637724889
+    },
+    "validation-2024-06": {
+      "tasks": 198,
+      "Executor Run Time": 171262,
+      "Executor CPU Time": 81493731943,
+      "JVM GC Time": 5745,
+      "Memory Bytes Spilled": 776030547,
+      "Disk Bytes Spilled": 354487484,
+      "peak_task_execution_memory_bytes": 158785144,
+      "shuffle_read_bytes": 1110047870,
+      "shuffle_write_bytes": 1110047870,
+      "first_task_epoch_ms": 1792637725087,
+      "last_task_epoch_ms": 1792637827190
+    },
+    "validation-2024-07": {
+      "tasks": 199,
+      "Executor Run Time": 184010,
+      "Executor CPU Time": 85822053570,
+      "JVM GC Time": 7167,
+      "Memory Bytes Spilled": 1126851668,
+      "Disk Bytes Spilled": 512052712,
+      "peak_task_execution_memory_bytes": 158785032,
+      "shuffle_read_bytes": 1145407503,
+      "shuffle_write_bytes": 1145407503,
+      "first_task_epoch_ms": 1792637827289,
+      "last_task_epoch_ms": 1792637931695
+    },
+    "validation-2024-08": {
+      "tasks": 198,
+      "Executor Run Time": 177464,
+      "Executor CPU Time": 83370304275,
+      "JVM GC Time": 7047,
+      "Memory Bytes Spilled": 777746038,
+      "Disk Bytes Spilled": 356412394,
+      "peak_task_execution_memory_bytes": 159208604,
+      "shuffle_read_bytes": 1117312449,
+      "shuffle_write_bytes": 1117312449,
+      "first_task_epoch_ms": 1792637931789,
+      "last_task_epoch_ms": 1792638041588
+    }
+  },
+  "sampled_cgroup_memory_max_by_phase": {
+    "startup": {
+      "airline-track-a-3h-v1-master-1": 116469760,
+      "airline-track-a-3h-v1-worker1-1": 14782464,
+      "airline-track-a-3h-v1-worker2-1": 39018496,
+      "airline-track-a-3h-v1-driver-1": 15245312
+    },
+    "generated": {
+      "airline-track-a-3h-v1-master-1": 450375680,
+      "airline-track-a-3h-v1-worker1-1": 854994944,
+      "airline-track-a-3h-v1-worker2-1": 816558080,
+      "airline-track-a-3h-v1-driver-1": 1022005248
+    },
+    "sample": {
+      "airline-track-a-3h-v1-master-1": 442597376,
+      "airline-track-a-3h-v1-worker1-1": 1227411456,
+      "airline-track-a-3h-v1-worker2-1": 1397796864,
+      "airline-track-a-3h-v1-driver-1": 1535827968
+    },
+    "source_preparation": {
+      "airline-track-a-3h-v1-master-1": 442916864,
+      "airline-track-a-3h-v1-worker1-1": 1314418688,
+      "airline-track-a-3h-v1-worker2-1": 1463746560,
+      "airline-track-a-3h-v1-driver-1": 1314906112
+    },
+    "train-2023-01": {
+      "airline-track-a-3h-v1-master-1": 443379712,
+      "airline-track-a-3h-v1-worker1-1": 2147475456,
+      "airline-track-a-3h-v1-worker2-1": 2147475456,
+      "airline-track-a-3h-v1-driver-1": 1471098880
+    },
+    "train-2023-02": {
+      "airline-track-a-3h-v1-master-1": 443342848,
+      "airline-track-a-3h-v1-worker1-1": 2147344384,
+      "airline-track-a-3h-v1-worker2-1": 2147418112,
+      "airline-track-a-3h-v1-driver-1": 1541767168
+    },
+    "train-2023-03": {
+      "airline-track-a-3h-v1-master-1": 443707392,
+      "airline-track-a-3h-v1-worker1-1": 2147360768,
+      "airline-track-a-3h-v1-worker2-1": 2147479552,
+      "airline-track-a-3h-v1-driver-1": 1579032576
+    },
+    "train-2023-04": {
+      "airline-track-a-3h-v1-master-1": 443756544,
+      "airline-track-a-3h-v1-worker1-1": 2147110912,
+      "airline-track-a-3h-v1-worker2-1": 2147450880,
+      "airline-track-a-3h-v1-driver-1": 1595547648
+    },
+    "train-2023-05": {
+      "airline-track-a-3h-v1-master-1": 443731968,
+      "airline-track-a-3h-v1-worker1-1": 2147368960,
+      "airline-track-a-3h-v1-worker2-1": 2147459072,
+      "airline-track-a-3h-v1-driver-1": 1601785856
+    },
+    "train-2023-06": {
+      "airline-track-a-3h-v1-master-1": 443559936,
+      "airline-track-a-3h-v1-worker1-1": 2147356672,
+      "airline-track-a-3h-v1-worker2-1": 2147414016,
+      "airline-track-a-3h-v1-driver-1": 1614786560
+    },
+    "train-2023-07": {
+      "airline-track-a-3h-v1-master-1": 443727872,
+      "airline-track-a-3h-v1-worker1-1": 2147237888,
+      "airline-track-a-3h-v1-worker2-1": 2147225600,
+      "airline-track-a-3h-v1-driver-1": 1636458496
+    },
+    "train-2023-08": {
+      "airline-track-a-3h-v1-master-1": 443736064,
+      "airline-track-a-3h-v1-worker1-1": 2147463168,
+      "airline-track-a-3h-v1-worker2-1": 2147483648,
+      "airline-track-a-3h-v1-driver-1": 1637261312
+    },
+    "train-2023-09": {
+      "airline-track-a-3h-v1-master-1": 444084224,
+      "airline-track-a-3h-v1-worker1-1": 2147475456,
+      "airline-track-a-3h-v1-worker2-1": 2147483648,
+      "airline-track-a-3h-v1-driver-1": 1649668096
+    },
+    "train-2023-10": {
+      "airline-track-a-3h-v1-master-1": 444178432,
+      "airline-track-a-3h-v1-worker1-1": 2147422208,
+      "airline-track-a-3h-v1-worker2-1": 2147446784,
+      "airline-track-a-3h-v1-driver-1": 1662812160
+    },
+    "train-2023-11": {
+      "airline-track-a-3h-v1-master-1": 444280832,
+      "airline-track-a-3h-v1-worker1-1": 2147467264,
+      "airline-track-a-3h-v1-worker2-1": 2147352576,
+      "airline-track-a-3h-v1-driver-1": 1681907712
+    },
+    "train-2023-12": {
+      "airline-track-a-3h-v1-master-1": 444637184,
+      "airline-track-a-3h-v1-worker1-1": 2147328000,
+      "airline-track-a-3h-v1-worker2-1": 2147401728,
+      "airline-track-a-3h-v1-driver-1": 1707421696
+    },
+    "train-2024-01": {
+      "airline-track-a-3h-v1-master-1": 444850176,
+      "airline-track-a-3h-v1-worker1-1": 2147209216,
+      "airline-track-a-3h-v1-worker2-1": 2147459072,
+      "airline-track-a-3h-v1-driver-1": 1704607744
+    },
+    "train-2024-02": {
+      "airline-track-a-3h-v1-master-1": 444620800,
+      "airline-track-a-3h-v1-worker1-1": 2145079296,
+      "airline-track-a-3h-v1-worker2-1": 2147274752,
+      "airline-track-a-3h-v1-driver-1": 1715548160
+    },
+    "train-2024-03": {
+      "airline-track-a-3h-v1-master-1": 444596224,
+      "airline-track-a-3h-v1-worker1-1": 2147438592,
+      "airline-track-a-3h-v1-worker2-1": 2147274752,
+      "airline-track-a-3h-v1-driver-1": 1725493248
+    },
+    "train-2024-04": {
+      "airline-track-a-3h-v1-master-1": 453746688,
+      "airline-track-a-3h-v1-worker1-1": 2147176448,
+      "airline-track-a-3h-v1-worker2-1": 2147393536,
+      "airline-track-a-3h-v1-driver-1": 1739177984
+    },
+    "validation-2024-05": {
+      "airline-track-a-3h-v1-master-1": 454197248,
+      "airline-track-a-3h-v1-worker1-1": 2144165888,
+      "airline-track-a-3h-v1-worker2-1": 2147438592,
+      "airline-track-a-3h-v1-driver-1": 1753182208
+    },
+    "validation-2024-06": {
+      "airline-track-a-3h-v1-master-1": 449384448,
+      "airline-track-a-3h-v1-worker1-1": 2144227328,
+      "airline-track-a-3h-v1-worker2-1": 2145390592,
+      "airline-track-a-3h-v1-driver-1": 1762983936
+    },
+    "validation-2024-07": {
+      "airline-track-a-3h-v1-master-1": 446132224,
+      "airline-track-a-3h-v1-worker1-1": 2147393536,
+      "airline-track-a-3h-v1-worker2-1": 2147172352,
+      "airline-track-a-3h-v1-driver-1": 1774170112
+    },
+    "validation-2024-08": {
+      "airline-track-a-3h-v1-master-1": 446496768,
+      "airline-track-a-3h-v1-worker1-1": 2081357824,
+      "airline-track-a-3h-v1-worker2-1": 2147450880,
+      "airline-track-a-3h-v1-driver-1": 1785135104
+    }
+  },
+  "memory_note": "10-second sampled current usage, lower bound per phase; exact whole-container lifetime peaks in execution.json. Task peak execution memory is per task, not process RSS.",
+  "failed_tasks": [],
+  "executors": {
+    "1": {
+      "Host": "172.19.0.3",
+      "Total Cores": 1,
+      "Log Urls": {
+        "stdout": "http://172.19.0.3:8081/logPage/?appId=app-20261022021451-0000&executorId=1&logType=stdout",
+        "stderr": "http://172.19.0.3:8081/logPage/?appId=app-20261022021451-0000&executorId=1&logType=stderr"
+      },
+      "Attributes": {},
+      "Resources": {},
+      "Resource Profile Id": 0,
+      "Registration Time": 1792635299491
+    },
+    "0": {
+      "Host": "172.19.0.4",
+      "Total Cores": 1,
+      "Log Urls": {
+        "stdout": "http://172.19.0.4:8081/logPage/?appId=app-20261022021451-0000&executorId=0&logType=stdout",
+        "stderr": "http://172.19.0.4:8081/logPage/?appId=app-20261022021451-0000&executorId=0&logType=stderr"
+      },
+      "Attributes": {},
+      "Resources": {},
+      "Resource Profile Id": 0,
+      "Registration Time": 1792635299781
+    }
+  },
+  "event_logs": [
+    {
+      "path": "runtime/output/events/app-20261022021451-0000",
+      "bytes": 208202292,
+      "sha256": "cd1eccc67c2d2c7b45bd4504fbe9f967449c0382364f08cb030e8e70a9624796"
+    }
+  ]
+}

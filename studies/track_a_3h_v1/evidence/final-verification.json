@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "months": 20,
+  "exact_populations": true,
+  "six_feature_schema_matches_candidate": true,
+  "two_one_core_executors": true,
+  "failed_tasks": 0,
+  "task_and_stage_retries_disabled": true,
+  "preprocessing_files_sha256_unchanged": 64,
+  "no_model_fit": true
+}

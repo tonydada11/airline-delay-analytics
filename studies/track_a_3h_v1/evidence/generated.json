@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "cases": [
+    "exact microsecond boundaries",
+    "duplicate sources/targets",
+    "null entity/time",
+    "future/current/inflight exclusion",
+    "forbidden outcome perturbation",
+    "order invariance"
+  ],
+  "target_occurrences_per_check": 5
+}

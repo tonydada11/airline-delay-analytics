@@ -1,0 +1,400 @@
+{
+  "duplicate_target_occurrences": 0,
+  "dwd_rows_read": 338860,
+  "eligible_source_rows": 331355,
+  "excluded": {
+    "ineligible": 7505
+  },
+  "existing_dataset_population_exact": true,
+  "features": [
+    {
+      "comparison_to_existing": {
+        "delay_rate_30d": {
+          "paired_rows": 10800,
+          "pearson": -0.030437386904345592,
+          "unequal_fraction": 1.0
+        },
+        "delay_rate_7d": {
+          "paired_rows": 10800,
+          "pearson": -0.042124059635992375,
+          "unequal_fraction": 0.9998148148148148
+        },
+        "delay_rate_90d": {
+          "paired_rows": 10800,
+          "pearson": -0.007449011858139442,
+          "unequal_fraction": 1.0
+        },
+        "flight_count_30d": {
+          "paired_rows": 109423,
+          "pearson": 0.18306387562793489,
+          "unequal_fraction": 1.0
+        },
+        "flight_count_7d": {
+          "paired_rows": 109423,
+          "pearson": 0.2271332728476413,
+          "unequal_fraction": 0.9999908611535052
+        },
+        "flight_count_90d": {
+          "paired_rows": 109423,
+          "pearson": 0.13899190624729232,
+          "unequal_fraction": 1.0
+        }
+      },
+      "count_quantiles": {
+        "max": 8.0,
+        "min": 0.0,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p99": 2.0
+      },
+      "coverage_by_date": {
+        "2023-01-15": {
+          "covered": 2097,
+          "rows": 16881
+        },
+        "2023-01-16": {
+          "covered": 1982,
+          "rows": 17991
+        },
+        "2023-07-15": {
+          "covered": 1511,
+          "rows": 17707
+        },
+        "2023-07-16": {
+          "covered": 1616,
+          "rows": 18313
+        },
+        "2024-05-15": {
+          "covered": 1944,
+          "rows": 18763
+        },
+        "2024-05-16": {
+          "covered": 1650,
+          "rows": 19768
+        }
+      },
+      "feature": "origin_1h",
+      "missing_fraction": 0.9013004578562094,
+      "nonmissing": 10800,
+      "rows": 109423
+    },
+    {
+      "comparison_to_existing": {
+        "delay_rate_30d": {
+          "paired_rows": 92978,
+          "pearson": 0.1874681925445122,
+          "unequal_fraction": 0.9999784895351589
+        },
+        "delay_rate_7d": {
+          "paired_rows": 92978,
+          "pearson": 0.21642331111688817,
+          "unequal_fraction": 0.9998064058164297
+        },
+        "delay_rate_90d": {
+          "paired_rows": 92978,
+          "pearson": 0.1259688385537154,
+          "unequal_fraction": 1.0
+        },
+        "flight_count_30d": {
+          "paired_rows": 109423,
+          "pearson": 0.6393288756279283,
+          "unequal_fraction": 1.0
+        },
+        "flight_count_7d": {
+          "paired_rows": 109423,
+          "pearson": 0.7249380049013545,
+          "unequal_fraction": 0.9999908611535052
+        },
+        "flight_count_90d": {
+          "paired_rows": 109423,
+          "pearson": 0.5305051870864931,
+          "unequal_fraction": 1.0
+        }
+      },
+      "count_quantiles": {
+        "max": 95.0,
+        "min": 0.0,
+        "p50": 8.0,
+        "p90": 31.0,
+        "p99": 64.0
+      },
+      "coverage_by_date": {
+        "2023-01-15": {
+          "covered": 14510,
+          "rows": 16881
+        },
+        "2023-01-16": {
+          "covered": 15395,
+          "rows": 17991
+        },
+        "2023-07-15": {
+          "covered": 14986,
+          "rows": 17707
+        },
+        "2023-07-16": {
+          "covered": 15338,
+          "rows": 18313
+        },
+        "2024-05-15": {
+          "covered": 15867,
+          "rows": 18763
+        },
+        "2024-05-16": {
+          "covered": 16882,
+          "rows": 19768
+        }
+      },
+      "feature": "origin_3h",
+      "missing_fraction": 0.1502883306069108,
+      "nonmissing": 92978,
+      "rows": 109423
+    },
+    {
+      "comparison_to_existing": {
+        "delay_rate_30d": {
+          "paired_rows": 12829,
+          "pearson": 0.013788250723811481,
+          "unequal_fraction": 1.0
+        },
+        "delay_rate_7d": {
+          "paired_rows": 12829,
+          "pearson": -0.009336619292706756,
+          "unequal_fraction": 0.9999220516018396
+        },
+        "delay_rate_90d": {
+          "paired_rows": 12829,
+          "pearson": 0.04833765936848039,
+          "unequal_fraction": 1.0
+        },
+        "flight_count_30d": {
+          "paired_rows": 109423,
+          "pearson": 0.22729859288707324,
+          "unequal_fraction": 1.0
+        },
+        "flight_count_7d": {
+          "paired_rows": 109423,
+          "pearson": 0.25646427351578477,
+          "unequal_fraction": 0.9999908611535052
+        },
+        "flight_count_90d": {
+          "paired_rows": 109423,
+          "pearson": 0.18887919521956134,
+          "unequal_fraction": 1.0
+        }
+      },
+      "count_quantiles": {
+        "max": 9.0,
+        "min": 0.0,
+        "p50": 0.0,
+        "p90": 1.0,
+        "p99": 3.0
+      },
+      "coverage_by_date": {
+        "2023-01-15": {
+          "covered": 2243,
+          "rows": 16881
+        },
+        "2023-01-16": {
+          "covered": 2270,
+          "rows": 17991
+        },
+        "2023-07-15": {
+          "covered": 1849,
+          "rows": 17707
+        },
+        "2023-07-16": {
+          "covered": 2032,
+          "rows": 18313
+        },
+        "2024-05-15": {
+          "covered": 2337,
+          "rows": 18763
+        },
+        "2024-05-16": {
+          "covered": 2098,
+          "rows": 19768
+        }
+      },
+      "feature": "destination_1h",
+      "missing_fraction": 0.8827577383182694,
+      "nonmissing": 12829,
+      "rows": 109423
+    },
+    {
+      "comparison_to_existing": {
+        "delay_rate_30d": {
+          "paired_rows": 90520,
+          "pearson": 0.16872042971473805,
+          "unequal_fraction": 0.9999337163057888
+        },
+        "delay_rate_7d": {
+          "paired_rows": 90520,
+          "pearson": 0.20871097922810847,
+          "unequal_fraction": 0.9997348652231551
+        },
+        "delay_rate_90d": {
+          "paired_rows": 90520,
+          "pearson": 0.13813930096988153,
+          "unequal_fraction": 0.9999668581528944
+        },
+        "flight_count_30d": {
+          "paired_rows": 109423,
+          "pearson": 0.5919421410317844,
+          "unequal_fraction": 1.0
+        },
+        "flight_count_7d": {
+          "paired_rows": 109423,
+          "pearson": 0.6679843994543062,
+          "unequal_fraction": 0.9999908611535052
+        },
+        "flight_count_90d": {
+          "paired_rows": 109423,
+          "pearson": 0.49363735233975775,
+          "unequal_fraction": 1.0
+        }
+      },
+      "count_quantiles": {
+        "max": 143.0,
+        "min": 0.0,
+        "p50": 8.0,
+        "p90": 32.0,
+        "p99": 69.0
+      },
+      "coverage_by_date": {
+        "2023-01-15": {
+          "covered": 14121,
+          "rows": 16881
+        },
+        "2023-01-16": {
+          "covered": 15073,
+          "rows": 17991
+        },
+        "2023-07-15": {
+          "covered": 14587,
+          "rows": 17707
+        },
+        "2023-07-16": {
+          "covered": 14964,
+          "rows": 18313
+        },
+        "2024-05-15": {
+          "covered": 15468,
+          "rows": 18763
+        },
+        "2024-05-16": {
+          "covered": 16307,
+          "rows": 19768
+        }
+      },
+      "feature": "destination_3h",
+      "missing_fraction": 0.17275161529111796,
+      "nonmissing": 90520,
+      "rows": 109423
+    }
+  ],
+  "input_occurrence_sha256": "a4e3dba1698ff460dbb870bf02a069f2dd37be023e4d204087f5e0853c3fce8e",
+  "limitations": [
+    "Arrival-event availability assumption, not observed receipt.",
+    "Descriptive feature comparisons, no predictive gain test.",
+    "Purposive six dates, not nationwide annual coverage.",
+    "One-hour departure lookback disproportionately excludes long or delayed flights still in progress."
+  ],
+  "null_target_prediction_times": 0,
+  "oracle_checks": 32,
+  "output_occurrence_sha256": "a4e3dba1698ff460dbb870bf02a069f2dd37be023e4d204087f5e0853c3fce8e",
+  "peak_rss_kib": 1047800,
+  "seconds": 23.587627144996077,
+  "source_files": [
+    {
+      "bytes": 5214503,
+      "path": "/dwd/year=2023/month=1/part-00004-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "c75c6925c0582bd03048962202be772bc84b571d237516ff60ae718e24e5d32f"
+    },
+    {
+      "bytes": 5018117,
+      "path": "/dwd/year=2023/month=1/part-00005-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "741c3c1615a7924c52e47981f0d34d3ad2daccccf16663babec98f5b5b82347e"
+    },
+    {
+      "bytes": 5821837,
+      "path": "/dwd/year=2023/month=1/part-00009-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "dfe370dbfac77286e21cdbca9b7b9b2a8a421b6364c0bfeb9ec76ce25563d33c"
+    },
+    {
+      "bytes": 4454715,
+      "path": "/dwd/year=2023/month=1/part-00011-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "f70a5dc4bcdb43e641b0172188fb36fd1bcb72a5002055b69ad6a8cfe6dcd89b"
+    },
+    {
+      "bytes": 7200762,
+      "path": "/dwd/year=2023/month=7/part-00001-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "b05d3d5d239c51fddbe25228d627fe92c7c5636972593ad0c7263875e33a5b14"
+    },
+    {
+      "bytes": 5532511,
+      "path": "/dwd/year=2023/month=7/part-00005-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "6775f55b9f1ac2a455a678d9f598283de281abaa4a6713b3913ef908892f8fb7"
+    },
+    {
+      "bytes": 10869922,
+      "path": "/dwd/year=2023/month=7/part-00007-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "3e6398460c415c9c4137551c0e33f19ba918af9b2958fb4094a056e8ac1ce03b"
+    },
+    {
+      "bytes": 507937,
+      "path": "/dwd/year=2023/month=7/part-00012-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "83f68d2b42dd71159b7d0dde7222a1a829c8db7b3cb45306570f6419020a5054"
+    },
+    {
+      "bytes": 7322103,
+      "path": "/dwd/year=2024/month=5/part-00000-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "a7128e63f45b451c48bb617fbc4c93d49acd513b120d6d1ee036e619be569e10"
+    },
+    {
+      "bytes": 5803256,
+      "path": "/dwd/year=2024/month=5/part-00003-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "884774cc1032183f9361a6ac334db56352710edb88b43e17eda018b4eba4fa6f"
+    },
+    {
+      "bytes": 5609812,
+      "path": "/dwd/year=2024/month=5/part-00005-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "61a998219939e65da436400f3c47f1aa869f821a9d023c84013ca574313cd73e"
+    },
+    {
+      "bytes": 4401905,
+      "path": "/dwd/year=2024/month=5/part-00009-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "bc6d0805ccd33104658c46c33fd4026f931e477ec22eac145d717ec1d37e1a0d"
+    },
+    {
+      "bytes": 649889,
+      "path": "/dwd/year=2024/month=5/part-00012-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+      "sha256": "a2f50de919ac4a79a7e935f9df07f43192f9b48d5b92c3b4e7d203decfc48fe8"
+    }
+  ],
+  "source_local_date_ranges": [
+    "2023-01-13/18",
+    "2023-07-13/18",
+    "2024-05-13/18"
+  ],
+  "status": "PASS",
+  "target_dates": [
+    "2023-01-15",
+    "2023-01-16",
+    "2023-07-15",
+    "2023-07-16",
+    "2024-05-15",
+    "2024-05-16"
+  ],
+  "target_rows": 109423,
+  "time_policy": {
+    "availability": "scheduled departure UTC + signed departure delay + actual elapsed time",
+    "limitation": "Arrival-event assumption; actual publication/ingestion availability is not observed.",
+    "prediction": "scheduled departure UTC",
+    "pytz_version": "2026.3.post1",
+    "reporting_latency_seconds": 0,
+    "test_history": "causal rolling outcomes, after frozen selection only",
+    "timezone_reference_sha256": "60fd42f7a8ba6a1f13f37c42a28e920a2dce2291c3fd5c815047228d2d6fc1a8",
+    "uncertain_time": "exclude source; retain target with empty histories",
+    "window": "target-N*24h <= source scheduled departure < target; arrival < target"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "eligible_sources": 331355,
+  "targets": 109423,
+  "comparison": "all six values, every target occurrence, exact multiset parity with track_a.enrich"
+}

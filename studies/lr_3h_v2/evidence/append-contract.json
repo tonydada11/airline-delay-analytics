@@ -1,0 +1,29 @@
+{
+  "original_width": 784,
+  "coordinates": [
+    "origin_delay_rate_3h",
+    "origin_flight_count_3h",
+    "origin_history_missing_3h",
+    "destination_delay_rate_3h",
+    "destination_flight_count_3h",
+    "destination_history_missing_3h"
+  ],
+  "width": 790,
+  "training_only_rate_means": {
+    "origin_delay_rate_3h": 0.08079999358628864,
+    "destination_delay_rate_3h": 0.0796816299126744
+  },
+  "settings": {
+    "maxIter": 100,
+    "regParam": 0.1,
+    "elasticNetParam": 0.0,
+    "tol": 1e-06,
+    "family": "binomial",
+    "featuresCol": "features",
+    "labelCol": "is_arrival_delayed_15m",
+    "weightCol": "class_weight"
+  },
+  "positive_weight": 2.0,
+  "negative_weight": 1.0,
+  "baseline_bundle": "d0098a9572834c53bf76b04d732a94a6"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "spark": "3.5.9",
+  "python": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+  "runtime_imports": true,
+  "frozen_preprocessor_width": 784,
+  "appended_width": 790,
+  "rows": 16,
+  "missing_rate_imputation_and_feature_order": true,
+  "preprocessing_save_reload": true,
+  "distributed_duplicate_budget_fixture": true,
+  "classifier_fits": 0
+}

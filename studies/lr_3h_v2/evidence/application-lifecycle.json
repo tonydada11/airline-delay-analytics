@@ -1,0 +1,13 @@
+[
+  {
+    "Event": "SparkListenerApplicationStart",
+    "App Name": "isolated-lr-3h-v2",
+    "App ID": "app-20261022175850-0000",
+    "Timestamp": 1792691927277,
+    "User": "root"
+  },
+  {
+    "Event": "SparkListenerApplicationEnd",
+    "Timestamp": 1792694684746
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "classifier_fits": 1,
+  "qualified": true,
+  "original_feature_hashes_after_execution_match": 80,
+  "preprocessing_hashes_after_execution_match": 64,
+  "failed_tasks": 0,
+  "two_one_core_executors": true,
+  "shutdown_and_cleanup_passed": true,
+  "full_population_and_prefix_verification_passed": true,
+  "saved_candidate_score_multiset_reload_passed": true,
+  "production_threshold_preserved": 0.39,
+  "application_end_event_recorded": true
+}

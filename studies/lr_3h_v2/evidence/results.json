@@ -1,0 +1,195 @@
+{
+  "status": "complete",
+  "counts": {
+    "validation": 2418739,
+    "train": 8946370
+  },
+  "months": {
+    "2024-05": {
+      "rows": 599226,
+      "prevalence": 0.264134066278833,
+      "confusion_matrix": {
+        "true_positive": 89728,
+        "false_positive": 115663,
+        "false_negative": 68548,
+        "true_negative": 325287
+      },
+      "precision": 0.43686432219522764,
+      "recall": 0.5669084384240188,
+      "f1": 0.4934624257906272,
+      "predicted_positive_rate": 0.34276049437107203,
+      "roc_auc": 0.7092785609998153,
+      "pr_auc": 0.475474051382512,
+      "ranking_status": "defined",
+      "budgets": {
+        "10": {
+          "capacity": 59922,
+          "selected_mass": 59922,
+          "true_positive_mass": 34674.0,
+          "precision": 0.578652247922299,
+          "recall": 0.21907301170107912,
+          "minimum_selected_score": 0.5429867371434265,
+          "fractional_boundary_groups": 0
+        },
+        "20": {
+          "capacity": 119845,
+          "selected_mass": 119845,
+          "true_positive_mass": 60450.0,
+          "precision": 0.5044015186282281,
+          "recall": 0.3819277717405039,
+          "minimum_selected_score": 0.462523437975461,
+          "fractional_boundary_groups": 0
+        }
+      },
+      "duplicate_score_id_check": {
+        "identical_score_id_groups": 0,
+        "duplicate_excess_rows": 0
+      }
+    },
+    "2024-06": {
+      "rows": 601272,
+      "prevalence": 0.24937964847855879,
+      "confusion_matrix": {
+        "true_positive": 105724,
+        "false_positive": 187315,
+        "false_negative": 44221,
+        "true_negative": 264012
+      },
+      "precision": 0.3607847419626739,
+      "recall": 0.7050851979058989,
+      "f1": 0.4773264948621169,
+      "predicted_positive_rate": 0.4873651192804588,
+      "roc_auc": 0.696310785146545,
+      "pr_auc": 0.4294257326030069,
+      "ranking_status": "defined",
+      "budgets": {
+        "10": {
+          "capacity": 60127,
+          "selected_mass": 60127,
+          "true_positive_mass": 30967.0,
+          "precision": 0.5150265271841269,
+          "recall": 0.20652239154356597,
+          "minimum_selected_score": 0.5874009758107067,
+          "fractional_boundary_groups": 0
+        },
+        "20": {
+          "capacity": 120254,
+          "selected_mass": 120254,
+          "true_positive_mass": 54826.0,
+          "precision": 0.4559183062517671,
+          "recall": 0.36564073493614324,
+          "minimum_selected_score": 0.5168274819111982,
+          "fractional_boundary_groups": 0
+        }
+      },
+      "duplicate_score_id_check": {
+        "identical_score_id_groups": 0,
+        "duplicate_excess_rows": 0
+      }
+    },
+    "2024-07": {
+      "rows": 613938,
+      "prevalence": 0.2962269805745857,
+      "confusion_matrix": {
+        "true_positive": 138018,
+        "false_positive": 201159,
+        "false_negative": 43847,
+        "true_negative": 230914
+      },
+      "precision": 0.4069202805614768,
+      "recall": 0.7589035823275506,
+      "f1": 0.5297768701947252,
+      "predicted_positive_rate": 0.5524613234561144,
+      "roc_auc": 0.7113485519628832,
+      "pr_auc": 0.5115979635514667,
+      "ranking_status": "defined",
+      "budgets": {
+        "10": {
+          "capacity": 61393,
+          "selected_mass": 61393,
+          "true_positive_mass": 38153.0,
+          "precision": 0.6214552147638982,
+          "recall": 0.20978747972397108,
+          "minimum_selected_score": 0.6447219118450828,
+          "fractional_boundary_groups": 0
+        },
+        "20": {
+          "capacity": 122787,
+          "selected_mass": 122787,
+          "true_positive_mass": 67672.0,
+          "precision": 0.5511332632933453,
+          "recall": 0.37210018420256785,
+          "minimum_selected_score": 0.560994835156313,
+          "fractional_boundary_groups": 0
+        }
+      },
+      "duplicate_score_id_check": {
+        "identical_score_id_groups": 0,
+        "duplicate_excess_rows": 0
+      }
+    },
+    "2024-08": {
+      "rows": 604303,
+      "prevalence": 0.23467035576523698,
+      "confusion_matrix": {
+        "true_positive": 87575,
+        "false_positive": 141688,
+        "false_negative": 54237,
+        "true_negative": 320803
+      },
+      "precision": 0.3819848819914247,
+      "recall": 0.6175429441796181,
+      "f1": 0.4720070066698107,
+      "predicted_positive_rate": 0.3793841831001997,
+      "roc_auc": 0.7119825868442817,
+      "pr_auc": 0.43844169804133154,
+      "ranking_status": "defined",
+      "budgets": {
+        "10": {
+          "capacity": 60430,
+          "selected_mass": 60430,
+          "true_positive_mass": 32264.0,
+          "precision": 0.5339069998345193,
+          "recall": 0.22751248131328802,
+          "minimum_selected_score": 0.5560591381968523,
+          "fractional_boundary_groups": 0
+        },
+        "20": {
+          "capacity": 120860,
+          "selected_mass": 120860,
+          "true_positive_mass": 56287.0,
+          "precision": 0.46572066854211486,
+          "recall": 0.39691281414830903,
+          "minimum_selected_score": 0.4769580530476033,
+          "fractional_boundary_groups": 0
+        }
+      },
+      "duplicate_score_id_check": {
+        "identical_score_id_groups": 0,
+        "duplicate_excess_rows": 0
+      }
+    }
+  },
+  "comparison": {
+    "mean_monthly_PR_AUC_gain": 0.035636538741438184,
+    "monthly_PR_AUC_changes": {
+      "2024-05": 0.04301914479648383,
+      "2024-06": 0.025889180657045763,
+      "2024-07": 0.041010726708980205,
+      "2024-08": 0.032627102803242936
+    },
+    "mean_monthly_recall_changes": {
+      "10": 0.019339208632215853,
+      "20": 0.02416794834284132
+    },
+    "worst_monthly_PR_AUC_change": 0.025889180657045763,
+    "qualifies": true
+  },
+  "threshold": 0.39,
+  "mean_monthly_PR_AUC": 0.46373486139457926,
+  "fit_seconds": 284.902133992,
+  "classifier_fits_started": 1,
+  "baseline_scored": false,
+  "preprocessing_refit": false,
+  "seconds": 2753.270159631007
+}

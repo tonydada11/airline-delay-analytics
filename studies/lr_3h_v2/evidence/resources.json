@@ -1,0 +1,249 @@
+{
+  "sampled_cgroup_memory_max_by_split": {
+    "train": {
+      "airline-lr-3h-v2-worker1-1": 0,
+      "airline-lr-3h-v2-worker2-1": 0,
+      "airline-lr-3h-v2-driver-1": 0,
+      "airline-lr-3h-v2-master-1": 0
+    },
+    "validation": {
+      "airline-lr-3h-v2-worker1-1": 0,
+      "airline-lr-3h-v2-worker2-1": 0,
+      "airline-lr-3h-v2-driver-1": 0,
+      "airline-lr-3h-v2-master-1": 0
+    }
+  },
+  "task_metrics_by_split": {
+    "train": {
+      "tasks": 0,
+      "Executor Run Time": 0,
+      "Executor CPU Time": 0,
+      "JVM GC Time": 0,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "shuffle_read_bytes": 0,
+      "shuffle_write_bytes": 0
+    },
+    "validation": {
+      "tasks": 0,
+      "Executor Run Time": 0,
+      "Executor CPU Time": 0,
+      "JVM GC Time": 0,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "shuffle_read_bytes": 0,
+      "shuffle_write_bytes": 0
+    }
+  },
+  "population_by_split": {},
+  "task_metrics_by_phase": {
+    "verify_population_schema_labels_multiplicity": {
+      "tasks": 4870,
+      "Executor Run Time": 2881661,
+      "Executor CPU Time": 925218084751,
+      "JVM GC Time": 244577,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 201326240,
+      "shuffle_read_bytes": 12571087630,
+      "shuffle_write_bytes": 12571087630,
+      "first_task_epoch_ms": 1792691936246,
+      "last_task_epoch_ms": 1792693533615
+    },
+    "training_only_new_rate_means": {
+      "tasks": 41,
+      "Executor Run Time": 4434,
+      "Executor CPU Time": 1302240877,
+      "JVM GC Time": 248,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 0,
+      "shuffle_read_bytes": 3105,
+      "shuffle_write_bytes": 3105,
+      "first_task_epoch_ms": 1792693534372,
+      "last_task_epoch_ms": 1792693537010
+    },
+    "frozen_preprocessing_and_prefix_verification": {
+      "tasks": 277,
+      "Executor Run Time": 1208353,
+      "Executor CPU Time": 1025018967790,
+      "JVM GC Time": 25640,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 0,
+      "shuffle_read_bytes": 2052034817,
+      "shuffle_write_bytes": 2052034817,
+      "first_task_epoch_ms": 1792693538000,
+      "last_task_epoch_ms": 1792694167983
+    },
+    "single_classifier_fit": {
+      "tasks": 1182,
+      "Executor Run Time": 508870,
+      "Executor CPU Time": 260058353767,
+      "JVM GC Time": 35548,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 20504,
+      "shuffle_read_bytes": 7196498,
+      "shuffle_write_bytes": 7196498,
+      "first_task_epoch_ms": 1792694169368,
+      "last_task_epoch_ms": 1792694455217
+    },
+    "validation_score_save_reload_and_threshold_selection": {
+      "tasks": 252,
+      "Executor Run Time": 223271,
+      "Executor CPU Time": 102046358213,
+      "JVM GC Time": 12267,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 167771904,
+      "shuffle_read_bytes": 1728301318,
+      "shuffle_write_bytes": 1728301318,
+      "first_task_epoch_ms": 1792694455886,
+      "last_task_epoch_ms": 1792694582428
+    },
+    "evaluate-2024-05": {
+      "tasks": 58,
+      "Executor Run Time": 48758,
+      "Executor CPU Time": 21815243563,
+      "JVM GC Time": 5547,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 83885952,
+      "shuffle_read_bytes": 151068599,
+      "shuffle_write_bytes": 120316637,
+      "first_task_epoch_ms": 1792694582674,
+      "last_task_epoch_ms": 1792694614233
+    },
+    "evaluate-2024-06": {
+      "tasks": 58,
+      "Executor Run Time": 32459,
+      "Executor CPU Time": 18740308476,
+      "JVM GC Time": 4211,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 83885952,
+      "shuffle_read_bytes": 151365064,
+      "shuffle_write_bytes": 120592850,
+      "first_task_epoch_ms": 1792694614306,
+      "last_task_epoch_ms": 1792694635273
+    },
+    "evaluate-2024-07": {
+      "tasks": 57,
+      "Executor Run Time": 30660,
+      "Executor CPU Time": 18730119765,
+      "JVM GC Time": 5310,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 109051760,
+      "shuffle_read_bytes": 155655488,
+      "shuffle_write_bytes": 123706296,
+      "first_task_epoch_ms": 1792694635391,
+      "last_task_epoch_ms": 1792694665882
+    },
+    "evaluate-2024-08": {
+      "tasks": 57,
+      "Executor Run Time": 28201,
+      "Executor CPU Time": 17497495009,
+      "JVM GC Time": 4330,
+      "Memory Bytes Spilled": 0,
+      "Disk Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 83885952,
+      "shuffle_read_bytes": 151569888,
+      "shuffle_write_bytes": 120899043,
+      "first_task_epoch_ms": 1792694666076,
+      "last_task_epoch_ms": 1792694684733
+    }
+  },
+  "sampled_cgroup_memory_max_by_phase": {
+    "startup": {
+      "airline-lr-3h-v2-master-1": 274743296,
+      "airline-lr-3h-v2-worker1-1": 374468608,
+      "airline-lr-3h-v2-worker2-1": 390303744,
+      "airline-lr-3h-v2-driver-1": 400310272
+    },
+    "verify_population_schema_labels_multiplicity": {
+      "airline-lr-3h-v2-master-1": 277778432,
+      "airline-lr-3h-v2-worker1-1": 2147471360,
+      "airline-lr-3h-v2-worker2-1": 2147483648,
+      "airline-lr-3h-v2-driver-1": 1214001152
+    },
+    "frozen_preprocessing_and_prefix_verification": {
+      "airline-lr-3h-v2-master-1": 279367680,
+      "airline-lr-3h-v2-worker1-1": 2147454976,
+      "airline-lr-3h-v2-worker2-1": 2147446784,
+      "airline-lr-3h-v2-driver-1": 1259659264
+    },
+    "single_classifier_fit": {
+      "airline-lr-3h-v2-master-1": 288247808,
+      "airline-lr-3h-v2-worker1-1": 2147397632,
+      "airline-lr-3h-v2-worker2-1": 2147422208,
+      "airline-lr-3h-v2-driver-1": 1378107392
+    },
+    "validation_score_save_reload_and_threshold_selection": {
+      "airline-lr-3h-v2-master-1": 280416256,
+      "airline-lr-3h-v2-worker1-1": 2144530432,
+      "airline-lr-3h-v2-worker2-1": 2144464896,
+      "airline-lr-3h-v2-driver-1": 1409282048
+    },
+    "evaluate-2024-05": {
+      "airline-lr-3h-v2-master-1": 280420352,
+      "airline-lr-3h-v2-worker1-1": 1842106368,
+      "airline-lr-3h-v2-worker2-1": 1815834624,
+      "airline-lr-3h-v2-driver-1": 1411969024
+    },
+    "evaluate-2024-06": {
+      "airline-lr-3h-v2-master-1": 280121344,
+      "airline-lr-3h-v2-worker1-1": 1775747072,
+      "airline-lr-3h-v2-worker2-1": 1759047680,
+      "airline-lr-3h-v2-driver-1": 1429712896
+    },
+    "evaluate-2024-07": {
+      "airline-lr-3h-v2-master-1": 280621056,
+      "airline-lr-3h-v2-worker1-1": 1709428736,
+      "airline-lr-3h-v2-worker2-1": 1803329536,
+      "airline-lr-3h-v2-driver-1": 1444286464
+    },
+    "evaluate-2024-08": {
+      "airline-lr-3h-v2-master-1": 280186880,
+      "airline-lr-3h-v2-worker1-1": 1703178240,
+      "airline-lr-3h-v2-worker2-1": 1816915968,
+      "airline-lr-3h-v2-driver-1": 1461899264
+    }
+  },
+  "memory_note": "10-second sampled current usage, lower bound per phase; exact whole-container lifetime peaks in execution.json. Task peak execution memory is per task, not process RSS.",
+  "failed_tasks": [],
+  "executors": {
+    "1": {
+      "Host": "172.19.0.3",
+      "Total Cores": 1,
+      "Log Urls": {
+        "stdout": "http://172.19.0.3:8081/logPage/?appId=app-20261022175850-0000&executorId=1&logType=stdout",
+        "stderr": "http://172.19.0.3:8081/logPage/?appId=app-20261022175850-0000&executorId=1&logType=stderr"
+      },
+      "Attributes": {},
+      "Resources": {},
+      "Resource Profile Id": 0,
+      "Registration Time": 1792691935971
+    },
+    "0": {
+      "Host": "172.19.0.4",
+      "Total Cores": 1,
+      "Log Urls": {
+        "stdout": "http://172.19.0.4:8081/logPage/?appId=app-20261022175850-0000&executorId=0&logType=stdout",
+        "stderr": "http://172.19.0.4:8081/logPage/?appId=app-20261022175850-0000&executorId=0&logType=stderr"
+      },
+      "Attributes": {},
+      "Resources": {},
+      "Resource Profile Id": 0,
+      "Registration Time": 1792691936473
+    }
+  },
+  "event_logs": [
+    {
+      "path": "runtime/output/events/app-20261022175850-0000",
+      "bytes": 59189552,
+      "sha256": "d00bd33fedd431cb182944d6f445bea246eb2a52d7235194271d259c4aa8a0c9"
+    }
+  ]
+}

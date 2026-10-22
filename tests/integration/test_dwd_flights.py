@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests dwd flights behavior."""
+
 import os
 import shutil
 import tempfile
@@ -33,6 +35,7 @@ ODS_SCHEMA = StructType(
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m2-integration-tests")
     yield session
     session.stop()
@@ -40,6 +43,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture(scope="module")
 def shared_tmp_path() -> Iterator[Path]:
+    """Return the shared temporary directory for test outputs."""
     shared_root = Path(
         os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir())
     )
@@ -52,6 +56,7 @@ def shared_tmp_path() -> Iterator[Path]:
 
 
 def _ods_row(**overrides: object) -> Dict[str, object]:
+    """Build one source ODS flight row."""
     row = {field.name: None for field in BTS_FLIGHTS_SCHEMA.fields}
     row.update(
         {
@@ -85,6 +90,7 @@ def _dataframe(
     rows: List[Dict[str, object]],
     schema: StructType = ODS_SCHEMA,
 ) -> DataFrame:
+    """Build a small Spark DataFrame for the test."""
     return spark.createDataFrame(
         [[row.get(field.name) for field in schema.fields] for row in rows], schema
     )
@@ -92,6 +98,7 @@ def _dataframe(
 
 @pytest.fixture(scope="module")
 def ods_rows() -> List[Dict[str, object]]:
+    """Create sample source flight rows."""
     delayed = _ods_row()
     duplicate_delayed = dict(delayed)
     return [
@@ -133,6 +140,7 @@ def built_dwd(
     shared_tmp_path: Path,
     ods_rows: List[Dict[str, object]],
 ) -> Dict[str, object]:
+    """Build and return trusted flight fixture rows."""
     ods_directory = shared_tmp_path / "ods" / "flights"
     dwd_directory = shared_tmp_path / "dwd" / "flights"
     _dataframe(spark, ods_rows).write.mode("overwrite").parquet(str(ods_directory))
@@ -145,11 +153,13 @@ def built_dwd(
 
 
 def _stable_rows(dataframe: DataFrame) -> List[str]:
+    """Return fixture rows in deterministic order."""
     columns = sorted(dataframe.columns)
     return sorted(repr(row.asDict()) for row in dataframe.select(*columns).collect())
 
 
 def test_snake_case_conversion_is_deterministic() -> None:
+    """Exercise the snake case conversion is deterministic case."""
     assert to_snake_case("DayofMonth") == "day_of_month"
     assert to_snake_case("CRSDepTime") == "crs_dep_time"
     assert to_snake_case("DOT_ID_Reporting_Airline") == "dot_id_reporting_airline"
@@ -164,6 +174,7 @@ def test_snake_case_conversion_is_deterministic() -> None:
 def test_validation_rejects_invalid_flag_domains(
     spark: SparkSession, column_name: str, invalid_value: object
 ) -> None:
+    """Exercise the validation rejects invalid flag domains case."""
     dataframe = _dataframe(spark, [_ods_row(**{column_name: invalid_value})])
 
     with pytest.raises(AssertionError, match=column_name):
@@ -175,6 +186,7 @@ def test_validation_rejects_invalid_flag_domains(
 def test_validation_rejects_impossible_hhmm_values(
     spark: SparkSession, column_name: str, invalid_value: int
 ) -> None:
+    """Exercise the validation rejects impossible hhmm values case."""
     dataframe = _dataframe(spark, [_ods_row(**{column_name: invalid_value})])
 
     with pytest.raises(AssertionError, match=column_name):
@@ -182,6 +194,7 @@ def test_validation_rejects_impossible_hhmm_values(
 
 
 def test_validation_rejects_malformed_hhmm_schema(spark: SparkSession) -> None:
+    """Exercise the validation rejects malformed hhmm schema case."""
     malformed_schema = StructType(
         [
             StructField(field.name, StringType(), field.nullable)
@@ -199,6 +212,7 @@ def test_validation_rejects_malformed_hhmm_schema(spark: SparkSession) -> None:
 def test_transform_is_lazy_and_has_trusted_schema(
     spark: SparkSession, ods_rows: List[Dict[str, object]]
 ) -> None:
+    """Exercise the transform is lazy and has trusted schema case."""
     transformed = transform_flights(_dataframe(spark, ods_rows))
 
     assert isinstance(transformed, DataFrame)
@@ -217,6 +231,7 @@ def test_transform_is_lazy_and_has_trusted_schema(
 def test_target_schedule_and_duplicate_logic(
     spark: SparkSession, built_dwd: Dict[str, object]
 ) -> None:
+    """Exercise the target schedule and duplicate logic case."""
     dwd = spark.read.parquet(str(built_dwd["dwd"]))
     rows = {
         row["flight_number_reporting_airline"]: row
@@ -247,6 +262,7 @@ def test_target_schedule_and_duplicate_logic(
 def test_partition_layout_and_pruning(
     spark: SparkSession, built_dwd: Dict[str, object], capsys: pytest.CaptureFixture[str]
 ) -> None:
+    """Exercise the partition layout and pruning case."""
     dwd_directory = Path(built_dwd["dwd"])
     partitions = {
         (year_directory.name, month_directory.name)
@@ -268,6 +284,7 @@ def test_partition_layout_and_pruning(
 def test_second_build_is_content_idempotent(
     spark: SparkSession, built_dwd: Dict[str, object]
 ) -> None:
+    """Exercise the second build is content idempotent case."""
     first_snapshot = spark.read.parquet(str(built_dwd["dwd"]))
     first_rows = _stable_rows(first_snapshot)
 

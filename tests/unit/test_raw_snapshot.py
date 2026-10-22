@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests raw snapshot behavior."""
+
 import csv
 import hashlib
 import pytest
@@ -7,6 +9,7 @@ from airline.common.raw_snapshot import FILENAME, MONTHS, read_manifest, verify_
 
 @pytest.fixture
 def snapshot(tmp_path):
+    """Create a valid raw snapshot fixture."""
     raw = tmp_path / "raw"
     raw.mkdir()
     rows = []
@@ -17,6 +20,7 @@ def snapshot(tmp_path):
         rows.append([year, month, filename, hashlib.sha256(payload).hexdigest()])
     manifest = tmp_path / "manifest.csv"
     def write(rows, header=("year", "month", "filename", "sha256")):
+        """Write the supplied value to the target path."""
         with manifest.open("w", newline="") as stream:
             writer = csv.writer(stream); writer.writerow(header); writer.writerows(rows)
     write(rows)
@@ -24,12 +28,14 @@ def snapshot(tmp_path):
 
 
 def test_valid_snapshot(snapshot):
+    """Exercise the valid snapshot case."""
     raw, manifest, _, _ = snapshot
     assert verify_snapshot(raw, manifest)["source_snapshot_id"] == "bts-2023-2024-v1"
 
 
 @pytest.mark.parametrize("mutation", ["missing", "extra", "duplicate", "wrong_name", "header", "hash", "coverage", "malformed_hash", "malformed_month", "extra_field"])
 def test_rejects_snapshot_mismatch(snapshot, mutation):
+    """Exercise the rejects snapshot mismatch case."""
     raw, manifest, rows, write = snapshot
     if mutation == "missing": (raw / rows[0][2]).unlink()
     elif mutation == "extra": (raw / "extra.CSV").write_text("extra")

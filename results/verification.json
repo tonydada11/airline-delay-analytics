@@ -1,0 +1,1905 @@
+{
+  "scope": "Fresh full canonical pipeline, ordinary and explicit comprehensive rebuild acceptance, M9, independent baseline comparison and frozen rescore, all five notebooks, isolated final-path worker-loss experiment. Historical research candidate fits were not repeated.",
+  "actual_commands": {
+    "cluster-start": {
+      "command": [
+        "./scripts/start_cluster.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T19:37:53.177090+00:00",
+      "actual_finished_utc": "2026-10-19T19:38:09.181011+00:00",
+      "external_log": "cluster-start.log",
+      "test_summary_lines": []
+    },
+    "dependency-verification": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "spark-notebook",
+        "python3",
+        "scripts/verify_dependencies.py"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T19:38:09.181421+00:00",
+      "actual_finished_utc": "2026-10-19T19:38:11.631281+00:00",
+      "external_log": "dependency-verification.log",
+      "test_summary_lines": []
+    },
+    "pipeline": {
+      "command": [
+        "./scripts/run_pipeline.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T19:38:11.631583+00:00",
+      "actual_finished_utc": "2026-10-19T22:27:25.133764+00:00",
+      "external_log": "pipeline.log",
+      "test_summary_lines": [
+        "1 passed in 588.67s (0:09:48)",
+        "1 passed in 42.93s",
+        "1 passed in 80.67s (0:01:20)",
+        "1 passed in 121.56s (0:02:01)",
+        "2 passed, 1 skipped in 437.83s (0:07:17)",
+        "1 passed in 75.90s (0:01:15)",
+        "1 passed, 1 warning in 31.44s",
+        "2 passed, 1 skipped in 673.05s (0:11:13)",
+        "3 passed, 1 warning in 175.20s (0:02:55)"
+      ]
+    },
+    "ordinary-tests": {
+      "command": [
+        "./scripts/run_tests.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T22:27:25.172799+00:00",
+      "actual_finished_utc": "2026-10-19T23:09:57.284369+00:00",
+      "external_log": "ordinary-tests.log",
+      "test_summary_lines": [
+        "212 passed, 1 warning in 906.69s (0:15:06)",
+        "1 passed in 467.52s (0:07:47)",
+        "1 passed in 56.67s",
+        "1 passed in 66.18s (0:01:06)",
+        "1 passed in 124.17s (0:02:04)",
+        "1 passed in 76.51s (0:01:16)",
+        "2 passed, 1 skipped in 632.09s (0:10:32)",
+        "3 passed, 1 warning in 183.46s (0:03:03)"
+      ]
+    },
+    "rebuild-tests": {
+      "command": [
+        "./scripts/run_tests.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab",
+        "AIRLINE_RUN_REBUILD_ACCEPTANCE": "1"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-19T23:09:57.322978+00:00",
+      "actual_finished_utc": "2026-10-20T01:10:29.632547+00:00",
+      "external_log": "rebuild-tests.log",
+      "test_summary_lines": [
+        "212 passed, 1 warning in 896.12s (0:14:56)",
+        "1 passed in 462.14s (0:07:42)",
+        "1 passed in 56.99s",
+        "1 passed in 66.00s (0:01:06)",
+        "1 passed in 122.10s (0:02:02)",
+        "1 passed in 77.54s (0:01:17)",
+        "2 passed, 1 skipped in 601.91s (0:10:01)",
+        "3 passed, 1 warning in 182.18s (0:03:02)",
+        "1 passed, 1 warning in 4725.10s (1:18:45)"
+      ]
+    },
+    "m9": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "spark-notebook",
+        "python3",
+        "-m",
+        "airline.performance.run_experiments"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:10:29.676533+00:00",
+      "actual_finished_utc": "2026-10-20T01:13:49.192561+00:00",
+      "external_log": "m9.log",
+      "test_summary_lines": []
+    },
+    "m9-quality": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "-e",
+        "AIRLINE_RUN_FULL_M9_QUALITY=1",
+        "spark-notebook",
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/data_quality/test_m9_performance_quality.py"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:13:49.194461+00:00",
+      "actual_finished_utc": "2026-10-20T01:13:49.940134+00:00",
+      "external_log": "m9-quality.log",
+      "test_summary_lines": [
+        "3 passed in 0.06s"
+      ]
+    },
+    "features-comparison": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "spark-notebook",
+        "python3",
+        "tests/pipeline/check_consolidation.py",
+        "features",
+        "--baseline",
+        "data/verification/baseline",
+        "--output",
+        "data/verification/features-comparison.json"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:14:34.689837+00:00",
+      "actual_finished_utc": "2026-10-20T01:24:33.451071+00:00",
+      "external_log": "features-comparison.log",
+      "test_summary_lines": []
+    },
+    "frozen-rescore": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "spark-notebook",
+        "python3",
+        "tests/pipeline/check_consolidation.py",
+        "frozen-rescore",
+        "--baseline",
+        "data/verification/baseline",
+        "--output",
+        "data/verification/frozen-rescore.json",
+        "--verification-root",
+        "data/verification/frozen-rescore"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:24:33.472941+00:00",
+      "actual_finished_utc": "2026-10-20T01:29:41.615098+00:00",
+      "external_log": "frozen-rescore.log",
+      "test_summary_lines": []
+    },
+    "notebooks": {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "spark-notebook",
+        "python3",
+        "-"
+      ],
+      "script_sha256": "39e8f8c976527b7bd4ad5ac700fcee0800259c34b674be0cabc5d7e1ee1b30dc",
+      "script": "notebooks.py",
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:29:41.620633+00:00",
+      "actual_finished_utc": "2026-10-20T01:52:41.446841+00:00",
+      "external_log": "notebooks.log",
+      "test_summary_lines": []
+    },
+    "analytics-export": {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--hostname",
+        "localhost",
+        "--user",
+        "0:1000",
+        "-e",
+        "SPARK_LOCAL_IP=127.0.0.1",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "-e",
+        "PYTHONPATH=/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+        "-v",
+        "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+        "-w",
+        "/workspace",
+        "--entrypoint",
+        "python3",
+        "airline-spark:3.5.9",
+        "results/export_analytics.py"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:52:41.468260+00:00",
+      "actual_finished_utc": "2026-10-20T01:52:51.639023+00:00",
+      "external_log": "analytics-export.log",
+      "test_summary_lines": []
+    },
+    "cluster-stop": {
+      "command": [
+        "./scripts/stop_cluster.sh"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-20T01:52:51.640895+00:00",
+      "actual_finished_utc": "2026-10-20T01:52:57.934118+00:00",
+      "external_log": "cluster-stop.log",
+      "test_summary_lines": []
+    },
+    "fault-final-invariants": {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--hostname",
+        "localhost",
+        "-e",
+        "SPARK_LOCAL_IP=127.0.0.1",
+        "--cpus",
+        "2",
+        "--memory",
+        "4g",
+        "--user",
+        "0:1000",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "-e",
+        "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+        "-v",
+        "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+        "-w",
+        "/workspace",
+        "-e",
+        "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+        "-e",
+        "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+        "--entrypoint",
+        "python3",
+        "airline-spark:3.5.9",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/fault_tolerance"
+      ],
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-21T02:53:23.874386+00:00",
+      "actual_finished_utc": "2026-10-21T02:53:24.725394+00:00",
+      "scope": "small fixtures, local[2], pinned image; not full-data acceptance",
+      "external_log": "fault-final-invariants.log",
+      "test_summary_lines": [
+        "9 passed in 0.04s"
+      ]
+    },
+    "fault-final-run": {
+      "command": [
+        "python3",
+        "labs/fault_tolerance/run_experiment.py",
+        "--output",
+        "/home/server/workspace/industry/airline-spark-history-lab/artifacts/fault_tolerance/final-location"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-21T02:58:49.173117+00:00",
+      "actual_finished_utc": "2026-10-21T03:01:33.324069+00:00",
+      "external_log": "fault-final-run.log",
+      "test_summary_lines": []
+    },
+    "fault-post-merge-tests": {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--hostname",
+        "localhost",
+        "-e",
+        "SPARK_LOCAL_IP=127.0.0.1",
+        "--cpus",
+        "2",
+        "--memory",
+        "4g",
+        "--user",
+        "0:1000",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "-e",
+        "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+        "-v",
+        "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+        "-w",
+        "/workspace",
+        "-e",
+        "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+        "-e",
+        "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+        "--entrypoint",
+        "python3",
+        "airline-spark:3.5.9",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/fault_tolerance"
+      ],
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-22T01:23:25.673001+00:00",
+      "actual_finished_utc": "2026-10-22T01:23:26.309334+00:00",
+      "scope": "small fixtures, local[2], pinned image; not full-data acceptance",
+      "external_log": "fault-post-merge-tests.log",
+      "test_summary_lines": [
+        "9 passed in 0.03s"
+      ]
+    },
+    "fault-post-merge-evidence": {
+      "command": [
+        "python3",
+        "labs/fault_tolerance/run_experiment.py",
+        "--verify",
+        "labs/fault_tolerance/evidence"
+      ],
+      "environment": {
+        "COMPOSE_PROJECT_NAME": "airline-history-lab"
+      },
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-22T01:23:26.309668+00:00",
+      "actual_finished_utc": "2026-10-22T01:23:26.358191+00:00",
+      "external_log": "fault-post-merge-evidence.log",
+      "test_summary_lines": []
+    },
+    "flight-time-pre-merge-tests": {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--hostname",
+        "localhost",
+        "-e",
+        "SPARK_LOCAL_IP=127.0.0.1",
+        "--cpus",
+        "2",
+        "--memory",
+        "4g",
+        "--user",
+        "0:1000",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "-e",
+        "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+        "-v",
+        "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+        "-w",
+        "/workspace",
+        "-e",
+        "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+        "-e",
+        "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+        "--entrypoint",
+        "python3",
+        "airline-spark:3.5.9",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/unit/test_flight_time.py",
+        "tests/unit/test_model_contract.py",
+        "tests/unit/test_experiment_selection.py"
+      ],
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-21T14:23:48.955263+00:00",
+      "actual_finished_utc": "2026-10-21T14:23:50.552639+00:00",
+      "scope": "small fixtures, local[2], pinned image; not full-data acceptance",
+      "external_log": "flight-time-pre-merge-tests.log",
+      "test_summary_lines": [
+        "19 passed, 1 warning in 0.83s"
+      ]
+    },
+    "flight-time-post-merge-tests": {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--hostname",
+        "localhost",
+        "-e",
+        "SPARK_LOCAL_IP=127.0.0.1",
+        "--cpus",
+        "2",
+        "--memory",
+        "4g",
+        "--user",
+        "0:1000",
+        "-e",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "-e",
+        "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+        "-v",
+        "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+        "-w",
+        "/workspace",
+        "-e",
+        "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+        "-e",
+        "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+        "--entrypoint",
+        "python3",
+        "airline-spark:3.5.9",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/unit/test_flight_time.py",
+        "tests/unit/test_model_contract.py",
+        "tests/unit/test_experiment_selection.py"
+      ],
+      "exit_code": 0,
+      "actual_started_utc": "2026-10-22T01:23:44.675721+00:00",
+      "actual_finished_utc": "2026-10-22T01:23:46.165864+00:00",
+      "scope": "small fixtures, local[2], pinned image; not full-data acceptance",
+      "external_log": "flight-time-post-merge-tests.log",
+      "test_summary_lines": [
+        "19 passed, 1 warning in 0.72s"
+      ]
+    }
+  },
+  "feature_integrations": [
+    {
+      "sha": "b3a99f003ac1bddf2d84c08ab928e803d5f27533",
+      "message": "merge: integrate verified Spark fault-tolerance lab",
+      "timestamp": "2026-10-20T23:15:38-05:00",
+      "source": null,
+      "changed_files": [
+        "labs/fault_tolerance/EXPERIMENT.md",
+        "labs/fault_tolerance/evidence/events/app-20261021025908-0000",
+        "labs/fault_tolerance/evidence/execution.json",
+        "labs/fault_tolerance/evidence/injection.json",
+        "labs/fault_tolerance/evidence/master.json",
+        "labs/fault_tolerance/evidence/production-preservation.json",
+        "labs/fault_tolerance/evidence/topology.json",
+        "labs/fault_tolerance/evidence/verification.json",
+        "labs/fault_tolerance/run_experiment.py",
+        "tests/fault_tolerance/test_worker_loss.py"
+      ],
+      "parents": [
+        "cd52967440816dcfdc5bd2813ef285556c3e3a2d",
+        "bc8ee060e1d1930d6b174a70d8e2ebbc6441c3e0"
+      ],
+      "verification": {
+        "branch_inspection": {
+          "branch": "feature/spark-fault-tolerance",
+          "base": "cd52967440816dcfdc5bd2813ef285556c3e3a2d",
+          "tip": "bc8ee060e1d1930d6b174a70d8e2ebbc6441c3e0",
+          "changed_files": [
+            "labs/fault_tolerance/EXPERIMENT.md",
+            "labs/fault_tolerance/evidence/events/app-20261021025908-0000",
+            "labs/fault_tolerance/evidence/execution.json",
+            "labs/fault_tolerance/evidence/injection.json",
+            "labs/fault_tolerance/evidence/master.json",
+            "labs/fault_tolerance/evidence/production-preservation.json",
+            "labs/fault_tolerance/evidence/topology.json",
+            "labs/fault_tolerance/evidence/verification.json",
+            "labs/fault_tolerance/run_experiment.py",
+            "tests/fault_tolerance/test_worker_loss.py"
+          ],
+          "diff_stat": " labs/fault_tolerance/EXPERIMENT.md                 |  24 +-\n ...20261016172101-0000 => app-20261021025908-0000} | 144 +++++------\n labs/fault_tolerance/evidence/execution.json       | 275 +++++++++++++++++----\n labs/fault_tolerance/evidence/injection.json       |  22 +-\n labs/fault_tolerance/evidence/master.json          |   2 +-\n .../evidence/production-preservation.json          |  15 ++\n labs/fault_tolerance/evidence/topology.json        |  64 ++---\n labs/fault_tolerance/evidence/verification.json    |  66 ++---\n labs/fault_tolerance/run_experiment.py             |  15 --\n tests/fault_tolerance/test_worker_loss.py          |  10 +-\n 10 files changed, 411 insertions(+), 226 deletions(-)\n",
+          "diff_command": [
+            "git",
+            "diff",
+            "cd52967440816dcfdc5bd2813ef285556c3e3a2d",
+            "feature/spark-fault-tolerance"
+          ],
+          "diff_sha256": "bdbf76152b8a0f1ce2de6ac542d4af767070016dafd66473aececf45c5430a6c"
+        },
+        "pre_merge_acceptance": {
+          "invariants": {
+            "command": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--hostname",
+              "localhost",
+              "-e",
+              "SPARK_LOCAL_IP=127.0.0.1",
+              "--cpus",
+              "2",
+              "--memory",
+              "4g",
+              "--user",
+              "0:1000",
+              "-e",
+              "PYTHONDONTWRITEBYTECODE=1",
+              "-e",
+              "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+              "-v",
+              "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+              "-w",
+              "/workspace",
+              "-e",
+              "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+              "-e",
+              "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+              "--entrypoint",
+              "python3",
+              "airline-spark:3.5.9",
+              "-m",
+              "pytest",
+              "-q",
+              "-p",
+              "no:cacheprovider",
+              "tests/fault_tolerance"
+            ],
+            "exit_code": 0,
+            "actual_started_utc": "2026-10-21T02:53:23.874386+00:00",
+            "actual_finished_utc": "2026-10-21T02:53:24.725394+00:00",
+            "log": "/tmp/airline-reconstruction/fault-final-invariants.log",
+            "scope": "small fixtures, local[2], pinned image; not full-data acceptance"
+          },
+          "run": {
+            "command": [
+              "python3",
+              "labs/fault_tolerance/run_experiment.py",
+              "--output",
+              "/home/server/workspace/industry/airline-spark-history-lab/artifacts/fault_tolerance/final-location"
+            ],
+            "environment": {
+              "COMPOSE_PROJECT_NAME": "airline-history-lab"
+            },
+            "exit_code": 0,
+            "actual_started_utc": "2026-10-21T02:58:49.173117+00:00",
+            "actual_finished_utc": "2026-10-21T03:01:33.324069+00:00",
+            "log": "/tmp/airline-reconstruction/fault-final-run.log"
+          },
+          "event_verification": {
+            "executor_removed": {
+              "Event": "SparkListenerExecutorRemoved",
+              "Executor ID": "0",
+              "Removed Reason": "worker lost: worker1:33509 got disassociated",
+              "Timestamp": 1792551599517
+            },
+            "failed_task": {
+              "Event": "SparkListenerTaskEnd",
+              "Stage Attempt ID": 0,
+              "Stage ID": 2,
+              "Task End Reason": {
+                "Executor ID": "0",
+                "Exit Caused By App": false,
+                "Loss Reason": "worker lost: worker1:33509 got disassociated",
+                "Reason": "ExecutorLostFailure"
+              },
+              "Task Executor Metrics": {
+                "DirectPoolMemory": 0,
+                "JVMHeapMemory": -1,
+                "JVMOffHeapMemory": 0,
+                "MajorGCCount": 0,
+                "MajorGCTime": 0,
+                "MappedPoolMemory": 0,
+                "MinorGCCount": 0,
+                "MinorGCTime": 0,
+                "OffHeapExecutionMemory": 0,
+                "OffHeapStorageMemory": 0,
+                "OffHeapUnifiedMemory": 0,
+                "OnHeapExecutionMemory": 0,
+                "OnHeapStorageMemory": 0,
+                "OnHeapUnifiedMemory": 0,
+                "ProcessTreeJVMRSSMemory": 0,
+                "ProcessTreeJVMVMemory": 0,
+                "ProcessTreeOtherRSSMemory": 0,
+                "ProcessTreeOtherVMemory": 0,
+                "ProcessTreePythonRSSMemory": 0,
+                "ProcessTreePythonVMemory": 0,
+                "TotalGCTime": 0
+              },
+              "Task Info": {
+                "Accumulables": [],
+                "Attempt": 0,
+                "Executor ID": "0",
+                "Failed": true,
+                "Finish Time": 1792551599516,
+                "Getting Result Time": 0,
+                "Host": "worker1",
+                "Index": 1,
+                "Killed": false,
+                "Launch Time": 1792551598942,
+                "Locality": "PROCESS_LOCAL",
+                "Partition ID": 1,
+                "Speculative": false,
+                "Task ID": 13
+              },
+              "Task Type": "ShuffleMapTask"
+            },
+            "groups": 10,
+            "jobs": 2,
+            "rows": 1000,
+            "scope": "one worker/executor loss; no driver recovery or external writes",
+            "stages": 4,
+            "status": "passed",
+            "successful_retry": {
+              "Event": "SparkListenerTaskEnd",
+              "Stage Attempt ID": 0,
+              "Stage ID": 2,
+              "Task End Reason": {
+                "Reason": "Success"
+              },
+              "Task Executor Metrics": {
+                "DirectPoolMemory": 16789391,
+                "JVMHeapMemory": 45840176,
+                "JVMOffHeapMemory": 69256040,
+                "MajorGCCount": 0,
+                "MajorGCTime": 0,
+                "MappedPoolMemory": 0,
+                "MinorGCCount": 7,
+                "MinorGCTime": 218,
+                "OffHeapExecutionMemory": 0,
+                "OffHeapStorageMemory": 0,
+                "OffHeapUnifiedMemory": 0,
+                "OnHeapExecutionMemory": 0,
+                "OnHeapStorageMemory": 54675,
+                "OnHeapUnifiedMemory": 54675,
+                "ProcessTreeJVMRSSMemory": 0,
+                "ProcessTreeJVMVMemory": 0,
+                "ProcessTreeOtherRSSMemory": 0,
+                "ProcessTreeOtherVMemory": 0,
+                "ProcessTreePythonRSSMemory": 0,
+                "ProcessTreePythonVMemory": 0,
+                "TotalGCTime": 218
+              },
+              "Task Info": {
+                "Accumulables": [
+                  {
+                    "Count Failed Values": true,
+                    "ID": 71,
+                    "Internal": true,
+                    "Name": "internal.metrics.executorDeserializeTime",
+                    "Update": 2,
+                    "Value": 47
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 72,
+                    "Internal": true,
+                    "Name": "internal.metrics.executorDeserializeCpuTime",
+                    "Update": 2663827,
+                    "Value": 12286246
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 73,
+                    "Internal": true,
+                    "Name": "internal.metrics.executorRunTime",
+                    "Update": 10140,
+                    "Value": 20269
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 74,
+                    "Internal": true,
+                    "Name": "internal.metrics.executorCpuTime",
+                    "Update": 16545315,
+                    "Value": 36350918
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 75,
+                    "Internal": true,
+                    "Name": "internal.metrics.resultSize",
+                    "Update": 1487,
+                    "Value": 2974
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 78,
+                    "Internal": true,
+                    "Name": "internal.metrics.memoryBytesSpilled",
+                    "Update": 0,
+                    "Value": 0
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 79,
+                    "Internal": true,
+                    "Name": "internal.metrics.diskBytesSpilled",
+                    "Update": 0,
+                    "Value": 0
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 99,
+                    "Internal": true,
+                    "Name": "internal.metrics.shuffle.write.bytesWritten",
+                    "Update": 367,
+                    "Value": 734
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 100,
+                    "Internal": true,
+                    "Name": "internal.metrics.shuffle.write.recordsWritten",
+                    "Update": 4,
+                    "Value": 8
+                  },
+                  {
+                    "Count Failed Values": true,
+                    "ID": 101,
+                    "Internal": true,
+                    "Name": "internal.metrics.shuffle.write.writeTime",
+                    "Update": 1607711,
+                    "Value": 3085521
+                  }
+                ],
+                "Attempt": 1,
+                "Executor ID": "1",
+                "Failed": false,
+                "Finish Time": 1792551619276,
+                "Getting Result Time": 0,
+                "Host": "worker2",
+                "Index": 1,
+                "Killed": false,
+                "Launch Time": 1792551609125,
+                "Locality": "PROCESS_LOCAL",
+                "Partition ID": 1,
+                "Speculative": false,
+                "Task ID": 14
+              },
+              "Task Metrics": {
+                "Disk Bytes Spilled": 0,
+                "Executor CPU Time": 16545315,
+                "Executor Deserialize CPU Time": 2663827,
+                "Executor Deserialize Time": 2,
+                "Executor Run Time": 10140,
+                "Input Metrics": {
+                  "Bytes Read": 0,
+                  "Records Read": 0
+                },
+                "JVM GC Time": 0,
+                "Memory Bytes Spilled": 0,
+                "Output Metrics": {
+                  "Bytes Written": 0,
+                  "Records Written": 0
+                },
+                "Peak Execution Memory": 0,
+                "Result Serialization Time": 0,
+                "Result Size": 1487,
+                "Shuffle Read Metrics": {
+                  "Fetch Wait Time": 0,
+                  "Local Blocks Fetched": 0,
+                  "Local Bytes Read": 0,
+                  "Push Based Shuffle": {
+                    "Corrupt Merged Block Chunks": 0,
+                    "Merged Fetch Fallback Count": 0,
+                    "Merged Local Blocks Fetched": 0,
+                    "Merged Local Bytes Read": 0,
+                    "Merged Local Chunks Fetched": 0,
+                    "Merged Remote Blocks Fetched": 0,
+                    "Merged Remote Bytes Read": 0,
+                    "Merged Remote Chunks Fetched": 0,
+                    "Merged Remote Requests Duration": 0
+                  },
+                  "Remote Blocks Fetched": 0,
+                  "Remote Bytes Read": 0,
+                  "Remote Bytes Read To Disk": 0,
+                  "Remote Requests Duration": 0,
+                  "Total Records Read": 0
+                },
+                "Shuffle Write Metrics": {
+                  "Shuffle Bytes Written": 367,
+                  "Shuffle Records Written": 4,
+                  "Shuffle Write Time": 1607711
+                },
+                "Updated Blocks": []
+              },
+              "Task Type": "ShuffleMapTask"
+            },
+            "sum": 499500,
+            "task_attempts": 25
+          },
+          "production_preservation": {
+            "status": "passed",
+            "protected_files": 1303,
+            "size_mtime_inode_file_set_unchanged": true,
+            "metadata_sha256": "405fcf1bc2aa7ddea6465baf99bc446bfc30f850b8b50265cb84a0f280be9359",
+            "scope": [
+              "data except .test-tmp",
+              "artifacts/flighttime-v3",
+              "artifacts/performance"
+            ],
+            "excluded": "data/.test-tmp contains private test fixtures, not production datasets; unreadable production paths fail the inventory",
+            "lab_has_no_production_mounts": true,
+            "production_service_state_configuration_mounts_unchanged": true,
+            "production_containers": 4
+          },
+          "documentation_links": {
+            "checked_links": 75,
+            "errors": [],
+            "status": "passed"
+          }
+        },
+        "actual_command": [
+          "git",
+          "merge",
+          "--no-ff",
+          "feature/spark-fault-tolerance",
+          "-m",
+          "merge: integrate verified Spark fault-tolerance lab"
+        ],
+        "actual_started_utc": "2026-10-22T01:23:25.636171+00:00",
+        "exit_code": 0,
+        "merge_stdout": "Merge made by the 'ort' strategy.\n labs/fault_tolerance/EXPERIMENT.md                 |  24 +-\n ...20261016172101-0000 => app-20261021025908-0000} | 144 +++++------\n labs/fault_tolerance/evidence/execution.json       | 275 +++++++++++++++++----\n labs/fault_tolerance/evidence/injection.json       |  22 +-\n labs/fault_tolerance/evidence/master.json          |   2 +-\n .../evidence/production-preservation.json          |  15 ++\n labs/fault_tolerance/evidence/topology.json        |  64 ++---\n labs/fault_tolerance/evidence/verification.json    |  66 ++---\n labs/fault_tolerance/run_experiment.py             |  15 --\n tests/fault_tolerance/test_worker_loss.py          |  10 +-\n 10 files changed, 411 insertions(+), 226 deletions(-)\n rename labs/fault_tolerance/evidence/events/{app-20261016172101-0000 => app-20261021025908-0000} (73%)\n create mode 100644 labs/fault_tolerance/evidence/production-preservation.json\n",
+        "post_merge_regressions": [
+          {
+            "command": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--hostname",
+              "localhost",
+              "-e",
+              "SPARK_LOCAL_IP=127.0.0.1",
+              "--cpus",
+              "2",
+              "--memory",
+              "4g",
+              "--user",
+              "0:1000",
+              "-e",
+              "PYTHONDONTWRITEBYTECODE=1",
+              "-e",
+              "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+              "-v",
+              "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+              "-w",
+              "/workspace",
+              "-e",
+              "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+              "-e",
+              "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+              "--entrypoint",
+              "python3",
+              "airline-spark:3.5.9",
+              "-m",
+              "pytest",
+              "-q",
+              "-p",
+              "no:cacheprovider",
+              "tests/fault_tolerance"
+            ],
+            "exit_code": 0,
+            "actual_started_utc": "2026-10-22T01:23:25.673001+00:00",
+            "actual_finished_utc": "2026-10-22T01:23:26.309334+00:00",
+            "log": "/tmp/airline-reconstruction/fault-post-merge-tests.log",
+            "scope": "small fixtures, local[2], pinned image; not full-data acceptance"
+          },
+          {
+            "command": [
+              "python3",
+              "labs/fault_tolerance/run_experiment.py",
+              "--verify",
+              "labs/fault_tolerance/evidence"
+            ],
+            "environment": {
+              "COMPOSE_PROJECT_NAME": "airline-history-lab"
+            },
+            "exit_code": 0,
+            "actual_started_utc": "2026-10-22T01:23:26.309668+00:00",
+            "actual_finished_utc": "2026-10-22T01:23:26.358191+00:00",
+            "log": "/tmp/airline-reconstruction/fault-post-merge-evidence.log"
+          }
+        ]
+      }
+    },
+    {
+      "sha": "a755dbd2a417712f36eab804550fcf66e929fd17",
+      "message": "merge: integrate validated flight-time LR pipeline",
+      "timestamp": "2026-10-21T19:41:20-05:00",
+      "source": null,
+      "changed_files": [
+        "results/flight-time-acceptance.json",
+        "results/production/dataset-manifests/ml_flighttime_v3_test.json",
+        "results/production/model-manifest.json",
+        "results/production/selection/selection.json",
+        "results/production/selection/validation.json",
+        "results/production/test.json",
+        "results/production/validation.json"
+      ],
+      "parents": [
+        "b3a99f003ac1bddf2d84c08ab928e803d5f27533",
+        "366a55c4ae650f5f31d29c4fec46dc5a145e02d3"
+      ],
+      "verification": {
+        "branch_inspection": {
+          "branch": "feature/flight-time-history",
+          "base": "b3a99f003ac1bddf2d84c08ab928e803d5f27533",
+          "tip": "366a55c4ae650f5f31d29c4fec46dc5a145e02d3",
+          "changed_files": [
+            "results/flight-time-acceptance.json",
+            "results/production/dataset-manifests/ml_flighttime_v3_test.json",
+            "results/production/model-manifest.json",
+            "results/production/selection/selection.json",
+            "results/production/selection/validation.json",
+            "results/production/test.json",
+            "results/production/validation.json"
+          ],
+          "diff_stat": " results/flight-time-acceptance.json                | 337 +++++++++++\n .../dataset-manifests/ml_flighttime_v3_test.json   |   4 +-\n results/production/model-manifest.json             | 620 ++++++++++-----------\n results/production/selection/selection.json        | 618 ++++++++++----------\n results/production/selection/validation.json       | 614 ++++++++++----------\n results/production/test.json                       | 122 ++--\n results/production/validation.json                 | 192 +++----\n 7 files changed, 1422 insertions(+), 1085 deletions(-)\n",
+          "diff_command": [
+            "git",
+            "diff",
+            "b3a99f003ac1bddf2d84c08ab928e803d5f27533",
+            "feature/flight-time-history"
+          ],
+          "diff_sha256": "d74ca2eb344021f2cb1c3ff9dca72d0dc9a9f9109846bdb6b710469b9f890f85"
+        },
+        "pre_merge_acceptance": {
+          "status": "passed",
+          "comprehensive_rebuild_both_phases_reported": true,
+          "historical_accepted_bundle": "d0098a9572834c53bf76b04d732a94a6",
+          "newly_executed_bundle": "c9c3f85037ab4690a52b80416a31d68e",
+          "selected_classifier": "lr",
+          "threshold": 0.39,
+          "feature_version": "m7-flighttime-v2",
+          "predictors": 50,
+          "schema_version": 3,
+          "datasets": {
+            "selection": {
+              "dataset_schema_version": 3,
+              "feature_version": "m7-flighttime-v2",
+              "rows": 11365109,
+              "splits": [
+                "train",
+                "validation"
+              ],
+              "duplicate_key_count": 0,
+              "duplicate_extra_rows": 0
+            },
+            "test": {
+              "dataset_schema_version": 3,
+              "feature_version": "m7-flighttime-v2",
+              "rows": 2343541,
+              "splits": [
+                "test"
+              ],
+              "duplicate_key_count": 0,
+              "duplicate_extra_rows": 0
+            }
+          },
+          "production_python_sha256": "55dd33b3cd4ca61d71432b827cc8f63774928ca49b3a41281d1ee1849f090017",
+          "production_source_byte_identical_to_original_accepted_main": true,
+          "actual_commands": {
+            "pipeline": {
+              "command": [
+                "./scripts/run_pipeline.sh"
+              ],
+              "environment": {
+                "COMPOSE_PROJECT_NAME": "airline-history-lab"
+              },
+              "exit_code": 0,
+              "actual_started_utc": "2026-10-19T19:38:11.631583+00:00",
+              "actual_finished_utc": "2026-10-19T22:27:25.133764+00:00",
+              "log": "/tmp/airline-reconstruction/pipeline.log"
+            },
+            "ordinary-tests": {
+              "command": [
+                "./scripts/run_tests.sh"
+              ],
+              "environment": {
+                "COMPOSE_PROJECT_NAME": "airline-history-lab"
+              },
+              "exit_code": 0,
+              "actual_started_utc": "2026-10-19T22:27:25.172799+00:00",
+              "actual_finished_utc": "2026-10-19T23:09:57.284369+00:00",
+              "log": "/tmp/airline-reconstruction/ordinary-tests.log"
+            },
+            "rebuild-tests": {
+              "command": [
+                "./scripts/run_tests.sh"
+              ],
+              "environment": {
+                "COMPOSE_PROJECT_NAME": "airline-history-lab",
+                "AIRLINE_RUN_REBUILD_ACCEPTANCE": "1"
+              },
+              "exit_code": 0,
+              "actual_started_utc": "2026-10-19T23:09:57.322978+00:00",
+              "actual_finished_utc": "2026-10-20T01:10:29.632547+00:00",
+              "log": "/tmp/airline-reconstruction/rebuild-tests.log"
+            },
+            "features-comparison": {
+              "command": [
+                "docker",
+                "compose",
+                "exec",
+                "-T",
+                "spark-notebook",
+                "python3",
+                "tests/pipeline/check_consolidation.py",
+                "features",
+                "--baseline",
+                "data/verification/baseline",
+                "--output",
+                "data/verification/features-comparison.json"
+              ],
+              "environment": {
+                "COMPOSE_PROJECT_NAME": "airline-history-lab"
+              },
+              "exit_code": 0,
+              "actual_started_utc": "2026-10-20T01:14:34.689837+00:00",
+              "actual_finished_utc": "2026-10-20T01:24:33.451071+00:00",
+              "log": "/tmp/airline-reconstruction/features-comparison.log"
+            },
+            "frozen-rescore": {
+              "command": [
+                "docker",
+                "compose",
+                "exec",
+                "-T",
+                "spark-notebook",
+                "python3",
+                "tests/pipeline/check_consolidation.py",
+                "frozen-rescore",
+                "--baseline",
+                "data/verification/baseline",
+                "--output",
+                "data/verification/frozen-rescore.json",
+                "--verification-root",
+                "data/verification/frozen-rescore"
+              ],
+              "environment": {
+                "COMPOSE_PROJECT_NAME": "airline-history-lab"
+              },
+              "exit_code": 0,
+              "actual_started_utc": "2026-10-20T01:24:33.472941+00:00",
+              "actual_finished_utc": "2026-10-20T01:29:41.615098+00:00",
+              "log": "/tmp/airline-reconstruction/frozen-rescore.log"
+            }
+          },
+          "focused_pre_merge_tests": {
+            "command": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--hostname",
+              "localhost",
+              "-e",
+              "SPARK_LOCAL_IP=127.0.0.1",
+              "--cpus",
+              "2",
+              "--memory",
+              "4g",
+              "--user",
+              "0:1000",
+              "-e",
+              "PYTHONDONTWRITEBYTECODE=1",
+              "-e",
+              "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+              "-v",
+              "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+              "-w",
+              "/workspace",
+              "-e",
+              "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+              "-e",
+              "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+              "--entrypoint",
+              "python3",
+              "airline-spark:3.5.9",
+              "-m",
+              "pytest",
+              "-q",
+              "-p",
+              "no:cacheprovider",
+              "tests/unit/test_flight_time.py",
+              "tests/unit/test_model_contract.py",
+              "tests/unit/test_experiment_selection.py"
+            ],
+            "exit_code": 0,
+            "actual_started_utc": "2026-10-21T14:23:48.955263+00:00",
+            "actual_finished_utc": "2026-10-21T14:23:50.552639+00:00",
+            "log": "/tmp/airline-reconstruction/flight-time-pre-merge-tests.log",
+            "scope": "small fixtures, local[2], pinned image; not full-data acceptance"
+          },
+          "baseline_feature_comparison": {
+            "status": "passed",
+            "check": "features",
+            "result": {
+              "selection": {
+                "rows": 11365109,
+                "baseline_minus_current": 0,
+                "current_minus_baseline": 0,
+                "columns": [
+                  "flight_id",
+                  "flight_date",
+                  "flight_number_reporting_airline",
+                  "origin_airport_id",
+                  "dest_airport_id",
+                  "crs_dep_time",
+                  "reporting_airline",
+                  "origin",
+                  "destination",
+                  "calendar_month",
+                  "calendar_weekday",
+                  "distance",
+                  "crs_elapsed_time",
+                  "departure_sin",
+                  "departure_cos",
+                  "arrival_sin",
+                  "arrival_cos",
+                  "departure_missing",
+                  "arrival_missing",
+                  "duration_missing",
+                  "carrier_delay_rate_7d",
+                  "carrier_delay_rate_30d",
+                  "carrier_delay_rate_90d",
+                  "origin_delay_rate_7d",
+                  "origin_delay_rate_30d",
+                  "origin_delay_rate_90d",
+                  "destination_delay_rate_7d",
+                  "destination_delay_rate_30d",
+                  "destination_delay_rate_90d",
+                  "route_delay_rate_7d",
+                  "route_delay_rate_30d",
+                  "route_delay_rate_90d",
+                  "carrier_flight_count_7d",
+                  "carrier_flight_count_30d",
+                  "carrier_flight_count_90d",
+                  "origin_flight_count_7d",
+                  "origin_flight_count_30d",
+                  "origin_flight_count_90d",
+                  "destination_flight_count_7d",
+                  "destination_flight_count_30d",
+                  "destination_flight_count_90d",
+                  "route_flight_count_7d",
+                  "route_flight_count_30d",
+                  "route_flight_count_90d",
+                  "carrier_history_missing_7d",
+                  "carrier_history_missing_30d",
+                  "carrier_history_missing_90d",
+                  "origin_history_missing_7d",
+                  "origin_history_missing_30d",
+                  "origin_history_missing_90d",
+                  "destination_history_missing_7d",
+                  "destination_history_missing_30d",
+                  "destination_history_missing_90d",
+                  "route_history_missing_7d",
+                  "route_history_missing_30d",
+                  "route_history_missing_90d",
+                  "is_arrival_delayed_15m",
+                  "split"
+                ]
+              },
+              "test": {
+                "rows": 2343541,
+                "baseline_minus_current": 0,
+                "current_minus_baseline": 0,
+                "columns": [
+                  "flight_id",
+                  "flight_date",
+                  "flight_number_reporting_airline",
+                  "origin_airport_id",
+                  "dest_airport_id",
+                  "crs_dep_time",
+                  "reporting_airline",
+                  "origin",
+                  "destination",
+                  "calendar_month",
+                  "calendar_weekday",
+                  "distance",
+                  "crs_elapsed_time",
+                  "departure_sin",
+                  "departure_cos",
+                  "arrival_sin",
+                  "arrival_cos",
+                  "departure_missing",
+                  "arrival_missing",
+                  "duration_missing",
+                  "carrier_delay_rate_7d",
+                  "carrier_delay_rate_30d",
+                  "carrier_delay_rate_90d",
+                  "origin_delay_rate_7d",
+                  "origin_delay_rate_30d",
+                  "origin_delay_rate_90d",
+                  "destination_delay_rate_7d",
+                  "destination_delay_rate_30d",
+                  "destination_delay_rate_90d",
+                  "route_delay_rate_7d",
+                  "route_delay_rate_30d",
+                  "route_delay_rate_90d",
+                  "carrier_flight_count_7d",
+                  "carrier_flight_count_30d",
+                  "carrier_flight_count_90d",
+                  "origin_flight_count_7d",
+                  "origin_flight_count_30d",
+                  "origin_flight_count_90d",
+                  "destination_flight_count_7d",
+                  "destination_flight_count_30d",
+                  "destination_flight_count_90d",
+                  "route_flight_count_7d",
+                  "route_flight_count_30d",
+                  "route_flight_count_90d",
+                  "carrier_history_missing_7d",
+                  "carrier_history_missing_30d",
+                  "carrier_history_missing_90d",
+                  "origin_history_missing_7d",
+                  "origin_history_missing_30d",
+                  "origin_history_missing_90d",
+                  "destination_history_missing_7d",
+                  "destination_history_missing_30d",
+                  "destination_history_missing_90d",
+                  "route_history_missing_7d",
+                  "route_history_missing_30d",
+                  "route_history_missing_90d",
+                  "is_arrival_delayed_15m",
+                  "split"
+                ]
+              }
+            }
+          },
+          "frozen_rescore": {
+            "status": "passed",
+            "check": "frozen-rescore",
+            "result": {
+              "baseline_model_manifest_sha256": "7e1d0a1a9336dd383da9802db02586e23fcc411a4cd79294ee52c554c6d49ee7",
+              "baseline_code_provenance": {
+                "git_commit": null,
+                "git_dirty": null,
+                "production_python_sha256": "55dd33b3cd4ca61d71432b827cc8f63774928ca49b3a41281d1ee1849f090017"
+              },
+              "verification_output": "data/verification/frozen-rescore",
+              "splits": {
+                "validation": {
+                  "rows": 2418739,
+                  "decision_multiset_differences": 0,
+                  "score_multiset_differences_at_10_decimal_places": 0,
+                  "metric_absolute_tolerance": 1e-10,
+                  "metric_relative_tolerance": 1e-06
+                },
+                "test": {
+                  "rows": 2343541,
+                  "decision_multiset_differences": 0,
+                  "score_multiset_differences_at_10_decimal_places": 0,
+                  "metric_absolute_tolerance": 1e-10,
+                  "metric_relative_tolerance": 1e-06
+                }
+              }
+            }
+          },
+          "history_adaptation": "Accepted schema-3 implementation already existed in preserved commit da9d0e588cd23cc1975d38c9d33b56570e598582 before branch amendment. This branch adds newly executed acceptance and publishes the fresh selected bundle evidence without duplicating or rewriting that implementation. Full production acceptance ran against these same unchanged source bytes; focused regressions run before and after integration.",
+          "selection_integrity": "Unchanged train-only preprocessing, chronological splits, validation-based candidate/threshold selection and frozen test contracts. Observed selection is compared with the accepted contract only after training; neither winner nor threshold was forced."
+        },
+        "actual_command": [
+          "git",
+          "merge",
+          "--no-ff",
+          "feature/flight-time-history",
+          "-m",
+          "merge: integrate validated flight-time LR pipeline"
+        ],
+        "actual_started_utc": "2026-10-22T01:23:44.648269+00:00",
+        "exit_code": 0,
+        "merge_stdout": "Merge made by the 'ort' strategy.\n results/flight-time-acceptance.json                | 337 +++++++++++\n .../dataset-manifests/ml_flighttime_v3_test.json   |   4 +-\n results/production/model-manifest.json             | 620 ++++++++++-----------\n results/production/selection/selection.json        | 618 ++++++++++----------\n results/production/selection/validation.json       | 614 ++++++++++----------\n results/production/test.json                       | 122 ++--\n results/production/validation.json                 | 192 +++----\n 7 files changed, 1422 insertions(+), 1085 deletions(-)\n create mode 100644 results/flight-time-acceptance.json\n",
+        "post_merge_regressions": [
+          {
+            "command": [
+              "docker",
+              "run",
+              "--rm",
+              "--network",
+              "none",
+              "--hostname",
+              "localhost",
+              "-e",
+              "SPARK_LOCAL_IP=127.0.0.1",
+              "--cpus",
+              "2",
+              "--memory",
+              "4g",
+              "--user",
+              "0:1000",
+              "-e",
+              "PYTHONDONTWRITEBYTECODE=1",
+              "-e",
+              "SPARK_SUBMIT_OPTS=-Duser.home=/tmp",
+              "-v",
+              "/home/server/workspace/industry/airline-spark-history-lab:/workspace",
+              "-w",
+              "/workspace",
+              "-e",
+              "PYTHONPATH=/workspace:/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+              "-e",
+              "PYSPARK_SUBMIT_ARGS=--master local[2] --driver-memory 1g --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+              "--entrypoint",
+              "python3",
+              "airline-spark:3.5.9",
+              "-m",
+              "pytest",
+              "-q",
+              "-p",
+              "no:cacheprovider",
+              "tests/unit/test_flight_time.py",
+              "tests/unit/test_model_contract.py",
+              "tests/unit/test_experiment_selection.py"
+            ],
+            "exit_code": 0,
+            "actual_started_utc": "2026-10-22T01:23:44.675721+00:00",
+            "actual_finished_utc": "2026-10-22T01:23:46.165864+00:00",
+            "log": "/tmp/airline-reconstruction/flight-time-post-merge-tests.log",
+            "scope": "small fixtures, local[2], pinned image; not full-data acceptance"
+          },
+          {
+            "command": [
+              "python3",
+              "/tmp/airline-reconstruction/integrate_feature.py",
+              "flight"
+            ],
+            "check": "in-process byte comparison of production source and published manifest after merge",
+            "exit_code": 0,
+            "source_files": 43,
+            "bundle_id": "c9c3f85037ab4690a52b80416a31d68e"
+          }
+        ]
+      }
+    }
+  ],
+  "source_reference": "ab6bd50e4f59d535836f61879f37c84a4546f9ae",
+  "production_python_sha256": "55dd33b3cd4ca61d71432b827cc8f63774928ca49b3a41281d1ee1849f090017",
+  "raw_snapshot": {
+    "files": 24,
+    "rows": 13926960,
+    "raw_manifest_sha256": "fef0d967bbc36d2beb2898701428ca55aa5b0f0a7c9bb0f5ede2ed8ac7852efb"
+  },
+  "model": {
+    "bundle_id": "c9c3f85037ab4690a52b80416a31d68e",
+    "selected_classifier": "lr",
+    "threshold": 0.39,
+    "training": {
+      "max_date": "2024-04-30",
+      "min_date": "2023-01-01",
+      "rows": 8946370
+    }
+  },
+  "validation": {
+    "bundle_id": "c9c3f85037ab4690a52b80416a31d68e",
+    "confusion_matrix": {
+      "false_negative": 204761,
+      "false_positive": 715303,
+      "true_negative": 1071538,
+      "true_positive": 427137
+    },
+    "dataset_manifest_sha256": "093b15fd2085ba50d005b0fd70a804e81597b8df4c3e2f89a56fef18a799a265",
+    "f1": 0.4814606912549919,
+    "historical_test_status": "previously inspected historical test period; not a pristine external holdout",
+    "model_manifest_sha256": "7de4a4c60fe53fb588d58ddb783847d60a308bc81eb73d31c729b4c2cce3da8f",
+    "pr_auc": 0.4271915480856426,
+    "precision": 0.37388134168971676,
+    "predicted_positive_rate": 0.4723287630455374,
+    "prevalence": 0.26125100723972283,
+    "ranking_status": "defined",
+    "recall": 0.6759587781572343,
+    "roc_auc": 0.6870639856066291,
+    "rows": 2418739,
+    "selected_classifier": "lr",
+    "split": "validation",
+    "threshold": 0.39,
+    "threshold_step": 39
+  },
+  "historical_test": {
+    "bundle_id": "c9c3f85037ab4690a52b80416a31d68e",
+    "confusion_matrix": {
+      "false_negative": 298304,
+      "false_positive": 169733,
+      "true_negative": 1796166,
+      "true_positive": 79338
+    },
+    "dataset_manifest_sha256": "3d0a282b4332accce648e45da81dda187d06a761d46cda62e745036000172ebd",
+    "f1": 0.25318766325255737,
+    "historical_test_status": "previously inspected historical test period; not a pristine external holdout",
+    "model_manifest_sha256": "7de4a4c60fe53fb588d58ddb783847d60a308bc81eb73d31c729b4c2cce3da8f",
+    "pr_auc": 0.26454201608330774,
+    "precision": 0.31853567858160925,
+    "predicted_positive_rate": 0.10627977065474851,
+    "prevalence": 0.16114162286898331,
+    "ranking_status": "defined",
+    "recall": 0.21008786099003818,
+    "roc_auc": 0.6531486815898006,
+    "rows": 2343541,
+    "selected_classifier": "lr",
+    "split": "test",
+    "threshold": 0.39,
+    "threshold_step": 39
+  },
+  "baseline_feature_comparison": {
+    "status": "passed",
+    "check": "features",
+    "result": {
+      "selection": {
+        "rows": 11365109,
+        "baseline_minus_current": 0,
+        "current_minus_baseline": 0,
+        "columns": [
+          "flight_id",
+          "flight_date",
+          "flight_number_reporting_airline",
+          "origin_airport_id",
+          "dest_airport_id",
+          "crs_dep_time",
+          "reporting_airline",
+          "origin",
+          "destination",
+          "calendar_month",
+          "calendar_weekday",
+          "distance",
+          "crs_elapsed_time",
+          "departure_sin",
+          "departure_cos",
+          "arrival_sin",
+          "arrival_cos",
+          "departure_missing",
+          "arrival_missing",
+          "duration_missing",
+          "carrier_delay_rate_7d",
+          "carrier_delay_rate_30d",
+          "carrier_delay_rate_90d",
+          "origin_delay_rate_7d",
+          "origin_delay_rate_30d",
+          "origin_delay_rate_90d",
+          "destination_delay_rate_7d",
+          "destination_delay_rate_30d",
+          "destination_delay_rate_90d",
+          "route_delay_rate_7d",
+          "route_delay_rate_30d",
+          "route_delay_rate_90d",
+          "carrier_flight_count_7d",
+          "carrier_flight_count_30d",
+          "carrier_flight_count_90d",
+          "origin_flight_count_7d",
+          "origin_flight_count_30d",
+          "origin_flight_count_90d",
+          "destination_flight_count_7d",
+          "destination_flight_count_30d",
+          "destination_flight_count_90d",
+          "route_flight_count_7d",
+          "route_flight_count_30d",
+          "route_flight_count_90d",
+          "carrier_history_missing_7d",
+          "carrier_history_missing_30d",
+          "carrier_history_missing_90d",
+          "origin_history_missing_7d",
+          "origin_history_missing_30d",
+          "origin_history_missing_90d",
+          "destination_history_missing_7d",
+          "destination_history_missing_30d",
+          "destination_history_missing_90d",
+          "route_history_missing_7d",
+          "route_history_missing_30d",
+          "route_history_missing_90d",
+          "is_arrival_delayed_15m",
+          "split"
+        ]
+      },
+      "test": {
+        "rows": 2343541,
+        "baseline_minus_current": 0,
+        "current_minus_baseline": 0,
+        "columns": [
+          "flight_id",
+          "flight_date",
+          "flight_number_reporting_airline",
+          "origin_airport_id",
+          "dest_airport_id",
+          "crs_dep_time",
+          "reporting_airline",
+          "origin",
+          "destination",
+          "calendar_month",
+          "calendar_weekday",
+          "distance",
+          "crs_elapsed_time",
+          "departure_sin",
+          "departure_cos",
+          "arrival_sin",
+          "arrival_cos",
+          "departure_missing",
+          "arrival_missing",
+          "duration_missing",
+          "carrier_delay_rate_7d",
+          "carrier_delay_rate_30d",
+          "carrier_delay_rate_90d",
+          "origin_delay_rate_7d",
+          "origin_delay_rate_30d",
+          "origin_delay_rate_90d",
+          "destination_delay_rate_7d",
+          "destination_delay_rate_30d",
+          "destination_delay_rate_90d",
+          "route_delay_rate_7d",
+          "route_delay_rate_30d",
+          "route_delay_rate_90d",
+          "carrier_flight_count_7d",
+          "carrier_flight_count_30d",
+          "carrier_flight_count_90d",
+          "origin_flight_count_7d",
+          "origin_flight_count_30d",
+          "origin_flight_count_90d",
+          "destination_flight_count_7d",
+          "destination_flight_count_30d",
+          "destination_flight_count_90d",
+          "route_flight_count_7d",
+          "route_flight_count_30d",
+          "route_flight_count_90d",
+          "carrier_history_missing_7d",
+          "carrier_history_missing_30d",
+          "carrier_history_missing_90d",
+          "origin_history_missing_7d",
+          "origin_history_missing_30d",
+          "origin_history_missing_90d",
+          "destination_history_missing_7d",
+          "destination_history_missing_30d",
+          "destination_history_missing_90d",
+          "route_history_missing_7d",
+          "route_history_missing_30d",
+          "route_history_missing_90d",
+          "is_arrival_delayed_15m",
+          "split"
+        ]
+      }
+    }
+  },
+  "frozen_rescore": {
+    "status": "passed",
+    "check": "frozen-rescore",
+    "result": {
+      "baseline_model_manifest_sha256": "7e1d0a1a9336dd383da9802db02586e23fcc411a4cd79294ee52c554c6d49ee7",
+      "baseline_code_provenance": {
+        "git_commit": null,
+        "git_dirty": null,
+        "production_python_sha256": "55dd33b3cd4ca61d71432b827cc8f63774928ca49b3a41281d1ee1849f090017"
+      },
+      "verification_output": "data/verification/frozen-rescore",
+      "splits": {
+        "validation": {
+          "rows": 2418739,
+          "decision_multiset_differences": 0,
+          "score_multiset_differences_at_10_decimal_places": 0,
+          "metric_absolute_tolerance": 1e-10,
+          "metric_relative_tolerance": 1e-06
+        },
+        "test": {
+          "rows": 2343541,
+          "decision_multiset_differences": 0,
+          "score_multiset_differences_at_10_decimal_places": 0,
+          "metric_absolute_tolerance": 1e-10,
+          "metric_relative_tolerance": 1e-06
+        }
+      }
+    }
+  },
+  "notebooks": [
+    {
+      "notebook": "spark_smoke_test.ipynb",
+      "status": "passed",
+      "seconds": 18.448413848876953,
+      "code_cells": 2
+    },
+    {
+      "notebook": "00_data_validation.ipynb",
+      "status": "passed",
+      "seconds": 505.646776676178,
+      "code_cells": 10
+    },
+    {
+      "notebook": "01_data_exploration.ipynb",
+      "status": "passed",
+      "seconds": 621.2169494628906,
+      "code_cells": 18
+    },
+    {
+      "notebook": "02_ml_problem_definition.ipynb",
+      "status": "passed",
+      "seconds": 195.5641520023346,
+      "code_cells": 5
+    },
+    {
+      "notebook": "03_spark_execution_lab.ipynb",
+      "status": "passed",
+      "seconds": 34.87686562538147,
+      "code_cells": 16
+    }
+  ],
+  "fault_tolerance": {
+    "executor_removed": {
+      "Event": "SparkListenerExecutorRemoved",
+      "Executor ID": "0",
+      "Removed Reason": "worker lost: worker1:33509 got disassociated",
+      "Timestamp": 1792551599517
+    },
+    "failed_task": {
+      "Event": "SparkListenerTaskEnd",
+      "Stage Attempt ID": 0,
+      "Stage ID": 2,
+      "Task End Reason": {
+        "Executor ID": "0",
+        "Exit Caused By App": false,
+        "Loss Reason": "worker lost: worker1:33509 got disassociated",
+        "Reason": "ExecutorLostFailure"
+      },
+      "Task Executor Metrics": {
+        "DirectPoolMemory": 0,
+        "JVMHeapMemory": -1,
+        "JVMOffHeapMemory": 0,
+        "MajorGCCount": 0,
+        "MajorGCTime": 0,
+        "MappedPoolMemory": 0,
+        "MinorGCCount": 0,
+        "MinorGCTime": 0,
+        "OffHeapExecutionMemory": 0,
+        "OffHeapStorageMemory": 0,
+        "OffHeapUnifiedMemory": 0,
+        "OnHeapExecutionMemory": 0,
+        "OnHeapStorageMemory": 0,
+        "OnHeapUnifiedMemory": 0,
+        "ProcessTreeJVMRSSMemory": 0,
+        "ProcessTreeJVMVMemory": 0,
+        "ProcessTreeOtherRSSMemory": 0,
+        "ProcessTreeOtherVMemory": 0,
+        "ProcessTreePythonRSSMemory": 0,
+        "ProcessTreePythonVMemory": 0,
+        "TotalGCTime": 0
+      },
+      "Task Info": {
+        "Accumulables": [],
+        "Attempt": 0,
+        "Executor ID": "0",
+        "Failed": true,
+        "Finish Time": 1792551599516,
+        "Getting Result Time": 0,
+        "Host": "worker1",
+        "Index": 1,
+        "Killed": false,
+        "Launch Time": 1792551598942,
+        "Locality": "PROCESS_LOCAL",
+        "Partition ID": 1,
+        "Speculative": false,
+        "Task ID": 13
+      },
+      "Task Type": "ShuffleMapTask"
+    },
+    "groups": 10,
+    "jobs": 2,
+    "rows": 1000,
+    "scope": "one worker/executor loss; no driver recovery or external writes",
+    "stages": 4,
+    "status": "passed",
+    "successful_retry": {
+      "Event": "SparkListenerTaskEnd",
+      "Stage Attempt ID": 0,
+      "Stage ID": 2,
+      "Task End Reason": {
+        "Reason": "Success"
+      },
+      "Task Executor Metrics": {
+        "DirectPoolMemory": 16789391,
+        "JVMHeapMemory": 45840176,
+        "JVMOffHeapMemory": 69256040,
+        "MajorGCCount": 0,
+        "MajorGCTime": 0,
+        "MappedPoolMemory": 0,
+        "MinorGCCount": 7,
+        "MinorGCTime": 218,
+        "OffHeapExecutionMemory": 0,
+        "OffHeapStorageMemory": 0,
+        "OffHeapUnifiedMemory": 0,
+        "OnHeapExecutionMemory": 0,
+        "OnHeapStorageMemory": 54675,
+        "OnHeapUnifiedMemory": 54675,
+        "ProcessTreeJVMRSSMemory": 0,
+        "ProcessTreeJVMVMemory": 0,
+        "ProcessTreeOtherRSSMemory": 0,
+        "ProcessTreeOtherVMemory": 0,
+        "ProcessTreePythonRSSMemory": 0,
+        "ProcessTreePythonVMemory": 0,
+        "TotalGCTime": 218
+      },
+      "Task Info": {
+        "Accumulables": [
+          {
+            "Count Failed Values": true,
+            "ID": 71,
+            "Internal": true,
+            "Name": "internal.metrics.executorDeserializeTime",
+            "Update": 2,
+            "Value": 47
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 72,
+            "Internal": true,
+            "Name": "internal.metrics.executorDeserializeCpuTime",
+            "Update": 2663827,
+            "Value": 12286246
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 73,
+            "Internal": true,
+            "Name": "internal.metrics.executorRunTime",
+            "Update": 10140,
+            "Value": 20269
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 74,
+            "Internal": true,
+            "Name": "internal.metrics.executorCpuTime",
+            "Update": 16545315,
+            "Value": 36350918
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 75,
+            "Internal": true,
+            "Name": "internal.metrics.resultSize",
+            "Update": 1487,
+            "Value": 2974
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 78,
+            "Internal": true,
+            "Name": "internal.metrics.memoryBytesSpilled",
+            "Update": 0,
+            "Value": 0
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 79,
+            "Internal": true,
+            "Name": "internal.metrics.diskBytesSpilled",
+            "Update": 0,
+            "Value": 0
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 99,
+            "Internal": true,
+            "Name": "internal.metrics.shuffle.write.bytesWritten",
+            "Update": 367,
+            "Value": 734
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 100,
+            "Internal": true,
+            "Name": "internal.metrics.shuffle.write.recordsWritten",
+            "Update": 4,
+            "Value": 8
+          },
+          {
+            "Count Failed Values": true,
+            "ID": 101,
+            "Internal": true,
+            "Name": "internal.metrics.shuffle.write.writeTime",
+            "Update": 1607711,
+            "Value": 3085521
+          }
+        ],
+        "Attempt": 1,
+        "Executor ID": "1",
+        "Failed": false,
+        "Finish Time": 1792551619276,
+        "Getting Result Time": 0,
+        "Host": "worker2",
+        "Index": 1,
+        "Killed": false,
+        "Launch Time": 1792551609125,
+        "Locality": "PROCESS_LOCAL",
+        "Partition ID": 1,
+        "Speculative": false,
+        "Task ID": 14
+      },
+      "Task Metrics": {
+        "Disk Bytes Spilled": 0,
+        "Executor CPU Time": 16545315,
+        "Executor Deserialize CPU Time": 2663827,
+        "Executor Deserialize Time": 2,
+        "Executor Run Time": 10140,
+        "Input Metrics": {
+          "Bytes Read": 0,
+          "Records Read": 0
+        },
+        "JVM GC Time": 0,
+        "Memory Bytes Spilled": 0,
+        "Output Metrics": {
+          "Bytes Written": 0,
+          "Records Written": 0
+        },
+        "Peak Execution Memory": 0,
+        "Result Serialization Time": 0,
+        "Result Size": 1487,
+        "Shuffle Read Metrics": {
+          "Fetch Wait Time": 0,
+          "Local Blocks Fetched": 0,
+          "Local Bytes Read": 0,
+          "Push Based Shuffle": {
+            "Corrupt Merged Block Chunks": 0,
+            "Merged Fetch Fallback Count": 0,
+            "Merged Local Blocks Fetched": 0,
+            "Merged Local Bytes Read": 0,
+            "Merged Local Chunks Fetched": 0,
+            "Merged Remote Blocks Fetched": 0,
+            "Merged Remote Bytes Read": 0,
+            "Merged Remote Chunks Fetched": 0,
+            "Merged Remote Requests Duration": 0
+          },
+          "Remote Blocks Fetched": 0,
+          "Remote Bytes Read": 0,
+          "Remote Bytes Read To Disk": 0,
+          "Remote Requests Duration": 0,
+          "Total Records Read": 0
+        },
+        "Shuffle Write Metrics": {
+          "Shuffle Bytes Written": 367,
+          "Shuffle Records Written": 4,
+          "Shuffle Write Time": 1607711
+        },
+        "Updated Blocks": []
+      },
+      "Task Type": "ShuffleMapTask"
+    },
+    "sum": 499500,
+    "task_attempts": 25
+  },
+  "rerun_scope": "Full feature rebuild verified by all-column multiset equality; warehouse idempotency exercised by retained integration fixtures; full pipeline executed once successfully after initial permission failure, not claimed as two successful full runs.",
+  "historical_research": "Original saved candidate metrics are retained only on independent research branches; no promotion."
+}

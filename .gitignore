@@ -12,6 +12,12 @@
 /artifacts/fault_tolerance/
 /studies/*/runtime/
 
+# Retain only the compact M9 report and summaries; runner details are local.
+/artifacts/performance/m9/*
+!/artifacts/performance/m9/report.md
+!/artifacts/performance/m9/summary.csv
+!/artifacts/performance/m9/summary.json
+
 # Generated binaries and delivery archives.
 *.parquet
 *.zip

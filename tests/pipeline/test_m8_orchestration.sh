@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # AI-generated test code: generated with OpenAI Codex.
+# Check production pipeline orchestration behavior.
 
 set -euo pipefail
 

@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests dim quality behavior."""
+
 import os
 import shutil
 import tempfile
@@ -39,6 +41,7 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m3-full-data-quality")
     yield session
     session.stop()
@@ -46,6 +49,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture(scope="module")
 def snapshot_directory() -> Iterator[Path]:
+    """Create a valid dataset snapshot in the test workspace."""
     shared_root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     shared_root.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix="airline-m3-", dir=shared_root))
@@ -56,6 +60,7 @@ def snapshot_directory() -> Iterator[Path]:
 
 
 def _assert_same_rows(first: DataFrame, second: DataFrame) -> None:
+    """Check same rows."""
     columns = sorted(first.columns)
     assert columns == sorted(second.columns)
     first_aligned = first.select(*columns)
@@ -68,6 +73,7 @@ def _assert_same_rows(first: DataFrame, second: DataFrame) -> None:
 def _load_dimensions(
     spark: SparkSession, paths: ProjectPaths
 ) -> Dict[str, DataFrame]:
+    """Load dimensions."""
     return {
         "date": spark.read.parquet(str(paths.resolve(paths.dim_date))),
         "carrier": spark.read.parquet(str(paths.resolve(paths.dim_carrier))),
@@ -79,6 +85,7 @@ def _load_dimensions(
 def _anti_join_counts(
     dwd: DataFrame, dimensions: Dict[str, DataFrame]
 ) -> Dict[str, int]:
+    """Count unmatched rows in both directions."""
     dwd_airports = (
         dwd.select(F.col("origin").alias("airport_code"))
         .union(dwd.select(F.col("dest").alias("airport_code")))
@@ -129,6 +136,7 @@ def test_full_dimensions_quality_and_second_build_idempotency(
     spark: SparkSession,
     snapshot_directory: Path,
 ) -> None:
+    """Exercise the full dimensions quality and second build idempotency case."""
     config = load_config()
     paths = get_project_paths(config)
     dwd_path = paths.resolve(paths.dwd_flights)

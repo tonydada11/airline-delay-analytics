@@ -1,6 +1,6 @@
 {
   "baseline": {
-    "elapsed_seconds": 4.779298666981049,
+    "elapsed_seconds": 3.8650239459993827,
     "logical_profile": {
       "delayed_flights": 471608,
       "duplicate_grains": 0,
@@ -13,7 +13,7 @@
     "runtime": {
       "available": true,
       "diskBytesSpilled": 0,
-      "executorRunTime": 7612,
+      "executorRunTime": 6101,
       "inputBytes": 11972280,
       "inputRecords": 2183349,
       "job_count": 2,
@@ -38,7 +38,7 @@
       ],
       "memoryBytesSpilled": 0,
       "numTasks": 4,
-      "outputBytes": 4652518,
+      "outputBytes": 4654329,
       "outputRecords": 570181,
       "shuffleReadBytes": 17437440,
       "shuffleReadRecords": 716167,
@@ -49,7 +49,7 @@
         {
           "attempt_id": 0,
           "diskBytesSpilled": 0,
-          "executorRunTime": 4027,
+          "executorRunTime": 3190,
           "inputBytes": 11972280,
           "inputRecords": 2183349,
           "memoryBytesSpilled": 0,
@@ -69,29 +69,29 @@
               0.0
             ],
             "duration": [
-              2134.0,
-              2134.0,
-              2134.0
+              1727.0,
+              1727.0,
+              1727.0
             ],
             "executorCpuTime": [
-              1662856460.0,
-              1662856460.0,
-              1662856460.0
+              1394526538.0,
+              1394526538.0,
+              1394526538.0
             ],
             "executorDeserializeCpuTime": [
-              67280217.0,
-              67280217.0,
-              67280217.0
+              54002488.0,
+              54002488.0,
+              54002488.0
             ],
             "executorDeserializeTime": [
-              109.0,
-              109.0,
-              109.0
+              75.0,
+              75.0,
+              75.0
             ],
             "executorRunTime": [
-              2026.0,
-              2026.0,
-              2026.0
+              1641.0,
+              1641.0,
+              1641.0
             ],
             "gettingResultTime": [
               0.0,
@@ -111,9 +111,9 @@
               ]
             },
             "jvmGcTime": [
-              50.0,
-              50.0,
-              50.0
+              57.0,
+              57.0,
+              57.0
             ],
             "memoryBytesSpilled": [
               0.0,
@@ -143,9 +143,9 @@
               1.0
             ],
             "resultSerializationTime": [
-              9.0,
-              9.0,
-              9.0
+              4.0,
+              4.0,
+              4.0
             ],
             "resultSize": [
               3041.0,
@@ -153,9 +153,9 @@
               3041.0
             ],
             "schedulerDelay": [
-              15.0,
-              15.0,
-              15.0
+              10.0,
+              10.0,
+              10.0
             ],
             "shuffleReadMetrics": {
               "fetchWaitTime": [
@@ -263,9 +263,9 @@
                 365283.0
               ],
               "writeTime": [
-                112170740.0,
-                112170740.0,
-                112170740.0
+                25701198.0,
+                25701198.0,
+                25701198.0
               ]
             }
           }
@@ -273,13 +273,13 @@
         {
           "attempt_id": 0,
           "diskBytesSpilled": 0,
-          "executorRunTime": 3585,
+          "executorRunTime": 2911,
           "inputBytes": 0,
           "inputRecords": 0,
           "memoryBytesSpilled": 0,
           "name": "parquet at NativeMethodAccessorImpl.java:0",
           "numTasks": 2,
-          "outputBytes": 4652518,
+          "outputBytes": 4654329,
           "outputRecords": 570181,
           "shuffleReadBytes": 17437440,
           "shuffleReadRecords": 716167,
@@ -293,29 +293,29 @@
               0.0
             ],
             "duration": [
-              1970.0,
-              1970.0,
-              1970.0
+              1601.0,
+              1601.0,
+              1601.0
             ],
             "executorCpuTime": [
-              1514298777.0,
-              1514298777.0,
-              1514298777.0
+              1208941936.0,
+              1208941936.0,
+              1208941936.0
             ],
             "executorDeserializeCpuTime": [
-              100860931.0,
-              100860931.0,
-              100860931.0
+              73190750.0,
+              73190750.0,
+              73190750.0
             ],
             "executorDeserializeTime": [
-              135.0,
-              135.0,
-              135.0
+              99.0,
+              99.0,
+              99.0
             ],
             "executorRunTime": [
-              1811.0,
-              1811.0,
-              1811.0
+              1478.0,
+              1478.0,
+              1478.0
             ],
             "gettingResultTime": [
               0.0,
@@ -335,9 +335,9 @@
               ]
             },
             "jvmGcTime": [
-              58.0,
-              58.0,
-              58.0
+              41.0,
+              41.0,
+              41.0
             ],
             "memoryBytesSpilled": [
               0.0,
@@ -346,9 +346,9 @@
             ],
             "outputMetrics": {
               "bytesWritten": [
-                2357901.0,
-                2357901.0,
-                2357901.0
+                2339336.0,
+                2339336.0,
+                2339336.0
               ],
               "recordsWritten": [
                 285819.0,
@@ -367,9 +367,9 @@
               1.0
             ],
             "resultSerializationTime": [
-              12.0,
-              12.0,
-              12.0
+              6.0,
+              6.0,
+              6.0
             ],
             "resultSize": [
               6619.0,
@@ -377,9 +377,9 @@
               6619.0
             ],
             "schedulerDelay": [
-              17.0,
-              17.0,
-              17.0
+              31.0,
+              31.0,
+              31.0
             ],
             "shuffleReadMetrics": {
               "fetchWaitTime": [
@@ -408,9 +408,9 @@
                 1.0
               ],
               "remoteBytesRead": [
-                4467499.0,
-                4467499.0,
-                4467499.0
+                4503892.0,
+                4503892.0,
+                4503892.0
               ],
               "remoteBytesReadToDisk": [
                 0.0,
@@ -418,9 +418,9 @@
                 0.0
               ],
               "remoteReqsDuration": [
-                60.0,
-                60.0,
-                60.0
+                43.0,
+                43.0,
+                43.0
               ],
               "shufflePushReadMetricsDist": {
                 "corruptMergedBlockChunks": [
@@ -530,19 +530,19 @@
               "scheduled_flights": 2183349
             }
           },
-          "median_seconds": 1.596995488012908,
+          "median_seconds": 1.946595522500047,
           "run_count": 2,
           "runs_seconds": [
-            1.9115567890694365,
-            1.2824341869563796
+            2.3886640239998087,
+            1.5045270210002855
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 6.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 9.0,
-            "shuffleReadBytes": 11993.0,
-            "shuffleWriteBytes": 11993.0,
+            "shuffleReadBytes": 11982.0,
+            "shuffleWriteBytes": 11982.0,
             "stage_count": 6.0
           }
         },
@@ -559,19 +559,19 @@
               "scheduled_flights": 2183349
             }
           },
-          "median_seconds": 0.36461815747315995,
+          "median_seconds": 0.4023717340000985,
           "run_count": 2,
           "runs_seconds": [
-            0.4188271699822508,
-            0.31040914496406913
+            0.4335544360001222,
+            0.3711890320000748
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 5.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 7.0,
-            "shuffleReadBytes": 11993.0,
-            "shuffleWriteBytes": 11993.0,
+            "shuffleReadBytes": 11982.0,
+            "shuffleWriteBytes": 11982.0,
             "stage_count": 5.0
           }
         }
@@ -589,11 +589,11 @@
             "scheduled_flights": 2183349,
             "unique_grains": 15
           },
-          "median_seconds": 0.7493778695061337,
+          "median_seconds": 0.9171366944997317,
           "run_count": 2,
           "runs_seconds": [
-            0.7899786999914795,
-            0.7087770390207879
+            1.0764790209996136,
+            0.7577943679998498
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
@@ -615,11 +615,11 @@
             "scheduled_flights": 2183349,
             "unique_grains": 15
           },
-          "median_seconds": 1.7465940159745514,
+          "median_seconds": 1.685406728000089,
           "run_count": 2,
           "runs_seconds": [
-            1.9626662689843215,
-            1.5305217629647814
+            1.9635148899997148,
+            1.4072985660004633
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
@@ -645,11 +645,11 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 2.7841160445241258,
+          "median_seconds": 3.2145440765002604,
           "run_count": 2,
           "runs_seconds": [
-            2.8917635150137357,
-            2.6764685740345158
+            3.1045708940000623,
+            3.3245172590004586
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
@@ -671,19 +671,19 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 3.117732310987776,
+          "median_seconds": 3.670923490500172,
           "run_count": 2,
           "runs_seconds": [
-            3.224950153962709,
-            3.0105144680128433
+            3.372882410000784,
+            3.9689645709995602
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 3.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 6.0,
-            "shuffleReadBytes": 58580728.0,
-            "shuffleWriteBytes": 58580728.0,
+            "shuffleReadBytes": 58579750.5,
+            "shuffleWriteBytes": 58579750.5,
             "stage_count": 3.0
           }
         },
@@ -697,19 +697,19 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 3.8038317339960486,
+          "median_seconds": 4.1162166269996305,
           "run_count": 2,
           "runs_seconds": [
-            3.5525843639625236,
-            4.0550791040295735
+            4.170819561999451,
+            4.06161369199981
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 3.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 8.0,
-            "shuffleReadBytes": 66063844.0,
-            "shuffleWriteBytes": 66063844.0,
+            "shuffleReadBytes": 66067505.0,
+            "shuffleWriteBytes": 66067505.0,
             "stage_count": 3.0
           }
         },
@@ -723,19 +723,19 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 3.500056893506553,
+          "median_seconds": 4.380926083500071,
           "run_count": 2,
           "runs_seconds": [
-            3.5860831110039726,
-            3.4140306760091335
+            4.274011116000111,
+            4.487841051000032
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 3.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 12.0,
-            "shuffleReadBytes": 71390940.0,
-            "shuffleWriteBytes": 71390940.0,
+            "shuffleReadBytes": 71394430.0,
+            "shuffleWriteBytes": 71394430.0,
             "stage_count": 3.0
           }
         }
@@ -753,11 +753,11 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 2.311141155019868,
+          "median_seconds": 2.122818554499645,
           "run_count": 2,
           "runs_seconds": [
-            2.2587660850258544,
-            2.363516225013882
+            2.283809540999755,
+            1.961827567999535
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
@@ -779,19 +779,19 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 5.74864890097524,
+          "median_seconds": 4.920775884500017,
           "run_count": 2,
           "runs_seconds": [
-            7.803902838961221,
-            3.6933949629892595
+            6.339409117000287,
+            3.5021426519997476
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 3.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 6.0,
-            "shuffleReadBytes": 58579750.5,
-            "shuffleWriteBytes": 58579750.5,
+            "shuffleReadBytes": 58578773.0,
+            "shuffleWriteBytes": 58578773.0,
             "stage_count": 3.0
           }
         }
@@ -809,11 +809,11 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 1.7069275455141906,
+          "median_seconds": 1.9367779570002313,
           "run_count": 2,
           "runs_seconds": [
-            2.04332549800165,
-            1.3705295930267312
+            2.052928334000171,
+            1.8206275800002913
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
@@ -835,11 +835,11 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 1.4061913805198856,
+          "median_seconds": 1.700387749499896,
           "run_count": 2,
           "runs_seconds": [
-            1.4712961400509812,
-            1.34108662098879
+            1.707326357999591,
+            1.693449141000201
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
@@ -861,11 +861,11 @@
             "scheduled_flights": 2183349,
             "unique_grains": 570181
           },
-          "median_seconds": 1.4833443035022356,
+          "median_seconds": 1.904671674000383,
           "run_count": 2,
           "runs_seconds": [
-            1.6369599959580228,
-            1.3297286110464483
+            1.9063772080007766,
+            1.9029661399999895
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
@@ -894,19 +894,19 @@
               "scheduled_flights": 2183349
             }
           },
-          "median_seconds": 0.9166803399857599,
+          "median_seconds": 1.2485093979998965,
           "run_count": 2,
           "runs_seconds": [
-            0.9551610379712656,
-            0.8781996420002542
+            1.3036775820000912,
+            1.1933412139997017
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 6.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 9.0,
-            "shuffleReadBytes": 11993.0,
-            "shuffleWriteBytes": 11993.0,
+            "shuffleReadBytes": 11982.0,
+            "shuffleWriteBytes": 11982.0,
             "stage_count": 6.0
           }
         },
@@ -923,19 +923,19 @@
               "scheduled_flights": 2183349
             }
           },
-          "median_seconds": 1.1804001069976948,
+          "median_seconds": 1.3499560744999144,
           "run_count": 2,
           "runs_seconds": [
-            1.3641870319843292,
-            0.9966131820110604
+            1.5782056669995654,
+            1.1217064820002633
           ],
           "runtime_medians": {
             "diskBytesSpilled": 0.0,
             "job_count": 6.0,
             "memoryBytesSpilled": 0.0,
             "numTasks": 9.0,
-            "shuffleReadBytes": 11993.0,
-            "shuffleWriteBytes": 11993.0,
+            "shuffleReadBytes": 11982.0,
+            "shuffleWriteBytes": 11982.0,
             "stage_count": 6.0
           }
         }

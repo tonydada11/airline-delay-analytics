@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Download and unpack the pinned BTS monthly files.
 set -euo pipefail
 
 base='https://transtats.bts.gov/PREZIP'

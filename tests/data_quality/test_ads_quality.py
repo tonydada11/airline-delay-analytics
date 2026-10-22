@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests ads quality behavior."""
+
 import os
 import shutil
 import tempfile
@@ -34,6 +36,7 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m6-full-data-quality")
     yield session
     session.stop()
@@ -41,6 +44,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture(scope="module")
 def snapshot_directory() -> Iterator[Path]:
+    """Create a valid dataset snapshot in the test workspace."""
     shared_root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     shared_root.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix="airline-m6-", dir=shared_root))
@@ -51,6 +55,7 @@ def snapshot_directory() -> Iterator[Path]:
 
 
 def _output_paths(paths: ProjectPaths) -> Dict[str, Path]:
+    """Return the expected output paths for the test."""
     return {
         "monthly": paths.resolve(paths.ads_monthly_operations),
         "carrier": paths.resolve(paths.ads_carrier_scorecard),
@@ -62,6 +67,7 @@ def _output_paths(paths: ProjectPaths) -> Dict[str, Path]:
 def _load_ads(
     spark: SparkSession, output_paths: Dict[str, Path]
 ) -> Dict[str, DataFrame]:
+    """Load ads."""
     return {
         name: spark.read.parquet(str(output_path))
         for name, output_path in output_paths.items()
@@ -71,6 +77,7 @@ def _load_ads(
 def _build_all_ads(
     spark: SparkSession, paths: ProjectPaths, outputs: Dict[str, Path]
 ) -> None:
+    """Build all ads."""
     dwd_path = paths.resolve(paths.dwd_flights)
     build_monthly_operations(
         spark,
@@ -104,6 +111,7 @@ def _source_views(
     airport_daily: DataFrame,
     route_daily: DataFrame,
 ) -> tuple[Dict[str, DataFrame], Dict[str, DataFrame]]:
+    """Create temporary views for the source tables."""
     dws_sources = {
         "monthly": carrier_daily.withColumn(
             "year", F.year("flight_date").cast("int")
@@ -122,6 +130,7 @@ def _source_views(
 
 
 def _aggregate_dws_counts(dataframe: DataFrame, grain: Sequence[str]) -> DataFrame:
+    """Aggregate the expected DWS row counts."""
     return dataframe.groupBy(*grain).agg(
         *[
             F.sum(column_name).cast("long").alias(column_name)
@@ -131,6 +140,7 @@ def _aggregate_dws_counts(dataframe: DataFrame, grain: Sequence[str]) -> DataFra
 
 
 def _aggregate_dwd_metrics(dataframe: DataFrame, grain: Sequence[str]) -> DataFrame:
+    """Aggregate source metrics for reconciliation."""
     completed = (F.col("is_cancelled") == 0) & (F.col("is_diverted") == 0)
     counts_and_average = dataframe.groupBy(*grain).agg(
         F.count("*").cast("long").alias("scheduled_flights"),
@@ -160,6 +170,7 @@ def _aggregate_dwd_metrics(dataframe: DataFrame, grain: Sequence[str]) -> DataFr
 
 
 def _quality_violations(dataframe: DataFrame, grain: Sequence[str]) -> Dict[str, int]:
+    """Collect the quality checks that fail."""
     null_grain: Column = F.lit(False)
     for column_name in grain:
         null_grain = null_grain | F.col(column_name).isNull()
@@ -243,6 +254,7 @@ def _reconciliation_mismatches(
     expected_dwd: DataFrame,
     grain: Sequence[str],
 ) -> Dict[str, int]:
+    """Find row-count and metric differences."""
     actual_counts = actual.select(*grain, *COUNT_METRIC_COLUMNS)
     dws_count_mismatch = (
         actual_counts.exceptAll(expected_dws_counts).limit(1).count()
@@ -286,6 +298,7 @@ def _reconciliation_mismatches(
 def _multiset_differences(
     first: DataFrame, second: DataFrame, columns: Sequence[str]
 ) -> tuple[int, int]:
+    """Compare the expected and actual row multisets."""
     first_aligned = first.select(*columns)
     second_aligned = second.select(*columns)
     assert first_aligned.schema == second_aligned.schema
@@ -298,6 +311,7 @@ def _multiset_differences(
 def test_full_ads_reconciliation_quality_and_second_build_idempotency(
     spark: SparkSession, snapshot_directory: Path
 ) -> None:
+    """Exercise the full ads reconciliation quality and second build idempotency case."""
     paths = get_project_paths(load_config())
     outputs = _output_paths(paths)
     dwd = spark.read.parquet(str(paths.resolve(paths.dwd_flights)))

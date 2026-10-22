@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests dimensions behavior."""
+
 import os
 import shutil
 import tempfile
@@ -82,6 +84,7 @@ def _airport(
     state_name: str,
     wac: int,
 ) -> Dict[str, object]:
+    """Build one airport dimension fixture row."""
     return {
         "code": code,
         "airport_id": airport_id,
@@ -110,6 +113,7 @@ def _row(
     origin: Dict[str, object],
     destination: Dict[str, object],
 ) -> Dict[str, object]:
+    """Build one representative flight row."""
     row: Dict[str, object] = {
         "flight_date": flight_date,
         "reporting_airline": carrier,
@@ -125,6 +129,7 @@ def _row(
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m3-integration-tests")
     yield session
     session.stop()
@@ -132,6 +137,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture(scope="module")
 def shared_tmp_path() -> Iterator[Path]:
+    """Return the shared temporary directory for test outputs."""
     shared_root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     shared_root.mkdir(parents=True, exist_ok=True)
     test_directory = Path(tempfile.mkdtemp(prefix="airline-m3-", dir=shared_root))
@@ -143,6 +149,7 @@ def shared_tmp_path() -> Iterator[Path]:
 
 @pytest.fixture(scope="module")
 def dwd_rows() -> List[Dict[str, object]]:
+    """Create the sample trusted flight records."""
     first = _row(date(2024, 9, 13), "AA", 1, JFK_OLD, LAX)
     return [
         first,
@@ -154,6 +161,7 @@ def dwd_rows() -> List[Dict[str, object]]:
 
 
 def _dataframe(spark: SparkSession, rows: List[Dict[str, object]]) -> DataFrame:
+    """Build a small Spark DataFrame for the test."""
     return spark.createDataFrame(
         [[row.get(field.name) for field in DWD_DIMENSION_SCHEMA.fields] for row in rows],
         DWD_DIMENSION_SCHEMA,
@@ -164,6 +172,7 @@ def _dataframe(spark: SparkSession, rows: List[Dict[str, object]]) -> DataFrame:
 def built_dimensions(
     spark: SparkSession, shared_tmp_path: Path, dwd_rows: List[Dict[str, object]]
 ) -> Dict[str, Path]:
+    """Build and return the dimension fixtures."""
     paths = {
         "dwd": shared_tmp_path / "dwd" / "flights",
         "date": shared_tmp_path / "dim" / "date",
@@ -180,6 +189,7 @@ def built_dimensions(
 
 
 def _stable_rows(dataframe: DataFrame) -> List[str]:
+    """Return fixture rows in deterministic order."""
     columns = sorted(dataframe.columns)
     return sorted(repr(row.asDict()) for row in dataframe.select(*columns).collect())
 
@@ -187,6 +197,7 @@ def _stable_rows(dataframe: DataFrame) -> List[str]:
 def test_transforms_return_expected_schemas(
     spark: SparkSession, dwd_rows: List[Dict[str, object]]
 ) -> None:
+    """Exercise the transforms return expected schemas case."""
     dwd = _dataframe(spark, dwd_rows)
 
     assert transform_date_dimension(dwd).columns == [
@@ -221,6 +232,7 @@ def test_transforms_return_expected_schemas(
 def test_date_values_are_readable_and_unambiguous(
     spark: SparkSession, built_dimensions: Dict[str, Path]
 ) -> None:
+    """Exercise the date values are readable and unambiguous case."""
     rows = {
         row["flight_date"]: row
         for row in spark.read.parquet(str(built_dimensions["date"])).collect()
@@ -237,6 +249,7 @@ def test_date_values_are_readable_and_unambiguous(
 def test_surrogate_keys_use_readable_natural_key_values(
     spark: SparkSession, dwd_rows: List[Dict[str, object]]
 ) -> None:
+    """Exercise the surrogate keys use readable natural key values case."""
     dwd = _dataframe(spark, dwd_rows)
     carrier = transform_carrier_dimension(dwd).filter(
         F.col("reporting_airline") == "AA"
@@ -258,6 +271,7 @@ def test_surrogate_keys_use_readable_natural_key_values(
 def test_latest_attributes_use_a_fully_deterministic_tie_break(
     spark: SparkSession, built_dimensions: Dict[str, Path]
 ) -> None:
+    """Exercise the latest attributes use a fully deterministic tie break case."""
     carriers = spark.read.parquet(str(built_dimensions["carrier"]))
     airports = spark.read.parquet(str(built_dimensions["airport"]))
 
@@ -270,6 +284,7 @@ def test_latest_attributes_use_a_fully_deterministic_tie_break(
 def test_grains_keys_directionality_and_airport_union(
     spark: SparkSession, built_dimensions: Dict[str, Path]
 ) -> None:
+    """Exercise the grains keys directionality and airport union case."""
     dimensions = {
         name: spark.read.parquet(str(built_dimensions[name]))
         for name in ("date", "carrier", "airport", "route")
@@ -301,6 +316,7 @@ def test_grains_keys_directionality_and_airport_union(
 def test_all_dwd_natural_keys_resolve_with_left_anti_joins(
     spark: SparkSession, built_dimensions: Dict[str, Path]
 ) -> None:
+    """Exercise the all dwd natural keys resolve with left anti joins case."""
     dwd = spark.read.parquet(str(built_dimensions["dwd"]))
     dates = spark.read.parquet(str(built_dimensions["date"]))
     carriers = spark.read.parquet(str(built_dimensions["carrier"]))
@@ -336,6 +352,7 @@ def test_all_dwd_natural_keys_resolve_with_left_anti_joins(
 def test_outputs_are_unpartitioned_and_second_build_is_content_idempotent(
     spark: SparkSession, built_dimensions: Dict[str, Path]
 ) -> None:
+    """Exercise the outputs are unpartitioned and second build is content idempotent case."""
     first_rows = {
         name: _stable_rows(spark.read.parquet(str(built_dimensions[name])))
         for name in ("date", "carrier", "airport", "route")
@@ -368,6 +385,7 @@ def test_validation_rejects_null_natural_keys(
     validator: object,
     column_name: str,
 ) -> None:
+    """Exercise the validation rejects null natural keys case."""
     invalid = dict(dwd_rows[0])
     invalid[column_name] = None
     with pytest.raises(AssertionError):

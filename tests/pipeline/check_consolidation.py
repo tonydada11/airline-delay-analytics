@@ -22,6 +22,7 @@ from airline.ml.model_contract import PREDICTION_COLUMNS
 
 
 def assert_same_metrics(expected, actual):
+    """Check same metrics."""
     if isinstance(expected, dict):
         assert expected.keys() == actual.keys()
         for key in expected:
@@ -33,6 +34,7 @@ def assert_same_metrics(expected, actual):
 
 
 def check_features(spark, paths, baseline):
+    """Check features."""
     result = {}
     for phase, configured in (('selection', paths.dws_ml_flight_features), ('test', paths.dws_ml_test_features)):
         old = spark.read.parquet(str(baseline / phase)).select(*OUTPUT_COLUMNS)
@@ -47,6 +49,7 @@ def check_features(spark, paths, baseline):
 
 
 def check_frozen_rescore(spark, paths, baseline, verification):
+    """Check frozen rescore."""
     original = baseline / 'artifacts/flighttime-v3'
     manifest_path = original / 'models/manifest.json'
     manifest_sha256 = sha256_file(manifest_path)

@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests ml flight features behavior."""
+
 from datetime import date, datetime, timedelta, timezone
 import os
 from pathlib import Path
@@ -15,6 +17,7 @@ from airline.dws.build_ml_flight_features import (
 
 @pytest.fixture(scope="module")
 def spark():
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-feature-tests")
     yield session
     session.stop()
@@ -22,6 +25,7 @@ def spark():
 
 @pytest.fixture(scope="module")
 def shared_path():
+    """Return the shared test data path."""
     root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     root.mkdir(parents=True, exist_ok=True)
     # Keep failed-run artifacts inspectable; use a unique, narrow fixture directory.
@@ -30,6 +34,7 @@ def shared_path():
 
 @pytest.fixture(scope="module")
 def dwd(spark):
+    """Build a small trusted-flight DataFrame."""
     rows = []
     for i in range(48):
         day = date(2023, 1, 1) + timedelta(days=i * 3)
@@ -44,6 +49,7 @@ def dwd(spark):
 
 @pytest.mark.parametrize("entity,keys", ENTITIES)
 def test_timestamp_boundaries_overnight_same_day_future_duplicates(spark, entity, keys):
+    """Exercise the timestamp boundaries overnight same day future duplicates case."""
     from airline.dws.flight_time import DAY_US
     target = 200 * DAY_US
     hour = DAY_US // 24
@@ -71,6 +77,7 @@ def test_timestamp_boundaries_overnight_same_day_future_duplicates(spark, entity
 
 
 def test_schedule_midnight_missing_and_no_actual_time_dependency(dwd):
+    """Exercise the schedule midnight missing and no actual time dependency case."""
     row = dwd.orderBy("flight_date").limit(1).withColumn("scheduled_departure_hour", F.lit(0)).withColumn("scheduled_departure_minute", F.lit(0))
     row = row.withColumn("scheduled_arrival_minute", F.lit(None).cast("int"))
     row = row.withColumn("dep_delay", F.lit(999)).withColumn("arr_delay", F.lit(999))
@@ -83,6 +90,7 @@ def test_schedule_midnight_missing_and_no_actual_time_dependency(dwd):
 
 
 def test_eligibility_multiplicity_and_split_boundaries(spark, dwd, shared_path):
+    """Exercise the eligibility multiplicity and split boundaries case."""
     source = dwd.unionByName(dwd.orderBy("flight_date").limit(1))
     source = source.unionByName(dwd.orderBy("flight_date").limit(1).withColumn("is_cancelled", F.lit(1)))
     source = source.unionByName(dwd.orderBy("flight_date").limit(1).withColumn("is_diverted", F.lit(1)))
@@ -112,6 +120,7 @@ def test_eligibility_multiplicity_and_split_boundaries(spark, dwd, shared_path):
 @pytest.mark.parametrize("boundary", [VALIDATION_START, TEST_START])
 @pytest.mark.parametrize("entity,keys", ENTITIES)
 def test_history_crosses_both_split_boundaries(spark, boundary, entity, keys):
+    """Exercise the history crosses both split boundaries case."""
     from airline.dws.flight_time import DAY_US
     target = int(datetime.combine(boundary, datetime.min.time(), tzinfo=timezone.utc).timestamp())*1_000_000
     source = spark.createDataFrame([(target-DAY_US, target-1, 'AA', 'ORD', 'LAX', 1),
@@ -125,11 +134,13 @@ def test_history_crosses_both_split_boundaries(spark, boundary, entity, keys):
 
 @pytest.mark.parametrize("column,value", [("is_cancelled", 2), (TARGET_COLUMN, 2), ("flight_date", date(2025,1,1))])
 def test_invalid_source_fails(dwd, column, value):
+    """Exercise the invalid source fails case."""
     with pytest.raises(AssertionError):
         validate_ml_source(dwd.withColumn(column, F.lit(value)))
 
 
 def test_null_entities_preserve_multiplicity_and_history(dwd):
+    """Exercise the null entities preserve multiplicity and history case."""
     source = dwd.orderBy("flight_date").limit(3).withColumn("origin", F.lit(None).cast("string"))
     featured = transform_ml_flight_features(source).orderBy("flight_date").collect()
     assert len(featured) == 3
@@ -139,6 +150,7 @@ def test_null_entities_preserve_multiplicity_and_history(dwd):
 
 
 def test_history_domain_and_schema_fail_closed(dwd):
+    """Exercise the history domain and schema fail closed case."""
     features = transform_ml_flight_features(dwd)
     with pytest.raises(AssertionError, match="schema"):
         validate_feature_frame(features.drop("distance"))
@@ -155,6 +167,7 @@ def test_history_domain_and_schema_fail_closed(dwd):
 
 
 def test_selection_features_ignore_test_changes_and_target_outcomes(dwd):
+    """Exercise the selection features ignore test changes and target outcomes case."""
     from airline.dws.build_ml_flight_features import select_eligible_flights
     source = dwd.orderBy('flight_date').limit(2)
     test = source.withColumn('flight_date', F.lit(TEST_START))
@@ -168,6 +181,7 @@ def test_selection_features_ignore_test_changes_and_target_outcomes(dwd):
 
 
 def test_utc_conversion_stable_after_repartition_reload(spark, dwd, shared_path):
+    """Exercise the utc conversion stable after repartition reload case."""
     from airline.dws.build_ml_flight_features import select_eligible_flights
     original = select_eligible_flights(dwd).select('flight_id', '_prediction_us', '_available_us')
     dwd.repartition(3).write.parquet(str(shared_path / 'time-reload'))
@@ -181,6 +195,7 @@ def test_utc_conversion_stable_after_repartition_reload(spark, dwd, shared_path)
 
 
 def test_test_materialization_requires_completed_selection(spark, shared_path):
+    """Exercise the test materialization requires completed selection case."""
     with pytest.raises(ValueError, match='manifest'):
         build_ml_flight_features(spark, shared_path / 'absent-dwd', shared_path / 'blocked-test',
                                 {'raw_manifest_sha256': 'a'*64}, phase='test')
@@ -188,6 +203,7 @@ def test_test_materialization_requires_completed_selection(spark, shared_path):
 
 
 def test_actual_arrival_uses_signed_delay_elapsed_and_fails_closed(dwd):
+    """Exercise the actual arrival uses signed delay elapsed and fails closed case."""
     from airline.dws.build_ml_flight_features import select_eligible_flights
     one = dwd.orderBy('flight_date').limit(1)
     early = select_eligible_flights(one.withColumn('dep_delay', F.lit(-20.0)).withColumn('actual_elapsed_time', F.lit(60.0))).first()
@@ -200,6 +216,7 @@ def test_actual_arrival_uses_signed_delay_elapsed_and_fails_closed(dwd):
 
 @pytest.mark.parametrize('entity,keys', ENTITIES)
 def test_unknown_target_time_and_empty_entity_have_empty_histories(spark, entity, keys):
+    """Exercise the unknown target time and empty entity have empty histories case."""
     frame = spark.createDataFrame([(None, None, 'AA', 'ORD', 'LAX', 1),
                                    (10, 20, 'AA', 'ORD', 'LAX', 1),
                                    (30, 40, 'NEW', 'NEW', 'NEW', 0)],

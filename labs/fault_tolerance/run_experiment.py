@@ -12,14 +12,17 @@ import uuid
 
 
 def write(path, value):
+    """Write the supplied value to the target path."""
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n')
 
 
 def expected():
+    """Return the expected groups, counts, and sums for the workload."""
     return [[k, [100, 49500 + 100*k]] for k in range(10)]
 
 
 def partition(values, group):
+    """Map task values to groups and record active recovery work."""
     from pyspark import TaskContext
     context=TaskContext.get()
     marker=Path('/evidence')/('active-'+socket.gethostname()+'.json')
@@ -37,6 +40,7 @@ def partition(values, group):
 
 
 def workload():
+    """Run baseline and worker-loss jobs and compare their exact outputs."""
     from pyspark import SparkConf, SparkContext
     conf = (SparkConf().setAppName('isolated-worker-loss').setMaster('spark://master:7077')
             .set('spark.driver.host', 'driver').set('spark.driver.bindAddress', '0.0.0.0')
@@ -57,6 +61,7 @@ def workload():
 
 
 def events(root):
+    """Read Spark event records from the experiment output folder."""
     result = []
     for path in sorted((root/'events').glob('*')):
         if path.is_file() and not path.name.startswith('.'):
@@ -67,6 +72,7 @@ def events(root):
 
 
 def verify(root):
+    """Verify active-task failure, retry, executor removal, and exact output."""
     rows = events(root)
     injection = json.loads((root/'injection.json').read_text())
     victim = injection['active_task']
@@ -100,6 +106,7 @@ def verify(root):
 
 
 def run(output):
+    """Run the isolated worker-loss experiment and clean up its containers."""
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     (output/'events').mkdir()
@@ -109,6 +116,7 @@ def run(output):
     commands=[]
     source_hashes={name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('run_experiment.py','compose.yml')}
     def command(args, timeout=30, check=True):
+        """Run one Compose command and save its result."""
         full=base+args
         result=subprocess.run(full,env=env,capture_output=True,text=True,timeout=timeout)
         commands.append(dict(argv=full,exit_code=result.returncode,stdout=result.stdout,stderr=result.stderr))

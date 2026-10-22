@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests dws quality behavior."""
+
 import os
 import shutil
 import tempfile
@@ -37,6 +39,7 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m4-full-data-quality")
     yield session
     session.stop()
@@ -44,6 +47,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture(scope="module")
 def snapshot_directory() -> Iterator[Path]:
+    """Create a valid dataset snapshot in the test workspace."""
     shared_root = Path(os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir()))
     shared_root.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix="airline-m4-", dir=shared_root))
@@ -54,6 +58,7 @@ def snapshot_directory() -> Iterator[Path]:
 
 
 def _assert_same_rows(first: DataFrame, second: DataFrame) -> None:
+    """Check same rows."""
     columns = sorted(first.columns)
     assert columns == sorted(second.columns)
     first_aligned = first.select(*columns)
@@ -64,6 +69,7 @@ def _assert_same_rows(first: DataFrame, second: DataFrame) -> None:
 
 
 def _load_dws(spark: SparkSession, paths: ProjectPaths) -> Dict[str, DataFrame]:
+    """Load dws."""
     return {
         "carrier": spark.read.parquet(str(paths.resolve(paths.dws_carrier_daily))),
         "origin": spark.read.parquet(
@@ -74,6 +80,7 @@ def _load_dws(spark: SparkSession, paths: ProjectPaths) -> Dict[str, DataFrame]:
 
 
 def _output_paths(paths: ProjectPaths) -> Dict[str, Path]:
+    """Return the expected output paths for the test."""
     return {
         "carrier": paths.resolve(paths.dws_carrier_daily),
         "origin": paths.resolve(paths.dws_origin_airport_daily),
@@ -82,12 +89,14 @@ def _output_paths(paths: ProjectPaths) -> Dict[str, Path]:
 
 
 def _source_at_output_grain(dwd: DataFrame, name: str) -> DataFrame:
+    """Aggregate the source data at the output grain."""
     if name == "route":
         return dwd.withColumn("destination", F.col("dest")).drop("dest")
     return dwd
 
 
 def _dwd_count_totals(dwd: DataFrame) -> Dict[str, int]:
+    """Return DWD flight-count totals."""
     completed = (F.col("is_cancelled") == 0) & (F.col("is_diverted") == 0)
     totals = dwd.agg(
         F.count("*").alias("scheduled_flights"),
@@ -101,6 +110,7 @@ def _dwd_count_totals(dwd: DataFrame) -> Dict[str, int]:
 
 
 def _dws_count_totals(dataframe: DataFrame) -> Dict[str, int]:
+    """Return DWS flight-count totals."""
     totals = dataframe.agg(
         *[F.sum(column).alias(column) for column in METRIC_COLUMNS[:6]]
     ).first()
@@ -108,6 +118,7 @@ def _dws_count_totals(dataframe: DataFrame) -> Dict[str, int]:
 
 
 def _quality_violations(dataframe: DataFrame, grain: list[str]) -> Dict[str, int]:
+    """Collect the quality checks that fail."""
     duplicate_grains = (
         dataframe.groupBy(*grain).count().filter(F.col("count") > 1).count()
     )
@@ -188,6 +199,7 @@ def _quality_violations(dataframe: DataFrame, grain: list[str]) -> Dict[str, int
 def _weighted_average_reconciliation(
     dwd: DataFrame, dataframe: DataFrame, name: str
 ) -> Dict[str, float | int]:
+    """Check weighted averages against the source rows."""
     completed = (F.col("is_cancelled") == 0) & (F.col("is_diverted") == 0)
     source = _source_at_output_grain(dwd, name)
     grain = GRAINS[name]
@@ -217,6 +229,7 @@ def test_full_dws_quality_reconciliation_and_second_build_idempotency(
     spark: SparkSession,
     snapshot_directory: Path,
 ) -> None:
+    """Exercise the full dws quality reconciliation and second build idempotency case."""
     config = load_config()
     paths = get_project_paths(config)
     dwd_path = paths.resolve(paths.dwd_flights)

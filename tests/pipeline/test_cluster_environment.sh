@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # AI-generated test code: generated with OpenAI Codex.
+# Check cluster startup behavior with controlled command stubs.
 
 set -euo pipefail
 
@@ -7,6 +8,7 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 TEST_TMP="$(mktemp -d "${TMPDIR:-/tmp}/airline-cluster-environment.XXXXXX")"
 trap 'rm -rf "${TEST_TMP}"' EXIT
 
+# Create one test case directory.
 make_case() {
   local name="$1"
   local case_root="${TEST_TMP}/${name}"
@@ -14,6 +16,7 @@ make_case() {
   printf '%s\n' "${case_root}"
 }
 
+# Create a Docker stub for the test.
 write_fake_docker() {
   local case_root="$1"
   cat >"${case_root}/bin/docker" <<'EOF'
@@ -46,6 +49,7 @@ EOF
   chmod +x "${case_root}/bin/docker"
 }
 
+# Create a Colima stub for the test.
 write_fake_colima() {
   local case_root="$1"
   cat >"${case_root}/bin/colima" <<'EOF'
@@ -68,6 +72,7 @@ EOF
   chmod +x "${case_root}/bin/df"
 }
 
+# Run the cluster startup script with the test stubs.
 run_start() {
   local case_root="$1"
   local mode="$2"

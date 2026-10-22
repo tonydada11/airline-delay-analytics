@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests dwd quality behavior."""
+
 import os
 from pathlib import Path
 from typing import Iterator, Set, Tuple
@@ -38,12 +40,14 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m2-full-data-quality")
     yield session
     session.stop()
 
 
 def _partition_directories(output_directory: Path) -> Set[Tuple[int, int]]:
+    """Process a partition directories."""
     return {
         (
             int(year_directory.name.removeprefix("year=")),
@@ -55,6 +59,7 @@ def _partition_directories(output_directory: Path) -> Set[Tuple[int, int]]:
 
 
 def test_full_dwd_flights_quality(spark: SparkSession) -> None:
+    """Exercise the full dwd flights quality case."""
     config = load_config()
     paths = get_project_paths(config)
     ods = spark.read.parquet(str(paths.resolve(paths.ods_flights)))

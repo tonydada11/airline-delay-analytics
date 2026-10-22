@@ -10,6 +10,7 @@ import pytest
 
 @pytest.mark.parametrize("rebuild", ["0", "1"])
 def test_quality_process_isolation(tmp_path, rebuild):
+    """Exercise the quality process isolation case."""
     root = Path(__file__).resolve().parents[2]
     scripts = tmp_path / "scripts"
     scripts.mkdir()

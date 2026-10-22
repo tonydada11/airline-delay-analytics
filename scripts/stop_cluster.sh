@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Stop the local Spark cluster.
 
 set -euo pipefail
 

@@ -21,6 +21,7 @@ from airline.dws.ml_feature_contract import (
 
 @pytest.fixture(scope='module')
 def completed_dataset():
+    """Write a complete dataset and its completion manifest."""
     spark = create_spark_session('airline-dataset-completion-regression')
     parent = Path(os.environ.get('AIRLINE_TEST_TMP_ROOT', tempfile.gettempdir()))
     parent.mkdir(parents=True, exist_ok=True)
@@ -46,11 +47,13 @@ def completed_dataset():
 
 
 def test_complete_input_matches_declared_rows(completed_dataset):
+    """Exercise the complete input matches declared rows case."""
     spark, _, directory = completed_dataset
     assert validate_dataset_manifest(directory, spark.read.parquet(str(directory)))['rows'] == 5
 
 
 def test_publisher_rejects_reload_multiplicity_change_before_completion(completed_dataset):
+    """Exercise the publisher rejects reload multiplicity change before completion case."""
     spark, root, directory = completed_dataset
     destination = root / 'wrong-population'
     destination.mkdir()
@@ -61,6 +64,7 @@ def test_publisher_rejects_reload_multiplicity_change_before_completion(complete
 
 
 def test_missing_input_part_is_not_a_complete_changed_dataset(completed_dataset):
+    """Exercise the missing input part is not a complete changed dataset case."""
     spark, root, directory = completed_dataset
     partial = root / 'partial'
     shutil.copytree(directory, partial)
@@ -75,6 +79,7 @@ def test_missing_input_part_is_not_a_complete_changed_dataset(completed_dataset)
 
 @pytest.mark.parametrize('declared', [None, 0, 4, 5.0])
 def test_invalid_declared_row_count_is_rejected(completed_dataset, declared):
+    """Exercise the invalid declared row count is rejection case."""
     spark, _, directory = completed_dataset
     path = directory / MANIFEST_NAME
     original = path.read_text()

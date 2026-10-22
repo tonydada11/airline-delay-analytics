@@ -1,4 +1,6 @@
 # AI-generated test code: generated with OpenAI Codex.
+"""Tests ods flights behavior."""
+
 import csv
 import os
 import shutil
@@ -24,6 +26,7 @@ from airline.ods.build_flights import (
 
 @pytest.fixture(scope="module")
 def spark() -> Iterator[SparkSession]:
+    """Create the test Spark session and stop it after use."""
     session = create_spark_session("airline-m1-integration-tests")
     yield session
     session.stop()
@@ -31,6 +34,7 @@ def spark() -> Iterator[SparkSession]:
 
 @pytest.fixture()
 def shared_tmp_path() -> Iterator[Path]:
+    """Return the shared temporary directory for test outputs."""
     shared_root = Path(
         os.environ.get("AIRLINE_TEST_TMP_ROOT", tempfile.gettempdir())
     )
@@ -43,6 +47,7 @@ def shared_tmp_path() -> Iterator[Path]:
 
 
 def _source_row(seed: int) -> Tuple[List[str], Dict[str, object]]:
+    """Build one row from the raw source fixture."""
     csv_values: List[str] = []
     expected: Dict[str, object] = {}
 
@@ -67,6 +72,7 @@ def _source_row(seed: int) -> Tuple[List[str], Dict[str, object]]:
 
 
 def _write_source_file(path: Path, seed: int) -> Dict[str, object]:
+    """Write source file."""
     values, expected = _source_row(seed)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
@@ -77,6 +83,7 @@ def _write_source_file(path: Path, seed: int) -> Dict[str, object]:
 
 @pytest.fixture()
 def raw_fixture(shared_tmp_path: Path) -> Tuple[Path, Dict[str, Dict[str, object]]]:
+    """Create the pinned raw snapshot fixture."""
     raw_directory = shared_tmp_path / "raw"
     raw_directory.mkdir()
     expected = {
@@ -90,6 +97,7 @@ def test_read_raw_flights_applies_all_109_fields_without_shift(
     spark: SparkSession,
     raw_fixture: Tuple[Path, Dict[str, Dict[str, object]]],
 ) -> None:
+    """Exercise the read raw flights applies all 109 fields without shift case."""
     raw_directory, expected_by_file = raw_fixture
 
     for source_path in sorted(raw_directory.glob("*.csv")):
@@ -122,6 +130,7 @@ def test_build_writes_parquet_with_lineage_and_is_idempotent(
     raw_fixture: Tuple[Path, Dict[str, Dict[str, object]]],
     shared_tmp_path: Path,
 ) -> None:
+    """Exercise the build writes parquet with lineage and is idempotent case."""
     raw_directory, expected_by_file = raw_fixture
     output_directory = shared_tmp_path / "ods" / "flights"
     stable_columns = [*BTS_FLIGHTS_SCHEMA.fieldNames(), SOURCE_FILE_COLUMN]

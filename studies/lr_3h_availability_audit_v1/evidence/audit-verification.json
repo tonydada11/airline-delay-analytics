@@ -1,0 +1,16 @@
+{
+  "decision": "BLOCKED",
+  "phase": 1,
+  "source_and_production_manifest_hashes_unchanged": true,
+  "phase_2_started": false,
+  "spark_started": false,
+  "models_loaded_or_scored": false,
+  "fit_started": false,
+  "routing_changed": false,
+  "evidence_sha256": {
+    "evidence/parquet-metadata.json": "735dfb715e7072332ec9ceb92405562ace1e1840f1896f7d89ace767780ffd1b",
+    "evidence/raw-manifest-copies.json": "d1edd7f0d7a4a26dc882b12ac8522d633ca0262bad717051933a542d1ff23401",
+    "evidence/source-audit.json": "8dd5b95d5c1d01932668dde58fa1c84b973ecbace84b73ef63a4055ba6f9bfe5",
+    "evidence/zip-metadata.json": "0b882e39245f97cfee2b8ba71975f4b5e79d0715924777dfafba64c7b17567a8"
+  }
+}

@@ -1,0 +1,721 @@
+{
+  "ods_files": 97,
+  "ods_footer_rows": 13926960,
+  "ods_schema_variants": {
+    "Year|Quarter|Month|DayofMonth|DayOfWeek|FlightDate|Reporting_Airline|DOT_ID_Reporting_Airline|IATA_CODE_Reporting_Airline|Tail_Number|Flight_Number_Reporting_Airline|OriginAirportID|OriginAirportSeqID|OriginCityMarketID|Origin|OriginCityName|OriginState|OriginStateFips|OriginStateName|OriginWac|DestAirportID|DestAirportSeqID|DestCityMarketID|Dest|DestCityName|DestState|DestStateFips|DestStateName|DestWac|CRSDepTime|DepTime|DepDelay|DepDelayMinutes|DepDel15|DepartureDelayGroups|DepTimeBlk|TaxiOut|WheelsOff|WheelsOn|TaxiIn|CRSArrTime|ArrTime|ArrDelay|ArrDelayMinutes|ArrDel15|ArrivalDelayGroups|ArrTimeBlk|Cancelled|CancellationCode|Diverted|CRSElapsedTime|ActualElapsedTime|AirTime|Flights|Distance|DistanceGroup|CarrierDelay|WeatherDelay|NASDelay|SecurityDelay|LateAircraftDelay|FirstDepTime|TotalAddGTime|LongestAddGTime|DivAirportLandings|DivReachedDest|DivActualElapsedTime|DivArrDelay|DivDistance|Div1Airport|Div1AirportID|Div1AirportSeqID|Div1WheelsOn|Div1TotalGTime|Div1LongestGTime|Div1WheelsOff|Div1TailNum|Div2Airport|Div2AirportID|Div2AirportSeqID|Div2WheelsOn|Div2TotalGTime|Div2LongestGTime|Div2WheelsOff|Div2TailNum|Div3Airport|Div3AirportID|Div3AirportSeqID|Div3WheelsOn|Div3TotalGTime|Div3LongestGTime|Div3WheelsOff|Div3TailNum|Div4Airport|Div4AirportID|Div4AirportSeqID|Div4WheelsOn|Div4TotalGTime|Div4LongestGTime|Div4WheelsOff|Div4TailNum|Div5Airport|Div5AirportID|Div5AirportSeqID|Div5WheelsOn|Div5TotalGTime|Div5LongestGTime|Div5WheelsOff|Div5TailNum|_source_file|_ingested_at": 97
+  },
+  "ingestion_footer_statistics": [
+    {
+      "file": "part-00000-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147696,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00001-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148830,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00002-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149283,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00003-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147461,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00004-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148567,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00005-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148335,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00006-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149103,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00007-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147566,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00008-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148373,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00009-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148717,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00010-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148515,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00011-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148277,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00012-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149244,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00013-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148019,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00014-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149324,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00015-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149184,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00016-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148523,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00017-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148494,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00018-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149094,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00019-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148791,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00020-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148920,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00021-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148545,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00022-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147670,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00023-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148791,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00024-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149350,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00025-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147260,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00026-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148245,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00027-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148688,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00028-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147251,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00029-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148283,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00030-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148842,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00031-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148375,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00032-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147353,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00033-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148692,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00034-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148380,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00035-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149484,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00036-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147719,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00037-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148645,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00038-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148799,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00039-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147773,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00040-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148705,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00041-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149364,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00042-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148665,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00043-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148922,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00044-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149274,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00045-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147742,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00046-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148051,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00047-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149465,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00048-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148490,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00049-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147073,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00050-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147992,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00051-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147837,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00052-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147833,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00053-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148545,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00054-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149098,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00055-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147283,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00056-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148563,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00057-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148421,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00058-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147489,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00059-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148647,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00060-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148412,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00061-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147100,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00062-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148238,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00063-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148046,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00064-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148766,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00065-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147180,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00066-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148266,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00067-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148125,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00068-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148912,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00069-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 146928,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00070-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148745,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00071-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147956,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00072-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148889,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00073-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147290,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00074-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148424,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00075-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149315,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00076-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148485,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00077-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 149488,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00078-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 148634,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00079-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147774,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00080-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147679,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00081-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 147500,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00082-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 137637,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00083-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 136726,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00084-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 134211,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00085-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 134147,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00086-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 133069,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00087-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 129398,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00088-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 124358,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00089-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 124175,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00090-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 119121,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00091-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 115185,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00092-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 101429,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00093-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 93028,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00094-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 129967,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00095-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 107149,
+      "ingested_at_statistics": "None"
+    },
+    {
+      "file": "part-00096-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+      "row_group": 0,
+      "rows": 41288,
+      "ingested_at_statistics": "None"
+    }
+  ],
+  "bounded_train_validation_ingestion_sample": {
+    "file": "part-00000-0368dd5a-703b-4478-a60a-838cddd000d8-c000.snappy.parquet",
+    "row_group": 0,
+    "row": {
+      "FlightDate": "2023-01-02",
+      "_ingested_at": "2026-10-20 17:18:40.619454",
+      "_source_file": "On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2023_1.csv"
+    }
+  },
+  "dwd_january_2023_footer": {
+    "file": "part-00004-9e576485-7986-4b70-b380-8134470654f6.c000.snappy.parquet",
+    "schema": "quarter: int32\nday_of_month: int32\nday_of_week: int32\nflight_date: date32[day]\nreporting_airline: string\ndot_id_reporting_airline: int32\niata_code_reporting_airline: string\ntail_number: string\nflight_number_reporting_airline: int32\norigin_airport_id: int32\norigin_airport_seq_id: int32\norigin_city_market_id: int32\norigin: string\norigin_city_name: string\norigin_state: string\norigin_state_fips: string\norigin_state_name: string\norigin_wac: int32\ndest_airport_id: int32\ndest_airport_seq_id: int32\ndest_city_market_id: int32\ndest: string\ndest_city_name: string\ndest_state: string\ndest_state_fips: string\ndest_state_name: string\ndest_wac: int32\ncrs_dep_time: int32\ndep_time: int32\ndep_delay: double\ndep_delay_minutes: double\ndep_del15: double\ndeparture_delay_groups: int32\ndep_time_blk: string\ntaxi_out: double\nwheels_off: int32\nwheels_on: int32\ntaxi_in: double\ncrs_arr_time: int32\narr_time: int32\narr_delay: double\narr_delay_minutes: double\narr_del15: double\narrival_delay_groups: int32\narr_time_blk: string\ncancellation_code: string\ncrs_elapsed_time: double\nactual_elapsed_time: double\nair_time: double\nflights: double\ndistance: double\ndistance_group: int32\ncarrier_delay: double\nweather_delay: double\nnas_delay: double\nsecurity_delay: double\nlate_aircraft_delay: double\nfirst_dep_time: int32\ntotal_add_g_time: double\nlongest_add_g_time: double\ndiv_airport_landings: int32\ndiv_reached_dest: double\ndiv_actual_elapsed_time: double\ndiv_arr_delay: double\ndiv_distance: double\ndiv1_airport: string\ndiv1_airport_id: int32\ndiv1_airport_seq_id: int32\ndiv1_wheels_on: int32\ndiv1_total_g_time: double\ndiv1_longest_g_time: double\ndiv1_wheels_off: int32\ndiv1_tail_num: string\ndiv2_airport: string\ndiv2_airport_id: int32\ndiv2_airport_seq_id: int32\ndiv2_wheels_on: int32\ndiv2_total_g_time: double\ndiv2_longest_g_time: double\ndiv2_wheels_off: int32\ndiv2_tail_num: string\ndiv3_airport: string\ndiv3_airport_id: int32\ndiv3_airport_seq_id: int32\ndiv3_wheels_on: int32\ndiv3_total_g_time: double\ndiv3_longest_g_time: double\ndiv3_wheels_off: int32\ndiv3_tail_num: string\ndiv4_airport: string\ndiv4_airport_id: int32\ndiv4_airport_seq_id: int32\ndiv4_wheels_on: int32\ndiv4_total_g_time: double\ndiv4_longest_g_time: double\ndiv4_wheels_off: int32\ndiv4_tail_num: string\ndiv5_airport: string\ndiv5_airport_id: int32\ndiv5_airport_seq_id: int32\ndiv5_wheels_on: int32\ndiv5_total_g_time: double\ndiv5_longest_g_time: double\ndiv5_wheels_off: int32\ndiv5_tail_num: string\n_source_file: string\n_ingested_at: timestamp[ns]\nis_cancelled: int32\nis_diverted: int32\nscheduled_departure_hour: int32\nscheduled_departure_minute: int32\nscheduled_arrival_hour: int32\nscheduled_arrival_minute: int32\nis_arrival_delayed_15m: int32\n-- schema metadata --\norg.apache.spark.version: '3.5.9'\norg.apache.spark.sql.parquet.row.metadata: '{\"type\":\"struct\",\"fields\":[{\"' + 8354",
+    "columns": [
+      "quarter",
+      "day_of_month",
+      "day_of_week",
+      "flight_date",
+      "reporting_airline",
+      "dot_id_reporting_airline",
+      "iata_code_reporting_airline",
+      "tail_number",
+      "flight_number_reporting_airline",
+      "origin_airport_id",
+      "origin_airport_seq_id",
+      "origin_city_market_id",
+      "origin",
+      "origin_city_name",
+      "origin_state",
+      "origin_state_fips",
+      "origin_state_name",
+      "origin_wac",
+      "dest_airport_id",
+      "dest_airport_seq_id",
+      "dest_city_market_id",
+      "dest",
+      "dest_city_name",
+      "dest_state",
+      "dest_state_fips",
+      "dest_state_name",
+      "dest_wac",
+      "crs_dep_time",
+      "dep_time",
+      "dep_delay",
+      "dep_delay_minutes",
+      "dep_del15",
+      "departure_delay_groups",
+      "dep_time_blk",
+      "taxi_out",
+      "wheels_off",
+      "wheels_on",
+      "taxi_in",
+      "crs_arr_time",
+      "arr_time",
+      "arr_delay",
+      "arr_delay_minutes",
+      "arr_del15",
+      "arrival_delay_groups",
+      "arr_time_blk",
+      "cancellation_code",
+      "crs_elapsed_time",
+      "actual_elapsed_time",
+      "air_time",
+      "flights",
+      "distance",
+      "distance_group",
+      "carrier_delay",
+      "weather_delay",
+      "nas_delay",
+      "security_delay",
+      "late_aircraft_delay",
+      "first_dep_time",
+      "total_add_g_time",
+      "longest_add_g_time",
+      "div_airport_landings",
+      "div_reached_dest",
+      "div_actual_elapsed_time",
+      "div_arr_delay",
+      "div_distance",
+      "div1_airport",
+      "div1_airport_id",
+      "div1_airport_seq_id",
+      "div1_wheels_on",
+      "div1_total_g_time",
+      "div1_longest_g_time",
+      "div1_wheels_off",
+      "div1_tail_num",
+      "div2_airport",
+      "div2_airport_id",
+      "div2_airport_seq_id",
+      "div2_wheels_on",
+      "div2_total_g_time",
+      "div2_longest_g_time",
+      "div2_wheels_off",
+      "div2_tail_num",
+      "div3_airport",
+      "div3_airport_id",
+      "div3_airport_seq_id",
+      "div3_wheels_on",
+      "div3_total_g_time",
+      "div3_longest_g_time",
+      "div3_wheels_off",
+      "div3_tail_num",
+      "div4_airport",
+      "div4_airport_id",
+      "div4_airport_seq_id",
+      "div4_wheels_on",
+      "div4_total_g_time",
+      "div4_longest_g_time",
+      "div4_wheels_off",
+      "div4_tail_num",
+      "div5_airport",
+      "div5_airport_id",
+      "div5_airport_seq_id",
+      "div5_wheels_on",
+      "div5_total_g_time",
+      "div5_longest_g_time",
+      "div5_wheels_off",
+      "div5_tail_num",
+      "_source_file",
+      "_ingested_at",
+      "is_cancelled",
+      "is_diverted",
+      "scheduled_departure_hour",
+      "scheduled_departure_minute",
+      "scheduled_arrival_hour",
+      "scheduled_arrival_minute",
+      "is_arrival_delayed_15m"
+    ],
+    "rows": 149283
+  }
+}

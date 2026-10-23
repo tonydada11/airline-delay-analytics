@@ -1,0 +1,54 @@
+{
+  "On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_1.zip": [
+    {
+      "member": "On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2023_1.csv",
+      "zip_member_datetime": [
+        2023,
+        3,
+        28,
+        8,
+        33,
+        34
+      ],
+      "uncompressed_bytes": 243337180
+    },
+    {
+      "member": "readme.html",
+      "zip_member_datetime": [
+        2023,
+        3,
+        28,
+        8,
+        33,
+        30
+      ],
+      "uncompressed_bytes": 12152
+    }
+  ],
+  "On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2024_7.zip": [
+    {
+      "member": "On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2024_7.csv",
+      "zip_member_datetime": [
+        2024,
+        9,
+        27,
+        11,
+        26,
+        26
+      ],
+      "uncompressed_bytes": 287485513
+    },
+    {
+      "member": "readme.html",
+      "zip_member_datetime": [
+        2024,
+        9,
+        27,
+        11,
+        26,
+        20
+      ],
+      "uncompressed_bytes": 12152
+    }
+  ]
+}

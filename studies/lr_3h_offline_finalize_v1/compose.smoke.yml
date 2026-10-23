@@ -1,0 +1,9 @@
+x-smoke-volumes: &smoke-volumes
+  volumes:
+    - ../studies/lr_3h_offline_finalize_v1/smoke.py:/smoke.py:ro
+    - ../studies/lr_3h_offline_v1/runtime/output/scored-offline-v1:/expected:ro
+services:
+  master: *smoke-volumes
+  worker1: *smoke-volumes
+  worker2: *smoke-volumes
+  driver: *smoke-volumes

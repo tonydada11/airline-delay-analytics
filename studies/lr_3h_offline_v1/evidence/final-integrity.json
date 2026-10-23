@@ -1,0 +1,24 @@
+{
+  "bundle_read_only": true,
+  "candidate_hashes": 50,
+  "classifier_byte_preserved_files": 8,
+  "fresh_process_mount_destinations": [
+    "/bundle",
+    "/input/2024-05",
+    "/input/2024-06",
+    "/input/2024-07",
+    "/input/2024-08",
+    "/output"
+  ],
+  "manifest_matches_saved_output": true,
+  "manifest_sha256": "9157123a82926767a0ac69b6c1f9ab04899d0ad86ec32c95b42ffe46809a564f",
+  "means_binary64_hex": {
+    "destination_delay_rate_3h": "0x1.46603ea912123p-4",
+    "origin_delay_rate_3h": "0x1.4af4ef1f859c0p-4"
+  },
+  "preprocessing_byte_preserved_files": 64,
+  "production_bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+  "production_manifest_sha256": "7e1d0a1a9336dd383da9802db02586e23fcc411a4cd79294ee52c554c6d49ee7",
+  "qualified_feature_sha256_verified": 80,
+  "status": "PASS"
+}

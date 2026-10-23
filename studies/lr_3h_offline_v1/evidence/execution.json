@@ -1,0 +1,10 @@
+{
+  "classifier_fits": 0,
+  "error": null,
+  "preprocessing_refits": 0,
+  "preserved": true,
+  "seconds_including_cleanup": 1341.2395523117739,
+  "status": "PASS",
+  "study_containers_removed": true,
+  "wall_cap_seconds": 14400
+}

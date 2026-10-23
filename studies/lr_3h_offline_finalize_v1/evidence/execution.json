@@ -1,0 +1,36 @@
+{
+  "cgroups": {
+    "airline-lr3h-offline-batch-v1-driver-1": {
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.max": "2147483648",
+      "memory.peak": "1080193024"
+    },
+    "airline-lr3h-offline-batch-v1-master-1": {
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.max": "536870912",
+      "memory.peak": "425250816"
+    },
+    "airline-lr3h-offline-batch-v1-worker1-1": {
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.max": "2147483648",
+      "memory.peak": "842190848"
+    },
+    "airline-lr3h-offline-batch-v1-worker2-1": {
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "memory.max": "2147483648",
+      "memory.peak": "921952256"
+    }
+  },
+  "classifier_fits": 0,
+  "command": "docker compose -f conf/docker-compose.offline-lr3h.yml -f studies/lr_3h_offline_finalize_v1/compose.smoke.yml exec -T driver timeout --signal=TERM --kill-after=15 600 /opt/spark/bin/spark-submit --driver-memory 768m /smoke.py",
+  "error": null,
+  "existing_containers_unchanged": true,
+  "exit_code": 0,
+  "full_validation_reruns": 0,
+  "implementation_commit": "9193a7195b40deda8d37018c08172fce696e803b",
+  "preprocessing_refits": 0,
+  "seconds_including_cleanup": 96.82299060199875,
+  "smoke_invocations": 1,
+  "status": "PASS",
+  "study_containers_removed": true
+}

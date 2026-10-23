@@ -1,0 +1,11 @@
+{
+  "files": {
+    "._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    ".part-00000-bf995ea0-48cd-44a7-80da-7ddb19e83997-c000.snappy.parquet.crc": "ea3ebbac193ce1206e9b3a0d1f3e5d22c6c1be24ea57f71b3cd8e06eb0e6f691",
+    "_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "part-00000-bf995ea0-48cd-44a7-80da-7ddb19e83997-c000.snappy.parquet": "774e430b6bbb3bba8566f45263d78d98c5137a35e13b95944a37ce5025d69129"
+  },
+  "output": "artifacts/offline-runs/lr3h-finalize-smoke-v1/scores",
+  "previous_output_completion_sha256": "ad4ee1c6445008158d0dea0d179803d81b0c2e29d599dacf2f717fa655fc11f7",
+  "smoke_record_sha256": "d9254a5f4b68637d3fd29d5a5d6b4627602794063c58a7b3dd4707115e18da63"
+}

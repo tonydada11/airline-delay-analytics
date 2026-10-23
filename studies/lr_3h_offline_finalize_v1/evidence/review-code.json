@@ -1,0 +1,12 @@
+{
+  "documentation_change": "Frozen source report/scorer links use commit 93f0c58; no historical study ancestry imported.",
+  "execution_source_commit": "9193a7195b40deda8d37018c08172fce696e803b",
+  "review_base": "ab6bd50e4f59d535836f61879f37c84a4546f9ae",
+  "review_implementation_commit": "e825c94979b76000fc1e38ea1a076f900f2a0643",
+  "runtime_files_byte_identical_to_smoke_execution": {
+    "conf/docker-compose.offline-lr3h.yml": "f878f7c58bc0b166b8bfefa5fa725f186716f3d93f067c155a96229662f50db2",
+    "studies/lr_3h_offline_finalize_v1/compose.smoke.yml": "03c590a145e5aa2bebe9791a05d5d1ba1afbee62af16af0d03906822be9efd75",
+    "studies/lr_3h_offline_finalize_v1/smoke.py": "3bca6d4daa1dd46e99e15948dd19fe9d6e3ead312d66ec39a9685e54fd46def3"
+  },
+  "status": "PASS"
+}

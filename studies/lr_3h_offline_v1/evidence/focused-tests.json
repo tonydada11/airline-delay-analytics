@@ -1,0 +1,17 @@
+{
+  "classifier_save_reload": true,
+  "duplicate_occurrences": 17,
+  "fits": 0,
+  "means_exact": true,
+  "prefix_exact": true,
+  "reload_scores_exact": true,
+  "rows": 16,
+  "status": "PASS",
+  "tamper_and_order_rejection": true,
+  "threshold_boundary": true,
+  "unlabeled_scoring": true,
+  "widths": [
+    784,
+    790
+  ]
+}

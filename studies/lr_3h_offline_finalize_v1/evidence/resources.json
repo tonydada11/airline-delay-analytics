@@ -1,0 +1,19 @@
+{
+  "applications": [
+    {
+      "ended": true,
+      "executor_cores": [
+        1,
+        1
+      ],
+      "file": "app-20261023193752-0000",
+      "sha256": "5900a52161f80c5843002747129a35a09c36d7b5ada36c0195ae264d536c6489"
+    }
+  ],
+  "disk_spilled_bytes": 0,
+  "failed_tasks": [],
+  "memory_spilled_bytes": 0,
+  "shuffle_read_bytes": 56,
+  "shuffle_write_bytes": 4947,
+  "tasks": 54
+}

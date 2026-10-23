@@ -1,0 +1,110 @@
+[
+  {
+    "cgroups": {
+      "airline-lr3h-offline-v1-driver-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "1024499712"
+      },
+      "airline-lr3h-offline-v1-master-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "536870912",
+        "memory.peak": "271159296"
+      },
+      "airline-lr3h-offline-v1-worker1-1": {
+        "memory.events": "low 0\nhigh 0\nmax 3227\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "2148065280"
+      },
+      "airline-lr3h-offline-v1-worker2-1": {
+        "memory.events": "low 0\nhigh 0\nmax 3579\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "2147495936"
+      }
+    },
+    "exit_code": 0,
+    "name": "stage",
+    "seconds_including_cleanup": 349.344656729023
+  },
+  {
+    "cgroups": {
+      "airline-lr3h-offline-v1-driver-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "884834304"
+      },
+      "airline-lr3h-offline-v1-master-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "536870912",
+        "memory.peak": "279588864"
+      },
+      "airline-lr3h-offline-v1-worker1-1": {
+        "memory.events": "low 0\nhigh 0\nmax 2971\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "2147663872"
+      },
+      "airline-lr3h-offline-v1-worker2-1": {
+        "memory.events": "low 0\nhigh 0\nmax 3064\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "2149097472"
+      }
+    },
+    "exit_code": 0,
+    "name": "fresh",
+    "seconds_including_cleanup": 266.4608884140034
+  },
+  {
+    "cgroups": {
+      "airline-lr3h-offline-v1-driver-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "716980224"
+      },
+      "airline-lr3h-offline-v1-master-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "536870912",
+        "memory.peak": "280973312"
+      },
+      "airline-lr3h-offline-v1-worker1-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "1376530432"
+      },
+      "airline-lr3h-offline-v1-worker2-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "1366552576"
+      }
+    },
+    "exit_code": 1,
+    "name": "final",
+    "seconds_including_cleanup": 93.14559656201163
+  },
+  {
+    "cgroups": {
+      "airline-lr3h-offline-v1-driver-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "811999232"
+      },
+      "airline-lr3h-offline-v1-master-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "536870912",
+        "memory.peak": "269488128"
+      },
+      "airline-lr3h-offline-v1-worker1-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "1740693504"
+      },
+      "airline-lr3h-offline-v1-worker2-1": {
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "2147483648",
+        "memory.peak": "1597030400"
+      }
+    },
+    "exit_code": 0,
+    "name": "final",
+    "seconds_including_cleanup": 114.50190567801474
+  }
+]

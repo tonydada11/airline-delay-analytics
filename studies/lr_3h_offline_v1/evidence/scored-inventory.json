@@ -1,0 +1,25 @@
+{
+  "completion_sha256": "ad4ee1c6445008158d0dea0d179803d81b0c2e29d599dacf2f717fa655fc11f7",
+  "files": {
+    "._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    ".part-00000-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "4d405429b84cf98acb4150dfde391d9124d2229f646b993e8b697e8943a2bf80",
+    ".part-00001-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "7334cc969dda1087fd43a7ecfe53513d19125a4402986444df02913df808aef1",
+    ".part-00002-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "054c1d9c42132fb991269a4f0af52227604b4cd439ba6a5a5dcd7606d23b2835",
+    ".part-00003-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "b08f9fb42894193d3ac70d67dcdf65f7dc166f4bfd39eefc700b5056e57ab551",
+    ".part-00004-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "3220d17304f9d131b8bd663724fd6822a8b6ea8a06038dce0eb926247124fcab",
+    ".part-00005-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "871beecd4ccd6e85fa1df40d79dc467f56723e3ab164488a64b375cde50577a3",
+    ".part-00006-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "15467b9623bb586431da03e5c76a2f4269bac830b05a1c535a5bb14abbc32453",
+    ".part-00007-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet.crc": "8fb2dd1eac6da0cb51139f653fa3df83ec08734635ff4500aa5e951c21455ae5",
+    "_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_completion.json": "ad4ee1c6445008158d0dea0d179803d81b0c2e29d599dacf2f717fa655fc11f7",
+    "part-00000-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "b7bf46bb963a111adddab7c9f0023b2ec1c20e058fae66f1b150718dd097e28a",
+    "part-00001-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "be902ff0e3399ad4bb88d567dba4c84b2ff04178a7c3517b87453c6991d4b7d5",
+    "part-00002-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "f3ead97391eb81679403afec7caee7ebf202f0aa555898ba2a437ab0a22cfa01",
+    "part-00003-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "19aca0efd44dbe5c572159c1ccfdb9053fa72ee7c48320a70f138715f293adeb",
+    "part-00004-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "9741d8c00c064df76ad43f8b5f2ed4e4f041ac741f003562f91ec931ed4a20c3",
+    "part-00005-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "394b5bcc846e3def71bf63a826a9ade69aa9ca9461c33b09cea42bd2fdf5b151",
+    "part-00006-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "86cf848183489f1814986548cb1f04063fead1351a75dd97a3c30ba014e196ad",
+    "part-00007-9314ff46-05d9-4639-bb17-079d96ecaeff-c000.snappy.parquet": "66876ab04c47fc20fb90da9ad5c6b2e7d2d3c42f03dc6ebefede1abe7c35bea1"
+  },
+  "model_id": "offline-lr3h-ca23fe0-v1"
+}

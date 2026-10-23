@@ -1,0 +1,21 @@
+{
+  "bundle_manifest_sha256": "9157123a82926767a0ac69b6c1f9ab04899d0ad86ec32c95b42ffe46809a564f",
+  "classifier_fits": 0,
+  "feature_width": 790,
+  "input_file": "part-00000-05bf2fc1-ea39-45a1-9203-8a1f5ddf626c-c000.snappy.parquet",
+  "input_sha256": "746eac61e45eba82ce22eda00f9979f4011230da22e230ccacdd67e999d23f95",
+  "means_exact": true,
+  "model_id": "offline-lr3h-ca23fe0-v1",
+  "preprocessing_refits": 0,
+  "rows": 16,
+  "saved_score_prediction_multiset_exact": true,
+  "scored_files": {
+    "._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    ".part-00000-bf995ea0-48cd-44a7-80da-7ddb19e83997-c000.snappy.parquet.crc": "ea3ebbac193ce1206e9b3a0d1f3e5d22c6c1be24ea57f71b3cd8e06eb0e6f691",
+    "_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "part-00000-bf995ea0-48cd-44a7-80da-7ddb19e83997-c000.snappy.parquet": "774e430b6bbb3bba8566f45263d78d98c5137a35e13b95944a37ce5025d69129"
+  },
+  "status": "PASS",
+  "threshold": 0.39,
+  "unlabeled_input": true
+}

@@ -1,0 +1,18 @@
+{
+  "all_validation_vectors": [
+    784,
+    790
+  ],
+  "counts": {
+    "train": 8946370,
+    "validation": 2418739
+  },
+  "fits": 0,
+  "legacy_schema3_loadable": true,
+  "legacy_scored": false,
+  "prefix_and_six_values_exact": true,
+  "preprocessing_refits": 0,
+  "score_prediction_and_label_multisets_exact": true,
+  "status": "PASS",
+  "threshold": 0.39
+}

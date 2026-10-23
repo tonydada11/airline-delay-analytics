@@ -1,0 +1,50 @@
+name: airline-lr3h-offline-v1
+x-common: &common
+  image: sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf
+  user: "0:0"
+  restart: "no"
+  environment:
+    SPARK_DAEMON_MEMORY: 256m
+    PYTHONPATH: /opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip:/study:/helpers:/workspace/data/studies/lr-improvement-v1/project:/workspace/src
+    PYSPARK_PYTHON: python3
+    PYTHONDONTWRITEBYTECODE: "1"
+    OMP_NUM_THREADS: "1"
+    OPENBLAS_NUM_THREADS: "1"
+    MKL_NUM_THREADS: "1"
+  volumes:
+    - ./:/study:ro
+    - ../../src:/workspace/src:ro
+    - ../../conf:/workspace/conf:ro
+    - ../lr_v1/metrics.py:/helpers/metrics.py:ro
+    - ../lr_3h_v2:/candidate:ro
+    - ../track_a_3h_v1:/prior:ro
+    - ../../data/studies/lr-improvement-v1/diagnostics:/baseline:ro
+    - ../../artifacts/flighttime-v3/models:/accepted:ro
+    - ./runtime/output:/output
+services:
+  master:
+    <<: *common
+    hostname: a-master
+    mem_limit: 512m
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.master.Master, --host, a-master, --port, "7077", --webui-port, "8080"]
+  worker1:
+    <<: *common
+    hostname: a-worker1
+    mem_limit: 2g
+    cpus: 1
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --cores, "1", --memory, 768m, --webui-port, "8081", spark://a-master:7077]
+    depends_on: [master]
+  worker2:
+    <<: *common
+    hostname: a-worker2
+    mem_limit: 2g
+    cpus: 1
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --cores, "1", --memory, 768m, --webui-port, "8081", spark://a-master:7077]
+    depends_on: [master]
+  driver:
+    <<: *common
+    hostname: a-driver
+    mem_limit: 2g
+    cpus: 1
+    command: [sleep, infinity]
+    depends_on: [master, worker1, worker2]

@@ -1,0 +1,1294 @@
+[
+  {
+    "AppArmorProfile": "",
+    "Args": [
+      "/opt/spark/bin/spark-class",
+      "org.apache.spark.deploy.master.Master",
+      "--host",
+      "a-master",
+      "--port",
+      "7077",
+      "--webui-port",
+      "8080"
+    ],
+    "Config": {
+      "AttachStderr": true,
+      "AttachStdin": false,
+      "AttachStdout": true,
+      "Cmd": [
+        "/opt/spark/bin/spark-class",
+        "org.apache.spark.deploy.master.Master",
+        "--host",
+        "a-master",
+        "--port",
+        "7077",
+        "--webui-port",
+        "8080"
+      ],
+      "Domainname": "",
+      "Entrypoint": [
+        "/opt/entrypoint.sh"
+      ],
+      "Env": [
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "SPARK_DAEMON_MEMORY=256m",
+        "PYTHONPATH=/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip:/study:/helpers:/workspace/data/studies/lr-improvement-v1/project:/workspace/src",
+        "PYSPARK_PYTHON=python3",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "JAVA_HOME=/opt/java/openjdk",
+        "LANG=en_US.UTF-8",
+        "LANGUAGE=en_US:en",
+        "LC_ALL=en_US.UTF-8",
+        "JAVA_VERSION=jdk-11.0.31+11",
+        "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+        "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+        "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+        "SPARK_HOME=/opt/spark"
+      ],
+      "Hostname": "a-master",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Labels": {
+        "com.docker.compose.config-hash": "86379cd5c5569502cb387066028803171b664cc1321298e65c85440853230d27",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "airline-lr3h-offline-v1",
+        "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/compose.yml",
+        "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "com.docker.compose.service": "master",
+        "com.docker.compose.version": "5.5.0",
+        "org.opencontainers.image.version": "22.04"
+      },
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Tty": false,
+      "User": "0:0",
+      "Volumes": null,
+      "WorkingDir": "/opt/spark/work-dir"
+    },
+    "Created": "2026-10-23T18:36:04.00988018Z",
+    "Driver": "overlayfs",
+    "ExecIDs": null,
+    "HostConfig": {
+      "AutoRemove": false,
+      "Binds": [
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1:/study:ro",
+        "/home/server/workspace/industry/Airline/src:/workspace/src:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_v2:/candidate:ro",
+        "/home/server/workspace/industry/Airline/studies/track_a_3h_v1:/prior:ro",
+        "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics:/baseline:ro",
+        "/home/server/workspace/industry/Airline/conf:/workspace/conf:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py:/helpers/metrics.py:ro",
+        "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models:/accepted:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output:/output:rw"
+      ],
+      "BlkioDeviceReadBps": null,
+      "BlkioDeviceReadIOps": null,
+      "BlkioDeviceWriteBps": null,
+      "BlkioDeviceWriteIOps": null,
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": null,
+      "CapAdd": null,
+      "CapDrop": null,
+      "Cgroup": "",
+      "CgroupParent": "",
+      "CgroupnsMode": "private",
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "ContainerIDFile": "",
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpuShares": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "Devices": null,
+      "Dns": null,
+      "DnsOptions": null,
+      "DnsSearch": null,
+      "ExtraHosts": [],
+      "GroupAdd": null,
+      "IOMaximumBandwidth": 0,
+      "IOMaximumIOps": 0,
+      "IpcMode": "private",
+      "Isolation": "",
+      "Links": null,
+      "LogConfig": {
+        "Config": {},
+        "Type": "json-file"
+      },
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "Memory": 536870912,
+      "MemoryReservation": 0,
+      "MemorySwap": 1073741824,
+      "MemorySwappiness": null,
+      "NanoCpus": 0,
+      "NetworkMode": "airline-lr3h-offline-v1_default",
+      "OomKillDisable": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "PidsLimit": null,
+      "PortBindings": {},
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "ReadonlyRootfs": false,
+      "RestartPolicy": {
+        "MaximumRetryCount": 0,
+        "Name": "no"
+      },
+      "Runtime": "runc",
+      "SecurityOpt": null,
+      "ShmSize": 67108864,
+      "UTSMode": "",
+      "Ulimits": null,
+      "UsernsMode": "",
+      "VolumeDriver": "",
+      "VolumesFrom": null
+    },
+    "HostnamePath": "/var/lib/docker/containers/b111e0ebdc339f8b4272c2cf23b508be4488160f252f31f06d9bd17ff2c6adea/hostname",
+    "HostsPath": "/var/lib/docker/containers/b111e0ebdc339f8b4272c2cf23b508be4488160f252f31f06d9bd17ff2c6adea/hosts",
+    "Id": "b111e0ebdc339f8b4272c2cf23b508be4488160f252f31f06d9bd17ff2c6adea",
+    "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+    "ImageManifestDescriptor": {
+      "digest": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "size": 2776
+    },
+    "LogPath": "/var/lib/docker/containers/b111e0ebdc339f8b4272c2cf23b508be4488160f252f31f06d9bd17ff2c6adea/b111e0ebdc339f8b4272c2cf23b508be4488160f252f31f06d9bd17ff2c6adea-json.log",
+    "MountLabel": "",
+    "Mounts": [
+      {
+        "Destination": "/study",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/workspace/src",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/src",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/candidate",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_v2",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/baseline",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/workspace/conf",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/conf",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/helpers/metrics.py",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/accepted",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/output",
+        "Mode": "rw",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/prior",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/track_a_3h_v1",
+        "Type": "bind"
+      }
+    ],
+    "Name": "/airline-lr3h-offline-v1-master-1",
+    "NetworkSettings": {
+      "Networks": {
+        "airline-lr3h-offline-v1_default": {
+          "Aliases": [
+            "airline-lr3h-offline-v1-master-1",
+            "master"
+          ],
+          "DNSNames": [
+            "airline-lr3h-offline-v1-master-1",
+            "master",
+            "b111e0ebdc33",
+            "a-master"
+          ],
+          "DriverOpts": null,
+          "EndpointID": "627280315caf778e7c590c9d5a58b25bbca8536b6d2ec72b56056b9829eb3015",
+          "Gateway": "172.19.0.1",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "GwPriority": 0,
+          "IPAMConfig": null,
+          "IPAddress": "172.19.0.2",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "Links": null,
+          "MacAddress": "da:7d:81:58:38:ba",
+          "NetworkID": "4da3f4fbf753149927402bc326dce0463a656671cf0d72698564cb9a415f4db0"
+        }
+      },
+      "Ports": {},
+      "SandboxID": "fb65d9f7fd3c8fb553937992ee571fa9215bb37771763984ee345f32c963da42",
+      "SandboxKey": "/var/run/docker/netns/fb65d9f7fd3c"
+    },
+    "Path": "/opt/entrypoint.sh",
+    "Platform": "linux",
+    "ProcessLabel": "",
+    "ResolvConfPath": "/var/lib/docker/containers/b111e0ebdc339f8b4272c2cf23b508be4488160f252f31f06d9bd17ff2c6adea/resolv.conf",
+    "RestartCount": 0,
+    "State": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 3055043,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-23T18:36:04.194089734Z",
+      "Status": "running"
+    },
+    "Storage": {
+      "RootFS": {
+        "Snapshot": {
+          "Name": "overlayfs"
+        }
+      }
+    }
+  },
+  {
+    "AppArmorProfile": "",
+    "Args": [
+      "/opt/spark/bin/spark-class",
+      "org.apache.spark.deploy.worker.Worker",
+      "--cores",
+      "1",
+      "--memory",
+      "768m",
+      "--webui-port",
+      "8081",
+      "spark://a-master:7077"
+    ],
+    "Config": {
+      "AttachStderr": true,
+      "AttachStdin": false,
+      "AttachStdout": true,
+      "Cmd": [
+        "/opt/spark/bin/spark-class",
+        "org.apache.spark.deploy.worker.Worker",
+        "--cores",
+        "1",
+        "--memory",
+        "768m",
+        "--webui-port",
+        "8081",
+        "spark://a-master:7077"
+      ],
+      "Domainname": "",
+      "Entrypoint": [
+        "/opt/entrypoint.sh"
+      ],
+      "Env": [
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "SPARK_DAEMON_MEMORY=256m",
+        "PYTHONPATH=/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip:/study:/helpers:/workspace/data/studies/lr-improvement-v1/project:/workspace/src",
+        "PYSPARK_PYTHON=python3",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "JAVA_HOME=/opt/java/openjdk",
+        "LANG=en_US.UTF-8",
+        "LANGUAGE=en_US:en",
+        "LC_ALL=en_US.UTF-8",
+        "JAVA_VERSION=jdk-11.0.31+11",
+        "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+        "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+        "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+        "SPARK_HOME=/opt/spark"
+      ],
+      "Hostname": "a-worker1",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Labels": {
+        "com.docker.compose.config-hash": "efc38127323f2097a149b49f2ead6a6d8b88be6a7900042c7ba518379151d8a4",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "master:service_started:false",
+        "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "airline-lr3h-offline-v1",
+        "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/compose.yml",
+        "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "com.docker.compose.service": "worker1",
+        "com.docker.compose.version": "5.5.0",
+        "org.opencontainers.image.version": "22.04"
+      },
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Tty": false,
+      "User": "0:0",
+      "Volumes": null,
+      "WorkingDir": "/opt/spark/work-dir"
+    },
+    "Created": "2026-10-23T18:36:04.084879605Z",
+    "Driver": "overlayfs",
+    "ExecIDs": null,
+    "HostConfig": {
+      "AutoRemove": false,
+      "Binds": [
+        "/home/server/workspace/industry/Airline/src:/workspace/src:ro",
+        "/home/server/workspace/industry/Airline/conf:/workspace/conf:ro",
+        "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics:/baseline:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output:/output:rw",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1:/study:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py:/helpers/metrics.py:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_v2:/candidate:ro",
+        "/home/server/workspace/industry/Airline/studies/track_a_3h_v1:/prior:ro",
+        "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models:/accepted:ro"
+      ],
+      "BlkioDeviceReadBps": null,
+      "BlkioDeviceReadIOps": null,
+      "BlkioDeviceWriteBps": null,
+      "BlkioDeviceWriteIOps": null,
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": null,
+      "CapAdd": null,
+      "CapDrop": null,
+      "Cgroup": "",
+      "CgroupParent": "",
+      "CgroupnsMode": "private",
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "ContainerIDFile": "",
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpuShares": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "Devices": null,
+      "Dns": null,
+      "DnsOptions": null,
+      "DnsSearch": null,
+      "ExtraHosts": [],
+      "GroupAdd": null,
+      "IOMaximumBandwidth": 0,
+      "IOMaximumIOps": 0,
+      "IpcMode": "private",
+      "Isolation": "",
+      "Links": null,
+      "LogConfig": {
+        "Config": {},
+        "Type": "json-file"
+      },
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "Memory": 2147483648,
+      "MemoryReservation": 0,
+      "MemorySwap": 4294967296,
+      "MemorySwappiness": null,
+      "NanoCpus": 1000000000,
+      "NetworkMode": "airline-lr3h-offline-v1_default",
+      "OomKillDisable": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "PidsLimit": null,
+      "PortBindings": {},
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "ReadonlyRootfs": false,
+      "RestartPolicy": {
+        "MaximumRetryCount": 0,
+        "Name": "no"
+      },
+      "Runtime": "runc",
+      "SecurityOpt": null,
+      "ShmSize": 67108864,
+      "UTSMode": "",
+      "Ulimits": null,
+      "UsernsMode": "",
+      "VolumeDriver": "",
+      "VolumesFrom": null
+    },
+    "HostnamePath": "/var/lib/docker/containers/c895db3927bd08d4e8c2b46f870ac7aa0a145566069d8d407e1dbe3c959d0405/hostname",
+    "HostsPath": "/var/lib/docker/containers/c895db3927bd08d4e8c2b46f870ac7aa0a145566069d8d407e1dbe3c959d0405/hosts",
+    "Id": "c895db3927bd08d4e8c2b46f870ac7aa0a145566069d8d407e1dbe3c959d0405",
+    "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+    "ImageManifestDescriptor": {
+      "digest": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "size": 2776
+    },
+    "LogPath": "/var/lib/docker/containers/c895db3927bd08d4e8c2b46f870ac7aa0a145566069d8d407e1dbe3c959d0405/c895db3927bd08d4e8c2b46f870ac7aa0a145566069d8d407e1dbe3c959d0405-json.log",
+    "MountLabel": "",
+    "Mounts": [
+      {
+        "Destination": "/candidate",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_v2",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/baseline",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/study",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/helpers/metrics.py",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/prior",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/track_a_3h_v1",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/accepted",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/workspace/src",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/src",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/workspace/conf",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/conf",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/output",
+        "Mode": "rw",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output",
+        "Type": "bind"
+      }
+    ],
+    "Name": "/airline-lr3h-offline-v1-worker1-1",
+    "NetworkSettings": {
+      "Networks": {
+        "airline-lr3h-offline-v1_default": {
+          "Aliases": [
+            "airline-lr3h-offline-v1-worker1-1",
+            "worker1"
+          ],
+          "DNSNames": [
+            "airline-lr3h-offline-v1-worker1-1",
+            "worker1",
+            "c895db3927bd",
+            "a-worker1"
+          ],
+          "DriverOpts": null,
+          "EndpointID": "7707ac6f6e922c93e72c09885d427c2e744890a88ac9fb064406a19982036f31",
+          "Gateway": "172.19.0.1",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "GwPriority": 0,
+          "IPAMConfig": null,
+          "IPAddress": "172.19.0.4",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "Links": null,
+          "MacAddress": "ce:95:a4:44:d1:f1",
+          "NetworkID": "4da3f4fbf753149927402bc326dce0463a656671cf0d72698564cb9a415f4db0"
+        }
+      },
+      "Ports": {},
+      "SandboxID": "a53af568ee3a40b04778f1e012dc1a6be798dda0f7b83ba0aa2b411d5b70b8ab",
+      "SandboxKey": "/var/run/docker/netns/a53af568ee3a"
+    },
+    "Path": "/opt/entrypoint.sh",
+    "Platform": "linux",
+    "ProcessLabel": "",
+    "ResolvConfPath": "/var/lib/docker/containers/c895db3927bd08d4e8c2b46f870ac7aa0a145566069d8d407e1dbe3c959d0405/resolv.conf",
+    "RestartCount": 0,
+    "State": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 3055168,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-23T18:36:04.34089576Z",
+      "Status": "running"
+    },
+    "Storage": {
+      "RootFS": {
+        "Snapshot": {
+          "Name": "overlayfs"
+        }
+      }
+    }
+  },
+  {
+    "AppArmorProfile": "",
+    "Args": [
+      "/opt/spark/bin/spark-class",
+      "org.apache.spark.deploy.worker.Worker",
+      "--cores",
+      "1",
+      "--memory",
+      "768m",
+      "--webui-port",
+      "8081",
+      "spark://a-master:7077"
+    ],
+    "Config": {
+      "AttachStderr": true,
+      "AttachStdin": false,
+      "AttachStdout": true,
+      "Cmd": [
+        "/opt/spark/bin/spark-class",
+        "org.apache.spark.deploy.worker.Worker",
+        "--cores",
+        "1",
+        "--memory",
+        "768m",
+        "--webui-port",
+        "8081",
+        "spark://a-master:7077"
+      ],
+      "Domainname": "",
+      "Entrypoint": [
+        "/opt/entrypoint.sh"
+      ],
+      "Env": [
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "SPARK_DAEMON_MEMORY=256m",
+        "PYTHONPATH=/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip:/study:/helpers:/workspace/data/studies/lr-improvement-v1/project:/workspace/src",
+        "PYSPARK_PYTHON=python3",
+        "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "JAVA_HOME=/opt/java/openjdk",
+        "LANG=en_US.UTF-8",
+        "LANGUAGE=en_US:en",
+        "LC_ALL=en_US.UTF-8",
+        "JAVA_VERSION=jdk-11.0.31+11",
+        "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+        "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+        "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+        "SPARK_HOME=/opt/spark"
+      ],
+      "Hostname": "a-worker2",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Labels": {
+        "com.docker.compose.config-hash": "1234e58427533d3acad236209e0e6c348bb3dcf9b5cdb60634a44079739582f0",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "master:service_started:false",
+        "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "airline-lr3h-offline-v1",
+        "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/compose.yml",
+        "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "com.docker.compose.service": "worker2",
+        "com.docker.compose.version": "5.5.0",
+        "org.opencontainers.image.version": "22.04"
+      },
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Tty": false,
+      "User": "0:0",
+      "Volumes": null,
+      "WorkingDir": "/opt/spark/work-dir"
+    },
+    "Created": "2026-10-23T18:36:04.084960063Z",
+    "Driver": "overlayfs",
+    "ExecIDs": null,
+    "HostConfig": {
+      "AutoRemove": false,
+      "Binds": [
+        "/home/server/workspace/industry/Airline/conf:/workspace/conf:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py:/helpers/metrics.py:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_v2:/candidate:ro",
+        "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models:/accepted:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output:/output:rw",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1:/study:ro",
+        "/home/server/workspace/industry/Airline/src:/workspace/src:ro",
+        "/home/server/workspace/industry/Airline/studies/track_a_3h_v1:/prior:ro",
+        "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics:/baseline:ro"
+      ],
+      "BlkioDeviceReadBps": null,
+      "BlkioDeviceReadIOps": null,
+      "BlkioDeviceWriteBps": null,
+      "BlkioDeviceWriteIOps": null,
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": null,
+      "CapAdd": null,
+      "CapDrop": null,
+      "Cgroup": "",
+      "CgroupParent": "",
+      "CgroupnsMode": "private",
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "ContainerIDFile": "",
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpuShares": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "Devices": null,
+      "Dns": null,
+      "DnsOptions": null,
+      "DnsSearch": null,
+      "ExtraHosts": [],
+      "GroupAdd": null,
+      "IOMaximumBandwidth": 0,
+      "IOMaximumIOps": 0,
+      "IpcMode": "private",
+      "Isolation": "",
+      "Links": null,
+      "LogConfig": {
+        "Config": {},
+        "Type": "json-file"
+      },
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "Memory": 2147483648,
+      "MemoryReservation": 0,
+      "MemorySwap": 4294967296,
+      "MemorySwappiness": null,
+      "NanoCpus": 1000000000,
+      "NetworkMode": "airline-lr3h-offline-v1_default",
+      "OomKillDisable": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "PidsLimit": null,
+      "PortBindings": {},
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "ReadonlyRootfs": false,
+      "RestartPolicy": {
+        "MaximumRetryCount": 0,
+        "Name": "no"
+      },
+      "Runtime": "runc",
+      "SecurityOpt": null,
+      "ShmSize": 67108864,
+      "UTSMode": "",
+      "Ulimits": null,
+      "UsernsMode": "",
+      "VolumeDriver": "",
+      "VolumesFrom": null
+    },
+    "HostnamePath": "/var/lib/docker/containers/bc25d4d95172bcf1a0b649df1f2903a9b3ba32c4f3d3109ea7a381cd17b3e7e6/hostname",
+    "HostsPath": "/var/lib/docker/containers/bc25d4d95172bcf1a0b649df1f2903a9b3ba32c4f3d3109ea7a381cd17b3e7e6/hosts",
+    "Id": "bc25d4d95172bcf1a0b649df1f2903a9b3ba32c4f3d3109ea7a381cd17b3e7e6",
+    "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+    "ImageManifestDescriptor": {
+      "digest": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "size": 2776
+    },
+    "LogPath": "/var/lib/docker/containers/bc25d4d95172bcf1a0b649df1f2903a9b3ba32c4f3d3109ea7a381cd17b3e7e6/bc25d4d95172bcf1a0b649df1f2903a9b3ba32c4f3d3109ea7a381cd17b3e7e6-json.log",
+    "MountLabel": "",
+    "Mounts": [
+      {
+        "Destination": "/workspace/conf",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/conf",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/candidate",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_v2",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/accepted",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/study",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/workspace/src",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/src",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/prior",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/track_a_3h_v1",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/baseline",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/helpers/metrics.py",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/output",
+        "Mode": "rw",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output",
+        "Type": "bind"
+      }
+    ],
+    "Name": "/airline-lr3h-offline-v1-worker2-1",
+    "NetworkSettings": {
+      "Networks": {
+        "airline-lr3h-offline-v1_default": {
+          "Aliases": [
+            "airline-lr3h-offline-v1-worker2-1",
+            "worker2"
+          ],
+          "DNSNames": [
+            "airline-lr3h-offline-v1-worker2-1",
+            "worker2",
+            "bc25d4d95172",
+            "a-worker2"
+          ],
+          "DriverOpts": null,
+          "EndpointID": "42e5cf44ea49aa00a651930ae682543b31e611c72868692ddb0549bd326b5fa9",
+          "Gateway": "172.19.0.1",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "GwPriority": 0,
+          "IPAMConfig": null,
+          "IPAddress": "172.19.0.3",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "Links": null,
+          "MacAddress": "22:66:d2:ab:0c:e6",
+          "NetworkID": "4da3f4fbf753149927402bc326dce0463a656671cf0d72698564cb9a415f4db0"
+        }
+      },
+      "Ports": {},
+      "SandboxID": "e9b0176e3d3222e38aefd7e960a0a17cb8f3724ca155811d5d92e903c1ab504c",
+      "SandboxKey": "/var/run/docker/netns/e9b0176e3d32"
+    },
+    "Path": "/opt/entrypoint.sh",
+    "Platform": "linux",
+    "ProcessLabel": "",
+    "ResolvConfPath": "/var/lib/docker/containers/bc25d4d95172bcf1a0b649df1f2903a9b3ba32c4f3d3109ea7a381cd17b3e7e6/resolv.conf",
+    "RestartCount": 0,
+    "State": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 3055169,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-23T18:36:04.345665232Z",
+      "Status": "running"
+    },
+    "Storage": {
+      "RootFS": {
+        "Snapshot": {
+          "Name": "overlayfs"
+        }
+      }
+    }
+  },
+  {
+    "AppArmorProfile": "",
+    "Args": [
+      "sleep",
+      "infinity"
+    ],
+    "Config": {
+      "AttachStderr": true,
+      "AttachStdin": false,
+      "AttachStdout": true,
+      "Cmd": [
+        "sleep",
+        "infinity"
+      ],
+      "Domainname": "",
+      "Entrypoint": [
+        "/opt/entrypoint.sh"
+      ],
+      "Env": [
+        "OPENBLAS_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "SPARK_DAEMON_MEMORY=256m",
+        "PYTHONPATH=/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip:/study:/helpers:/workspace/data/studies/lr-improvement-v1/project:/workspace/src",
+        "PYSPARK_PYTHON=python3",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=1",
+        "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "JAVA_HOME=/opt/java/openjdk",
+        "LANG=en_US.UTF-8",
+        "LANGUAGE=en_US:en",
+        "LC_ALL=en_US.UTF-8",
+        "JAVA_VERSION=jdk-11.0.31+11",
+        "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+        "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+        "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+        "SPARK_HOME=/opt/spark"
+      ],
+      "Hostname": "a-driver",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Labels": {
+        "com.docker.compose.config-hash": "ad2b4ec11e661e4639f0ea7229677d80e6b97744317ea785eddf168c6f4cc97a",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "worker1:service_started:false,worker2:service_started:false,master:service_started:false",
+        "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "airline-lr3h-offline-v1",
+        "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/compose.yml",
+        "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "com.docker.compose.service": "driver",
+        "com.docker.compose.version": "5.5.0",
+        "org.opencontainers.image.version": "22.04"
+      },
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Tty": false,
+      "User": "0:0",
+      "Volumes": null,
+      "WorkingDir": "/opt/spark/work-dir"
+    },
+    "Created": "2026-10-23T18:36:04.147347468Z",
+    "Driver": "overlayfs",
+    "ExecIDs": null,
+    "HostConfig": {
+      "AutoRemove": false,
+      "Binds": [
+        "/home/server/workspace/industry/Airline/src:/workspace/src:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py:/helpers/metrics.py:ro",
+        "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics:/baseline:ro",
+        "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models:/accepted:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output:/output:rw",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1:/study:ro",
+        "/home/server/workspace/industry/Airline/conf:/workspace/conf:ro",
+        "/home/server/workspace/industry/Airline/studies/lr_3h_v2:/candidate:ro",
+        "/home/server/workspace/industry/Airline/studies/track_a_3h_v1:/prior:ro"
+      ],
+      "BlkioDeviceReadBps": null,
+      "BlkioDeviceReadIOps": null,
+      "BlkioDeviceWriteBps": null,
+      "BlkioDeviceWriteIOps": null,
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": null,
+      "CapAdd": null,
+      "CapDrop": null,
+      "Cgroup": "",
+      "CgroupParent": "",
+      "CgroupnsMode": "private",
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "ContainerIDFile": "",
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpuShares": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "Devices": null,
+      "Dns": null,
+      "DnsOptions": null,
+      "DnsSearch": null,
+      "ExtraHosts": [],
+      "GroupAdd": null,
+      "IOMaximumBandwidth": 0,
+      "IOMaximumIOps": 0,
+      "IpcMode": "private",
+      "Isolation": "",
+      "Links": null,
+      "LogConfig": {
+        "Config": {},
+        "Type": "json-file"
+      },
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "Memory": 2147483648,
+      "MemoryReservation": 0,
+      "MemorySwap": 4294967296,
+      "MemorySwappiness": null,
+      "NanoCpus": 1000000000,
+      "NetworkMode": "airline-lr3h-offline-v1_default",
+      "OomKillDisable": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "PidsLimit": null,
+      "PortBindings": {},
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "ReadonlyRootfs": false,
+      "RestartPolicy": {
+        "MaximumRetryCount": 0,
+        "Name": "no"
+      },
+      "Runtime": "runc",
+      "SecurityOpt": null,
+      "ShmSize": 67108864,
+      "UTSMode": "",
+      "Ulimits": null,
+      "UsernsMode": "",
+      "VolumeDriver": "",
+      "VolumesFrom": null
+    },
+    "HostnamePath": "/var/lib/docker/containers/e5f7a7505412887cef983c4cb8348257d572ed88046bf18221b99eb2ec4ee779/hostname",
+    "HostsPath": "/var/lib/docker/containers/e5f7a7505412887cef983c4cb8348257d572ed88046bf18221b99eb2ec4ee779/hosts",
+    "Id": "e5f7a7505412887cef983c4cb8348257d572ed88046bf18221b99eb2ec4ee779",
+    "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+    "ImageManifestDescriptor": {
+      "digest": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "size": 2776
+    },
+    "LogPath": "/var/lib/docker/containers/e5f7a7505412887cef983c4cb8348257d572ed88046bf18221b99eb2ec4ee779/e5f7a7505412887cef983c4cb8348257d572ed88046bf18221b99eb2ec4ee779-json.log",
+    "MountLabel": "",
+    "Mounts": [
+      {
+        "Destination": "/workspace/src",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/src",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/helpers/metrics.py",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_v1/metrics.py",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/baseline",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/data/studies/lr-improvement-v1/diagnostics",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/output",
+        "Mode": "rw",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1/runtime/output",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/workspace/conf",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/conf",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/candidate",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_v2",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/prior",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/track_a_3h_v1",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/accepted",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/artifacts/flighttime-v3/models",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/study",
+        "Mode": "ro",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/home/server/workspace/industry/Airline/studies/lr_3h_offline_v1",
+        "Type": "bind"
+      }
+    ],
+    "Name": "/airline-lr3h-offline-v1-driver-1",
+    "NetworkSettings": {
+      "Networks": {
+        "airline-lr3h-offline-v1_default": {
+          "Aliases": [
+            "airline-lr3h-offline-v1-driver-1",
+            "driver"
+          ],
+          "DNSNames": [
+            "airline-lr3h-offline-v1-driver-1",
+            "driver",
+            "e5f7a7505412",
+            "a-driver"
+          ],
+          "DriverOpts": null,
+          "EndpointID": "a22ae57a9f1f5f5cf9077fc8d138d12b5bcc22d009bb30f8aba14c30696c6a8e",
+          "Gateway": "172.19.0.1",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "GwPriority": 0,
+          "IPAMConfig": null,
+          "IPAddress": "172.19.0.5",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "Links": null,
+          "MacAddress": "9e:b6:bd:8c:e3:69",
+          "NetworkID": "4da3f4fbf753149927402bc326dce0463a656671cf0d72698564cb9a415f4db0"
+        }
+      },
+      "Ports": {},
+      "SandboxID": "bd6d3038436cd2ca557eaf582348b4e8bf204ca167ba14acc96bfce35e1d68b9",
+      "SandboxKey": "/var/run/docker/netns/bd6d3038436c"
+    },
+    "Path": "/opt/entrypoint.sh",
+    "Platform": "linux",
+    "ProcessLabel": "",
+    "ResolvConfPath": "/var/lib/docker/containers/e5f7a7505412887cef983c4cb8348257d572ed88046bf18221b99eb2ec4ee779/resolv.conf",
+    "RestartCount": 0,
+    "State": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 0,
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 3055291,
+      "Restarting": false,
+      "Running": true,
+      "StartedAt": "2026-10-23T18:36:04.514204962Z",
+      "Status": "running"
+    },
+    "Storage": {
+      "RootFS": {
+        "Snapshot": {
+          "Name": "overlayfs"
+        }
+      }
+    }
+  }
+]

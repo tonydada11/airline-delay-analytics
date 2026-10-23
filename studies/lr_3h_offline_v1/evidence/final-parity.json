@@ -1,0 +1,9 @@
+{
+  "fits": 0,
+  "fresh_process": true,
+  "full_score_prediction_label_multiset_exact": true,
+  "model_id": "offline-lr3h-ca23fe0-v1",
+  "rows": 2418739,
+  "status": "PASS",
+  "threshold": 0.39
+}

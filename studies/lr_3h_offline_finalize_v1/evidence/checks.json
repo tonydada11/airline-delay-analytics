@@ -1,0 +1,11 @@
+{
+  "static_tests": "python3 -m unittest studies.lr_3h_offline_v1.test_no_fits -v (reference checkout)",
+  "tests": 2,
+  "exit_code": 0,
+  "review_compile": "python3 -m py_compile studies/lr_3h_offline_finalize_v1/smoke.py",
+  "compose_config_valid": true,
+  "bundle_sha256_verified_before_and_after": true,
+  "full_validation_rerun": false,
+  "fits": 0,
+  "refits": 0
+}

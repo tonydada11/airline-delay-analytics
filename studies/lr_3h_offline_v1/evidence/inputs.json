@@ -1,0 +1,6 @@
+{
+  "baseline_sha256": "c1313197e55e9d9d90793ec3401c3c0d3d61597ca35da94eae5c1f7b8fdee828",
+  "image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+  "implementation_commit": "81ea65d69a42152351401fd5557d009454cdca69",
+  "qualified_feature_files_sha256_match": 80
+}

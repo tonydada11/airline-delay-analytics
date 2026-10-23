@@ -1,0 +1,259 @@
+{
+  "applications": [
+    {
+      "application_end": true,
+      "end": {
+        "Event": "SparkListenerApplicationEnd",
+        "Timestamp": 1792780894070
+      },
+      "executors": {
+        "0": {
+          "Attributes": {},
+          "Host": "172.19.0.3",
+          "Log Urls": {
+            "stderr": "http://172.19.0.3:8081/logPage/?appId=app-20261023183613-0000&executorId=0&logType=stderr",
+            "stdout": "http://172.19.0.3:8081/logPage/?appId=app-20261023183613-0000&executorId=0&logType=stdout"
+          },
+          "Registration Time": 1792780580132,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        },
+        "1": {
+          "Attributes": {},
+          "Host": "172.19.0.4",
+          "Log Urls": {
+            "stderr": "http://172.19.0.4:8081/logPage/?appId=app-20261023183613-0000&executorId=1&logType=stderr",
+            "stdout": "http://172.19.0.4:8081/logPage/?appId=app-20261023183613-0000&executorId=1&logType=stdout"
+          },
+          "Registration Time": 1792780580217,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        }
+      },
+      "file": "app-20261023183613-0000",
+      "start": {
+        "App ID": "app-20261023183613-0000",
+        "App Name": "offline-lr3h-v1",
+        "Event": "SparkListenerApplicationStart",
+        "Timestamp": 1792780570769,
+        "User": "root"
+      }
+    },
+    {
+      "application_end": true,
+      "end": {
+        "Event": "SparkListenerApplicationEnd",
+        "Timestamp": 1792781377192
+      },
+      "executors": {
+        "0": {
+          "Attributes": {},
+          "Host": "172.19.0.3",
+          "Log Urls": {
+            "stderr": "http://172.19.0.3:8081/logPage/?appId=app-20261023184544-0000&executorId=0&logType=stderr",
+            "stdout": "http://172.19.0.3:8081/logPage/?appId=app-20261023184544-0000&executorId=0&logType=stdout"
+          },
+          "Registration Time": 1792781152532,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        },
+        "1": {
+          "Attributes": {},
+          "Host": "172.19.0.4",
+          "Log Urls": {
+            "stderr": "http://172.19.0.4:8081/logPage/?appId=app-20261023184544-0000&executorId=1&logType=stderr",
+            "stdout": "http://172.19.0.4:8081/logPage/?appId=app-20261023184544-0000&executorId=1&logType=stdout"
+          },
+          "Registration Time": 1792781151934,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        }
+      },
+      "file": "app-20261023184544-0000",
+      "start": {
+        "App ID": "app-20261023184544-0000",
+        "App Name": "offline-lr3h-v1",
+        "Event": "SparkListenerApplicationStart",
+        "Timestamp": 1792781141359,
+        "User": "root"
+      }
+    },
+    {
+      "application_end": true,
+      "end": {
+        "Event": "SparkListenerApplicationEnd",
+        "Timestamp": 1792781474656
+      },
+      "executors": {
+        "0": {
+          "Attributes": {},
+          "Host": "172.19.0.4",
+          "Log Urls": {
+            "stderr": "http://172.19.0.4:8081/logPage/?appId=app-20261023185011-0000&executorId=0&logType=stderr",
+            "stdout": "http://172.19.0.4:8081/logPage/?appId=app-20261023185011-0000&executorId=0&logType=stdout"
+          },
+          "Registration Time": 1792781417688,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        },
+        "1": {
+          "Attributes": {},
+          "Host": "172.19.0.3",
+          "Log Urls": {
+            "stderr": "http://172.19.0.3:8081/logPage/?appId=app-20261023185011-0000&executorId=1&logType=stderr",
+            "stdout": "http://172.19.0.3:8081/logPage/?appId=app-20261023185011-0000&executorId=1&logType=stdout"
+          },
+          "Registration Time": 1792781417734,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        }
+      },
+      "file": "app-20261023185011-0000",
+      "start": {
+        "App ID": "app-20261023185011-0000",
+        "App Name": "offline-lr3h-v1",
+        "Event": "SparkListenerApplicationStart",
+        "Timestamp": 1792781408016,
+        "User": "root"
+      }
+    },
+    {
+      "application_end": true,
+      "end": {
+        "Event": "SparkListenerApplicationEnd",
+        "Timestamp": 1792781796657
+      },
+      "executors": {
+        "0": {
+          "Attributes": {},
+          "Host": "172.19.0.4",
+          "Log Urls": {
+            "stderr": "http://172.19.0.4:8081/logPage/?appId=app-20261023185513-0000&executorId=0&logType=stderr",
+            "stdout": "http://172.19.0.4:8081/logPage/?appId=app-20261023185513-0000&executorId=0&logType=stdout"
+          },
+          "Registration Time": 1792781720619,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        },
+        "1": {
+          "Attributes": {},
+          "Host": "172.19.0.3",
+          "Log Urls": {
+            "stderr": "http://172.19.0.3:8081/logPage/?appId=app-20261023185513-0000&executorId=1&logType=stderr",
+            "stdout": "http://172.19.0.3:8081/logPage/?appId=app-20261023185513-0000&executorId=1&logType=stdout"
+          },
+          "Registration Time": 1792781720624,
+          "Resource Profile Id": 0,
+          "Resources": {},
+          "Total Cores": 1
+        }
+      },
+      "file": "app-20261023185513-0000",
+      "start": {
+        "App ID": "app-20261023185513-0000",
+        "App Name": "offline-lr3h-v1",
+        "Event": "SparkListenerApplicationStart",
+        "Timestamp": 1792781709747,
+        "User": "root"
+      }
+    }
+  ],
+  "event_logs": [
+    {
+      "bytes": 6187493,
+      "file": "runtime/output/events/app-20261023183613-0000",
+      "sha256": "5284bb82ce92dd9520971155f742dee8920765decbcd3755e50271ab41330cba"
+    },
+    {
+      "bytes": 2299042,
+      "file": "runtime/output/events/app-20261023184544-0000",
+      "sha256": "3f9f1b6bdafa9013d709bf2c89135f3b52d610179470edfb0b1c1082de819479"
+    },
+    {
+      "bytes": 721466,
+      "file": "runtime/output/events/app-20261023185011-0000",
+      "sha256": "57ca6733061e93d10b939ab8d473c2ea73d8c54114335bf3e901819ea4e41040"
+    },
+    {
+      "bytes": 1391790,
+      "file": "runtime/output/events/app-20261023185513-0000",
+      "sha256": "0f2adc93cccd5764405457a891405b2be57ca4172631f7b15033fe1fc9f53ab9"
+    }
+  ],
+  "failed_tasks": [],
+  "task_metrics_by_job_group": {
+    "fresh-offline-batch": {
+      "Disk Bytes Spilled": 0,
+      "Executor CPU Time": 152188147910,
+      "Executor Run Time": 327964,
+      "JVM GC Time": 26546,
+      "Memory Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 159383312,
+      "shuffle_read_bytes": 822322994,
+      "shuffle_write_bytes": 822322994,
+      "tasks": 115
+    },
+    "fresh-process-full-parity": {
+      "Disk Bytes Spilled": 0,
+      "Executor CPU Time": 67062236799,
+      "Executor Run Time": 177712,
+      "JVM GC Time": 11543,
+      "Memory Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 167771904,
+      "shuffle_read_bytes": 1817407646,
+      "shuffle_write_bytes": 1817407646,
+      "tasks": 105
+    },
+    "full-saved-prediction-parity": {
+      "Disk Bytes Spilled": 0,
+      "Executor CPU Time": 99910343240,
+      "Executor Run Time": 183088,
+      "JVM GC Time": 8467,
+      "Memory Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 167771904,
+      "shuffle_read_bytes": 2636957315,
+      "shuffle_write_bytes": 2636957315,
+      "tasks": 193
+    },
+    "full-validation-feature-assembly": {
+      "Disk Bytes Spilled": 0,
+      "Executor CPU Time": 138219304855,
+      "Executor Run Time": 273131,
+      "JVM GC Time": 28246,
+      "Memory Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 0,
+      "shuffle_read_bytes": 2267,
+      "shuffle_write_bytes": 2267,
+      "tasks": 164
+    },
+    "legacy-load-and-evidence-reconciliation": {
+      "Disk Bytes Spilled": 0,
+      "Executor CPU Time": 518356879,
+      "Executor Run Time": 1980,
+      "JVM GC Time": 43,
+      "Memory Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 0,
+      "shuffle_read_bytes": 0,
+      "shuffle_write_bytes": 0,
+      "tasks": 68
+    },
+    "package-and-validate": {
+      "Disk Bytes Spilled": 0,
+      "Executor CPU Time": 5447433493,
+      "Executor Run Time": 20163,
+      "JVM GC Time": 437,
+      "Memory Bytes Spilled": 0,
+      "peak_task_execution_memory_bytes": 8650736,
+      "shuffle_read_bytes": 3147,
+      "shuffle_write_bytes": 3147,
+      "tasks": 156
+    }
+  }
+}

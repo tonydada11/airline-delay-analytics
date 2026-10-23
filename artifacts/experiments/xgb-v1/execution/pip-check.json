@@ -1,0 +1,16 @@
+{
+  "command": [
+    "docker",
+    "compose",
+    "-f",
+    "/home/server/workspace/industry/Airline/studies/xgb_v1/compose.yml",
+    "exec",
+    "-T",
+    "driver",
+    "python3",
+    "-m",
+    "pip",
+    "check"
+  ],
+  "output": "No broken requirements found."
+}

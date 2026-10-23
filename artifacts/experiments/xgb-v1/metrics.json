@@ -1,0 +1,361 @@
+{
+  "baseline_months": {
+    "2024-05": {
+      "budgets": {
+        "10": {
+          "capacity": 59922,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5088732635863982,
+          "precision": 0.516254464136711,
+          "recall": 0.1954497207409841,
+          "selected_mass": 59922,
+          "true_positive_mass": 30935.0
+        },
+        "20": {
+          "capacity": 119845,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.4505031006792072,
+          "precision": 0.46563477825524635,
+          "recall": 0.3525739846849807,
+          "selected_mass": 119845,
+          "true_positive_mass": 55804.0
+        }
+      },
+      "f1": 0.47058598311541633,
+      "pr_auc": 0.43245490658602814,
+      "precision": 0.41487007131732107,
+      "recall": 0.5435884151734944,
+      "roc_auc": 0.6864248306515232,
+      "rows": 599226
+    },
+    "2024-06": {
+      "budgets": {
+        "10": {
+          "capacity": 60127,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5711593428436317,
+          "precision": 0.47565985331049276,
+          "recall": 0.19073660342125445,
+          "selected_mass": 60127,
+          "true_positive_mass": 28600.0
+        },
+        "20": {
+          "capacity": 120254,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5167125945565697,
+          "precision": 0.43455519151130106,
+          "recall": 0.34850778618826905,
+          "selected_mass": 120254,
+          "true_positive_mass": 52257.0
+        }
+      },
+      "f1": 0.46735516233828234,
+      "pr_auc": 0.40353655194596116,
+      "precision": 0.34272261020029626,
+      "recall": 0.7344359598519458,
+      "roc_auc": 0.6831477174722993,
+      "rows": 601272
+    },
+    "2024-07": {
+      "budgets": {
+        "10": {
+          "capacity": 61393,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.6105093564550378,
+          "precision": 0.55951004186145,
+          "recall": 0.18887636433618343,
+          "selected_mass": 61393,
+          "true_positive_mass": 34350.0
+        },
+        "20": {
+          "capacity": 122787,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5492322926537949,
+          "precision": 0.5117072654271217,
+          "recall": 0.3454815385038353,
+          "selected_mass": 122787,
+          "true_positive_mass": 62831.0
+        }
+      },
+      "f1": 0.5169970216699189,
+      "pr_auc": 0.4705872368424865,
+      "precision": 0.38786264436293194,
+      "recall": 0.7750364281197591,
+      "roc_auc": 0.6903589656803134,
+      "rows": 613938
+    },
+    "2024-08": {
+      "budgets": {
+        "10": {
+          "capacity": 60430,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.5396346930668188,
+          "precision": 0.49392685752109877,
+          "recall": 0.2104758412546188,
+          "selected_mass": 60430,
+          "true_positive_mass": 29848.0
+        },
+        "20": {
+          "capacity": 120860,
+          "fractional_boundary_groups": 0,
+          "minimum_selected_score": 0.4781131370344247,
+          "precision": 0.4380688399801423,
+          "recall": 0.37334640227907373,
+          "selected_mass": 120860,
+          "true_positive_mass": 52945.0
+        }
+      },
+      "f1": 0.4591393846043995,
+      "pr_auc": 0.4058145952380886,
+      "precision": 0.35962305154079083,
+      "recall": 0.6348052350999915,
+      "roc_auc": 0.6966261205126648,
+      "rows": 604303
+    }
+  },
+  "baseline_pooled": {
+    "confusion_matrix": {
+      "false_negative": 204761,
+      "false_positive": 715303,
+      "true_negative": 1071538,
+      "true_positive": 427137
+    },
+    "f1": 0.4814606912549919,
+    "pr_auc": 0.42719154808564114,
+    "precision": 0.37388134168971676,
+    "predicted_positive_rate": 0.4723287630455374,
+    "prevalence": 0.26125100723972283,
+    "ranking_status": "defined",
+    "recall": 0.6759587781572343,
+    "roc_auc": 0.6870639856066698,
+    "rows": 2418739
+  },
+  "baseline_threshold": 0.39,
+  "environment": {
+    "packages": {
+      "joblib": "1.4.2",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "pyarrow": "19.0.1",
+      "scikit-learn": "1.6.1",
+      "scipy": "1.15.3",
+      "threadpoolctl": "3.6.0",
+      "xgboost-cpu": "3.0.5"
+    },
+    "python": "3.10.12",
+    "spark": "3.5.9",
+    "spark_conf": {
+      "spark.app.id": "app-20261023172237-0000",
+      "spark.app.name": "xgb-v1-preflight",
+      "spark.app.startTime": "1792776156393",
+      "spark.app.submitTime": "1792776155685",
+      "spark.cores.max": "2",
+      "spark.default.parallelism": "2",
+      "spark.driver.bindAddress": "0.0.0.0",
+      "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+      "spark.driver.host": "xgb-driver",
+      "spark.driver.maxResultSize": "128m",
+      "spark.driver.memory": "768m",
+      "spark.driver.port": "44877",
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.executor.cores": "1",
+      "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+      "spark.executor.id": "driver",
+      "spark.executor.memory": "640m",
+      "spark.master": "spark://xgb-master:7077",
+      "spark.rdd.compress": "True",
+      "spark.serializer.objectStreamReset": "100",
+      "spark.sql.execution.arrow.maxRecordsPerBatch": "1000",
+      "spark.sql.files.maxPartitionBytes": "67108864",
+      "spark.sql.inMemoryColumnarStorage.batchSize": "1000",
+      "spark.sql.shuffle.partitions": "4",
+      "spark.stage.maxConsecutiveAttempts": "1",
+      "spark.submit.deployMode": "client",
+      "spark.submit.pyFiles": "",
+      "spark.task.cpus": "1",
+      "spark.task.maxFailures": "1"
+    },
+    "workers": [
+      {
+        "host": "xgb-worker1",
+        "packages": {
+          "joblib": "1.4.2",
+          "numpy": "2.2.6",
+          "pandas": "2.3.3",
+          "pyarrow": "19.0.1",
+          "scikit-learn": "1.6.1",
+          "scipy": "1.15.3",
+          "threadpoolctl": "3.6.0",
+          "xgboost-cpu": "3.0.5"
+        },
+        "partition": 0,
+        "python": "3.10.12"
+      },
+      {
+        "host": "xgb-worker2",
+        "packages": {
+          "joblib": "1.4.2",
+          "numpy": "2.2.6",
+          "pandas": "2.3.3",
+          "pyarrow": "19.0.1",
+          "scikit-learn": "1.6.1",
+          "scipy": "1.15.3",
+          "threadpoolctl": "3.6.0",
+          "xgboost-cpu": "3.0.5"
+        },
+        "partition": 1,
+        "python": "3.10.12"
+      }
+    ]
+  },
+  "execution": {
+    "automatic_retries": false,
+    "elapsed_seconds": 129.7919980660081,
+    "full_attempt_cap_seconds": 7200,
+    "full_classifier_fits_started": 0,
+    "production_publication": false,
+    "reason": {
+      "blocked": true,
+      "dense_bytes": 28055816320,
+      "dense_bytes_per_worker": 14027908160,
+      "explanation": "Installed adapter densifies float32 vectors and caches all batches before QuantileDMatrix; bound excludes JVM, Arrow, labels, weights and XGBoost allocations.",
+      "host_available_bytes": 5255364608,
+      "host_physical_bytes": 12542668800,
+      "host_swap_bytes": 4294967296,
+      "swap_free_bytes": 3596722176
+    },
+    "status": "blocked"
+  },
+  "population": {
+    "baseline_sha256": "c1313197e55e9d9d90793ec3401c3c0d3d61597ca35da94eae5c1f7b8fdee828",
+    "bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+    "dataset_manifest_sha256": "093b15fd2085ba50d005b0fd70a804e81597b8df4c3e2f89a56fef18a799a265",
+    "dimensions": 784,
+    "feature_count": 50,
+    "feature_order": [
+      "reporting_airline",
+      "origin",
+      "destination",
+      "calendar_month",
+      "calendar_weekday",
+      "distance",
+      "crs_elapsed_time",
+      "departure_sin",
+      "departure_cos",
+      "arrival_sin",
+      "arrival_cos",
+      "departure_missing",
+      "arrival_missing",
+      "duration_missing",
+      "carrier_delay_rate_7d",
+      "carrier_delay_rate_30d",
+      "carrier_delay_rate_90d",
+      "origin_delay_rate_7d",
+      "origin_delay_rate_30d",
+      "origin_delay_rate_90d",
+      "destination_delay_rate_7d",
+      "destination_delay_rate_30d",
+      "destination_delay_rate_90d",
+      "route_delay_rate_7d",
+      "route_delay_rate_30d",
+      "route_delay_rate_90d",
+      "carrier_flight_count_7d",
+      "carrier_flight_count_30d",
+      "carrier_flight_count_90d",
+      "origin_flight_count_7d",
+      "origin_flight_count_30d",
+      "origin_flight_count_90d",
+      "destination_flight_count_7d",
+      "destination_flight_count_30d",
+      "destination_flight_count_90d",
+      "route_flight_count_7d",
+      "route_flight_count_30d",
+      "route_flight_count_90d",
+      "carrier_history_missing_7d",
+      "carrier_history_missing_30d",
+      "carrier_history_missing_90d",
+      "origin_history_missing_7d",
+      "origin_history_missing_30d",
+      "origin_history_missing_90d",
+      "destination_history_missing_7d",
+      "destination_history_missing_30d",
+      "destination_history_missing_90d",
+      "route_history_missing_7d",
+      "route_history_missing_30d",
+      "route_history_missing_90d"
+    ],
+    "populations": [
+      {
+        "end": "2024-04-30",
+        "positives": 1827125,
+        "rows": 8946370,
+        "split": "train",
+        "start": "2023-01-01"
+      },
+      {
+        "end": "2024-08-31",
+        "positives": 631898,
+        "rows": 2418739,
+        "split": "validation",
+        "start": "2024-05-01"
+      }
+    ],
+    "preprocessing_uid": "PipelineModel_196025fd5a4b",
+    "validation_months": {
+      "2024-05": {
+        "month": "2024-05",
+        "positives": 158276,
+        "rows": 599226
+      },
+      "2024-06": {
+        "month": "2024-06",
+        "positives": 149945,
+        "rows": 601272
+      },
+      "2024-07": {
+        "month": "2024-07",
+        "positives": 181865,
+        "rows": 613938
+      },
+      "2024-08": {
+        "month": "2024-08",
+        "positives": 141812,
+        "rows": 604303
+      }
+    }
+  },
+  "preflight": {
+    "full_classifier_fits_started": 0,
+    "memory": {
+      "blocked": true,
+      "dense_bytes": 28055816320,
+      "dense_bytes_per_worker": 14027908160,
+      "explanation": "Installed adapter densifies float32 vectors and caches all batches before QuantileDMatrix; bound excludes JVM, Arrow, labels, weights and XGBoost allocations.",
+      "host_available_bytes": 5255364608,
+      "host_physical_bytes": 12542668800,
+      "host_swap_bytes": 4294967296,
+      "swap_free_bytes": 3596722176
+    },
+    "metrics_checks": {
+      "duplicate_boundary": "passed",
+      "inclusive_threshold_grid": "passed",
+      "unweighted_auc": "passed"
+    },
+    "smoke": {
+      "adapter_zero_nan_label_weights": "passed",
+      "dimensions": 784,
+      "exact_reload_and_dense_sparse_inference": "passed",
+      "fit_seconds": 6.944946293020621,
+      "observed_probability": 0.4000000059604645,
+      "reused_existing_fit": true,
+      "rows": 256,
+      "trees": 100,
+      "weight_expected_probability": 0.4
+    },
+    "status": "blocked"
+  },
+  "qualification": null,
+  "recommendation": "INCOMPLETE",
+  "status": "BLOCKED",
+  "xgb": null
+}

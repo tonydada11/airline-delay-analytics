@@ -1,0 +1,12 @@
+{
+  "base_image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+  "command": [
+    "docker",
+    "build",
+    "--network=none",
+    "-t",
+    "airline-xgb-v1:3.0.5",
+    "/home/server/workspace/industry/Airline/artifacts/experiments/xgb-v1/build"
+  ],
+  "exit_code": 0
+}

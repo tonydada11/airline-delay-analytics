@@ -1,0 +1,13 @@
+{
+  "accepted_preprocessing_files_sha256_checked": 64,
+  "artifact_check_limitation": "Non-preprocessing local artifacts checked by size/mtime, not content hash.",
+  "artifact_metadata_changes": [],
+  "fixture_checks": 18,
+  "fixture_fits": 8,
+  "local_artifact_files_size_mtime_checked": 1966,
+  "note": "Original post-run raw container comparison failed; see metadata-investigation.json. It is not overwritten or counted as a pass.",
+  "preprocessing_changes": [],
+  "supervisor_regression_tests": "test_actual_mutations_remain_detectable (studies.xgb_feasibility_v1.test_supervisor.MetadataTests.test_actual_mutations_remain_detectable) ... ok\ntest_mount_order_does_not_imply_mutation (studies.xgb_feasibility_v1.test_supervisor.MetadataTests.test_mount_order_does_not_imply_mutation) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+  "tracked_changes": [],
+  "tracked_files_sha256_checked": 1093
+}

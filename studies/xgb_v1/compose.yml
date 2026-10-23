@@ -1,0 +1,49 @@
+name: airline-xgb-v1
+
+# Built offline by run.py; production image and Compose are untouched.
+x-common: &common
+  image: airline-xgb-v1:3.0.5
+  user: "0:0"
+  restart: "no"
+  environment:
+    SPARK_DAEMON_MEMORY: 256m
+    PYTHONPATH: /opt/xgb-study:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip:/workspace/data/studies/xgb-v1/project:/workspace/data/studies/xgb-v1/project/src
+    PYSPARK_PYTHON: python3
+    PYTHONDONTWRITEBYTECODE: "1"
+    OMP_NUM_THREADS: "1"
+    OPENBLAS_NUM_THREADS: "1"
+    MKL_NUM_THREADS: "1"
+  volumes:
+    - ../../src:/workspace/data/studies/xgb-v1/project/src:ro
+    - ../lr_v1:/workspace/data/studies/xgb-v1/project/studies/lr_v1:ro
+    - ./:/workspace/data/studies/xgb-v1/project/studies/xgb_v1:ro
+    - ../../conf/raw_data_manifest.csv:/raw-manifest.csv:ro
+    - ../../conf/airport_timezones.csv:/workspace/data/studies/xgb-v1/project/conf/airport_timezones.csv:ro
+    - ../../artifacts/flighttime-v3/models:/accepted-models:ro
+    - ../../data/warehouse/dws/ml_flighttime_v3_selection:/selection:ro
+    - ../../artifacts/experiments/xgb-v1:/output
+
+services:
+  master:
+    <<: *common
+    hostname: xgb-master
+    mem_limit: 512m
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.master.Master, --host, xgb-master, --port, "7077", --webui-port, "8080"]
+  worker1:
+    <<: *common
+    hostname: xgb-worker1
+    mem_limit: 2g
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --cores, "1", --memory, 768m, --webui-port, "8081", spark://xgb-master:7077]
+    depends_on: [master]
+  worker2:
+    <<: *common
+    hostname: xgb-worker2
+    mem_limit: 2g
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --cores, "1", --memory, 768m, --webui-port, "8081", spark://xgb-master:7077]
+    depends_on: [master]
+  driver:
+    <<: *common
+    hostname: xgb-driver
+    mem_limit: 2g
+    command: [sleep, infinity]
+    depends_on: [master, worker1, worker2]

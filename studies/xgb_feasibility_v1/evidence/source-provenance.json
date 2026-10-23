@@ -1,0 +1,35 @@
+{
+  "documentation_urls": [
+    "https://xgboost.readthedocs.io/en/release_3.0.0/tutorials/spark_estimator.html",
+    "https://xgboost.readthedocs.io/en/release_3.0.0/python/python_api.html#xgboost.spark.SparkXGBClassifier",
+    "https://xgboost.readthedocs.io/en/release_3.0.0/install.html"
+  ],
+  "executed_files_sha256": {
+    "Dockerfile": "13b159b7f6402b35284ceaa6406b19c01fcacfbba5e0e7ab380f6c8de71bc4fd",
+    "compose.yml": "3ecb7b9aed6088065376882227039917c56345977087c0139e4d0888b337e06d",
+    "evidence/run-executed.py.txt": "b5b42fd212d7aecca127b76a1cfd31a10f067b29182c80aa5d507be846a5cf5a",
+    "fixtures.py": "135bd978ead82f1d9c19e9ef39a241b43a1953703456fe6fe9f7e9d7b693f0c7",
+    "requirements.in": "75a6ff6964f80020dc4f205fbedff0fbae87b177ef3e105428e323a04c159b04",
+    "requirements.lock": "f03e0e357c5263f289073cf3b9bb968aabd90edbbaf3e8a6eabb0bd38e8c5d4e"
+  },
+  "license": {
+    "file": "upstream-LICENSE.txt",
+    "git_blob_sha": "90c0ff9368463913b3dd7cb155578fdc78477adc",
+    "url": "https://github.com/dmlc/xgboost/blob/v3.0.5/LICENSE"
+  },
+  "members": [
+    {
+      "file": "upstream-core.py.txt",
+      "member": "xgboost/spark/core.py",
+      "sha256": "e758f0be03cdc3040534c0484d4c78c724e094430c2c9172b681c9fddd64ce64",
+      "wheel": "xgboost_cpu-3.0.5-py3-none-manylinux_2_28_x86_64.whl"
+    },
+    {
+      "file": "upstream-data.py.txt",
+      "member": "xgboost/spark/data.py",
+      "sha256": "479618b5ef4905aa29bd2d0dc7d2881e54720e6651c50152f52a030c77b7fe8a",
+      "wheel": "xgboost_cpu-3.0.5-py3-none-manylinux_2_28_x86_64.whl"
+    }
+  ],
+  "wheel_sha256": "ed5c141b88e53777b9bf8786881fd6e2e9032837c7e349052ab40363a14ac708"
+}

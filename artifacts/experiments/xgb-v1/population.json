@@ -1,0 +1,98 @@
+{
+  "baseline_sha256": "c1313197e55e9d9d90793ec3401c3c0d3d61597ca35da94eae5c1f7b8fdee828",
+  "bundle_id": "d0098a9572834c53bf76b04d732a94a6",
+  "dataset_manifest_sha256": "093b15fd2085ba50d005b0fd70a804e81597b8df4c3e2f89a56fef18a799a265",
+  "dimensions": 784,
+  "feature_count": 50,
+  "feature_order": [
+    "reporting_airline",
+    "origin",
+    "destination",
+    "calendar_month",
+    "calendar_weekday",
+    "distance",
+    "crs_elapsed_time",
+    "departure_sin",
+    "departure_cos",
+    "arrival_sin",
+    "arrival_cos",
+    "departure_missing",
+    "arrival_missing",
+    "duration_missing",
+    "carrier_delay_rate_7d",
+    "carrier_delay_rate_30d",
+    "carrier_delay_rate_90d",
+    "origin_delay_rate_7d",
+    "origin_delay_rate_30d",
+    "origin_delay_rate_90d",
+    "destination_delay_rate_7d",
+    "destination_delay_rate_30d",
+    "destination_delay_rate_90d",
+    "route_delay_rate_7d",
+    "route_delay_rate_30d",
+    "route_delay_rate_90d",
+    "carrier_flight_count_7d",
+    "carrier_flight_count_30d",
+    "carrier_flight_count_90d",
+    "origin_flight_count_7d",
+    "origin_flight_count_30d",
+    "origin_flight_count_90d",
+    "destination_flight_count_7d",
+    "destination_flight_count_30d",
+    "destination_flight_count_90d",
+    "route_flight_count_7d",
+    "route_flight_count_30d",
+    "route_flight_count_90d",
+    "carrier_history_missing_7d",
+    "carrier_history_missing_30d",
+    "carrier_history_missing_90d",
+    "origin_history_missing_7d",
+    "origin_history_missing_30d",
+    "origin_history_missing_90d",
+    "destination_history_missing_7d",
+    "destination_history_missing_30d",
+    "destination_history_missing_90d",
+    "route_history_missing_7d",
+    "route_history_missing_30d",
+    "route_history_missing_90d"
+  ],
+  "populations": [
+    {
+      "end": "2024-04-30",
+      "positives": 1827125,
+      "rows": 8946370,
+      "split": "train",
+      "start": "2023-01-01"
+    },
+    {
+      "end": "2024-08-31",
+      "positives": 631898,
+      "rows": 2418739,
+      "split": "validation",
+      "start": "2024-05-01"
+    }
+  ],
+  "preprocessing_uid": "PipelineModel_196025fd5a4b",
+  "validation_months": {
+    "2024-05": {
+      "month": "2024-05",
+      "positives": 158276,
+      "rows": 599226
+    },
+    "2024-06": {
+      "month": "2024-06",
+      "positives": 149945,
+      "rows": 601272
+    },
+    "2024-07": {
+      "month": "2024-07",
+      "positives": 181865,
+      "rows": 613938
+    },
+    "2024-08": {
+      "month": "2024-08",
+      "positives": 141812,
+      "rows": 604303
+    }
+  }
+}

@@ -1,0 +1,612 @@
+{
+  "checks": {
+    "accepted_dense_distributed": {
+      "evidence": [
+        {
+          "case": "accepted_dense",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 284,
+          "process_peak_rss_kib": 221212,
+          "rank": 0,
+          "rss_bytes": 223879168,
+          "world_size": 2
+        },
+        {
+          "case": "accepted_dense",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 290,
+          "process_peak_rss_kib": 222352,
+          "rank": 1,
+          "rss_bytes": 224972800,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    },
+    "accepted_preprocessing_784": {
+      "evidence": {
+        "category_sizes": [
+          16,
+          351,
+          351,
+          13,
+          8
+        ],
+        "dimensions": [
+          784
+        ],
+        "mean_nonzero": 36.737354085603116,
+        "rows": 514,
+        "sparse_rows": 514,
+        "uid": "PipelineModel_196025fd5a4b"
+      },
+      "passed": true
+    },
+    "accepted_sparse_distributed": {
+      "evidence": [
+        {
+          "case": "accepted_sparse",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 290,
+          "process_peak_rss_kib": 217160,
+          "rank": 0,
+          "rss_bytes": 221134848,
+          "world_size": 2
+        },
+        {
+          "case": "accepted_sparse",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 284,
+          "process_peak_rss_kib": 216840,
+          "rank": 1,
+          "rss_bytes": 220651520,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    },
+    "class_weight_newton_step": {
+      "evidence": {
+        "expected_unweighted_margin": -1.0,
+        "expected_weighted_margin": -0.4,
+        "unweighted_p": 0.2689414322376251,
+        "weighted_p": 0.40131235122680664
+      },
+      "passed": true
+    },
+    "dense_sparse_training_parity": {
+      "evidence": {
+        "max_probability_delta": 0.0,
+        "rows": 514
+      },
+      "passed": true
+    },
+    "exact_runtime": {
+      "evidence": {
+        "architecture": "x86_64",
+        "packages": {
+          "joblib": "1.4.2",
+          "numpy": "2.2.6",
+          "pandas": "2.3.3",
+          "pyarrow": "19.0.1",
+          "scikit-learn": "1.6.1",
+          "scipy": "1.15.3",
+          "threadpoolctl": "3.6.0",
+          "xgboost-cpu": "3.0.5"
+        },
+        "python": "3.10.12",
+        "spark": "3.5.9",
+        "spark_conf": {
+          "spark.app.id": "app-20261023014854-0000",
+          "spark.app.name": "isolated-xgb-generated-feasibility",
+          "spark.app.startTime": "1792720133215",
+          "spark.app.submitTime": "1792720130932",
+          "spark.cores.max": "2",
+          "spark.default.parallelism": "2",
+          "spark.driver.bindAddress": "0.0.0.0",
+          "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+          "spark.driver.host": "xgb-driver",
+          "spark.driver.maxResultSize": "128m",
+          "spark.driver.memory": "768m",
+          "spark.driver.port": "40885",
+          "spark.dynamicAllocation.enabled": "false",
+          "spark.eventLog.dir": "file:///output/events",
+          "spark.eventLog.enabled": "true",
+          "spark.executor.cores": "1",
+          "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+          "spark.executor.id": "driver",
+          "spark.executor.memory": "640m",
+          "spark.master": "spark://xgb-master:7077",
+          "spark.rdd.compress": "True",
+          "spark.scheduler.barrier.maxConcurrentTasksCheck.interval": "5s",
+          "spark.scheduler.barrier.maxConcurrentTasksCheck.maxFailures": "3",
+          "spark.serializer.objectStreamReset": "100",
+          "spark.sql.execution.arrow.maxRecordsPerBatch": "1000",
+          "spark.sql.shuffle.partitions": "4",
+          "spark.submit.deployMode": "client",
+          "spark.submit.pyFiles": "",
+          "spark.task.cpus": "1"
+        }
+      },
+      "passed": true
+    },
+    "implicit_explicit_dense_zero_parity": {
+      "evidence": {
+        "probabilities": [
+          0.20020931959152222,
+          0.20020931959152222
+        ]
+      },
+      "passed": true
+    },
+    "labels_predictions_multiplicity": {
+      "evidence": {
+        "duplicate_id_7_count": 3,
+        "rows": 514
+      },
+      "passed": true
+    },
+    "save_reload_exact": {
+      "evidence": {
+        "model_features": 784,
+        "prediction_rows": 514
+      },
+      "passed": true
+    },
+    "scaling_32768_distributed": {
+      "evidence": [
+        {
+          "case": "scaling_32768",
+          "host": "xgb-worker1",
+          "iteration": 1,
+          "pid": 450,
+          "process_peak_rss_kib": 307360,
+          "rank": 0,
+          "rss_bytes": 314933248,
+          "world_size": 2
+        },
+        {
+          "case": "scaling_32768",
+          "host": "xgb-worker2",
+          "iteration": 1,
+          "pid": 509,
+          "process_peak_rss_kib": 306864,
+          "rank": 1,
+          "rss_bytes": 314339328,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    },
+    "scaling_4096_distributed": {
+      "evidence": [
+        {
+          "case": "scaling_4096",
+          "host": "xgb-worker2",
+          "iteration": 1,
+          "pid": 509,
+          "process_peak_rss_kib": 226448,
+          "rank": 0,
+          "rss_bytes": 230043648,
+          "world_size": 2
+        },
+        {
+          "case": "scaling_4096",
+          "host": "xgb-worker1",
+          "iteration": 1,
+          "pid": 450,
+          "process_peak_rss_kib": 231840,
+          "rank": 1,
+          "rss_bytes": 234471424,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    },
+    "sparse_missing_zero_distributed": {
+      "evidence": [
+        {
+          "case": "sparse_missing_zero",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 400,
+          "process_peak_rss_kib": 219504,
+          "rank": 0,
+          "rss_bytes": 225169408,
+          "world_size": 2
+        },
+        {
+          "case": "sparse_missing_zero",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 382,
+          "process_peak_rss_kib": 219984,
+          "rank": 1,
+          "rss_bytes": 225488896,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    },
+    "sparse_optimization_changes_contract": {
+      "evidence": {
+        "zero_one_nan_probabilities": [
+          0.5,
+          0.7997906804084778,
+          0.5
+        ]
+      },
+      "passed": true
+    },
+    "sparse_optimization_rejects_nan_missing": {
+      "evidence": {
+        "error": "If enable_sparse_data_optim is True, missing param != 0 is not supported."
+      },
+      "passed": true
+    },
+    "unweighted_distributed": {
+      "evidence": [
+        {
+          "case": "unweighted",
+          "host": "xgb-worker1",
+          "iteration": 0,
+          "pid": 450,
+          "process_peak_rss_kib": 220088,
+          "rank": 0,
+          "rss_bytes": 222638080,
+          "world_size": 2
+        },
+        {
+          "case": "unweighted",
+          "host": "xgb-worker2",
+          "iteration": 0,
+          "pid": 432,
+          "process_peak_rss_kib": 219672,
+          "rank": 1,
+          "rss_bytes": 222351360,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    },
+    "weighted_distributed": {
+      "evidence": [
+        {
+          "case": "weighted",
+          "host": "xgb-worker1",
+          "iteration": 0,
+          "pid": 450,
+          "process_peak_rss_kib": 214960,
+          "rank": 0,
+          "rss_bytes": 218689536,
+          "world_size": 2
+        },
+        {
+          "case": "weighted",
+          "host": "xgb-worker2",
+          "iteration": 0,
+          "pid": 432,
+          "process_peak_rss_kib": 215472,
+          "rank": 1,
+          "rss_bytes": 219193344,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    },
+    "zero_distinct_from_nan": {
+      "evidence": {
+        "zero_one_nan_probabilities": [
+          0.20020931959152222,
+          0.8061206936836243,
+          0.8061206936836243
+        ]
+      },
+      "passed": true
+    },
+    "zero_nan_distributed": {
+      "evidence": [
+        {
+          "case": "zero_nan",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 290,
+          "process_peak_rss_kib": 222352,
+          "rank": 0,
+          "rss_bytes": 225886208,
+          "world_size": 2
+        },
+        {
+          "case": "zero_nan",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 284,
+          "process_peak_rss_kib": 221212,
+          "rank": 1,
+          "rss_bytes": 226537472,
+          "world_size": 2
+        }
+      ],
+      "passed": true
+    }
+  },
+  "fit_count": 8,
+  "fits": [
+    {
+      "case": "accepted_sparse",
+      "features": 784,
+      "rows": 514,
+      "seconds": 8.755260554986307,
+      "workers": [
+        {
+          "case": "accepted_sparse",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 290,
+          "process_peak_rss_kib": 217160,
+          "rank": 0,
+          "rss_bytes": 221134848,
+          "world_size": 2
+        },
+        {
+          "case": "accepted_sparse",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 284,
+          "process_peak_rss_kib": 216840,
+          "rank": 1,
+          "rss_bytes": 220651520,
+          "world_size": 2
+        }
+      ]
+    },
+    {
+      "case": "accepted_dense",
+      "features": 784,
+      "rows": 514,
+      "seconds": 4.1951923570013605,
+      "workers": [
+        {
+          "case": "accepted_dense",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 284,
+          "process_peak_rss_kib": 221212,
+          "rank": 0,
+          "rss_bytes": 223879168,
+          "world_size": 2
+        },
+        {
+          "case": "accepted_dense",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 290,
+          "process_peak_rss_kib": 222352,
+          "rank": 1,
+          "rss_bytes": 224972800,
+          "world_size": 2
+        }
+      ]
+    },
+    {
+      "case": "zero_nan",
+      "features": 784,
+      "rows": 192,
+      "seconds": 3.9994367019971833,
+      "workers": [
+        {
+          "case": "zero_nan",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 290,
+          "process_peak_rss_kib": 222352,
+          "rank": 0,
+          "rss_bytes": 225886208,
+          "world_size": 2
+        },
+        {
+          "case": "zero_nan",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 284,
+          "process_peak_rss_kib": 221212,
+          "rank": 1,
+          "rss_bytes": 226537472,
+          "world_size": 2
+        }
+      ]
+    },
+    {
+      "case": "sparse_missing_zero",
+      "features": 784,
+      "rows": 192,
+      "seconds": 4.073016894981265,
+      "workers": [
+        {
+          "case": "sparse_missing_zero",
+          "host": "xgb-worker1",
+          "iteration": 2,
+          "pid": 400,
+          "process_peak_rss_kib": 219504,
+          "rank": 0,
+          "rss_bytes": 225169408,
+          "world_size": 2
+        },
+        {
+          "case": "sparse_missing_zero",
+          "host": "xgb-worker2",
+          "iteration": 2,
+          "pid": 382,
+          "process_peak_rss_kib": 219984,
+          "rank": 1,
+          "rss_bytes": 225488896,
+          "world_size": 2
+        }
+      ]
+    },
+    {
+      "case": "weighted",
+      "features": 784,
+      "rows": 256,
+      "seconds": 5.213933986000484,
+      "workers": [
+        {
+          "case": "weighted",
+          "host": "xgb-worker1",
+          "iteration": 0,
+          "pid": 450,
+          "process_peak_rss_kib": 214960,
+          "rank": 0,
+          "rss_bytes": 218689536,
+          "world_size": 2
+        },
+        {
+          "case": "weighted",
+          "host": "xgb-worker2",
+          "iteration": 0,
+          "pid": 432,
+          "process_peak_rss_kib": 215472,
+          "rank": 1,
+          "rss_bytes": 219193344,
+          "world_size": 2
+        }
+      ]
+    },
+    {
+      "case": "unweighted",
+      "features": 784,
+      "rows": 256,
+      "seconds": 3.92654903899529,
+      "workers": [
+        {
+          "case": "unweighted",
+          "host": "xgb-worker1",
+          "iteration": 0,
+          "pid": 450,
+          "process_peak_rss_kib": 220088,
+          "rank": 0,
+          "rss_bytes": 222638080,
+          "world_size": 2
+        },
+        {
+          "case": "unweighted",
+          "host": "xgb-worker2",
+          "iteration": 0,
+          "pid": 432,
+          "process_peak_rss_kib": 219672,
+          "rank": 1,
+          "rss_bytes": 222351360,
+          "world_size": 2
+        }
+      ]
+    },
+    {
+      "case": "scaling_4096",
+      "features": 784,
+      "rows": 4096,
+      "seconds": 5.748116487986408,
+      "workers": [
+        {
+          "case": "scaling_4096",
+          "host": "xgb-worker2",
+          "iteration": 1,
+          "pid": 509,
+          "process_peak_rss_kib": 226448,
+          "rank": 0,
+          "rss_bytes": 230043648,
+          "world_size": 2
+        },
+        {
+          "case": "scaling_4096",
+          "host": "xgb-worker1",
+          "iteration": 1,
+          "pid": 450,
+          "process_peak_rss_kib": 231840,
+          "rank": 1,
+          "rss_bytes": 234471424,
+          "world_size": 2
+        }
+      ]
+    },
+    {
+      "case": "scaling_32768",
+      "features": 784,
+      "rows": 32768,
+      "seconds": 9.609331667015795,
+      "workers": [
+        {
+          "case": "scaling_32768",
+          "host": "xgb-worker1",
+          "iteration": 1,
+          "pid": 450,
+          "process_peak_rss_kib": 307360,
+          "rank": 0,
+          "rss_bytes": 314933248,
+          "world_size": 2
+        },
+        {
+          "case": "scaling_32768",
+          "host": "xgb-worker2",
+          "iteration": 1,
+          "pid": 509,
+          "process_peak_rss_kib": 306864,
+          "rank": 1,
+          "rss_bytes": 314339328,
+          "world_size": 2
+        }
+      ]
+    }
+  ],
+  "generated_data_only": true,
+  "runtime": {
+    "architecture": "x86_64",
+    "packages": {
+      "joblib": "1.4.2",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "pyarrow": "19.0.1",
+      "scikit-learn": "1.6.1",
+      "scipy": "1.15.3",
+      "threadpoolctl": "3.6.0",
+      "xgboost-cpu": "3.0.5"
+    },
+    "python": "3.10.12",
+    "spark": "3.5.9",
+    "spark_conf": {
+      "spark.app.id": "app-20261023014854-0000",
+      "spark.app.name": "isolated-xgb-generated-feasibility",
+      "spark.app.startTime": "1792720133215",
+      "spark.app.submitTime": "1792720130932",
+      "spark.cores.max": "2",
+      "spark.default.parallelism": "2",
+      "spark.driver.bindAddress": "0.0.0.0",
+      "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+      "spark.driver.host": "xgb-driver",
+      "spark.driver.maxResultSize": "128m",
+      "spark.driver.memory": "768m",
+      "spark.driver.port": "40885",
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.eventLog.dir": "file:///output/events",
+      "spark.eventLog.enabled": "true",
+      "spark.executor.cores": "1",
+      "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+      "spark.executor.id": "driver",
+      "spark.executor.memory": "640m",
+      "spark.master": "spark://xgb-master:7077",
+      "spark.rdd.compress": "True",
+      "spark.scheduler.barrier.maxConcurrentTasksCheck.interval": "5s",
+      "spark.scheduler.barrier.maxConcurrentTasksCheck.maxFailures": "3",
+      "spark.serializer.objectStreamReset": "100",
+      "spark.sql.execution.arrow.maxRecordsPerBatch": "1000",
+      "spark.sql.shuffle.partitions": "4",
+      "spark.submit.deployMode": "client",
+      "spark.submit.pyFiles": "",
+      "spark.task.cpus": "1"
+    }
+  },
+  "status": "PASS_FIXTURES_ONLY"
+}

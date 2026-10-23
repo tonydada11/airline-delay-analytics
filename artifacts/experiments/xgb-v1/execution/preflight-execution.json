@@ -1,0 +1,1103 @@
+{
+  "cap_seconds": 1800,
+  "command": [
+    "docker",
+    "compose",
+    "-f",
+    "/home/server/workspace/industry/Airline/studies/xgb_v1/compose.yml",
+    "exec",
+    "-T",
+    "driver",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=10s",
+    "1770",
+    "/opt/spark/bin/spark-submit",
+    "--driver-memory",
+    "768m",
+    "/workspace/data/studies/xgb-v1/project/studies/xgb_v1/experiment.py",
+    "preflight"
+  ],
+  "elapsed_seconds": 109.28998761199182,
+  "exit_code": 0,
+  "samples": [
+    {
+      "seconds": 0.0005031159962527454,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 32.8kB",
+          "CPUPerc": "0.11%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "57.63%",
+          "MemUsage": "295.1MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "11.2kB / 4.33kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "45.8MB / 32.8kB",
+          "CPUPerc": "0.09%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "12.84%",
+          "MemUsage": "263MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "3.55kB / 4.36kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "18.9MB / 32.8kB",
+          "CPUPerc": "0.10%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "12.82%",
+          "MemUsage": "262.5MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "3.48kB / 5.54kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "27.3MB / 32.8kB",
+          "CPUPerc": "160.29%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "4.75%",
+          "MemUsage": "97.29MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "1.34kB / 126B",
+          "PIDs": "23"
+        }
+      ]
+    },
+    {
+      "seconds": 5.1580469910404645,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 32.8kB",
+          "CPUPerc": "0.10%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "57.87%",
+          "MemUsage": "296.3MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "20.9kB / 18.6kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "45.8MB / 65.5kB",
+          "CPUPerc": "247.22%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "20.08%",
+          "MemUsage": "411.1MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "7.75kB / 6.22kB",
+          "PIDs": "71"
+        },
+        {
+          "BlockIO": "18.9MB / 65.5kB",
+          "CPUPerc": "220.32%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "21.59%",
+          "MemUsage": "442.2MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "7.96kB / 7.91kB",
+          "PIDs": "75"
+        },
+        {
+          "BlockIO": "286MB / 32.8kB",
+          "CPUPerc": "83.20%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "19.18%",
+          "MemUsage": "392.8MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "8.34kB / 6.49kB",
+          "PIDs": "83"
+        }
+      ]
+    },
+    {
+      "seconds": 10.254133069014642,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 32.8kB",
+          "CPUPerc": "0.09%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "57.96%",
+          "MemUsage": "296.7MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "20.9kB / 18.6kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "56.1MB / 65.5kB",
+          "CPUPerc": "113.97%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "29.24%",
+          "MemUsage": "598.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "133kB / 38.6kB",
+          "PIDs": "95"
+        },
+        {
+          "BlockIO": "18.9MB / 65.5kB",
+          "CPUPerc": "0.26%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "27.61%",
+          "MemUsage": "565.4MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "31.8kB / 23.5kB",
+          "PIDs": "90"
+        },
+        {
+          "BlockIO": "311MB / 32.8kB",
+          "CPUPerc": "21.49%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "23.97%",
+          "MemUsage": "490.8MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "39.6kB / 54kB",
+          "PIDs": "92"
+        }
+      ]
+    },
+    {
+      "seconds": 15.32489034102764,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 32.8kB",
+          "CPUPerc": "0.08%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.20%",
+          "MemUsage": "298MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "23.5kB / 18.8kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "56.1MB / 65.5kB",
+          "CPUPerc": "208.39%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "31.89%",
+          "MemUsage": "653MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "260kB / 64.7kB",
+          "PIDs": "120"
+        },
+        {
+          "BlockIO": "24.5MB / 65.5kB",
+          "CPUPerc": "0.27%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "29.10%",
+          "MemUsage": "596MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "89.1kB / 35.3kB",
+          "PIDs": "118"
+        },
+        {
+          "BlockIO": "341MB / 32.8kB",
+          "CPUPerc": "230.34%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "32.28%",
+          "MemUsage": "661.1MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "88.1kB / 317kB",
+          "PIDs": "179"
+        }
+      ]
+    },
+    {
+      "seconds": 20.39258286403492,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 32.8kB",
+          "CPUPerc": "0.10%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.20%",
+          "MemUsage": "298MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "23.5kB / 18.8kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 65.5kB",
+          "CPUPerc": "21.78%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "35.62%",
+          "MemUsage": "729.6MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "899kB / 180kB",
+          "PIDs": "191"
+        },
+        {
+          "BlockIO": "24.5MB / 65.5kB",
+          "CPUPerc": "250.34%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "33.48%",
+          "MemUsage": "685.6MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "582kB / 115kB",
+          "PIDs": "192"
+        },
+        {
+          "BlockIO": "347MB / 32.8kB",
+          "CPUPerc": "224.02%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "37.40%",
+          "MemUsage": "765.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "247kB / 1.21MB",
+          "PIDs": "298"
+        }
+      ]
+    },
+    {
+      "seconds": 25.479567753034644,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 32.8kB",
+          "CPUPerc": "0.08%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.08%",
+          "MemUsage": "297.4MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "23.6kB / 18.8kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 1.09MB",
+          "CPUPerc": "8.04%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "38.68%",
+          "MemUsage": "792.2MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "1.76MB / 483kB",
+          "PIDs": "193"
+        },
+        {
+          "BlockIO": "24.5MB / 81.9kB",
+          "CPUPerc": "7.32%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "37.19%",
+          "MemUsage": "761.7MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "952kB / 261kB",
+          "PIDs": "193"
+        },
+        {
+          "BlockIO": "354MB / 1.04MB",
+          "CPUPerc": "149.99%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "38.64%",
+          "MemUsage": "791.4MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "689kB / 2.66MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 30.58708144299453,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 65.5kB",
+          "CPUPerc": "0.10%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.14%",
+          "MemUsage": "297.7MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "26.1kB / 18.9kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 1.09MB",
+          "CPUPerc": "373.68%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "42.72%",
+          "MemUsage": "874.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "1.86MB / 490kB",
+          "PIDs": "195"
+        },
+        {
+          "BlockIO": "24.5MB / 81.9kB",
+          "CPUPerc": "388.63%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "43.89%",
+          "MemUsage": "898.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.05MB / 306kB",
+          "PIDs": "195"
+        },
+        {
+          "BlockIO": "354MB / 1.07MB",
+          "CPUPerc": "0.38%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.01%",
+          "MemUsage": "798.8MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "700kB / 2.81MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 35.67649398499634,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 65.5kB",
+          "CPUPerc": "0.11%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.10%",
+          "MemUsage": "297.5MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "26.2kB / 19kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 1.18MB",
+          "CPUPerc": "332.89%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "48.16%",
+          "MemUsage": "986.2MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "1.87MB / 499kB",
+          "PIDs": "196"
+        },
+        {
+          "BlockIO": "24.5MB / 147kB",
+          "CPUPerc": "394.55%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "48.19%",
+          "MemUsage": "986.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.06MB / 315kB",
+          "PIDs": "196"
+        },
+        {
+          "BlockIO": "354MB / 1.07MB",
+          "CPUPerc": "1.58%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.02%",
+          "MemUsage": "799.2MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "719kB / 2.84MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 40.76184358098544,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 65.5kB",
+          "CPUPerc": "0.08%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.05%",
+          "MemUsage": "297.2MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "26.2kB / 19kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 1.33MB",
+          "CPUPerc": "285.94%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "51.84%",
+          "MemUsage": "1.037GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "1.89MB / 506kB",
+          "PIDs": "195"
+        },
+        {
+          "BlockIO": "24.5MB / 303kB",
+          "CPUPerc": "110.86%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "51.17%",
+          "MemUsage": "1.023GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.09MB / 328kB",
+          "PIDs": "195"
+        },
+        {
+          "BlockIO": "354MB / 1.22MB",
+          "CPUPerc": "0.38%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.03%",
+          "MemUsage": "799.2MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "732kB / 2.87MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 45.8986631599837,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 65.5kB",
+          "CPUPerc": "0.09%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.10%",
+          "MemUsage": "297.5MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "28.7kB / 19.1kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 1.33MB",
+          "CPUPerc": "100.25%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "52.53%",
+          "MemUsage": "1.051GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "1.91MB / 523kB",
+          "PIDs": "195"
+        },
+        {
+          "BlockIO": "24.5MB / 303kB",
+          "CPUPerc": "160.11%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "52.80%",
+          "MemUsage": "1.056GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.1MB / 339kB",
+          "PIDs": "196"
+        },
+        {
+          "BlockIO": "354MB / 1.22MB",
+          "CPUPerc": "49.65%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.06%",
+          "MemUsage": "799.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "763kB / 2.92MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 50.958425862016156,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 65.5kB",
+          "CPUPerc": "0.18%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.10%",
+          "MemUsage": "297.5MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "28.7kB / 19.1kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 1.61MB",
+          "CPUPerc": "104.40%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "48.48%",
+          "MemUsage": "992.8MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "1.95MB / 541kB",
+          "PIDs": "195"
+        },
+        {
+          "BlockIO": "24.5MB / 303kB",
+          "CPUPerc": "241.44%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "53.73%",
+          "MemUsage": "1.075GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.14MB / 359kB",
+          "PIDs": "197"
+        },
+        {
+          "BlockIO": "354MB / 1.22MB",
+          "CPUPerc": "5.55%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.07%",
+          "MemUsage": "800.1MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "803kB / 3MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 56.03233634098433,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 65.5kB",
+          "CPUPerc": "0.09%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.09%",
+          "MemUsage": "297.4MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "28.8kB / 19.1kB",
+          "PIDs": "44"
+        },
+        {
+          "BlockIO": "58.2MB / 1.63MB",
+          "CPUPerc": "131.23%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "49.18%",
+          "MemUsage": "1007MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "2MB / 565kB",
+          "PIDs": "196"
+        },
+        {
+          "BlockIO": "24.5MB / 598kB",
+          "CPUPerc": "100.04%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "52.72%",
+          "MemUsage": "1.054GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.17MB / 374kB",
+          "PIDs": "196"
+        },
+        {
+          "BlockIO": "354MB / 1.22MB",
+          "CPUPerc": "0.69%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.08%",
+          "MemUsage": "800.4MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "834kB / 3.06MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 61.09323029901134,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 81.9kB",
+          "CPUPerc": "0.08%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.12%",
+          "MemUsage": "297.6MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "31.3kB / 19.2kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.63MB",
+          "CPUPerc": "104.11%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "49.21%",
+          "MemUsage": "1008MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "2.02MB / 579kB",
+          "PIDs": "193"
+        },
+        {
+          "BlockIO": "24.5MB / 598kB",
+          "CPUPerc": "102.53%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "54.81%",
+          "MemUsage": "1.096GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.23MB / 402kB",
+          "PIDs": "194"
+        },
+        {
+          "BlockIO": "354MB / 1.24MB",
+          "CPUPerc": "0.92%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.07%",
+          "MemUsage": "800.1MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "874kB / 3.14MB",
+          "PIDs": "296"
+        }
+      ]
+    },
+    {
+      "seconds": 66.15526660298929,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 81.9kB",
+          "CPUPerc": "0.09%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.12%",
+          "MemUsage": "297.6MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "31.4kB / 19.3kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.66MB",
+          "CPUPerc": "177.86%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "52.70%",
+          "MemUsage": "1.054GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "2.05MB / 595kB",
+          "PIDs": "194"
+        },
+        {
+          "BlockIO": "24.5MB / 635kB",
+          "CPUPerc": "154.94%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "55.19%",
+          "MemUsage": "1.104GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.25MB / 418kB",
+          "PIDs": "193"
+        },
+        {
+          "BlockIO": "354MB / 1.24MB",
+          "CPUPerc": "2.62%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.05%",
+          "MemUsage": "799.8MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "919kB / 3.22MB",
+          "PIDs": "295"
+        }
+      ]
+    },
+    {
+      "seconds": 71.2335578580387,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 81.9kB",
+          "CPUPerc": "0.10%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.12%",
+          "MemUsage": "297.6MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "31.4kB / 19.3kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.68MB",
+          "CPUPerc": "215.50%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "54.31%",
+          "MemUsage": "1.086GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "2.11MB / 621kB",
+          "PIDs": "179"
+        },
+        {
+          "BlockIO": "24.5MB / 647kB",
+          "CPUPerc": "101.47%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "55.38%",
+          "MemUsage": "1.108GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.29MB / 438kB",
+          "PIDs": "182"
+        },
+        {
+          "BlockIO": "354MB / 1.24MB",
+          "CPUPerc": "1.30%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.09%",
+          "MemUsage": "800.6MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "952kB / 3.29MB",
+          "PIDs": "295"
+        }
+      ]
+    },
+    {
+      "seconds": 76.29302614199696,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 81.9kB",
+          "CPUPerc": "0.08%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.29%",
+          "MemUsage": "298.5MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "33.9kB / 19.4kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.7MB",
+          "CPUPerc": "120.59%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "54.89%",
+          "MemUsage": "1.098GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "2.13MB / 637kB",
+          "PIDs": "175"
+        },
+        {
+          "BlockIO": "24.5MB / 672kB",
+          "CPUPerc": "132.49%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "55.42%",
+          "MemUsage": "1.108GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.34MB / 462kB",
+          "PIDs": "179"
+        },
+        {
+          "BlockIO": "354MB / 1.24MB",
+          "CPUPerc": "1.43%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "38.99%",
+          "MemUsage": "798.4MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "1MB / 3.39MB",
+          "PIDs": "274"
+        }
+      ]
+    },
+    {
+      "seconds": 81.34783436503494,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 81.9kB",
+          "CPUPerc": "0.08%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.25%",
+          "MemUsage": "298.2MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "33.9kB / 19.4kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.74MB",
+          "CPUPerc": "201.21%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "52.89%",
+          "MemUsage": "1.058GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "2.52MB / 804kB",
+          "PIDs": "110"
+        },
+        {
+          "BlockIO": "24.5MB / 1.7MB",
+          "CPUPerc": "238.48%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "57.04%",
+          "MemUsage": "1.141GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "1.77MB / 623kB",
+          "PIDs": "108"
+        },
+        {
+          "BlockIO": "354MB / 1.24MB",
+          "CPUPerc": "139.79%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "39.70%",
+          "MemUsage": "813MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "1.08MB / 3.69MB",
+          "PIDs": "200"
+        }
+      ]
+    },
+    {
+      "seconds": 86.4275953739998,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 81.9kB",
+          "CPUPerc": "0.09%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.25%",
+          "MemUsage": "298.3MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "33.9kB / 19.4kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.75MB",
+          "CPUPerc": "177.75%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "54.51%",
+          "MemUsage": "1.09GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "3.06MB / 1MB",
+          "PIDs": "188"
+        },
+        {
+          "BlockIO": "24.5MB / 1.72MB",
+          "CPUPerc": "83.22%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "60.49%",
+          "MemUsage": "1.21GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "2.2MB / 795kB",
+          "PIDs": "187"
+        },
+        {
+          "BlockIO": "355MB / 1.24MB",
+          "CPUPerc": "161.43%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "41.97%",
+          "MemUsage": "859.5MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "1.54MB / 4.89MB",
+          "PIDs": "226"
+        }
+      ]
+    },
+    {
+      "seconds": 91.53372566698818,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 94.2kB",
+          "CPUPerc": "0.08%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.35%",
+          "MemUsage": "298.8MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "36.5kB / 19.6kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.75MB",
+          "CPUPerc": "50.99%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "55.90%",
+          "MemUsage": "1.118GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "3.16MB / 1.03MB",
+          "PIDs": "193"
+        },
+        {
+          "BlockIO": "24.5MB / 1.72MB",
+          "CPUPerc": "336.79%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "62.58%",
+          "MemUsage": "1.252GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "2.4MB / 819kB",
+          "PIDs": "194"
+        },
+        {
+          "BlockIO": "355MB / 1.26MB",
+          "CPUPerc": "24.10%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "43.33%",
+          "MemUsage": "887.5MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "1.71MB / 5.32MB",
+          "PIDs": "302"
+        }
+      ]
+    },
+    {
+      "seconds": 96.81812092801556,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 94.2kB",
+          "CPUPerc": "0.09%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.38%",
+          "MemUsage": "298.9MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "36.5kB / 19.6kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.82MB",
+          "CPUPerc": "112.83%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "58.30%",
+          "MemUsage": "1.166GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "3.38MB / 1.08MB",
+          "PIDs": "191"
+        },
+        {
+          "BlockIO": "24.5MB / 1.78MB",
+          "CPUPerc": "74.15%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "65.41%",
+          "MemUsage": "1.308GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "2.56MB / 856kB",
+          "PIDs": "193"
+        },
+        {
+          "BlockIO": "355MB / 1.26MB",
+          "CPUPerc": "58.04%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "45.01%",
+          "MemUsage": "921.7MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "1.79MB / 5.76MB",
+          "PIDs": "305"
+        }
+      ]
+    },
+    {
+      "seconds": 101.90952755900798,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 94.2kB",
+          "CPUPerc": "0.10%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.37%",
+          "MemUsage": "298.9MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "36.5kB / 19.6kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.2MB / 1.82MB",
+          "CPUPerc": "97.18%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "65.75%",
+          "MemUsage": "1.315GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "3.79MB / 1.14MB",
+          "PIDs": "201"
+        },
+        {
+          "BlockIO": "26.1MB / 1.78MB",
+          "CPUPerc": "97.12%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "74.12%",
+          "MemUsage": "1.482GiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "2.72MB / 969kB",
+          "PIDs": "203"
+        },
+        {
+          "BlockIO": "355MB / 1.26MB",
+          "CPUPerc": "0.39%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "48.09%",
+          "MemUsage": "984.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "1.98MB / 6.39MB",
+          "PIDs": "304"
+        }
+      ]
+    },
+    {
+      "seconds": 107.18605914298678,
+      "stats": [
+        {
+          "BlockIO": "97.7MB / 94.2kB",
+          "CPUPerc": "15.98%",
+          "Container": "airline-xgb-v1-master-1",
+          "ID": "18442292b3ff",
+          "MemPerc": "58.91%",
+          "MemUsage": "301.6MiB / 512MiB",
+          "Name": "airline-xgb-v1-master-1",
+          "NetIO": "43.4kB / 22kB",
+          "PIDs": "43"
+        },
+        {
+          "BlockIO": "58.4MB / 1.82MB",
+          "CPUPerc": "0.15%",
+          "Container": "airline-xgb-v1-worker1-1",
+          "ID": "1f77886f5a93",
+          "MemPerc": "13.66%",
+          "MemUsage": "279.7MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker1-1",
+          "NetIO": "6.04MB / 1.27MB",
+          "PIDs": "45"
+        },
+        {
+          "BlockIO": "26.3MB / 1.78MB",
+          "CPUPerc": "0.11%",
+          "Container": "airline-xgb-v1-worker2-1",
+          "ID": "b7783ad77681",
+          "MemPerc": "13.71%",
+          "MemUsage": "280.9MiB / 2GiB",
+          "Name": "airline-xgb-v1-worker2-1",
+          "NetIO": "4.92MB / 1.12MB",
+          "PIDs": "45"
+        },
+        {
+          "BlockIO": "355MB / 1.26MB",
+          "CPUPerc": "50.25%",
+          "Container": "airline-xgb-v1-driver-1",
+          "ID": "ae093d78b326",
+          "MemPerc": "7.20%",
+          "MemUsage": "147.5MiB / 2GiB",
+          "Name": "airline-xgb-v1-driver-1",
+          "NetIO": "2.2MB / 10.8MB",
+          "PIDs": "1"
+        }
+      ]
+    }
+  ]
+}

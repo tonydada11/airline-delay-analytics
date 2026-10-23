@@ -1,0 +1,43 @@
+name: airline-xgb-feasibility-v1
+
+x-common: &common
+  image: airline-xgb-feasibility:3.0.5
+  user: "0:0"
+  restart: "no"
+  environment:
+    SPARK_DAEMON_MEMORY: 256m
+    PYTHONPATH: /opt/xgb-study:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip:/study:/source
+    PYSPARK_PYTHON: python3
+    OMP_NUM_THREADS: "1"
+    OPENBLAS_NUM_THREADS: "1"
+    MKL_NUM_THREADS: "1"
+  volumes:
+    - ./:/study:ro
+    - ../../src:/source:ro
+    - ../../artifacts/flighttime-v3/models/preprocessing:/accepted-preprocessing:ro
+    - ./runtime/output:/output
+
+services:
+  master:
+    <<: *common
+    hostname: xgb-master
+    mem_limit: 512m
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.master.Master, --host, xgb-master, --port, "7077", --webui-port, "8080"]
+  worker1:
+    <<: *common
+    hostname: xgb-worker1
+    mem_limit: 2g
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --cores, "1", --memory, 768m, --webui-port, "8081", spark://xgb-master:7077]
+    depends_on: [master]
+  worker2:
+    <<: *common
+    hostname: xgb-worker2
+    mem_limit: 2g
+    command: [/opt/spark/bin/spark-class, org.apache.spark.deploy.worker.Worker, --cores, "1", --memory, 768m, --webui-port, "8081", spark://xgb-master:7077]
+    depends_on: [master]
+  driver:
+    <<: *common
+    hostname: xgb-driver
+    mem_limit: 2g
+    command: [sleep, infinity]
+    depends_on: [master, worker1, worker2]

@@ -1,0 +1,77 @@
+{
+  "packages": {
+    "joblib": "1.4.2",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "pyarrow": "19.0.1",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.15.3",
+    "threadpoolctl": "3.6.0",
+    "xgboost-cpu": "3.0.5"
+  },
+  "python": "3.10.12",
+  "spark": "3.5.9",
+  "spark_conf": {
+    "spark.app.id": "app-20261023172237-0000",
+    "spark.app.name": "xgb-v1-preflight",
+    "spark.app.startTime": "1792776156393",
+    "spark.app.submitTime": "1792776155685",
+    "spark.cores.max": "2",
+    "spark.default.parallelism": "2",
+    "spark.driver.bindAddress": "0.0.0.0",
+    "spark.driver.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+    "spark.driver.host": "xgb-driver",
+    "spark.driver.maxResultSize": "128m",
+    "spark.driver.memory": "768m",
+    "spark.driver.port": "44877",
+    "spark.dynamicAllocation.enabled": "false",
+    "spark.executor.cores": "1",
+    "spark.executor.extraJavaOptions": "-Djava.net.preferIPv6Addresses=false -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false",
+    "spark.executor.id": "driver",
+    "spark.executor.memory": "640m",
+    "spark.master": "spark://xgb-master:7077",
+    "spark.rdd.compress": "True",
+    "spark.serializer.objectStreamReset": "100",
+    "spark.sql.execution.arrow.maxRecordsPerBatch": "1000",
+    "spark.sql.files.maxPartitionBytes": "67108864",
+    "spark.sql.inMemoryColumnarStorage.batchSize": "1000",
+    "spark.sql.shuffle.partitions": "4",
+    "spark.stage.maxConsecutiveAttempts": "1",
+    "spark.submit.deployMode": "client",
+    "spark.submit.pyFiles": "",
+    "spark.task.cpus": "1",
+    "spark.task.maxFailures": "1"
+  },
+  "workers": [
+    {
+      "host": "xgb-worker1",
+      "packages": {
+        "joblib": "1.4.2",
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "pyarrow": "19.0.1",
+        "scikit-learn": "1.6.1",
+        "scipy": "1.15.3",
+        "threadpoolctl": "3.6.0",
+        "xgboost-cpu": "3.0.5"
+      },
+      "partition": 0,
+      "python": "3.10.12"
+    },
+    {
+      "host": "xgb-worker2",
+      "packages": {
+        "joblib": "1.4.2",
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "pyarrow": "19.0.1",
+        "scikit-learn": "1.6.1",
+        "scipy": "1.15.3",
+        "threadpoolctl": "3.6.0",
+        "xgboost-cpu": "3.0.5"
+      },
+      "partition": 1,
+      "python": "3.10.12"
+    }
+  ]
+}

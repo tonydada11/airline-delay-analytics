@@ -1,0 +1,93 @@
+{
+  "bounded_candidate_100000_rows_dense_bytes_per_worker": 156800000,
+  "container_oom_events": {
+    "airline-xgb-feasibility-v1-driver-1": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+    "airline-xgb-feasibility-v1-master-1": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+    "airline-xgb-feasibility-v1-worker1-1": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+    "airline-xgb-feasibility-v1-worker2-1": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+  },
+  "container_peaks_bytes": {
+    "airline-xgb-feasibility-v1-driver-1": 1069801472,
+    "airline-xgb-feasibility-v1-master-1": 367271936,
+    "airline-xgb-feasibility-v1-worker1-1": 1410719744,
+    "airline-xgb-feasibility-v1-worker2-1": 1354850304
+  },
+  "dense_float32_lower_bound_per_worker_bytes": 14027908160,
+  "dense_float32_lower_bound_per_worker_gib": 13.06450754404068,
+  "dense_float32_lower_bound_total_bytes": 28055816320,
+  "dense_float32_lower_bound_total_gib": 26.12901508808136,
+  "feature_width": 784,
+  "fixture_fits": [
+    {
+      "case": "accepted_sparse",
+      "max_worker_python_process_lifetime_peak_kib": 217160,
+      "max_worker_python_rss_bytes": 221134848,
+      "rows": 514,
+      "seconds": 8.755260554986307
+    },
+    {
+      "case": "accepted_dense",
+      "max_worker_python_process_lifetime_peak_kib": 222352,
+      "max_worker_python_rss_bytes": 224972800,
+      "rows": 514,
+      "seconds": 4.1951923570013605
+    },
+    {
+      "case": "zero_nan",
+      "max_worker_python_process_lifetime_peak_kib": 222352,
+      "max_worker_python_rss_bytes": 226537472,
+      "rows": 192,
+      "seconds": 3.9994367019971833
+    },
+    {
+      "case": "sparse_missing_zero",
+      "max_worker_python_process_lifetime_peak_kib": 219984,
+      "max_worker_python_rss_bytes": 225488896,
+      "rows": 192,
+      "seconds": 4.073016894981265
+    },
+    {
+      "case": "weighted",
+      "max_worker_python_process_lifetime_peak_kib": 215472,
+      "max_worker_python_rss_bytes": 219193344,
+      "rows": 256,
+      "seconds": 5.213933986000484
+    },
+    {
+      "case": "unweighted",
+      "max_worker_python_process_lifetime_peak_kib": 220088,
+      "max_worker_python_rss_bytes": 222638080,
+      "rows": 256,
+      "seconds": 3.92654903899529
+    },
+    {
+      "case": "scaling_4096",
+      "max_worker_python_process_lifetime_peak_kib": 231840,
+      "max_worker_python_rss_bytes": 234471424,
+      "rows": 4096,
+      "seconds": 5.748116487986408
+    },
+    {
+      "case": "scaling_32768",
+      "max_worker_python_process_lifetime_peak_kib": 307360,
+      "max_worker_python_rss_bytes": 314933248,
+      "rows": 32768,
+      "seconds": 9.609331667015795
+    }
+  ],
+  "float_bytes": 4,
+  "host_meminfo": {
+    "MemAvailable": "9941304 kB",
+    "MemTotal": "12248700 kB",
+    "SwapFree": "3328904 kB",
+    "SwapTotal": "4194304 kB"
+  },
+  "notes": [
+    "Python RSS sampled at final boosting iteration; process high-water RSS may include earlier fixture fits.",
+    "Cgroup peaks cover whole container including daemon/executor/native memory and file cache; peaks need not be simultaneous.",
+    "The 26.13 GiB dense lower bound excludes labels, weights, JVM, Arrow, quantized matrices, histograms and other overhead.",
+    "QuantileDMatrix does not make this adapter out-of-core: cache_partitions retains all input batches per XGBoost worker."
+  ],
+  "training_rows_from_saved_manifest": 8946370,
+  "xgboost_workers": 2
+}

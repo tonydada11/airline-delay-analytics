@@ -1,0 +1,66 @@
+"""Supervise only the isolated generated-fixture cluster; always remove it afterward."""
+import json
+from pathlib import Path
+import subprocess
+import time
+
+HERE = Path(__file__).resolve().parent
+BASE_ID = 'sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf'
+PREFIX = 'airline-xgb-feasibility-v1-'
+COMPOSE = ['docker','compose','-f',str(HERE/'compose.yml')]
+
+
+def output(command):
+    return subprocess.check_output(command,text=True).strip()
+
+
+def main():
+    evidence = HERE/'evidence'
+    target = HERE/'runtime/output/results.json'
+    if target.exists():
+        raise ValueError('Occupied fixture output: preserve before a separately documented rerun')
+    assert output(['docker','image','inspect','airline-revision-spark:3.5.9','--format','{{.Id}}']) == BASE_ID
+    production = ['airline-revision-spark-'+name+'-1' for name in ('master','worker-1','worker-2','notebook')]
+    before = json.loads(output(['docker','inspect',*production]))
+    assert all(not x['State']['Running'] for x in before), 'Do not compete with an active production application'
+    image = output(['docker','image','inspect','airline-xgb-feasibility:3.0.5','--format','{{.Id}}'])
+    names = [PREFIX+s+'-1' for s in ('master','worker1','worker2','driver')]
+    samples = []
+    start = time.monotonic()
+    process = None
+    try:
+        subprocess.run(COMPOSE+['up','-d'],check=True)
+        with (evidence/'fixtures.log').open('w') as log:
+            process = subprocess.Popen(COMPOSE+['exec','-T','driver','timeout','1200',
+                '/opt/spark/bin/spark-submit','--driver-memory','768m','/study/fixtures.py'],
+                stdout=log,stderr=subprocess.STDOUT)
+            while process.poll() is None:
+                if time.monotonic()-start > 1260:
+                    raise TimeoutError('Fixture supervisor deadline')
+                stats = output(['docker','stats','--no-stream','--format','{{json .}}',*names])
+                samples.append({'elapsed_seconds':round(time.monotonic()-start,3),
+                                'containers':[json.loads(x) for x in stats.splitlines() if x]})
+            code = process.wait()
+        cgroups = {}
+        for name in names:
+            cgroups[name] = output(['docker','exec',name,'python3','-c',
+                'from pathlib import Path; import json; print(json.dumps({n:(Path("/sys/fs/cgroup")/n).read_text() for n in ["memory.peak","memory.max","memory.events"]}))'])
+        (evidence/'execution.json').write_text(json.dumps({'base_image':BASE_ID,'study_image':image,
+            'exit_code':code,'wall_seconds':time.monotonic()-start,'cgroups':cgroups,
+            'samples':samples},indent=2,sort_keys=True)+'\n')
+        assert code==0, f'Fixture failure: {code}; see evidence/fixtures.log'
+    finally:
+        subprocess.run(COMPOSE+['down','--timeout','15'],check=True)
+        if process is not None and process.poll() is None:
+            process.wait(timeout=30)
+        after = json.loads(output(['docker','inspect',*production]))
+        fields = lambda xs: [{k:x[k] for k in ('Id','Image','State','Mounts','Config','HostConfig')} for x in xs]
+        preserved = fields(before)==fields(after)
+        (evidence/'isolation.json').write_text(json.dumps({'production_containers_unchanged':preserved,
+            'production_image_unchanged':output(['docker','image','inspect','airline-revision-spark:3.5.9','--format','{{.Id}}'])==BASE_ID,
+            'study_containers_removed':not any(n.startswith(PREFIX) for n in output(['docker','ps','-a','--format','{{.Names}}']).splitlines())},indent=2)+'\n')
+        assert preserved, 'Production container metadata changed'
+
+
+if __name__=='__main__':
+    main()

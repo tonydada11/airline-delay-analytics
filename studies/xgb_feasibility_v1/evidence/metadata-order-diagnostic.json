@@ -1,0 +1,1147 @@
+{
+  "containers": [
+    {
+      "Config": {
+        "AttachStderr": true,
+        "AttachStdin": false,
+        "AttachStdout": true,
+        "Cmd": [
+          "/opt/spark/bin/spark-class",
+          "org.apache.spark.deploy.master.Master",
+          "--host",
+          "spark-master",
+          "--port",
+          "7077",
+          "--webui-port",
+          "8080"
+        ],
+        "Domainname": "",
+        "Entrypoint": [
+          "/opt/entrypoint.sh"
+        ],
+        "Env": [
+          "SPARK_DAEMON_MEMORY=256m",
+          "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_HOME=/opt/java/openjdk",
+          "LANG=en_US.UTF-8",
+          "LANGUAGE=en_US:en",
+          "LC_ALL=en_US.UTF-8",
+          "JAVA_VERSION=jdk-11.0.31+11",
+          "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+          "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+          "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+          "SPARK_HOME=/opt/spark"
+        ],
+        "ExposedPorts": {
+          "7077/tcp": {},
+          "8080/tcp": {}
+        },
+        "Healthcheck": {
+          "Interval": 5000000000,
+          "Retries": 12,
+          "StartPeriod": 5000000000,
+          "Test": [
+            "CMD",
+            "python3",
+            "-c",
+            "import socket; socket.create_connection(('spark-master', 7077), 2).close()"
+          ],
+          "Timeout": 3000000000
+        },
+        "Hostname": "spark-master",
+        "Image": "airline-revision-spark:3.5.9",
+        "Labels": {
+          "com.docker.compose.config-hash": "ceeecabff41ed9be1fcbcbe43d1aad170b034a13ca623e64316d5197320dac7c",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "",
+          "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "airline-revision",
+          "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/docker-compose.yml,/home/server/workspace/industry/Airline/docker-compose.override.yml",
+          "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline",
+          "com.docker.compose.service": "spark-master",
+          "com.docker.compose.version": "5.5.0",
+          "org.opencontainers.image.version": "22.04"
+        },
+        "OpenStdin": false,
+        "StdinOnce": false,
+        "Tty": false,
+        "User": "spark",
+        "Volumes": null,
+        "WorkingDir": "/opt/spark/work-dir"
+      },
+      "HostConfig": {
+        "AutoRemove": false,
+        "Binds": null,
+        "BlkioDeviceReadBps": null,
+        "BlkioDeviceReadIOps": null,
+        "BlkioDeviceWriteBps": null,
+        "BlkioDeviceWriteIOps": null,
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": null,
+        "CapAdd": null,
+        "CapDrop": null,
+        "Cgroup": "",
+        "CgroupParent": "",
+        "CgroupnsMode": "private",
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "ContainerIDFile": "",
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpuShares": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "Devices": null,
+        "Dns": null,
+        "DnsOptions": null,
+        "DnsSearch": null,
+        "ExtraHosts": [],
+        "GroupAdd": null,
+        "IOMaximumBandwidth": 0,
+        "IOMaximumIOps": 0,
+        "IpcMode": "private",
+        "Isolation": "",
+        "Links": null,
+        "LogConfig": {
+          "Config": {},
+          "Type": "json-file"
+        },
+        "MaskedPaths": [
+          "/proc/acpi",
+          "/proc/asound",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/sys/devices/virtual/powercap",
+          "/sys/firmware"
+        ],
+        "Memory": 0,
+        "MemoryReservation": 0,
+        "MemorySwap": 0,
+        "MemorySwappiness": null,
+        "NanoCpus": 0,
+        "NetworkMode": "airline-revision_default",
+        "OomKillDisable": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "PidsLimit": null,
+        "PortBindings": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "8082"
+            }
+          ]
+        },
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ],
+        "ReadonlyRootfs": false,
+        "RestartPolicy": {
+          "MaximumRetryCount": 0,
+          "Name": "unless-stopped"
+        },
+        "Runtime": "runc",
+        "SecurityOpt": null,
+        "ShmSize": 67108864,
+        "UTSMode": "",
+        "Ulimits": null,
+        "UsernsMode": "",
+        "VolumeDriver": "",
+        "VolumesFrom": null
+      },
+      "Id": "d4783682de1c8efee85da6b0d72828a8d1577f6dba006bebf39dfff92fdaf77d",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Mounts": [],
+      "Name": "/airline-revision-spark-master-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 143,
+        "FinishedAt": "2026-10-22T22:43:03.277088392Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-22T17:42:41.298398209-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:41.246247145-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:46.348255237-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:46.299508026-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:51.404351388-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:51.348711398-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:56.457436976-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:56.405981433-05:00"
+            },
+            {
+              "End": "2026-10-22T17:43:01.512703107-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:43:01.457918878-05:00"
+            }
+          ],
+          "Status": "unhealthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:37.299066472Z",
+        "Status": "exited"
+      }
+    },
+    {
+      "Config": {
+        "AttachStderr": true,
+        "AttachStdin": false,
+        "AttachStdout": true,
+        "Cmd": [
+          "/opt/spark/bin/spark-class",
+          "org.apache.spark.deploy.worker.Worker",
+          "--cores",
+          "1",
+          "--memory",
+          "768m",
+          "--webui-port",
+          "8081",
+          "spark://spark-master:7077"
+        ],
+        "Domainname": "",
+        "Entrypoint": [
+          "/opt/entrypoint.sh"
+        ],
+        "Env": [
+          "SPARK_DAEMON_MEMORY=256m",
+          "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_HOME=/opt/java/openjdk",
+          "LANG=en_US.UTF-8",
+          "LANGUAGE=en_US:en",
+          "LC_ALL=en_US.UTF-8",
+          "JAVA_VERSION=jdk-11.0.31+11",
+          "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+          "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+          "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+          "SPARK_HOME=/opt/spark"
+        ],
+        "Healthcheck": {
+          "Interval": 5000000000,
+          "Retries": 12,
+          "StartPeriod": 5000000000,
+          "Test": [
+            "CMD",
+            "python3",
+            "-c",
+            "import socket; socket.create_connection(('spark-worker-1', 8081), 2).close()"
+          ],
+          "Timeout": 3000000000
+        },
+        "Hostname": "spark-worker-1",
+        "Image": "airline-revision-spark:3.5.9",
+        "Labels": {
+          "com.docker.compose.config-hash": "84e21e9cc92b32a69a98ae914f28ede22aa0513b8327548585ad541f93a1e394",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "spark-master:service_healthy:false",
+          "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "airline-revision",
+          "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/docker-compose.yml,/home/server/workspace/industry/Airline/docker-compose.override.yml",
+          "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline",
+          "com.docker.compose.service": "spark-worker-1",
+          "com.docker.compose.version": "5.5.0",
+          "org.opencontainers.image.version": "22.04"
+        },
+        "OpenStdin": false,
+        "StdinOnce": false,
+        "Tty": false,
+        "User": "0:0",
+        "Volumes": null,
+        "WorkingDir": "/opt/spark/work-dir"
+      },
+      "HostConfig": {
+        "AutoRemove": false,
+        "Binds": [
+          "/home/server/workspace/industry/Airline/data:/workspace/data:rw",
+          "/home/server/workspace/industry/Airline/artifacts:/workspace/artifacts:rw"
+        ],
+        "BlkioDeviceReadBps": null,
+        "BlkioDeviceReadIOps": null,
+        "BlkioDeviceWriteBps": null,
+        "BlkioDeviceWriteIOps": null,
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": null,
+        "CapAdd": null,
+        "CapDrop": null,
+        "Cgroup": "",
+        "CgroupParent": "",
+        "CgroupnsMode": "private",
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "ContainerIDFile": "",
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpuShares": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "Devices": null,
+        "Dns": null,
+        "DnsOptions": null,
+        "DnsSearch": null,
+        "ExtraHosts": [],
+        "GroupAdd": null,
+        "IOMaximumBandwidth": 0,
+        "IOMaximumIOps": 0,
+        "IpcMode": "private",
+        "Isolation": "",
+        "Links": null,
+        "LogConfig": {
+          "Config": {},
+          "Type": "json-file"
+        },
+        "MaskedPaths": [
+          "/proc/acpi",
+          "/proc/asound",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/sys/devices/virtual/powercap",
+          "/sys/firmware"
+        ],
+        "Memory": 0,
+        "MemoryReservation": 0,
+        "MemorySwap": 0,
+        "MemorySwappiness": null,
+        "NanoCpus": 0,
+        "NetworkMode": "airline-revision_default",
+        "OomKillDisable": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "PidsLimit": null,
+        "PortBindings": {},
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ],
+        "ReadonlyRootfs": false,
+        "RestartPolicy": {
+          "MaximumRetryCount": 0,
+          "Name": "unless-stopped"
+        },
+        "Runtime": "runc",
+        "SecurityOpt": null,
+        "ShmSize": 67108864,
+        "UTSMode": "",
+        "Ulimits": null,
+        "UsernsMode": "",
+        "VolumeDriver": "",
+        "VolumesFrom": null
+      },
+      "Id": "77f02b50f6232dab6f268d5b94197e7f9e89b0a4a9261447a8fb7e7eae8252f1",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Mounts": [
+        {
+          "Destination": "/workspace/data",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/data",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/artifacts",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/artifacts",
+          "Type": "bind"
+        }
+      ],
+      "Name": "/airline-revision-spark-worker-1-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 143,
+        "FinishedAt": "2026-10-22T22:43:02.711460831Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-22T17:42:41.485027763-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:41.432612831-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:46.540202577-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:46.486169445-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:51.597073112-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:51.540573683-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:56.649751674-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:56.598087045-05:00"
+            },
+            {
+              "End": "2026-10-22T17:43:01.711959951-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:43:01.650699021-05:00"
+            }
+          ],
+          "Status": "unhealthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:42.995883613Z",
+        "Status": "exited"
+      }
+    },
+    {
+      "Config": {
+        "AttachStderr": true,
+        "AttachStdin": false,
+        "AttachStdout": true,
+        "Cmd": [
+          "/opt/spark/bin/spark-class",
+          "org.apache.spark.deploy.worker.Worker",
+          "--cores",
+          "1",
+          "--memory",
+          "768m",
+          "--webui-port",
+          "8081",
+          "spark://spark-master:7077"
+        ],
+        "Domainname": "",
+        "Entrypoint": [
+          "/opt/entrypoint.sh"
+        ],
+        "Env": [
+          "SPARK_DAEMON_MEMORY=256m",
+          "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_HOME=/opt/java/openjdk",
+          "LANG=en_US.UTF-8",
+          "LANGUAGE=en_US:en",
+          "LC_ALL=en_US.UTF-8",
+          "JAVA_VERSION=jdk-11.0.31+11",
+          "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+          "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+          "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+          "SPARK_HOME=/opt/spark"
+        ],
+        "Healthcheck": {
+          "Interval": 5000000000,
+          "Retries": 12,
+          "StartPeriod": 5000000000,
+          "Test": [
+            "CMD",
+            "python3",
+            "-c",
+            "import socket; socket.create_connection(('spark-worker-2', 8081), 2).close()"
+          ],
+          "Timeout": 3000000000
+        },
+        "Hostname": "spark-worker-2",
+        "Image": "airline-revision-spark:3.5.9",
+        "Labels": {
+          "com.docker.compose.config-hash": "a474433ee399b48e4c22617008412f88ef5fd7f0a2eadacc475a12be87cd5227",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "spark-master:service_healthy:false",
+          "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "airline-revision",
+          "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/docker-compose.yml,/home/server/workspace/industry/Airline/docker-compose.override.yml",
+          "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline",
+          "com.docker.compose.service": "spark-worker-2",
+          "com.docker.compose.version": "5.5.0",
+          "org.opencontainers.image.version": "22.04"
+        },
+        "OpenStdin": false,
+        "StdinOnce": false,
+        "Tty": false,
+        "User": "0:0",
+        "Volumes": null,
+        "WorkingDir": "/opt/spark/work-dir"
+      },
+      "HostConfig": {
+        "AutoRemove": false,
+        "Binds": [
+          "/home/server/workspace/industry/Airline/data:/workspace/data:rw",
+          "/home/server/workspace/industry/Airline/artifacts:/workspace/artifacts:rw"
+        ],
+        "BlkioDeviceReadBps": null,
+        "BlkioDeviceReadIOps": null,
+        "BlkioDeviceWriteBps": null,
+        "BlkioDeviceWriteIOps": null,
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": null,
+        "CapAdd": null,
+        "CapDrop": null,
+        "Cgroup": "",
+        "CgroupParent": "",
+        "CgroupnsMode": "private",
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "ContainerIDFile": "",
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpuShares": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "Devices": null,
+        "Dns": null,
+        "DnsOptions": null,
+        "DnsSearch": null,
+        "ExtraHosts": [],
+        "GroupAdd": null,
+        "IOMaximumBandwidth": 0,
+        "IOMaximumIOps": 0,
+        "IpcMode": "private",
+        "Isolation": "",
+        "Links": null,
+        "LogConfig": {
+          "Config": {},
+          "Type": "json-file"
+        },
+        "MaskedPaths": [
+          "/proc/acpi",
+          "/proc/asound",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/sys/devices/virtual/powercap",
+          "/sys/firmware"
+        ],
+        "Memory": 0,
+        "MemoryReservation": 0,
+        "MemorySwap": 0,
+        "MemorySwappiness": null,
+        "NanoCpus": 0,
+        "NetworkMode": "airline-revision_default",
+        "OomKillDisable": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "PidsLimit": null,
+        "PortBindings": {},
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ],
+        "ReadonlyRootfs": false,
+        "RestartPolicy": {
+          "MaximumRetryCount": 0,
+          "Name": "unless-stopped"
+        },
+        "Runtime": "runc",
+        "SecurityOpt": null,
+        "ShmSize": 67108864,
+        "UTSMode": "",
+        "Ulimits": null,
+        "UsernsMode": "",
+        "VolumeDriver": "",
+        "VolumesFrom": null
+      },
+      "Id": "4f18b950b62849de500eb1f7d2053e4618ad0b309fb6ee32d0386736ad9004b1",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Mounts": [
+        {
+          "Destination": "/workspace/data",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/data",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/artifacts",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/artifacts",
+          "Type": "bind"
+        }
+      ],
+      "Name": "/airline-revision-spark-worker-2-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 143,
+        "FinishedAt": "2026-10-22T22:43:02.712165351Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-22T17:42:39.878189252-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:39.824399392-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:44.932173271-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:44.879386256-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:49.987429182-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:49.933830032-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:55.039130146-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:54.987894695-05:00"
+            },
+            {
+              "End": "2026-10-22T17:43:00.088289386-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:43:00.040293187-05:00"
+            }
+          ],
+          "Status": "unhealthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:42.997450053Z",
+        "Status": "exited"
+      }
+    },
+    {
+      "Config": {
+        "AttachStderr": true,
+        "AttachStdin": false,
+        "AttachStdout": true,
+        "Cmd": [
+          "python3",
+          "-m",
+          "jupyter",
+          "lab",
+          "--ip=0.0.0.0",
+          "--port=8888",
+          "--no-browser",
+          "--allow-root",
+          "--ServerApp.root_dir=/workspace",
+          "--ServerApp.token=",
+          "--ServerApp.password="
+        ],
+        "Domainname": "",
+        "Entrypoint": [
+          "/opt/entrypoint.sh"
+        ],
+        "Env": [
+          "PYSPARK_SUBMIT_ARGS=--master spark://spark-master:7077 --driver-memory 768m --conf spark.driver.host=spark-notebook --conf spark.driver.bindAddress=0.0.0.0 --conf spark.ui.port=4040 --conf spark.cores.max=2 --conf spark.executor.cores=1 --conf spark.executor.memory=640m --conf spark.sql.files.maxPartitionBytes=67108864 --conf spark.sql.shuffle.partitions=4 pyspark-shell",
+          "AIRLINE_TEST_TMP_ROOT=/workspace/data/.test-tmp",
+          "PYTHONPATH=/workspace/src:/opt/spark/python:/opt/spark/python/lib/py4j-0.10.9.7-src.zip",
+          "PYSPARK_PYTHON=python3",
+          "PYSPARK_DRIVER_PYTHON=python3",
+          "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_HOME=/opt/java/openjdk",
+          "LANG=en_US.UTF-8",
+          "LANGUAGE=en_US:en",
+          "LC_ALL=en_US.UTF-8",
+          "JAVA_VERSION=jdk-11.0.31+11",
+          "SPARK_TGZ_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz?action=download",
+          "SPARK_TGZ_ASC_URL=https://www.apache.org/dyn/closer.lua/spark/spark-3.5.9/spark-3.5.9-bin-hadoop3.tgz.asc?action=download",
+          "GPG_KEY=D05CF4F16124A4B97D7F96C417C47D58C0A604AC",
+          "SPARK_HOME=/opt/spark"
+        ],
+        "ExposedPorts": {
+          "4040/tcp": {},
+          "8888/tcp": {}
+        },
+        "Hostname": "spark-notebook",
+        "Image": "airline-revision-spark:3.5.9",
+        "Labels": {
+          "com.docker.compose.config-hash": "d5ce9faf472083188077b0312755b5398558f0acb44f640a7cd1653a19b07bac",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "spark-worker-2:service_healthy:false,spark-master:service_healthy:false,spark-worker-1:service_healthy:false",
+          "com.docker.compose.image": "sha256:b967ddc3684aa5c837ca56a55444fe4fd9cc6a3f39d6e6a64c7eb9cc0e0ba18e",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "airline-revision",
+          "com.docker.compose.project.config_files": "/home/server/workspace/industry/Airline/docker-compose.yml,/home/server/workspace/industry/Airline/docker-compose.override.yml",
+          "com.docker.compose.project.working_dir": "/home/server/workspace/industry/Airline",
+          "com.docker.compose.service": "spark-notebook",
+          "com.docker.compose.version": "5.5.0",
+          "org.opencontainers.image.version": "22.04"
+        },
+        "OpenStdin": false,
+        "StdinOnce": false,
+        "Tty": false,
+        "User": "0:0",
+        "Volumes": null,
+        "WorkingDir": "/workspace"
+      },
+      "HostConfig": {
+        "AutoRemove": false,
+        "Binds": [
+          "/home/server/workspace/industry/Airline/notebooks:/workspace/notebooks:rw",
+          "/home/server/workspace/industry/Airline/artifacts:/workspace/artifacts:rw",
+          "/home/server/workspace/industry/Airline/conf:/workspace/conf:ro",
+          "/home/server/workspace/industry/Airline/data:/workspace/data:rw",
+          "/home/server/workspace/industry/Airline/evidence:/workspace/evidence:rw",
+          "/home/server/workspace/industry/Airline/requirements.lock:/workspace/requirements.lock:ro",
+          "/home/server/workspace/industry/Airline/pyproject.toml:/workspace/pyproject.toml:ro",
+          "/home/server/workspace/industry/Airline/src:/workspace/src:ro",
+          "/home/server/workspace/industry/Airline/tests:/workspace/tests:ro",
+          "/home/server/workspace/industry/Airline/scripts:/workspace/scripts:ro"
+        ],
+        "BlkioDeviceReadBps": null,
+        "BlkioDeviceReadIOps": null,
+        "BlkioDeviceWriteBps": null,
+        "BlkioDeviceWriteIOps": null,
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": null,
+        "CapAdd": null,
+        "CapDrop": null,
+        "Cgroup": "",
+        "CgroupParent": "",
+        "CgroupnsMode": "private",
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "ContainerIDFile": "",
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpuShares": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "Devices": null,
+        "Dns": null,
+        "DnsOptions": null,
+        "DnsSearch": null,
+        "ExtraHosts": [],
+        "GroupAdd": null,
+        "IOMaximumBandwidth": 0,
+        "IOMaximumIOps": 0,
+        "IpcMode": "private",
+        "Isolation": "",
+        "Links": null,
+        "LogConfig": {
+          "Config": {},
+          "Type": "json-file"
+        },
+        "MaskedPaths": [
+          "/proc/acpi",
+          "/proc/asound",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/sys/devices/virtual/powercap",
+          "/sys/firmware"
+        ],
+        "Memory": 0,
+        "MemoryReservation": 0,
+        "MemorySwap": 0,
+        "MemorySwappiness": null,
+        "NanoCpus": 0,
+        "NetworkMode": "airline-revision_default",
+        "OomKillDisable": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "PidsLimit": null,
+        "PortBindings": {
+          "4040/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "4041"
+            }
+          ],
+          "8888/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "8889"
+            }
+          ]
+        },
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ],
+        "ReadonlyRootfs": false,
+        "RestartPolicy": {
+          "MaximumRetryCount": 0,
+          "Name": "unless-stopped"
+        },
+        "Runtime": "runc",
+        "SecurityOpt": null,
+        "ShmSize": 67108864,
+        "UTSMode": "",
+        "Ulimits": null,
+        "UsernsMode": "",
+        "VolumeDriver": "",
+        "VolumesFrom": null
+      },
+      "Id": "b80675e3926874c93900b20d9407d0c8522231e80329519e9e270cbf502d6c03",
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Mounts": [
+        {
+          "Destination": "/workspace/src",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/src",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/tests",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/tests",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/scripts",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/scripts",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/artifacts",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/artifacts",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/conf",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/conf",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/data",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/data",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/evidence",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/evidence",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/requirements.lock",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/requirements.lock",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/notebooks",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/notebooks",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/pyproject.toml",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/pyproject.toml",
+          "Type": "bind"
+        }
+      ],
+      "Name": "/airline-revision-spark-notebook-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "2026-10-22T22:43:01.784261177Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:48.664893722Z",
+        "Status": "exited"
+      }
+    }
+  ],
+  "differences_between_two_read_only_inspections": [
+    {
+      "after": [
+        {
+          "Destination": "/workspace/src",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/src",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/tests",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/tests",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/scripts",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/scripts",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/artifacts",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/artifacts",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/conf",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/conf",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/data",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/data",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/evidence",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/evidence",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/requirements.lock",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/requirements.lock",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/notebooks",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/notebooks",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/pyproject.toml",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/pyproject.toml",
+          "Type": "bind"
+        }
+      ],
+      "before": [
+        {
+          "Destination": "/workspace/pyproject.toml",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/pyproject.toml",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/src",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/src",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/tests",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/tests",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/scripts",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/scripts",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/artifacts",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/artifacts",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/conf",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/conf",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/data",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/data",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/evidence",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/evidence",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/requirements.lock",
+          "Mode": "ro",
+          "Propagation": "rprivate",
+          "RW": false,
+          "Source": "/home/server/workspace/industry/Airline/requirements.lock",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/workspace/notebooks",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server/workspace/industry/Airline/notebooks",
+          "Type": "bind"
+        }
+      ],
+      "container": "/airline-revision-spark-notebook-1",
+      "field": "Mounts"
+    }
+  ]
+}

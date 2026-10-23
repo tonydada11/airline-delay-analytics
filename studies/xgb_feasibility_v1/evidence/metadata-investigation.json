@@ -1,0 +1,201 @@
+{
+  "correction": "Normalize Mounts by Destination and save comparison inputs; two offline regression tests pass. No fixture rerun.",
+  "diagnostic_fields": [
+    [
+      "/airline-revision-spark-notebook-1",
+      "Mounts"
+    ]
+  ],
+  "diagnostic_read_only_inspections_differed_only_in_mount_order": true,
+  "docker_event_window_utc": {
+    "end": "2026-10-23T01:55:00Z",
+    "start": "2026-10-23T01:35:00Z"
+  },
+  "docker_events_count": 50,
+  "initial_before_after_full_objects_saved": false,
+  "limitation": "Mount ordering explains a reproduced false positive, but original full comparison objects were not persisted, so its exact difference cannot be proven retrospectively.",
+  "original_fixture_exit_code": 0,
+  "original_postcheck_preserved": true,
+  "original_supervisor_exit_code": 1,
+  "production_events_in_window": [],
+  "production_image_unchanged": true,
+  "production_states_after": [
+    {
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Name": "/airline-revision-spark-master-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 143,
+        "FinishedAt": "2026-10-22T22:43:03.277088392Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-22T17:42:41.298398209-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:41.246247145-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:46.348255237-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:46.299508026-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:51.404351388-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:51.348711398-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:56.457436976-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:56.405981433-05:00"
+            },
+            {
+              "End": "2026-10-22T17:43:01.512703107-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:43:01.457918878-05:00"
+            }
+          ],
+          "Status": "unhealthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:37.299066472Z",
+        "Status": "exited"
+      }
+    },
+    {
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Name": "/airline-revision-spark-worker-1-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 143,
+        "FinishedAt": "2026-10-22T22:43:02.711460831Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-22T17:42:41.485027763-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:41.432612831-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:46.540202577-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:46.486169445-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:51.597073112-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:51.540573683-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:56.649751674-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:56.598087045-05:00"
+            },
+            {
+              "End": "2026-10-22T17:43:01.711959951-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:43:01.650699021-05:00"
+            }
+          ],
+          "Status": "unhealthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:42.995883613Z",
+        "Status": "exited"
+      }
+    },
+    {
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Name": "/airline-revision-spark-worker-2-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 143,
+        "FinishedAt": "2026-10-22T22:43:02.712165351Z",
+        "Health": {
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "End": "2026-10-22T17:42:39.878189252-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:39.824399392-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:44.932173271-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:44.879386256-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:49.987429182-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:49.933830032-05:00"
+            },
+            {
+              "End": "2026-10-22T17:42:55.039130146-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:42:54.987894695-05:00"
+            },
+            {
+              "End": "2026-10-22T17:43:00.088289386-05:00",
+              "ExitCode": 0,
+              "Output": "",
+              "Start": "2026-10-22T17:43:00.040293187-05:00"
+            }
+          ],
+          "Status": "unhealthy"
+        },
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:42.997450053Z",
+        "Status": "exited"
+      }
+    },
+    {
+      "Image": "sha256:662942de790c1cac915e5688953d2ae5669c6f3d5f8d7841639323cd4ecd6abf",
+      "Name": "/airline-revision-spark-notebook-1",
+      "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 0,
+        "FinishedAt": "2026-10-22T22:43:01.784261177Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2026-10-22T19:50:48.664893722Z",
+        "Status": "exited"
+      }
+    }
+  ],
+  "study_containers_removed": true
+}

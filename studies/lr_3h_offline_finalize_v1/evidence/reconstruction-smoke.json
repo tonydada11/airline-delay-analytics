@@ -1,0 +1,237 @@
+{
+  "bundle_manifest_sha256": "9157123a82926767a0ac69b6c1f9ab04899d0ad86ec32c95b42ffe46809a564f",
+  "classifier_fits": 0,
+  "feature_width": 790,
+  "input_file": "part-00000-05bf2fc1-ea39-45a1-9203-8a1f5ddf626c-c000.snappy.parquet",
+  "input_sha256": "746eac61e45eba82ce22eda00f9979f4011230da22e230ccacdd67e999d23f95",
+  "means_exact": true,
+  "model_id": "offline-lr3h-ca23fe0-v1",
+  "preprocessing_refits": 0,
+  "rows": 16,
+  "saved_score_prediction_multiset_exact": true,
+  "scored_files": {
+    "._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    ".part-00000-e7c25ea6-7f55-41f0-8e23-44eaa5a6eee1-c000.snappy.parquet.crc": "408dab96cadf18894cd31f873b83ec5ccfffcb2d267af96a25f4c6194af585a2",
+    "_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "part-00000-e7c25ea6-7f55-41f0-8e23-44eaa5a6eee1-c000.snappy.parquet": "628ffebb020f67ebf4a40857a25bad1af2d89cc4bcdc0e77b46ebc1f4a61bf0e"
+  },
+  "status": "PASS",
+  "threshold": 0.39,
+  "unlabeled_input": true,
+  "actual_commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "up",
+        "-d"
+      ],
+      "actual_started_utc": "2026-10-24T19:17:58.254623+00:00",
+      "actual_finished_utc": "2026-10-24T19:17:59.193964+00:00",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import urllib.request,json;x=json.load(urllib.request.urlopen('http://a-master:8080/json/'));assert len([w for w in x['workers'] if w['state']=='ALIVE'])==2;print(json.dumps(x))"
+      ],
+      "actual_started_utc": "2026-10-24T19:17:59.193989+00:00",
+      "actual_finished_utc": "2026-10-24T19:17:59.435184+00:00",
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import urllib.request,json;x=json.load(urllib.request.urlopen('http://a-master:8080/json/'));assert len([w for w in x['workers'] if w['state']=='ALIVE'])==2;print(json.dumps(x))"
+      ],
+      "actual_started_utc": "2026-10-24T19:18:00.435463+00:00",
+      "actual_finished_utc": "2026-10-24T19:18:00.668871+00:00",
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import urllib.request,json;x=json.load(urllib.request.urlopen('http://a-master:8080/json/'));assert len([w for w in x['workers'] if w['state']=='ALIVE'])==2;print(json.dumps(x))"
+      ],
+      "actual_started_utc": "2026-10-24T19:18:01.669067+00:00",
+      "actual_finished_utc": "2026-10-24T19:18:01.987626+00:00",
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import urllib.request,json;x=json.load(urllib.request.urlopen('http://a-master:8080/json/'));assert len([w for w in x['workers'] if w['state']=='ALIVE'])==2;print(json.dumps(x))"
+      ],
+      "actual_started_utc": "2026-10-24T19:18:02.988066+00:00",
+      "actual_finished_utc": "2026-10-24T19:18:03.186574+00:00",
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import urllib.request,json;x=json.load(urllib.request.urlopen('http://a-master:8080/json/'));assert len([w for w in x['workers'] if w['state']=='ALIVE'])==2;print(json.dumps(x))"
+      ],
+      "actual_started_utc": "2026-10-24T19:18:04.186755+00:00",
+      "actual_finished_utc": "2026-10-24T19:18:04.395883+00:00",
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import urllib.request,json;x=json.load(urllib.request.urlopen('http://a-master:8080/json/'));assert len([w for w in x['workers'] if w['state']=='ALIVE'])==2;print(json.dumps(x))"
+      ],
+      "actual_started_utc": "2026-10-24T19:18:05.396301+00:00",
+      "actual_finished_utc": "2026-10-24T19:18:05.605736+00:00",
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "python3",
+        "-c",
+        "import urllib.request,json;x=json.load(urllib.request.urlopen('http://a-master:8080/json/'));assert len([w for w in x['workers'] if w['state']=='ALIVE'])==2;print(json.dumps(x))"
+      ],
+      "actual_started_utc": "2026-10-24T19:18:06.606120+00:00",
+      "actual_finished_utc": "2026-10-24T19:18:06.795192+00:00",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "exec",
+        "-T",
+        "driver",
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=15",
+        "300",
+        "/opt/spark/bin/spark-submit",
+        "--driver-memory",
+        "768m",
+        "/smoke.py"
+      ],
+      "actual_started_utc": "2026-10-24T19:18:06.795212+00:00",
+      "actual_finished_utc": "2026-10-24T19:19:11.042868+00:00",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "airline-history-offline-998510dabf",
+        "-f",
+        "conf/docker-compose.offline-lr3h.yml",
+        "-f",
+        "studies/lr_3h_offline_finalize_v1/compose.smoke.yml",
+        "down",
+        "--timeout",
+        "15",
+        "--volumes",
+        "--remove-orphans"
+      ],
+      "actual_started_utc": "2026-10-24T19:19:11.043209+00:00",
+      "actual_finished_utc": "2026-10-24T19:19:27.636340+00:00",
+      "exit_code": 0
+    }
+  ],
+  "project": "airline-history-offline-998510dabf",
+  "cleanup_exit_code": 0,
+  "remaining_containers": "",
+  "scope": "New 16-row no-fit parity smoke; historical full-data qualification was not rerun"
+}

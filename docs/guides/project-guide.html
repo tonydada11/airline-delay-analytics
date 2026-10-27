@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airline delay analytics — Spark pipeline report</title>
+<style>
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body { margin: 0; background: #fff; color: #111;
+       font: 20px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 64px 40px 100px; }
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+h1 { font-size: 2.5rem; max-width: 22ch; margin: 0 0 28px; }
+h2 { font-size: 2rem; margin: 80px 0 24px; padding-top: 28px;
+      border-top: 2px solid #111; scroll-margin-top: 24px; }
+h3 { font-size: 1.35rem; margin: 36px 0 18px; }
+p { margin: 0 0 22px; }
+a { color: inherit; text-underline-offset: .18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
+nav { margin: 36px 0 0; padding: 24px 0; border-block: 1px solid #bbb;
+       font-size: 1rem; }
+nav p { font-weight: 600; margin-bottom: 12px; }
+nav ul { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px;
+          padding: 0; margin: 0; list-style: none; }
+code { font: .85em/1.55 ui-monospace, "DejaVu Sans Mono", Consolas, monospace;
+        overflow-wrap: anywhere; }
+pre { margin: 28px 0; padding: 24px; border: 1px solid #bbb;
+       background: #f7f7f7; overflow-x: auto; line-height: 1.55; }
+pre code { font-size: 16px; overflow-wrap: normal; }
+.table-scroll { margin: 28px 0; overflow-x: auto; }
+.performance-chart { margin: 28px 0; overflow-x: auto; }
+.performance-chart svg { display: block; width: 100%; min-width: 650px;
+                          font: 18px system-ui, sans-serif; }
+table { width: 100%; border-collapse: collapse; font-size: 17px;
+         line-height: 1.5; font-variant-numeric: tabular-nums; }
+th, td { padding: 14px 16px; border-bottom: 1px solid #bbb;
+          text-align: left; vertical-align: top; }
+th { background: #f3f3f3; border-top: 1px solid #111;
+      border-bottom: 2px solid #111; font-weight: 650; }
+@media (max-width: 700px) {
+    body { font-size: 18px; }
+    main { padding: 32px 20px 64px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; margin-top: 56px; }
+    nav ul { grid-template-columns: 1fr; }
+    pre { padding: 16px; }
+    th, td { padding: 10px; min-width: 120px; }
+}
+@media print {
+    main { max-width: none; padding: 0; }
+    body { font-size: 11pt; }
+    h2 { margin-top: 32px; }
+    pre { white-space: pre-wrap; }
+    pre code, table { font-size: 9pt; }
+    .table-scroll { overflow: visible; }
+    tr { break-inside: avoid; }
+}
+</style>
+</head>
+<body><main>
+<h1>Airline delay analytics with Spark</h1>
+<p>A batch data-engineering project that turns historical flight records into a reusable warehouse, operational reports, and an offline arrival-delay classifier. The central deliverable is the complete, validated pipeline; machine learning is one consumer of its trusted flight facts.</p>
+
+<nav aria-label="Report sections"><p>Report contents</p><ul>
+<li><a href="#purpose">Purpose and inputs</a></li>
+<li><a href="#pipeline">Overall pipeline</a></li>
+<li><a href="#warehouse">Warehouse stages</a></li>
+<li><a href="#individual-ml-stages">ML stages</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#verification">Worker failure and recovery</a></li>
+</ul></nav>
+
+<h2 id="purpose">Purpose and inputs</h2>
+<p>The source is BTS Reporting Carrier On-Time Performance for January 2023–December 2024: <strong>24 monthly CSV files and 13,926,960 flight records</strong>. Each row describes a flight occurrence, including carrier, endpoints, schedules, cancellations, diversions, and observed delays. Original files remain unchanged; a pinned inventory and SHA-256 hashes establish source identity.</p>
+<p>Spark 3.5.9 and Python 3.10.12 run in Docker Compose with one Standalone master, two one-core workers, and a notebook/driver service. Executors have 640 MiB heaps; the driver has 768 MiB. Shared mounted directories hold Parquet outputs. This demonstrates distributed computation across processes on one host, with shared storage.</p>
+
+<h2 id="pipeline">Overall pipeline</h2>
+<pre aria-label="Pipeline data flow">Raw CSV → preflight → ODS → DWD
+                            ├→ DIM: reusable entities
+                            ├→ daily DWS → ADS reports
+                            └→ selection features → fit/select → frozen bundle
+                                       then: test features → frozen evaluation</pre>
+<p>ADS also reads DWD for correctly weighted arrival averages. Reporting uses retrospective outcomes; ML features apply a prediction-time availability boundary. Dimensions and reporting remain useful independently of model training.</p>
+<p>The sequential runner checks registered workers and a real Spark action, verifies the snapshot, then builds ODS, DWD, DIM, daily DWS, selection features, ADS, and model artifacts. Quality gates follow their producers; failure stops downstream work. Historical-test features and evaluation follow completed model publication. Cluster startup is separate.</p>
+
+<h2 id="warehouse">Warehouse stages</h2>
+<p>Each persisted layer introduces a distinct responsibility and grain—the meaning of one output row. Source occurrences, including duplicates, survive ingestion and standardization.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Warehouse stages and output grains">
+<table><thead><tr><th scope="col">Stage</th><th scope="col">Input and transformation</th><th scope="col">Output grain and recorded size</th></tr></thead><tbody>
+<tr><th scope="row">ODS: typed source</th><td>Read monthly CSVs with an explicit 109-field schema; retain source filename and ingestion timestamp. Persist typed Parquet.</td><td>One source occurrence; 13,926,960 rows.</td></tr>
+<tr><th scope="row">DWD: trusted facts</th><td>Standardize ODS names and types, validate flags and schedules, derive status fields and a nullable delay label. Partition by year/month.</td><td>One flight occurrence; 13,926,960 rows.</td></tr>
+<tr><th scope="row">DIM: dimensions</th><td>Derive deterministic date, carrier, airport, and directed-route lookups from DWD. Include airports from both endpoint roles.</td><td>731 dates; 15 carriers; 355 airports; 7,093 routes.</td></tr>
+<tr><th scope="row">DWS: daily summaries</th><td>Group DWD into carrier, origin-airport, and route activity; calculate shared counts, rates, and signed delay averages.</td><td>Date/carrier: 10,965; date/origin: 239,591; date/origin/destination: 3,554,199 rows.</td></tr>
+<tr><th scope="row">ADS: reports</th><td>Roll up daily DWS counts and recompute arrival averages from DWD for operational reporting.</td><td>24 monthly rows; 15 carrier and 355 origin-airport scorecards; 7,093 directed-route rows.</td></tr>
+</tbody></table></div>
+<p>DWD retains cancelled, diverted, and missing-outcome flights. Its label is 1 for eligible arrivals delayed at least 15 minutes, 0 for eligible earlier arrivals, and null otherwise. A business-key hash identifies matching flight attributes; it does not authorize deduplication. Route A→B remains distinct from B→A.</p>
+<p><strong>Delay rate = delayed / eligible arrivals;</strong> cancellation rate = cancelled / scheduled flights. Undefined rates remain null. Average arrival delay includes negative minutes for early arrivals. ADS combines numerators and denominators before division, rather than averaging daily percentages; DWD supplies the underlying observations for weighted arrival averages.</p>
+
+<h2 id="individual-ml-stages">ML stages</h2>
+<p>The ML branch predicts whether a flight will arrive at least 15 minutes late, using information available at its scheduled departure. It keeps flights with a known arrival outcome and uses 50 inputs describing the schedule, route, distance, and previous delays. Historical summaries cover the carrier, departure airport, arrival airport, and route over the previous 7, 30, and 90 days.</p>
+<p>A previous flight contributes only if it departed within the lookback period and arrived strictly before the prediction time. A flight still in the air, or landing exactly at that time, is excluded. Local schedules are converted to UTC for comparison. The offline study assumes results become available immediately on arrival; the source does not record when they were actually published.</p>
+<p>Training uses January 2023–April 2024, validation uses May–August 2024, and historical testing uses September–December 2024. Data preparation and model fitting learn from training only. Validation compares logistic regression with gradient-boosted trees and chooses the model and probability threshold with the highest F1, balancing delay detection and false alarms. The selected model is saved and evaluated on test data without retraining or retuning. Earlier test outcomes may update later flights’ histories under the same arrival cutoff.</p>
+
+<h2 id="results">Results</h2>
+<p>The warehouse preserves all source records. Its <a href="../../results/analytics/monthly_operations.csv">monthly reports</a> show 13,708,650 eligible arrivals, including 2,836,665 delayed flights: a <strong>20.69% delay rate</strong>. Cancellations account for 1.32% of scheduled flights and use a separate denominator.</p>
+<figure class="performance-chart">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 245" role="img" aria-labelledby="split-sizes-title split-sizes-description" font-family="system-ui, sans-serif" font-size="18" fill="#111">
+<title id="split-sizes-title">Flights used for training, validation, and testing</title>
+<desc id="split-sizes-description">Training: 8,946,370 flights; Validation: 2,418,739 flights; Historical test: 2,343,541 flights</desc>
+<line x1="170" x2="170" y1="20" y2="195" stroke="#ddd"/>
+<text x="170" y="220" text-anchor="middle">0</text>
+<line x1="282" x2="282" y1="20" y2="195" stroke="#ddd"/>
+<text x="282" y="220" text-anchor="middle">2</text>
+<line x1="394" x2="394" y1="20" y2="195" stroke="#ddd"/>
+<text x="394" y="220" text-anchor="middle">4</text>
+<line x1="506" x2="506" y1="20" y2="195" stroke="#ddd"/>
+<text x="506" y="220" text-anchor="middle">6</text>
+<line x1="618" x2="618" y1="20" y2="195" stroke="#ddd"/>
+<text x="618" y="220" text-anchor="middle">8</text>
+<line x1="730" x2="730" y1="20" y2="195" stroke="#ddd"/>
+<text x="730" y="220" text-anchor="middle">10</text>
+<text x="450" y="242" text-anchor="middle" font-size="16">Millions of eligible flights</text>
+<text x="10" y="54" >Training</text>
+<rect x="170" y="30" width="500.997" height="34" fill="#111"/>
+<text x="682.997" y="54" >8,946,370</text>
+<text x="10" y="112" >Validation</text>
+<rect x="170" y="88" width="135.449" height="34" fill="#777"/>
+<text x="317.449" y="112" >2,418,739</text>
+<text x="10" y="170" >Historical test</text>
+<rect x="170" y="146" width="131.238" height="34" fill="#bbb"/>
+<text x="313.238" y="170" >2,343,541</text>
+</svg>
+<figcaption>Flights used in each split. Training-set performance scores were not saved; the evaluation scores below cover validation and test.</figcaption>
+</figure>
+<p><a href="../../results/production/selection/selection.json">Model selection</a> chose <strong>logistic regression at threshold 0.39</strong>. The following figure compares its saved <a href="../../results/production/validation.json">validation</a> and <a href="../../results/production/test.json">historical-test results</a>.</p>
+<figure class="performance-chart">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" role="img" aria-labelledby="model-scores-title model-scores-description" font-family="system-ui, sans-serif" font-size="18" fill="#111">
+<title id="model-scores-title">Saved logistic regression scores on validation and historical test</title>
+<desc id="model-scores-description">F1: validation 0.4815, historical test 0.2532; PR-AUC: validation 0.4272, historical test 0.2645; ROC-AUC: validation 0.6871, historical test 0.6531. Higher values are better; all bars use a zero-to-one scale.</desc>
+<rect x="170" y="8" width="18" height="16" fill="#111"/>
+<text x="198" y="23" >Validation</text>
+<rect x="365" y="8" width="18" height="16" fill="#888"/>
+<text x="393" y="23" >Historical test</text>
+<line x1="170" x2="170" y1="48" y2="292" stroke="#ddd"/>
+<text x="170" y="318" text-anchor="middle">0</text>
+<line x1="310.0" x2="310.0" y1="48" y2="292" stroke="#ddd"/>
+<text x="310.0" y="318" text-anchor="middle">0.25</text>
+<line x1="450.0" x2="450.0" y1="48" y2="292" stroke="#ddd"/>
+<text x="450.0" y="318" text-anchor="middle">0.5</text>
+<line x1="590.0" x2="590.0" y1="48" y2="292" stroke="#ddd"/>
+<text x="590.0" y="318" text-anchor="middle">0.75</text>
+<line x1="730" x2="730" y1="48" y2="292" stroke="#ddd"/>
+<text x="730" y="318" text-anchor="middle">1</text>
+<text x="10" y="94" >F1</text>
+<rect x="170" y="62" width="269.618" height="23" fill="#111"/>
+<text x="451.618" y="80" >0.4815</text>
+<rect x="170" y="92" width="141.785" height="23" fill="#888"/>
+<text x="323.785" y="110" >0.2532</text>
+<text x="10" y="174" >PR-AUC</text>
+<rect x="170" y="142" width="239.227" height="23" fill="#111"/>
+<text x="421.227" y="160" >0.4272</text>
+<rect x="170" y="172" width="148.144" height="23" fill="#888"/>
+<text x="330.144" y="190" >0.2645</text>
+<text x="10" y="254" >ROC-AUC</text>
+<rect x="170" y="222" width="384.756" height="23" fill="#111"/>
+<text x="566.756" y="240" >0.6871</text>
+<rect x="170" y="252" width="365.763" height="23" fill="#888"/>
+<text x="547.763" y="270" >0.6531</text>
+</svg>
+<figcaption>Higher is better. F1 balances delay detection and false alarms; PR-AUC and ROC-AUC summarize how well the model ranks flights by delay risk.</figcaption>
+</figure>
+<p>Performance was weaker in the later period, when delays were also less common; these results do not establish why. The test period had been inspected previously, so it is not an untouched holdout.</p>
+
+<h2 id="verification">Worker failure and recovery</h2>
+<p>The isolated experiment deliberately stopped one worker while a task was running. Spark recorded the executor loss, retried the same task on the surviving worker, and completed the job. The <a href="../../labs/fault_tolerance/evidence/verification.json">saved evidence</a> connects the failed attempt to its successful retry.</p>
+<p>The output matched the baseline: <strong>1,000 records, 10 groups, and sum 499,500</strong>. This shows that Spark can recover unfinished work after losing one worker. Both workers share one host, so the experiment does not demonstrate recovery from losing that host or the driver.</p>
+</main></body>
+</html>

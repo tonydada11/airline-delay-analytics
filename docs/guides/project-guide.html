@@ -64,16 +64,16 @@ th { background: #f3f3f3; border-top: 1px solid #111;
 <p>A batch data-engineering project that turns historical flight records into a reusable warehouse, operational reports, and an offline arrival-delay classifier. The central deliverable is the complete, validated pipeline; machine learning is one consumer of its trusted flight facts.</p>
 
 <nav aria-label="Report sections"><p>Report contents</p><ul>
-<li><a href="#purpose">Purpose and inputs</a></li>
-<li><a href="#pipeline">Overall pipeline</a></li>
-<li><a href="#warehouse">Warehouse stages</a></li>
-<li><a href="#individual-ml-stages">ML stages</a></li>
-<li><a href="#results">Results</a></li>
-<li><a href="#verification">Worker failure and recovery</a></li>
+<li>Purpose and inputs</li>
+<li>Overall pipeline</li>
+<li>Warehouse stages</li>
+<li>ML stages</li>
+<li>Results</li>
+<li>Worker failure and recovery</li>
 </ul></nav>
 
 <h2 id="purpose">Purpose and inputs</h2>
-<p>The source is BTS Reporting Carrier On-Time Performance for January 2023–December 2024: <strong>24 monthly CSV files and 13,926,960 flight records</strong>. Each row describes a flight occurrence, including carrier, endpoints, schedules, cancellations, diversions, and observed delays. Original files remain unchanged; a pinned inventory and SHA-256 hashes establish source identity.</p>
+<p>The source is BTS Reporting Carrier On-Time Performance for January 2023–December 2024: <strong>24 monthly CSV files and 13,926,960 flight records</strong>. Each row describes a flight occurrence, including carrier, endpoints, schedules, cancellations, diversions, and observed delays.</p>
 <p>Spark 3.5.9 and Python 3.10.12 run in Docker Compose with one Standalone master, two one-core workers, and a notebook/driver service. Executors have 640 MiB heaps; the driver has 768 MiB. Shared mounted directories hold Parquet outputs. This demonstrates distributed computation across processes on one host, with shared storage.</p>
 
 <h2 id="pipeline">Overall pipeline</h2>
@@ -104,7 +104,7 @@ th { background: #f3f3f3; border-top: 1px solid #111;
 <p>Training uses January 2023–April 2024, validation uses May–August 2024, and historical testing uses September–December 2024. Data preparation and model fitting learn from training only. Validation compares logistic regression with gradient-boosted trees and chooses the model and probability threshold with the highest F1, balancing delay detection and false alarms. The selected model is saved and evaluated on test data without retraining or retuning. Earlier test outcomes may update later flights’ histories under the same arrival cutoff.</p>
 
 <h2 id="results">Results</h2>
-<p>The warehouse preserves all source records. Its <a href="../../results/analytics/monthly_operations.csv">monthly reports</a> show 13,708,650 eligible arrivals, including 2,836,665 delayed flights: a <strong>20.69% delay rate</strong>. Cancellations account for 1.32% of scheduled flights and use a separate denominator.</p>
+<p>The warehouse preserves all source records. Its monthly reports show 13,708,650 eligible arrivals, including 2,836,665 delayed flights: a <strong>20.69% delay rate</strong>. Cancellations account for 1.32% of scheduled flights and use a separate denominator.</p>
 <figure class="performance-chart">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 245" role="img" aria-labelledby="split-sizes-title split-sizes-description" font-family="system-ui, sans-serif" font-size="18" fill="#111">
 <title id="split-sizes-title">Flights used for training, validation, and testing</title>
@@ -134,7 +134,7 @@ th { background: #f3f3f3; border-top: 1px solid #111;
 </svg>
 <figcaption>Flights used in each split. Training-set performance scores were not saved; the evaluation scores below cover validation and test.</figcaption>
 </figure>
-<p><a href="../../results/production/selection/selection.json">Model selection</a> chose <strong>logistic regression at threshold 0.39</strong>. The following figure compares its saved <a href="../../results/production/validation.json">validation</a> and <a href="../../results/production/test.json">historical-test results</a>.</p>
+<p>Model selection chose <strong>logistic regression at threshold 0.39</strong>. The following figure compares its saved validation and historical-test results.</p>
 <figure class="performance-chart">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" role="img" aria-labelledby="model-scores-title model-scores-description" font-family="system-ui, sans-serif" font-size="18" fill="#111">
 <title id="model-scores-title">Saved logistic regression scores on validation and historical test</title>
@@ -174,7 +174,7 @@ th { background: #f3f3f3; border-top: 1px solid #111;
 <p>Performance was weaker in the later period, when delays were also less common; these results do not establish why. The test period had been inspected previously, so it is not an untouched holdout.</p>
 
 <h2 id="verification">Worker failure and recovery</h2>
-<p>The isolated experiment deliberately stopped one worker while a task was running. Spark recorded the executor loss, retried the same task on the surviving worker, and completed the job. The <a href="../../labs/fault_tolerance/evidence/verification.json">saved evidence</a> connects the failed attempt to its successful retry.</p>
+<p>The isolated experiment deliberately stopped one worker while a task was running. Spark recorded the executor loss, retried the same task on the surviving worker, and completed the job. The saved evidence connects the failed attempt to its successful retry.</p>
 <p>The output matched the baseline: <strong>1,000 records, 10 groups, and sum 499,500</strong>. This shows that Spark can recover unfinished work after losing one worker. Both workers share one host, so the experiment does not demonstrate recovery from losing that host or the driver.</p>
 </main></body>
 </html>
